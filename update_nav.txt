@@ -1,0 +1,17 @@
+Navigation Template (Top-Down Approach):
+
+            <h3>📚 Navigation (Top-Down)</h3>
+            <ul class="nav-menu">
+                <li><a href="../index.html" class="nav-link">🏠 Home</a></li>
+                <li style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color);"><a href="weekly-schedule.html" class="nav-link">📅 Weekly Structure</a></li>
+                <li><a href="btmm-cycle.html" class="nav-link">🔄 BTMM 3-Day Cycle</a></li>
+                <li><a href="daily-sessions.html" class="nav-link">🕐 Daily Sessions</a></li>
+                <li><a href="micro-quarters.html" class="nav-link">⏱️ Micro Quarters</a></li>
+                <li style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color);"><a href="patterns.html" class="nav-link">📊 Patterns</a></li>
+                <li><a href="entry-rules.html" class="nav-link">📈 Entry Rules</a></li>
+                <li><a href="risk-management.html" class="nav-link">🛡️ Risk Management</a></li>
+                <li><a href="checklist.html" class="nav-link">✅ Trading Checklist</a></li>
+                <li><a href="examples.html" class="nav-link">💡 Trade Examples</a></li>
+                <li style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color);"><a href="quick-reference.html" class="nav-link">⚡ Quick Reference</a></li>
+            </ul>
+

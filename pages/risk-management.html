@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risk Management - Trading Guide</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <div>
+                <h1>Quarterly Theory & BTMM Trading Guide</h1>
+                <div class="header-subtitle">Risk Management</div>
+            </div>
+            <div class="current-time">
+                <div class="time-display" id="currentTime">--:--:-- EST</div>
+                <div class="session-indicator" id="sessionIndicator">Loading...</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <aside class="sidebar">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search guide..." />
+            </div>
+            
+            <h3>📚 Navigation (Top-Down)</h3>
+            <ul class="nav-menu">
+                <li><a href="../index.html" class="nav-link">🏠 Home</a></li>
+                <li style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color);"><a href="core-philosophy.html" class="nav-link">🎯 Core Philosophy</a></li>
+                <li><a href="weekly-schedule.html" class="nav-link">📅 Weekly Structure</a></li>
+                <li><a href="btmm-cycle.html" class="nav-link">🔄 BTMM 3-Day Cycle</a></li>
+                <li><a href="daily-sessions.html" class="nav-link">🕐 Daily Sessions</a></li>
+                <li><a href="micro-quarters.html" class="nav-link">⏱️ Micro Quarters</a></li>
+                <li style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color);"><a href="technical-setup.html" class="nav-link">🔧 Technical Setup</a></li>
+                <li><a href="patterns.html" class="nav-link">📊 Patterns</a></li>
+                <li><a href="entry-rules.html" class="nav-link">📈 Entry Rules</a></li>
+                <li><a href="risk-management.html" class="nav-link active">🛡️ Risk Management</a></li>
+                <li><a href="checklist.html" class="nav-link">✅ Trading Checklist</a></li>
+                <li><a href="examples.html" class="nav-link">💡 Trade Examples</a></li>
+                <li style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color);"><a href="live-session-guide.html" class="nav-link">📡 Live Session Guide</a></li>
+                <li><a href="quick-reference.html" class="nav-link">⚡ Quick Reference</a></li>
+            </ul>
+        </aside>
+
+        <main class="content" id="mainContent">
+            <section class="section">
+                <h2>🛡️ Risk Management</h2>
+                
+                <div class="hero-card" style="background: linear-gradient(135deg, rgba(255, 74, 74, 0.1), rgba(255, 215, 0, 0.1));">
+                    <h4>Your Trading Survival Guide</h4>
+                    <p>The best strategy in the world is useless if you blow your account. Risk management isn't sexy, but it's what separates winners from losers.</p>
+                </div>
+
+                <div class="alert alert-danger">
+                    <strong>⚠️ CRITICAL TRUTH:</strong> 90% of traders fail because of poor risk management, not bad strategies. Master this and you're in the top 10%.
+                </div>
+
+                <h3>🎯 The Golden Rules</h3>
+
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 1.5rem;">
+                    <div class="card" style="border: 2px solid var(--accent-red);">
+                        <div style="text-align: center; font-size: 3rem; margin-bottom: 1rem;">1-2%</div>
+                        <h4 style="text-align: center; color: var(--accent-yellow); margin-bottom: 1rem;">Max Risk Per Trade</h4>
+                        <p style="text-align: center;">NEVER risk more than 1-2% of your account on a single trade. No exceptions. Ever.</p>
+                    </div>
+
+                    <div class="card" style="border: 2px solid var(--accent-yellow);">
+                        <div style="text-align: center; font-size: 3rem; margin-bottom: 1rem;">2-3%</div>
+                        <h4 style="text-align: center; color: var(--accent-yellow); margin-bottom: 1rem;">Daily Loss Limit</h4>
+                        <p style="text-align: center;">Stop trading for the day if you lose 2-3%. Walk away. Reset tomorrow.</p>
+                    </div>
+
+                    <div class="card" style="border: 2px solid var(--accent-blue);">
+                        <div style="text-align: center; font-size: 3rem; margin-bottom: 1rem;">5-6%</div>
+                        <h4 style="text-align: center; color: var(--accent-yellow); margin-bottom: 1rem;">Weekly Loss Limit</h4>
+                        <p style="text-align: center;">Stop trading for the week if you lose 5-6%. Take the week off. Review what went wrong.</p>
+                    </div>
+
+                    <div class="card" style="border: 2px solid var(--accent-green);">
+                        <div style="text-align: center; font-size: 3rem; margin-bottom: 1rem;">MAX 3</div>
+                        <h4 style="text-align: center; color: var(--accent-yellow); margin-bottom: 1rem;">Open Positions</h4>
+                        <p style="text-align: center;">Never have more than 3 positions open across all pairs. Focus beats diversification.</p>
+                    </div>
+                </div>
+
+                <h3>📊 Position Sizing Formula</h3>
+
+                <div class="pattern-card">
+                    <div class="pattern-title">How to Calculate Position Size</div>
+                    
+                    <div style="background: var(--bg-primary); padding: 2rem; border-radius: 8px; margin: 1.5rem 0;">
+                        <p style="font-size: 1.2rem; text-align: center; margin-bottom: 1rem;">
+                            <strong style="color: var(--accent-yellow);">Position Size =</strong> 
+                            <strong style="color: var(--accent-green);">Risk Amount</strong> ÷ 
+                            <strong style="color: var(--accent-blue);">(Stop Distance × Pip Value)</strong>
+                        </p>
+                    </div>
+
+                    <h4 style="margin-top: 1.5rem;">Example 1: $10,000 Account</h4>
+                    <div class="card">
+                        <p><strong>Account Balance:</strong> $10,000</p>
+                        <p><strong>Risk per Trade:</strong> 1% = $100</p>
+                        <p><strong>Entry:</strong> EUR/USD @ 1.0850</p>
+                        <p><strong>Stop Loss:</strong> 1.0830 (20 pips)</p>
+                        <p><strong>Pip Value:</strong> $10 per pip (standard lot)</p>
+
+                        <div style="background: var(--bg-tertiary); padding: 1rem; border-radius: 6px; margin-top: 1rem;">
+                            <p style="font-family: 'Courier New', monospace;">
+                                Position Size = $100 ÷ (20 × $10)<br>
+                                Position Size = $100 ÷ $200<br>
+                                <strong style="color: var(--accent-green); font-size: 1.1rem;">Position Size = 0.5 standard lots (50,000 units)</strong>
+                            </p>
+                        </div>
+                    </div>
+
+                    <h4 style="margin-top: 1.5rem;">Example 2: $5,000 Account</h4>
+                    <div class="card">
+                        <p><strong>Account Balance:</strong> $5,000</p>
+                        <p><strong>Risk per Trade:</strong> 2% = $100</p>
+                        <p><strong>Entry:</strong> GBP/USD @ 1.2650</p>
+                        <p><strong>Stop Loss:</strong> 1.2600 (50 pips)</p>
+                        <p><strong>Pip Value:</strong> $10 per pip (standard lot)</p>
+
+                        <div style="background: var(--bg-tertiary); padding: 1rem; border-radius: 6px; margin-top: 1rem;">
+                            <p style="font-family: 'Courier New', monospace;">
+                                Position Size = $100 ÷ (50 × $10)<br>
+                                Position Size = $100 ÷ $500<br>
+                                <strong style="color: var(--accent-green); font-size: 1.1rem;">Position Size = 0.2 standard lots (20,000 units)</strong>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>📈 Risk/Reward Targets</h3>
+
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.5rem;">
+                    <div class="card" style="text-align: center; border: 2px solid var(--accent-yellow);">
+                        <h4 style="color: var(--accent-yellow); margin-bottom: 1rem;">Minimum</h4>
+                        <div style="font-size: 3rem; color: var(--accent-yellow); margin: 1rem 0;">1:2</div>
+                        <p>Never enter a trade with less than 1:2 RR</p>
+                    </div>
+
+                    <div class="card" style="text-align: center; border: 2px solid var(--accent-green);">
+                        <h4 style="color: var(--accent-green); margin-bottom: 1rem;">Target</h4>
+                        <div style="font-size: 3rem; color: var(--accent-green); margin: 1rem 0;">1:3</div>
+                        <p>Standard target for most trades</p>
+                    </div>
+
+                    <div class="card" style="text-align: center; border: 2px solid var(--accent-blue);">
+                        <h4 style="color: var(--accent-blue); margin-bottom: 1rem;">Excellent</h4>
+                        <div style="font-size: 3rem; color: var(--accent-blue); margin: 1rem 0;">1:5+</div>
+                        <p>Wednesday trades often hit this</p>
+                    </div>
+                </div>
+
+                <h3>🧮 The Math That Makes You Rich</h3>
+
+                <div class="pattern-card" style="background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(74, 158, 255, 0.1));">
+                    <div class="pattern-title">Consistency Beats Home Runs</div>
+                    
+                    <h4>Scenario 1: 60% Win Rate with 1:3 RR (1% Risk)</h4>
+                    <table style="margin-top: 1rem;">
+                        <tr>
+                            <th>Trades</th>
+                            <th>Wins (60%)</th>
+                            <th>Losses (40%)</th>
+                            <th>Net Result</th>
+                            <th>Account Growth</th>
+                        </tr>
+                        <tr>
+                            <td>10 trades</td>
+                            <td>6 × +3% = <span style="color: var(--accent-green);">+18%</span></td>
+                            <td>4 × -1% = <span style="color: var(--accent-red);">-4%</span></td>
+                            <td><strong>+14%</strong></td>
+                            <td><span class="badge badge-success">Excellent</span></td>
+                        </tr>
+                        <tr>
+                            <td>20 trades</td>
+                            <td>12 × +3% = <span style="color: var(--accent-green);">+36%</span></td>
+                            <td>8 × -1% = <span style="color: var(--accent-red);">-8%</span></td>
+                            <td><strong>+28%</strong></td>
+                            <td><span class="badge badge-success">Outstanding</span></td>
+                        </tr>
+                        <tr style="background: rgba(0, 255, 136, 0.08);">
+                            <td>100 trades</td>
+                            <td>60 × +3% = <span style="color: var(--accent-green);">+180%</span></td>
+                            <td>40 × -1% = <span style="color: var(--accent-red);">-40%</span></td>
+                            <td><strong>+140%</strong></td>
+                            <td><span class="badge badge-success">Life-Changing 🚀</span></td>
+                        </tr>
+                    </table>
+
+                    <div class="alert alert-success" style="margin-top: 1.5rem;">
+                        <p><strong>The Secret:</strong> You only need to be right 60% of the time with 1:3 RR to absolutely crush it. This is ACHIEVABLE with Quarterly Theory!</p>
+                    </div>
+                </div>
+
+                <h3>⏰ Best Trading Times (High Probability)</h3>
+
+                <div style="margin-top: 1.5rem;">
+                    <div class="card" style="border-left: 4px solid var(--accent-green); background: rgba(0, 255, 136, 0.05);">
+                        <h4 style="color: var(--accent-green);">⭐ Wednesday 9:00-10:30 AM EST</h4>
+                        <p>Weekly Q3 + Daily Q3 + Session Q3 = MAXIMUM EDGE</p>
+                        <p><strong>Action:</strong> Trade with full position size, go for TP2/TP3</p>
+                    </div>
+
+                    <div class="card" style="border-left: 4px solid var(--accent-green); margin-top: 1rem;">
+                        <h4 style="color: var(--accent-green);">⭐ Tuesday-Thursday NY Session Q3</h4>
+                        <p>9:00-10:30 AM EST daily distribution window</p>
+                        <p><strong>Action:</strong> Standard position size, target 1:3 RR</p>
+                    </div>
+
+                    <div class="card" style="border-left: 4px solid var(--accent-blue); margin-top: 1rem;">
+                        <h4 style="color: var(--accent-blue);">⭐ Day 3 of BTMM Cycle</h4>
+                        <p>Whenever distribution occurs (usually Wed/Thu)</p>
+                        <p><strong>Action:</strong> Trade against Mon/Tue PF with confidence</p>
+                    </div>
+
+                    <div class="card" style="border-left: 4px solid var(--accent-blue); margin-top: 1rem;">
+                        <h4 style="color: var(--accent-blue);">⭐ After Clear London Stop Hunt</h4>
+                        <p>1:30-4:00 AM manipulation → 9:00 AM NY entry</p>
+                        <p><strong>Action:</strong> Enter opposite to London manipulation</p>
+                    </div>
+                </div>
+
+                <h3>⛔ Avoid Trading (Low Probability)</h3>
+
+                <div style="margin-top: 1.5rem;">
+                    <div class="alert alert-danger">
+                        <h4>❌ Mondays (Q1 - Accumulation)</h4>
+                        <p><strong>Why:</strong> Choppy, ranging, unpredictable. Market is accumulating.</p>
+                        <p><strong>Action:</strong> Mark PF levels, trade light or not at all.</p>
+                        <p><strong>Risk Reduction:</strong> If trading Monday, use 0.5% risk (half size).</p>
+                    </div>
+
+                    <div class="alert alert-danger" style="margin-top: 1rem;">
+                        <h4>❌ Fridays (Special Function)</h4>
+                        <p><strong>Why:</strong> Unpredictable, profit-taking, balancing. Not part of standard cycle.</p>
+                        <p><strong>Action:</strong> Close positions, take profits. Avoid new trades 95% of the time.</p>
+                        <p><strong>Risk Reduction:</strong> If setup is crystal clear, use 0.5% risk maximum.</p>
+                    </div>
+
+                    <div class="alert alert-danger" style="margin-top: 1rem;">
+                        <h4>❌ Asian Session (Unless Scalping)</h4>
+                        <p><strong>Why:</strong> Q1 accumulation, tight ranges, low volume.</p>
+                        <p><strong>Action:</strong> Mark Asian range for London/NY reference. Don't trade it.</p>
+                    </div>
+
+                    <div class="alert alert-danger" style="margin-top: 1rem;">
+                        <h4>❌ During Q1 (Any Timeframe)</h4>
+                        <p><strong>Why:</strong> Accumulation phase, no clear direction.</p>
+                        <p><strong>Action:</strong> Wait for Q2 manipulation to complete, then enter in Q3.</p>
+                    </div>
+
+                    <div class="alert alert-danger" style="margin-top: 1rem;">
+                        <h4>❌ Before Stop Hunt Occurs</h4>
+                        <p><strong>Why:</strong> Entering too early = getting trapped in manipulation.</p>
+                        <p><strong>Action:</strong> Be patient! Let them manipulate first, then trade opposite.</p>
+                    </div>
+                </div>
+
+                <h3>🧠 Psychological Risk Management</h3>
+
+                <div class="pattern-card">
+                    <div class="pattern-title">Mental Game Rules</div>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 1rem;">
+                        <div>
+                            <h4 style="color: var(--accent-green);">✅ DO:</h4>
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li>Follow your rules EVERY time</li>
+                                <li>Accept losses as part of the game</li>
+                                <li>Journal every single trade</li>
+                                <li>Take breaks after 2 losses in a row</li>
+                                <li>Celebrate small wins</li>
+                                <li>Focus on process, not money</li>
+                                <li>Be patient for perfect setups</li>
+                                <li>Review trades objectively</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--accent-red);">❌ DON'T:</h4>
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li>Revenge trade after a loss</li>
+                                <li>Increase size to "make it back"</li>
+                                <li>Move stops wider (EVER!)</li>
+                                <li>Trade when emotional/tired</li>
+                                <li>Chase missed opportunities</li>
+                                <li>Trade to hit a profit target</li>
+                                <li>Ignore your daily/weekly limits</li>
+                                <li>Compare to other traders</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>📋 Risk Management Checklist</h3>
+
+                <div class="card">
+                    <h4>Before Every Trade:</h4>
+                    <ul class="checklist">
+                        <li><input type="checkbox"> Position size calculated (1-2% risk)</li>
+                        <li><input type="checkbox"> Stop loss identified and acceptable</li>
+                        <li><input type="checkbox"> Risk/reward minimum 1:2 (preferably 1:3+)</li>
+                        <li><input type="checkbox"> Not over-leveraged (max 3 open positions)</li>
+                        <li><input type="checkbox"> Daily loss limit not reached (2-3% max)</li>
+                        <li><input type="checkbox"> Weekly loss limit not reached (5-6% max)</li>
+                        <li><input type="checkbox"> Trading during high probability times</li>
+                        <li><input type="checkbox"> Not in revenge trade mindset</li>
+                        <li><input type="checkbox"> Clear mind and focused</li>
+                    </ul>
+
+                    <h4 style="margin-top: 1.5rem;">During Trade:</h4>
+                    <ul class="checklist">
+                        <li><input type="checkbox"> Stop loss set and NOT moved wider</li>
+                        <li><input type="checkbox"> Profit targets set (TP1, TP2, TP3)</li>
+                        <li><input type="checkbox"> Not checking trade every 5 minutes</li>
+                        <li><input type="checkbox"> Following scaling out plan</li>
+                    </ul>
+
+                    <h4 style="margin-top: 1.5rem;">After Trade:</h4>
+                    <ul class="checklist">
+                        <li><input type="checkbox"> Trade journaled with details</li>
+                        <li><input type="checkbox"> Lessons learned identified</li>
+                        <li><input type="checkbox"> Rules followed or broken noted</li>
+                        <li><input type="checkbox"> Not immediately looking for next trade</li>
+                    </ul>
+                </div>
+
+                <h3>💰 Account Growth Targets</h3>
+
+                <div class="pattern-card">
+                    <div class="pattern-title">Realistic Monthly Goals</div>
+                    
+                    <table style="margin-top: 1rem;">
+                        <tr>
+                            <th>Skill Level</th>
+                            <th>Monthly Target</th>
+                            <th>Annual Target</th>
+                            <th>Strategy</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Beginner</strong></td>
+                            <td>2-5%</td>
+                            <td>24-60%</td>
+                            <td>Focus on learning, minimal size</td>
+                        </tr>
+                        <tr style="background: rgba(74, 158, 255, 0.05);">
+                            <td><strong>Intermediate</strong></td>
+                            <td>5-10%</td>
+                            <td>60-120%</td>
+                            <td>Consistent execution, full size</td>
+                        </tr>
+                        <tr style="background: rgba(0, 255, 136, 0.05);">
+                            <td><strong>Advanced</strong></td>
+                            <td>10-20%</td>
+                            <td>120-240%</td>
+                            <td>Mastery + optimal timing</td>
+                        </tr>
+                    </table>
+
+                    <div class="alert alert-warning" style="margin-top: 1.5rem;">
+                        <strong>⚠️ Reality Check:</strong> Anyone promising 50%+ monthly returns is either lying or taking huge risks that will eventually blow their account. Be realistic. Compound growth is your friend.
+                    </div>
+                </div>
+
+                <h3>🚨 Emergency Protocols</h3>
+
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 1.5rem;">
+                    <div class="card" style="border: 2px solid var(--accent-red);">
+                        <h4 style="color: var(--accent-red); margin-bottom: 1rem;">If Losing:</h4>
+                        <ul style="padding-left: 1.5rem;">
+                            <li>🛑 <strong>STOP TRADING</strong> immediately</li>
+                            <li>📖 Review trade journal</li>
+                            <li>📊 Identify mistake patterns</li>
+                            <li>💰 Reduce position size by 50%</li>
+                            <li>🎯 Return to demo until consistent</li>
+                            <li>🧠 Mental reset - take 3-5 days off</li>
+                        </ul>
+                    </div>
+
+                    <div class="card" style="border: 2px solid var(--accent-green);">
+                        <h4 style="color: var(--accent-green); margin-bottom: 1rem;">If Winning:</h4>
+                        <ul style="padding-left: 1.5rem;">
+                            <li>✅ <strong>STICK TO THE PLAN</strong></li>
+                            <li>📈 Don't increase size too quickly</li>
+                            <li>🎯 Keep following rules (that's why you're winning!)</li>
+                            <li>💰 Scale up gradually (10% per month max)</li>
+                            <li>🧠 Stay humble - market can change</li>
+                            <li>💵 Consider withdrawing profits</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="alert alert-success" style="margin-top: 2rem;">
+                    <h4 style="margin-bottom: 0.5rem;">🏆 The Ultimate Risk Management Rule</h4>
+                    <p style="font-size: 1.1rem; line-height: 1.8;">
+                        <strong>"Your #1 job is to SURVIVE.</strong> Your #2 job is to be consistent. Your #3 job is to profit. In that order. 
+                        Follow these risk management rules religiously and you'll be here trading 5 years from now while 90% of others have blown their accounts."
+                    </p>
+                </div>
+
+                <div class="alert alert-info" style="margin-top: 1.5rem;">
+                    <h4 style="margin-bottom: 0.5rem;">📚 Continue Learning</h4>
+                    <ul style="padding-left: 1.5rem; margin-top: 0.5rem;">
+                        <li><a href="entry-rules.html" style="color: var(--accent-blue);">Entry Rules</a> - Combine with proper position sizing</li>
+                        <li><a href="checklist.html" style="color: var(--accent-blue);">Trading Checklist</a> - Verify risk before every trade</li>
+                        <li><a href="examples.html" style="color: var(--accent-blue);">Trade Examples</a> - See risk management in action</li>
+                    </ul>
+                </div>
+            </section>
+
+            <div class="footer">
+                <p><strong>Remember:</strong> Risk management isn't optional. It's what keeps you in the game.</p>
+                <p style="margin-top: 1rem; color: var(--accent-blue);">Trade Quarterly. Beat the Market Makers. Win Consistently.</p>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>
+

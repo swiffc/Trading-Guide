@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entry Rules - Trading Guide</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <div>
+                <h1>Quarterly Theory & BTMM Trading Guide</h1>
+                <div class="header-subtitle">Entry & Exit Rules</div>
+            </div>
+            <div class="current-time">
+                <div class="time-display" id="currentTime">--:--:-- EST</div>
+                <div class="session-indicator" id="sessionIndicator">Loading...</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <aside class="sidebar">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search guide..." />
+            </div>
+            
+            <h3>📚 Navigation (Top-Down)</h3>
+            <ul class="nav-menu">
+                <li><a href="../index.html" class="nav-link">🏠 Home</a></li>
+                <li style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color);"><a href="core-philosophy.html" class="nav-link">🎯 Core Philosophy</a></li>
+                <li><a href="weekly-schedule.html" class="nav-link">📅 Weekly Structure</a></li>
+                <li><a href="btmm-cycle.html" class="nav-link">🔄 BTMM 3-Day Cycle</a></li>
+                <li><a href="daily-sessions.html" class="nav-link">🕐 Daily Sessions</a></li>
+                <li><a href="micro-quarters.html" class="nav-link">⏱️ Micro Quarters</a></li>
+                <li style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color);"><a href="technical-setup.html" class="nav-link">🔧 Technical Setup</a></li>
+                <li><a href="patterns.html" class="nav-link">📊 Patterns</a></li>
+                <li><a href="entry-rules.html" class="nav-link active">📈 Entry Rules</a></li>
+                <li><a href="risk-management.html" class="nav-link">🛡️ Risk Management</a></li>
+                <li><a href="checklist.html" class="nav-link">✅ Trading Checklist</a></li>
+                <li><a href="examples.html" class="nav-link">💡 Trade Examples</a></li>
+                <li style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color);"><a href="live-session-guide.html" class="nav-link">📡 Live Session Guide</a></li>
+                <li><a href="quick-reference.html" class="nav-link">⚡ Quick Reference</a></li>
+            </ul>
+        </aside>
+
+        <main class="content" id="mainContent">
+            <section class="section">
+                <h2>📈 Entry & Exit Rules</h2>
+                
+                <div class="hero-card">
+                    <h4>The Core Trading Edge</h4>
+                    <p>Your entry relative to the True Open determines your edge. Enter on the RIGHT side of manipulation and you profit. Enter on the WRONG side and you're trapped.</p>
+                </div>
+
+                <div class="alert alert-success">
+                    <strong>🎯 Golden Rule:</strong> Enter in Q3 (Distribution), opposite to the Q2 manipulation, with price positioned correctly relative to True Open.
+                </div>
+
+                <h3>📊 Setup Types</h3>
+                
+                <div class="tabs">
+                    <button class="tab-button active" data-tab="bullish-setup">🟢 Bullish Setup (W Pattern)</button>
+                    <button class="tab-button" data-tab="bearish-setup">🔴 Bearish Setup (M Pattern)</button>
+                </div>
+
+                <div id="bullish-setup" class="tab-content active">
+                    <div class="pattern-card" style="background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 255, 136, 0.05)); border-left: 4px solid var(--accent-green); margin-top: 1.5rem;">
+                        <div class="pattern-title" style="color: var(--accent-green);">🟢 Bullish Setup - W Pattern</div>
+                        
+                        <div class="pattern-visual" style="background: rgba(0, 0, 0, 0.4); color: var(--accent-green); margin: 1.5rem 0;">
+       ↑ ← ENTER LONG
+  ↑   / ← Rejection  
+   \ /
+    W   ← Stop hunt BELOW True Open
+                        </div>
+
+                        <h4 style="color: var(--accent-yellow); margin-top: 1.5rem;">✅ Entry Requirements (ALL Must Be True):</h4>
+                        <div style="background: var(--bg-tertiary); padding: 1.5rem; border-radius: 8px; margin-top: 1rem;">
+                            <ul class="checklist">
+                                <li><input type="checkbox"> <strong>Stop hunt occurred BELOW True Open</strong> ✓</li>
+                                <li><input type="checkbox"> <strong>Price rejected back ABOVE True Open</strong> ✓</li>
+                                <li><input type="checkbox"> <strong>Currently in Q2 ending or Q3 beginning</strong> (NY 9:00-10:30 AM EST ideal!) ✓</li>
+                                <li><input type="checkbox"> <strong>Reversal candlestick pattern</strong> (Hammer, Bullish Engulfing, Morning Star) ✓</li>
+                                <li><input type="checkbox"> <strong>30-90 min re-accumulation completed</strong> ✓</li>
+                                <li><input type="checkbox"> <strong>EMAs aligned bullish</strong> (5 > 13 > 50 > 200 or 50/800 cross = Level III!) ✓</li>
+                                <li><input type="checkbox"> <strong>TDI bullish</strong> (Green line > Red line, RSI > 50) ✓</li>
+                                <li><input type="checkbox"> <strong>Entry BELOW True Open</strong> (counterintuitive but correct!) ✓</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-yellow); margin-top: 1.5rem;">📍 Entry Execution:</h4>
+                        <div class="card">
+                            <p><strong>Method 1: Immediate Entry (Aggressive)</strong></p>
+                            <ul style="padding-left: 1.5rem;">
+                                <li>Enter on confirmation candle close</li>
+                                <li>Tight stop below manipulation low</li>
+                                <li>Best for scalpers and day traders</li>
+                            </ul>
+
+                            <p style="margin-top: 1rem;"><strong>Method 2: Pullback Entry (Conservative)</strong></p>
+                            <ul style="padding-left: 1.5rem;">
+                                <li>Wait for pullback to True Open</li>
+                                <li>Enter on bounce with confirmation</li>
+                                <li>Better risk/reward</li>
+                                <li>Best for swing traders</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-yellow); margin-top: 1.5rem;">🛡️ Stop Loss Placement:</h4>
+                        <table style="margin-top: 1rem;">
+                            <tr>
+                                <th>Stop Type</th>
+                                <th>Placement</th>
+                                <th>Distance</th>
+                                <th>Best For</th>
+                            </tr>
+                            <tr>
+                                <td><strong>Tight</strong></td>
+                                <td>5-10 pips below W low</td>
+                                <td>5-20 pips</td>
+                                <td>Scalpers, 5M-15M charts</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Medium</strong></td>
+                                <td>Below True Open opposite side</td>
+                                <td>20-50 pips</td>
+                                <td>Day traders, 15M-1H charts</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Wide</strong></td>
+                                <td>Below weekly PF Low</td>
+                                <td>50-100+ pips</td>
+                                <td>Swing traders, 4H-Daily charts</td>
+                            </tr>
+                        </table>
+
+                        <h4 style="color: var(--accent-yellow); margin-top: 1.5rem;">🎯 Take Profit Targets:</h4>
+                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1rem;">
+                            <div class="card" style="text-align: center;">
+                                <div style="font-size: 2rem; margin-bottom: 0.5rem;">🥉</div>
+                                <h4 style="color: var(--accent-yellow); margin-bottom: 0.5rem;">TP1 (1:2 RR)</h4>
+                                <p style="font-size: 0.9rem;">Previous session high</p>
+                                <p style="font-size: 0.9rem; margin-top: 0.5rem;"><strong>Action:</strong> Take 1/3 off</p>
+                            </div>
+                            <div class="card" style="text-align: center;">
+                                <div style="font-size: 2rem; margin-bottom: 0.5rem;">🥈</div>
+                                <h4 style="color: var(--accent-yellow); margin-bottom: 0.5rem;">TP2 (1:3 RR)</h4>
+                                <p style="font-size: 0.9rem;">Previous day high</p>
+                                <p style="font-size: 0.9rem; margin-top: 0.5rem;"><strong>Action:</strong> Take 1/3 off</p>
+                            </div>
+                            <div class="card" style="text-align: center;">
+                                <div style="font-size: 2rem; margin-bottom: 0.5rem;">🥇</div>
+                                <h4 style="color: var(--accent-yellow); margin-bottom: 0.5rem;">TP3 (1:5+ RR)</h4>
+                                <p style="font-size: 0.9rem;">Weekly PF high</p>
+                                <p style="font-size: 0.9rem; margin-top: 0.5rem;"><strong>Action:</strong> Trail final 1/3</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="bearish-setup" class="tab-content">
+                    <div class="pattern-card" style="background: linear-gradient(135deg, rgba(255, 74, 74, 0.1), rgba(255, 74, 74, 0.05)); border-left: 4px solid var(--accent-red); margin-top: 1.5rem;">
+                        <div class="pattern-title" style="color: var(--accent-red);">🔴 Bearish Setup - M Pattern</div>
+                        
+                        <div class="pattern-visual" style="background: rgba(0, 0, 0, 0.4); color: var(--accent-red); margin: 1.5rem 0;">
+    M   ← Stop hunt ABOVE True Open
+   / \
+  /   \  ← Rejection
+ /     ↓ ← ENTER SHORT
+                        </div>
+
+                        <h4 style="color: var(--accent-yellow); margin-top: 1.5rem;">✅ Entry Requirements (ALL Must Be True):</h4>
+                        <div style="background: var(--bg-tertiary); padding: 1.5rem; border-radius: 8px; margin-top: 1rem;">
+                            <ul class="checklist">
+                                <li><input type="checkbox"> <strong>Stop hunt occurred ABOVE True Open</strong> ✓</li>
+                                <li><input type="checkbox"> <strong>Price rejected back BELOW True Open</strong> ✓</li>
+                                <li><input type="checkbox"> <strong>Currently in Q2 ending or Q3 beginning</strong> (NY 9:00-10:30 AM EST ideal!) ✓</li>
+                                <li><input type="checkbox"> <strong>Reversal candlestick pattern</strong> (Shooting Star, Bearish Engulfing, Evening Star) ✓</li>
+                                <li><input type="checkbox"> <strong>30-90 min re-accumulation completed</strong> ✓</li>
+                                <li><input type="checkbox"> <strong>EMAs aligned bearish</strong> (5 < 13 < 50 < 200 or 50/800 cross = Level III!) ✓</li>
+                                <li><input type="checkbox"> <strong>TDI bearish</strong> (Red line > Green line, RSI < 50) ✓</li>
+                                <li><input type="checkbox"> <strong>Entry ABOVE True Open</strong> (counterintuitive but correct!) ✓</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-yellow); margin-top: 1.5rem;">📍 Entry Execution:</h4>
+                        <div class="card">
+                            <p><strong>Method 1: Immediate Entry (Aggressive)</strong></p>
+                            <ul style="padding-left: 1.5rem;">
+                                <li>Enter on confirmation candle close</li>
+                                <li>Tight stop above manipulation high</li>
+                                <li>Best for scalpers and day traders</li>
+                            </ul>
+
+                            <p style="margin-top: 1rem;"><strong>Method 2: Pullback Entry (Conservative)</strong></p>
+                            <ul style="padding-left: 1.5rem;">
+                                <li>Wait for pullback to True Open</li>
+                                <li>Enter on rejection with confirmation</li>
+                                <li>Better risk/reward</li>
+                                <li>Best for swing traders</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-yellow); margin-top: 1.5rem;">🛡️ Stop Loss Placement:</h4>
+                        <table style="margin-top: 1rem;">
+                            <tr>
+                                <th>Stop Type</th>
+                                <th>Placement</th>
+                                <th>Distance</th>
+                                <th>Best For</th>
+                            </tr>
+                            <tr>
+                                <td><strong>Tight</strong></td>
+                                <td>5-10 pips above M high</td>
+                                <td>5-20 pips</td>
+                                <td>Scalpers, 5M-15M charts</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Medium</strong></td>
+                                <td>Above True Open opposite side</td>
+                                <td>20-50 pips</td>
+                                <td>Day traders, 15M-1H charts</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Wide</strong></td>
+                                <td>Above weekly PF High</td>
+                                <td>50-100+ pips</td>
+                                <td>Swing traders, 4H-Daily charts</td>
+                            </tr>
+                        </table>
+
+                        <h4 style="color: var(--accent-yellow); margin-top: 1.5rem;">🎯 Take Profit Targets:</h4>
+                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1rem;">
+                            <div class="card" style="text-align: center;">
+                                <div style="font-size: 2rem; margin-bottom: 0.5rem;">🥉</div>
+                                <h4 style="color: var(--accent-yellow); margin-bottom: 0.5rem;">TP1 (1:2 RR)</h4>
+                                <p style="font-size: 0.9rem;">Previous session low</p>
+                                <p style="font-size: 0.9rem; margin-top: 0.5rem;"><strong>Action:</strong> Take 1/3 off</p>
+                            </div>
+                            <div class="card" style="text-align: center;">
+                                <div style="font-size: 2rem; margin-bottom: 0.5rem;">🥈</div>
+                                <h4 style="color: var(--accent-yellow); margin-bottom: 0.5rem;">TP2 (1:3 RR)</h4>
+                                <p style="font-size: 0.9rem;">Previous day low</p>
+                                <p style="font-size: 0.9rem; margin-top: 0.5rem;"><strong>Action:</strong> Take 1/3 off</p>
+                            </div>
+                            <div class="card" style="text-align: center;">
+                                <div style="font-size: 2rem; margin-bottom: 0.5rem;">🥇</div>
+                                <h4 style="color: var(--accent-yellow); margin-bottom: 0.5rem;">TP3 (1:5+ RR)</h4>
+                                <p style="font-size: 0.9rem;">Weekly PF low</p>
+                                <p style="font-size: 0.9rem; margin-top: 0.5rem;"><strong>Action:</strong> Trail final 1/3</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 3rem;">⚡ Entry Timing (Critical!)</h3>
+                
+                <div class="pattern-card">
+                    <div class="pattern-title">When to Enter</div>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-top: 1rem;">
+                        <div>
+                            <h4 style="color: var(--accent-green);">✅ DO Enter:</h4>
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li>Q3 Distribution phase (any timeframe)</li>
+                                <li>After Q2 manipulation completes</li>
+                                <li>After 30-90 min re-accumulation</li>
+                                <li>NY Session Q3 (9:00-10:30 AM EST)</li>
+                                <li>Wednesday (Weekly Q3)</li>
+                                <li>When multiple timeframes align</li>
+                                <li>After clear M or W pattern</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--accent-red);">❌ DON'T Enter:</h4>
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li>Q1 Accumulation phase (too early)</li>
+                                <li>During Q2 manipulation (you'll get trapped)</li>
+                                <li>Before stop hunt completes</li>
+                                <li>Asian Session (unless scalping)</li>
+                                <li>Monday (choppy accumulation)</li>
+                                <li>Friday (unless crystal clear)</li>
+                                <li>When tired, emotional, or rushed</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>🎯 Trade Management Rules</h3>
+
+                <div class="card">
+                    <div class="card-title">After Entry - What to Do</div>
+                    
+                    <h4 style="margin-top: 1rem;">Immediate (First 5 minutes):</h4>
+                    <ul style="padding-left: 1.5rem;">
+                        <li>✅ Set stop loss IMMEDIATELY</li>
+                        <li>✅ Set TP1, TP2, TP3 levels</li>
+                        <li>✅ Calculate position size (already done pre-entry)</li>
+                        <li>✅ Note entry time and price in journal</li>
+                    </ul>
+
+                    <h4 style="margin-top: 1rem;">When TP1 Hit (~1:2 RR):</h4>
+                    <ul style="padding-left: 1.5rem;">
+                        <li>🥉 Take 1/3 of position off (lock in profit)</li>
+                        <li>🛡️ Move stop to breakeven</li>
+                        <li>📊 Let remaining 2/3 run to TP2</li>
+                    </ul>
+
+                    <h4 style="margin-top: 1rem;">When TP2 Hit (~1:3 RR):</h4>
+                    <ul style="padding-left: 1.5rem;">
+                        <li>🥈 Take another 1/3 off (more profit locked)</li>
+                        <li>🛡️ Trail stop to TP1 level or quarter boundary</li>
+                        <li>📊 Let final 1/3 run to TP3</li>
+                    </ul>
+
+                    <h4 style="margin-top: 1rem;">When TP3 Hit or Q4 Begins (~1:5+ RR):</h4>
+                    <ul style="padding-left: 1.5rem;">
+                        <li>🥇 Close final 1/3 (maximum profit extracted)</li>
+                        <li>📝 Journal the complete trade</li>
+                        <li>🎉 Celebrate the win, then move on</li>
+                    </ul>
+                </div>
+
+                <h3>📐 Position Sizing Example</h3>
+
+                <div class="pattern-card">
+                    <div class="pattern-title">Real Calculation</div>
+                    <p><strong>Account:</strong> $10,000</p>
+                    <p><strong>Risk per Trade:</strong> 2% = $200</p>
+                    <p><strong>Entry:</strong> EUR/USD @ 1.0850 (Long)</p>
+                    <p><strong>Stop Loss:</strong> 1.0830 (20 pips below)</p>
+                    <p><strong>Risk Distance:</strong> 20 pips</p>
+                    
+                    <div style="background: var(--bg-tertiary); padding: 1.5rem; border-radius: 8px; margin-top: 1rem;">
+                        <p><strong>Position Size Calculation:</strong></p>
+                        <p style="font-family: 'Courier New', monospace; margin-top: 0.5rem;">
+                            Position Size = Risk Amount / (Stop Distance × Pip Value)<br>
+                            Position Size = $200 / (20 × $10)<br>
+                            Position Size = $200 / $200<br>
+                            <strong style="color: var(--accent-green);">Position Size = 1.0 standard lot (100,000 units)</strong>
+                        </p>
+                    </div>
+
+                    <p style="margin-top: 1rem;"><strong>Targets:</strong></p>
+                    <ul style="padding-left: 1.5rem;">
+                        <li><strong>TP1:</strong> 1.0890 (40 pips = 1:2 RR) → Close 0.33 lots</li>
+                        <li><strong>TP2:</strong> 1.0910 (60 pips = 1:3 RR) → Close 0.33 lots</li>
+                        <li><strong>TP3:</strong> 1.0950 (100 pips = 1:5 RR) → Close 0.34 lots</li>
+                    </ul>
+
+                    <p style="margin-top: 1rem;"><strong>If all targets hit:</strong></p>
+                    <p style="font-size: 1.1rem; color: var(--accent-green); margin-top: 0.5rem;">
+                        <strong>Total Profit: $660 (6.6% gain)</strong>
+                    </p>
+                </div>
+
+                <h3>🚨 Common Entry Mistakes</h3>
+
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 1rem;">
+                    <div class="alert alert-danger">
+                        <h4 style="margin-bottom: 0.5rem;">❌ Entering Too Early</h4>
+                        <p><strong>Problem:</strong> Entering during Q1 or early Q2</p>
+                        <p><strong>Result:</strong> Get trapped in manipulation</p>
+                        <p><strong>Solution:</strong> WAIT for Q2 to complete</p>
+                    </div>
+
+                    <div class="alert alert-danger">
+                        <h4 style="margin-bottom: 0.5rem;">❌ Wrong Side of True Open</h4>
+                        <p><strong>Problem:</strong> Entering longs ABOVE True Open</p>
+                        <p><strong>Result:</strong> Poor RR, often trapped</p>
+                        <p><strong>Solution:</strong> Always enter BELOW for longs, ABOVE for shorts</p>
+                    </div>
+
+                    <div class="alert alert-danger">
+                        <h4 style="margin-bottom: 0.5rem;">❌ Chasing After Missed Entry</h4>
+                        <p><strong>Problem:</strong> FOMO, entering after big move</p>
+                        <p><strong>Result:</strong> Enter at worst price, get reversed</p>
+                        <p><strong>Solution:</strong> Wait for next setup (90 min away)</p>
+                    </div>
+
+                    <div class="alert alert-danger">
+                        <h4 style="margin-bottom: 0.5rem;">❌ No Stop Loss</h4>
+                        <p><strong>Problem:</strong> "I'll watch it closely"</p>
+                        <p><strong>Result:</strong> Small loss becomes account killer</p>
+                        <p><strong>Solution:</strong> ALWAYS set stop before entry</p>
+                    </div>
+                </div>
+
+                <div class="alert alert-success" style="margin-top: 2rem;">
+                    <h4 style="margin-bottom: 0.5rem;">🎯 Perfect Entry Summary</h4>
+                    <ol style="padding-left: 1.5rem; margin-top: 0.5rem;">
+                        <li>Wait for Q2 manipulation to complete</li>
+                        <li>Identify M or W pattern formation</li>
+                        <li>Wait for 30-90 min re-accumulation</li>
+                        <li>Enter in Q3 opposite to manipulation</li>
+                        <li>Enter below True Open (longs) or above (shorts)</li>
+                        <li>Set stop immediately beyond M/W extreme</li>
+                        <li>Set 3 profit targets with scaling plan</li>
+                        <li>Execute and manage according to plan</li>
+                    </ol>
+                </div>
+
+                <div class="alert alert-info" style="margin-top: 1.5rem;">
+                    <h4 style="margin-bottom: 0.5rem;">📚 Continue Learning</h4>
+                    <ul style="padding-left: 1.5rem; margin-top: 0.5rem;">
+                        <li><a href="patterns.html" style="color: var(--accent-blue);">Patterns</a> - See M/W patterns in detail</li>
+                        <li><a href="risk-management.html" style="color: var(--accent-blue);">Risk Management</a> - Position sizing & stops</li>
+                        <li><a href="examples.html" style="color: var(--accent-blue);">Trade Examples</a> - Real entry examples</li>
+                    </ul>
+                </div>
+            </section>
+
+            <div class="footer">
+                <p><strong>Remember:</strong> Entry position relative to True Open = Your edge. Get this right and you win.</p>
+                <p style="margin-top: 1rem; color: var(--accent-blue);">Trade Quarterly. Beat the Market Makers. Win Consistently.</p>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,2685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patterns & Setups - Trading Guide</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <div>
+                <h1>Quarterly Theory & BTMM Trading Guide</h1>
+                <div class="header-subtitle">Common Patterns & Setups</div>
+            </div>
+            <div class="current-time">
+                <div class="time-display" id="currentTime">--:--:-- EST</div>
+                <div class="session-indicator" id="sessionIndicator">Loading...</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <aside class="sidebar">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search guide..." />
+            </div>
+            
+            <h3>📚 Navigation (Top-Down)</h3>
+            <ul class="nav-menu">
+                <li><a href="../index.html" class="nav-link">🏠 Home</a></li>
+                <li style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color);"><a href="core-philosophy.html" class="nav-link">🎯 Core Philosophy</a></li>
+                <li><a href="weekly-schedule.html" class="nav-link">📅 Weekly Structure</a></li>
+                <li><a href="btmm-cycle.html" class="nav-link">🔄 BTMM 3-Day Cycle</a></li>
+                <li><a href="daily-sessions.html" class="nav-link">🕐 Daily Sessions</a></li>
+                <li><a href="micro-quarters.html" class="nav-link">⏱️ Micro Quarters</a></li>
+                <li style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color);"><a href="technical-setup.html" class="nav-link">🔧 Technical Setup</a></li>
+                <li><a href="patterns.html" class="nav-link active">📊 Patterns</a></li>
+                <li><a href="entry-rules.html" class="nav-link">📈 Entry Rules</a></li>
+                <li><a href="risk-management.html" class="nav-link">🛡️ Risk Management</a></li>
+                <li><a href="checklist.html" class="nav-link">✅ Trading Checklist</a></li>
+                <li><a href="examples.html" class="nav-link">💡 Trade Examples</a></li>
+                <li style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color);"><a href="live-session-guide.html" class="nav-link">📡 Live Session Guide</a></li>
+                <li><a href="quick-reference.html" class="nav-link">⚡ Quick Reference</a></li>
+            </ul>
+        </aside>
+
+        <main class="content" id="mainContent">
+            <section class="section">
+                <h2>📊 Common Patterns & Setups</h2>
+                
+                <div class="hero-card">
+                    <h4>Pattern Recognition = Edge</h4>
+                    <p>These patterns repeat daily across all timeframes. Master them and you'll spot opportunities that 90% of traders miss.</p>
+                </div>
+
+                <div class="alert alert-info">
+                    <strong>💡 Remember:</strong> Patterns work because market makers manipulate in predictable ways. They NEED to trap retail before distributing. Learn these patterns = Learn their playbook.
+                </div>
+
+                <h3 style="margin-top: 2rem;">Choose a Pattern to Study:</h3>
+                
+                <div class="tabs" style="flex-wrap: wrap; gap: 0.5rem;">
+                    <button class="tab-button active" data-tab="m-pattern">🔴 M-Top (Bearish)</button>
+                    <button class="tab-button" data-tab="w-pattern">🟢 W-Bottom (Bullish)</button>
+                    <button class="tab-button" data-tab="london-ny">⚡ London → NY</button>
+                    <button class="tab-button" data-tab="batman">🦇 Half Batman</button>
+                    <button class="tab-button" data-tab="shark">🦈 Shark Fin</button>
+                    <button class="tab-button" data-tab="three-day">📅 3-Day Cycle</button>
+                    <button class="tab-button" data-tab="asia-leg">🌅 2nd Leg Asia</button>
+                    <button class="tab-button" data-tab="ema-bounce">📈 EMA Bounce Setups</button>
+                    <button class="tab-button" data-tab="ar-setups">📏 AR Level Setups</button>
+                    <button class="tab-button" data-tab="advanced-cycle">⚡ Advanced Cycle</button>
+                    <button class="tab-button" data-tab="summary">📊 Summary</button>
+                </div>
+
+                <!-- M-TOP PATTERN TAB -->
+                <div id="m-pattern" class="tab-content active" style="margin-top: 1.5rem;">
+                    <div class="pattern-card" style="background: linear-gradient(135deg, rgba(255, 74, 74, 0.1), rgba(255, 74, 74, 0.05)); border-left: 4px solid var(--accent-red);">
+                        <div class="pattern-title" style="color: var(--accent-red);">🔴 M-Top Reversal - Bearish Pattern</div>
+                        
+                        <div class="pattern-visual" style="color: var(--accent-red); font-size: 1.5rem; padding: 2rem;">
+    M   ← Stop hunt ABOVE True Open
+   / \     (Manipulation - Traps buyers)
+  /   \  ← Rejection
+ /     ↓ ← ENTER SHORT (Distribution begins)
+                        </div>
+
+                        <h4 style="color: var(--accent-blue); margin-top: 1.5rem;">📍 When & Where It Forms:</h4>
+                        <div class="card">
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li>Price in uptrend or at resistance level</li>
+                                <li>Approaching Q2 manipulation quarter</li>
+                                <li>Near True Open level (session, daily, or weekly)</li>
+                                <li>Often forms at previous day high or weekly high</li>
+                                <li>Most common: Monday/Tuesday for weekly PF High</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-blue); margin-top: 1.5rem;">📋 Formation Steps:</h4>
+                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 1rem;">
+                            <div class="card" style="border-left: 4px solid #ffd700;">
+                                <h4 style="color: var(--accent-yellow);">Phase 1-3: Setup</h4>
+                                <ol style="padding-left: 1.5rem; line-height: 1.8;">
+                                    <li><strong>First peak forms</strong> (initial high)</li>
+                                    <li><strong>Pullback/small correction</strong></li>
+                                    <li><strong>Second peak forms ABOVE True Open</strong> (stop hunt!)</li>
+                                </ol>
+                            </div>
+
+                            <div class="card" style="border-left: 4px solid #00ff88;">
+                                <h4 style="color: var(--accent-green);">Phase 4-5: Entry</h4>
+                                <ol start="4" style="padding-left: 1.5rem; line-height: 1.8;">
+                                    <li><strong>Price fails, rejects below True Open</strong></li>
+                                    <li><strong>M pattern complete → ENTER SHORT</strong></li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <h4 style="color: var(--accent-blue); margin-top: 1.5rem;">🎯 Complete Trading Plan:</h4>
+                        <table style="margin-top: 1rem;">
+                            <tr>
+                                <th>Element</th>
+                                <th>Placement/Action</th>
+                                <th>Why</th>
+                            </tr>
+                            <tr>
+                                <td><strong>Entry</strong></td>
+                                <td>Short when price breaks back below True Open</td>
+                                <td>Confirms rejection & reversal</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Confirmation</strong></td>
+                                <td>Bearish engulfing or shooting star on 15M</td>
+                                <td>Candlestick confirms seller strength</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Stop Loss</strong></td>
+                                <td>10-20 pips above second peak (M high)</td>
+                                <td>Invalidation point - pattern failed</td>
+                            </tr>
+                            <tr style="background: rgba(0, 255, 136, 0.05);">
+                                <td><strong>TP1 (1:2)</strong></td>
+                                <td>Previous quarter low</td>
+                                <td>Take 1/3 off, move stop to breakeven</td>
+                            </tr>
+                            <tr style="background: rgba(0, 255, 136, 0.05);">
+                                <td><strong>TP2 (1:3)</strong></td>
+                                <td>Previous day low</td>
+                                <td>Take 1/3 off, trail stop</td>
+                            </tr>
+                            <tr style="background: rgba(0, 255, 136, 0.08);">
+                                <td><strong>TP3 (1:5+)</strong></td>
+                                <td>Weekly PF low</td>
+                                <td>Trail final 1/3, let it run</td>
+                            </tr>
+                        </table>
+
+                        <h4 style="color: var(--accent-blue); margin-top: 1.5rem;">🔧 Technical Confirmation (Use with M-Top):</h4>
+                        <div class="card" style="border-left: 4px solid var(--accent-blue);">
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li><strong>EMA Signal:</strong> 5/13 cross down OR 50/800 cross down = Level III bearish confirmed!</li>
+                                <li><strong>TDI Signal:</strong> Shark Fin at peak (RSI spikes then falls below 50 MBL)</li>
+                                <li><strong>Price Action:</strong> M-Top forms at London PF High (stop hunt complete)</li>
+                                <li><strong>Candle Confirmation:</strong> Shooting star or bearish engulfing at second peak</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-yellow); margin-top: 1.5rem;">⏰ Best Times to Trade M-Tops:</h4>
+                        <div class="alert alert-success">
+                            <ul style="padding-left: 1.5rem; margin: 0;">
+                                <li>✅ <strong>Q2-Q3 transition</strong> (manipulation → distribution)</li>
+                                <li>✅ <strong>London (2:00-4:00 AM EST)</strong> creates PF High</li>
+                                <li>✅ <strong>NY Q3 (9:00-10:30 AM EST)</strong> 🔥 BEST for entry!</li>
+                                <li>✅ <strong>Monday/Tuesday</strong> for weekly PF High</li>
+                                <li>✅ <strong>Wednesday Q3</strong> for distribution short (ULTIMATE!)</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-red); margin-top: 1.5rem;">⚠️ Avoid M-Tops When:</h4>
+                        <div class="alert alert-danger">
+                            <ul style="padding-left: 1.5rem; margin: 0;">
+                                <li>❌ During Q1 accumulation (too early)</li>
+                                <li>❌ Friday (unpredictable)</li>
+                                <li>❌ Major news events (30 min before/after)</li>
+                                <li>❌ Low volume periods (Asian session)</li>
+                                <li>❌ Pattern not complete (don't anticipate!)</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-yellow); margin-top: 2rem;">🎯 ADVANCED VARIATION: M-Top off Mayo (200 EMA)</h4>
+                        <div class="card" style="background: rgba(255, 215, 0, 0.05); border: 2px solid var(--accent-yellow);">
+                            <p><strong>"Hold the Mayo":</strong> M pattern forming directly AT the 200 EMA ("Mayo" = White EMA).</p>
+                            
+                            <div style="margin-top: 1rem;">
+                                <h5 style="color: var(--accent-blue);">What Makes This Special:</h5>
+                                <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                    <li><strong>Double Confluence:</strong> Reversal pattern + Major EMA resistance</li>
+                                    <li><strong>Best at Level 2 or 3</strong> (NOT Level 1/anchor)</li>
+                                    <li><strong>Stronger Rejection:</strong> 200 EMA acts as powerful dynamic resistance</li>
+                                    <li><strong>Similar to 50/50 Bounce</strong> but for reversals instead of continuations</li>
+                                </ul>
+                            </div>
+
+                            <div style="margin-top: 1rem;">
+                                <h5 style="color: var(--accent-green);">Entry Rules:</h5>
+                                <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                    <li>Wait for complete M pattern AT 200 EMA</li>
+                                    <li>Second leg must touch or approach 200 EMA</li>
+                                    <li>Break of neckline with all normal M confirmations</li>
+                                    <li>Second leg closes below 13 EMA</li>
+                                    <li>TDI confirmation (RSI below MBL, signal cross)</li>
+                                </ul>
+                            </div>
+
+                            <div style="margin-top: 1rem;">
+                                <h5 style="color: var(--accent-red);">Important Notes:</h5>
+                                <div class="alert alert-warning" style="margin-top: 0.5rem;">
+                                    <p><strong>⚠️ NOT advised to trade back at anchor (Level 1)</strong></p>
+                                    <p style="margin-top: 0.5rem;">Wait for Level 2 or Level 3 for best probability</p>
+                                    <p style="margin-top: 0.5rem;">If 200 EMA just broken, wait for retest before entering</p>
+                                </div>
+                            </div>
+
+                            <div style="margin-top: 1rem;">
+                                <h5 style="color: var(--accent-blue);">Best Timeframes:</h5>
+                                <ul style="padding-left: 1.5rem;">
+                                    <li><strong>1-Hour:</strong> Most reliable</li>
+                                    <li><strong>4-Hour:</strong> Larger moves</li>
+                                    <li><strong>15-Min:</strong> More entries but noisier</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <h4 style="color: var(--accent-yellow); margin-top: 2rem;">⏰ TIME-BASED VARIATION: Brinks Trade</h4>
+                        <div class="card" style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(74, 158, 255, 0.05)); border: 2px solid var(--accent-blue);">
+                            <p><strong>"Brinks Truck" (Delivering Money):</strong> M pattern where 2nd leg falls inside specific time windows.</p>
+                            
+                            <div style="margin-top: 1rem;">
+                                <h5 style="color: var(--accent-blue);">🕐 Specific Times (Critical!):</h5>
+                                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 0.5rem;">
+                                    <div class="card" style="border-left: 4px solid var(--accent-green);">
+                                        <h5 style="color: var(--accent-green);">Morning Window</h5>
+                                        <p><strong>09:45 Local Time</strong></p>
+                                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">(Adjust to your market's timezone)</p>
+                                    </div>
+                                    <div class="card" style="border-left: 4px solid var(--accent-blue);">
+                                        <h5 style="color: var(--accent-blue);">Afternoon Window</h5>
+                                        <p><strong>15:45 Local Time</strong></p>
+                                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">(Adjust to your market's timezone)</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="margin-top: 1rem;">
+                                <h5 style="color: var(--accent-yellow);">Setup Requirements:</h5>
+                                <ol style="padding-left: 1.5rem; line-height: 1.8;">
+                                    <li><strong>M Pattern Forming:</strong> Clear reversal pattern developing</li>
+                                    <li><strong>First Leg Complete:</strong> Peak 1 established</li>
+                                    <li><strong>Second Leg Timing:</strong> Peak 2 occurs at 09:45 or 15:45 (±15-30 min window)</li>
+                                    <li><strong>Shadow Box:</strong> Second leg falls inside specific time window</li>
+                                    <li><strong>All Normal Confirmations:</strong> Plus time confluence</li>
+                                </ol>
+                            </div>
+
+                            <div style="margin-top: 1rem;">
+                                <h5 style="color: var(--accent-green);">Why It Works:</h5>
+                                <div class="alert alert-success" style="margin-top: 0.5rem;">
+                                    <p><strong>Market Structure Shifts:</strong> These times represent volume and liquidity changes</p>
+                                    <p style="margin-top: 0.5rem;"><strong>Session Transitions:</strong> Market maker patterns more predictable</p>
+                                    <p style="margin-top: 0.5rem;"><strong>Statistical Edge:</strong> Time component adds probability</p>
+                                </div>
+                            </div>
+
+                            <div style="margin-top: 1rem;">
+                                <h5 style="color: var(--accent-blue);">Entry & Targets:</h5>
+                                <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                    <li><strong>Entry:</strong> Second leg at specific time + all M confirmations</li>
+                                    <li><strong>Stop:</strong> Standard M pattern (beyond Peak 2 + 20-30 pips)</li>
+                                    <li><strong>Targets:</strong> Often larger moves due to time confluence</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 style="margin-top: 3rem; color: var(--accent-blue);">📚 TYPE 1: M-Top Above Asian Session (Safety Trade)</h3>
+                    
+                    <div class="alert alert-info">
+                        <strong>🎯 Safety Trade Concept:</strong> M-Top pattern forms ABOVE Asian session high. This is called a "Safety Trade" because Asian high acts as strong support/reference level.
+                    </div>
+
+                    <div class="pattern-card" style="border-left: 4px solid var(--accent-red); margin-top: 1.5rem;">
+                        <div class="pattern-title">Type 1a: Full 13 EMA Rules (Both Legs Respect 13 EMA)</div>
+                        
+                        <h4 style="color: var(--accent-blue); margin-top: 1rem;">📝 Strict Rules:</h4>
+                        <div class="card">
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li><strong>Both legs STRICTLY respect the 13 EMA</strong> - No break or violation allowed</li>
+                                <li>First leg goes up, stays above 13 EMA</li>
+                                <li>Second leg also stays above 13 EMA until apex</li>
+                                <li>Apex forms with clean rejection candlestick pattern (RR, COW, Pin Bar)</li>
+                                <li>Pattern must be ABOVE Asian session high</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-yellow); margin-top: 1.5rem;">📍 Optimal Location:</h4>
+                        <div class="card">
+                            <p><strong>Found at:</strong></p>
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li>Session High of Day (HOD) or Low of Day (LOD)</li>
+                                <li>PSH/PSL (Previous Session High/Low)</li>
+                                <li>PDH/PDL (Previous Day High/Low)</li>
+                                <li>PWH/PWL (Previous Week High/Low)</li>
+                                <li>PMH/PML (Previous Month High/Low)</li>
+                                <li>PYH/PYL (Previous Year High/Low)</li>
+                                <li>5-day averaged ADR levels</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-green); margin-top: 1.5rem;">🎯 Use Case:</h4>
+                        <div class="card">
+                            <p><strong>Ideal for:</strong></p>
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li>Trending markets where clear structure is maintained</li>
+                                <li>When 13 EMA is acting as dynamic support in uptrend</li>
+                                <li>High-probability reversals at key institutional levels</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-blue); margin-top: 1.5rem;">⚡ Entry Triggers:</h4>
+                        <div class="alert alert-success">
+                            <ol style="padding-left: 1.5rem; margin: 0;">
+                                <li>Both legs respect 13 EMA (no breaks)</li>
+                                <li>Apex forms at key level (PDH, ADR, etc.)</li>
+                                <li>Rejection candle at apex (RR, COW, Morning Star)</li>
+                                <li>Second leg closes below 13 EMA = Entry signal</li>
+                                <li>TDI confirms (RSI crosses below MBL)</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="pattern-card" style="border-left: 4px solid var(--accent-yellow); margin-top: 1.5rem;">
+                        <div class="pattern-title">Type 1b: 13 EMA Tap (First Leg Taps, Doesn't Break)</div>
+                        
+                        <h4 style="color: var(--accent-blue); margin-top: 1rem;">📝 Rules:</h4>
+                        <div class="card">
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li><strong>First leg TAPS the 13 EMA but does not break it</strong></li>
+                                <li>Price touches 13 EMA briefly, then bounces back up</li>
+                                <li>Second leg forms with rejection candlestick pattern</li>
+                                <li>Second leg must close below 13 EMA for entry</li>
+                                <li>Pattern above Asian session high</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-yellow); margin-top: 1.5rem;">📍 Optimal Location:</h4>
+                        <div class="card">
+                            <p><strong>Found during:</strong></p>
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li><strong>Brinks Trade Timing:</strong> ⏰ 9:45 PM, 3:45 AM, 9:45 AM EST</li>
+                                <li>London/NY session extremes</li>
+                                <li>Key reversal levels: PSH/PSL, PDH/PDL, PWH/PWL, ADR limits</li>
+                                <li>Level 3 areas in BTMM methodology (Wednesday, Day 3)</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-green); margin-top: 1.5rem;">🎯 Use Case:</h4>
+                        <div class="card">
+                            <p><strong>Effective for:</strong></p>
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li>Consolidation phases where liquidity sweeps align with EMAs</li>
+                                <li>Strong trending markets with minor pullbacks</li>
+                                <li>Time-sensitive entries at Brinks windows</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-blue); margin-top: 1.5rem;">✴️ Key Feature:</h4>
+                        <div class="alert alert-info">
+                            <p><strong>Dynamic EMA Interaction:</strong></p>
+                            <p style="margin-top: 0.5rem;">The 13 EMA serves as critical dynamic resistance. First leg "tests" the EMA (tap), confirming it as support before the M-Top reversal forms.</p>
+                        </div>
+                    </div>
+
+                    <div class="pattern-card" style="border-left: 4px solid var(--accent-green); margin-top: 1.5rem;">
+                        <div class="pattern-title">Type 1c: Leg Does Not Touch 13 EMA (Stays Above)</div>
+                        
+                        <h4 style="color: var(--accent-blue); margin-top: 1rem;">📝 Rules:</h4>
+                        <div class="card">
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li><strong>First leg remains ENTIRELY ABOVE the 13 EMA</strong></li>
+                                <li>No contact with 13 EMA during first leg</li>
+                                <li><strong>Second leg closes back INSIDE the 13 EMA</strong></li>
+                                <li>Confirms with candlestick rejection pattern (RR, COW)</li>
+                                <li>Pattern forms above Asian session high</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-yellow); margin-top: 1.5rem;">📍 Optimal Location:</h4>
+                        <div class="card">
+                            <p><strong>Found near:</strong></p>
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li>Session HOD/LOD (High/Low of Day)</li>
+                                <li>Targeting liquidity sweeps before reversal</li>
+                                <li>Strong resistance levels (PDH, PWH, PMH)</li>
+                                <li>ADR extremes (90%+ of ADR met)</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-green); margin-top: 1.5rem;">🎯 Use Case:</h4>
+                        <div class="card">
+                            <p><strong>Best for:</strong></p>
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li>Strong trending markets where 13 EMA acts as dynamic support</li>
+                                <li>Price makes "final push" away from 13 EMA before reversing</li>
+                                <li>Exhaustion moves at key levels</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-blue); margin-top: 1.5rem;">✴️ Key Insight:</h4>
+                        <div class="alert alert-warning">
+                            <p><strong>⚠️ Stronger Momentum Signal:</strong></p>
+                            <p style="margin-top: 0.5rem;">When price stays completely above 13 EMA for first leg, it shows strong bullish momentum. The second leg closing INSIDE 13 EMA signals momentum shift and is a powerful reversal indicator.</p>
+                        </div>
+                    </div>
+
+                    <h4 style="margin-top: 2rem; color: var(--accent-blue);">🌟 Common Type 1 Features Across All Variations:</h4>
+                    <div class="card">
+                        <h5 style="color: var(--accent-green);">✴️ Dynamic EMA Interaction:</h5>
+                        <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                            <li>13 EMA serves as critical dynamic resistance/support</li>
+                            <li>Both legs interact with or remain in proximity to 13 EMA</li>
+                            <li>Breaking below 13 EMA signals reversal confirmation</li>
+                        </ul>
+
+                        <h5 style="color: var(--accent-yellow); margin-top: 1rem;">✴️ Rejection Candlestick Patterns:</h5>
+                        <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                            <li>Morning/Evening Stars confirm apex</li>
+                            <li>Railroad Tracks (RR) show strong rejection</li>
+                            <li>COW (Close On Wrong side) patterns</li>
+                            <li>Pin Bars at key levels</li>
+                        </ul>
+
+                        <h5 style="color: var(--accent-blue); margin-top: 1rem;">✴️ Session Timing Alignment:</h5>
+                        <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                            <li><strong>London Session:</strong> 3:30-5:30 AM EST</li>
+                            <li><strong>New York Session:</strong> 9:30-11:00 AM EST</li>
+                            <li><strong>Brinks Timing:</strong> 9:45 PM, 3:45 AM, 9:45 AM EST</li>
+                        </ul>
+
+                        <h5 style="color: var(--accent-red); margin-top: 1rem;">✴️ Liquidity Targeting:</h5>
+                        <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                            <li>Entries coincide with liquidity sweeps</li>
+                            <li>Target: PSH/PSL, PDH/PDL, PWH/PWL, PMH/PML, PYH/PYL</li>
+                            <li>5-day ADR levels act as magnets</li>
+                        </ul>
+                    </div>
+
+                    <div class="alert alert-success" style="margin-top: 1.5rem;">
+                        <h4 style="margin-bottom: 0.5rem;">💡 Type 1 Trading Summary:</h4>
+                        <p><strong>Safety Trade = M-Top Above Asian High</strong></p>
+                        <ul style="padding-left: 1.5rem; margin-top: 0.5rem;">
+                            <li><strong>Type 1a:</strong> Both legs respect 13 EMA (strictest, highest probability)</li>
+                            <li><strong>Type 1b:</strong> First leg taps 13 EMA (moderate, good for Brinks timing)</li>
+                            <li><strong>Type 1c:</strong> First leg stays above 13 EMA (momentum exhaustion signal)</li>
+                        </ul>
+                        <p style="margin-top: 1rem;"><strong>All require:</strong> Pattern above Asian high + Key level confluence + Rejection candlestick + Close below 13 EMA</p>
+                    </div>
+                </div>
+
+                <!-- W-BOTTOM PATTERN TAB -->
+                <div id="w-pattern" class="tab-content" style="margin-top: 1.5rem;">
+                    <div class="pattern-card" style="background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 255, 136, 0.05)); border-left: 4px solid var(--accent-green);">
+                        <div class="pattern-title" style="color: var(--accent-green);">🟢 W-Bottom Reversal - Bullish Pattern</div>
+                        
+                        <div class="pattern-visual" style="color: var(--accent-green); font-size: 1.5rem; padding: 2rem;">
+       ↑ ← ENTER LONG (Distribution begins)
+  ↑   / ← Rejection  
+   \ /
+    W   ← Stop hunt BELOW True Open
+            (Manipulation - Traps sellers)
+                        </div>
+
+                        <h4 style="color: var(--accent-blue); margin-top: 1.5rem;">📍 When & Where It Forms:</h4>
+                        <div class="card">
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li>Price in downtrend or at support level</li>
+                                <li>Approaching Q2 manipulation quarter</li>
+                                <li>Near True Open level (session, daily, or weekly)</li>
+                                <li>Often forms at previous day low or weekly low</li>
+                                <li>Most common: Monday/Tuesday for weekly PF Low</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-blue); margin-top: 1.5rem;">📋 Formation Steps:</h4>
+                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 1rem;">
+                            <div class="card" style="border-left: 4px solid #ffd700;">
+                                <h4 style="color: var(--accent-yellow);">Phase 1-3: Setup</h4>
+                                <ol style="padding-left: 1.5rem; line-height: 1.8;">
+                                    <li><strong>First trough forms</strong> (initial low)</li>
+                                    <li><strong>Rally/small correction</strong></li>
+                                    <li><strong>Second trough forms BELOW True Open</strong> (stop hunt!)</li>
+                                </ol>
+                            </div>
+
+                            <div class="card" style="border-left: 4px solid #00ff88;">
+                                <h4 style="color: var(--accent-green);">Phase 4-5: Entry</h4>
+                                <ol start="4" style="padding-left: 1.5rem; line-height: 1.8;">
+                                    <li><strong>Price rejects strongly, breaks above True Open</strong></li>
+                                    <li><strong>W pattern complete → ENTER LONG</strong></li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <h4 style="color: var(--accent-blue); margin-top: 1.5rem;">🎯 Complete Trading Plan:</h4>
+                        <table style="margin-top: 1rem;">
+                            <tr>
+                                <th>Element</th>
+                                <th>Placement/Action</th>
+                                <th>Why</th>
+                            </tr>
+                            <tr>
+                                <td><strong>Entry</strong></td>
+                                <td>Long when price breaks back above True Open</td>
+                                <td>Confirms rejection & reversal</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Confirmation</strong></td>
+                                <td>Bullish engulfing or hammer on 15M</td>
+                                <td>Candlestick confirms buyer strength</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Stop Loss</strong></td>
+                                <td>10-20 pips below second trough (W low)</td>
+                                <td>Invalidation point - pattern failed</td>
+                            </tr>
+                            <tr style="background: rgba(0, 255, 136, 0.05);">
+                                <td><strong>TP1 (1:2)</strong></td>
+                                <td>Previous quarter high</td>
+                                <td>Take 1/3 off, move stop to breakeven</td>
+                            </tr>
+                            <tr style="background: rgba(0, 255, 136, 0.05);">
+                                <td><strong>TP2 (1:3)</strong></td>
+                                <td>Previous day high</td>
+                                <td>Take 1/3 off, trail stop</td>
+                            </tr>
+                            <tr style="background: rgba(0, 255, 136, 0.08);">
+                                <td><strong>TP3 (1:5+)</strong></td>
+                                <td>Weekly PF high</td>
+                                <td>Trail final 1/3, let it run</td>
+                            </tr>
+                        </table>
+
+                        <h4 style="color: var(--accent-blue); margin-top: 1.5rem;">🔧 Technical Confirmation (Use with W-Bottom):</h4>
+                        <div class="card" style="border-left: 4px solid var(--accent-green);">
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li><strong>EMA Signal:</strong> 5/13 cross up OR 50/800 cross up = Level III bullish confirmed!</li>
+                                <li><strong>TDI Signal:</strong> Shark Fin at bottom (RSI spikes down then rises above 50 MBL)</li>
+                                <li><strong>Price Action:</strong> W-Bottom forms at London PF Low (stop hunt complete)</li>
+                                <li><strong>Candle Confirmation:</strong> Hammer or bullish engulfing at second trough</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-yellow); margin-top: 1.5rem;">⏰ Best Times to Trade W-Bottoms:</h4>
+                        <div class="alert alert-success">
+                            <ul style="padding-left: 1.5rem; margin: 0;">
+                                <li>✅ <strong>Q2-Q3 transition</strong> (manipulation → distribution)</li>
+                                <li>✅ <strong>London (2:00-4:00 AM EST)</strong> creates PF Low</li>
+                                <li>✅ <strong>NY Q3 (9:00-10:30 AM EST)</strong> 🔥 BEST for entry!</li>
+                                <li>✅ <strong>Monday/Tuesday</strong> for weekly PF Low</li>
+                                <li>✅ <strong>Wednesday Q3</strong> for distribution long (ULTIMATE!)</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-red); margin-top: 1.5rem;">⚠️ Avoid W-Bottoms When:</h4>
+                        <div class="alert alert-danger">
+                            <ul style="padding-left: 1.5rem; margin: 0;">
+                                <li>❌ During Q1 accumulation (too early)</li>
+                                <li>❌ Friday (unpredictable)</li>
+                                <li>❌ Major news events (30 min before/after)</li>
+                                <li>❌ Low volume periods (Asian session)</li>
+                                <li>❌ Pattern not complete (don't anticipate!)</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-yellow); margin-top: 2rem;">🎯 ADVANCED VARIATION: W-Bottom off Mayo (200 EMA)</h4>
+                        <div class="card" style="background: rgba(0, 255, 136, 0.05); border: 2px solid var(--accent-green);">
+                            <p><strong>"Hold the Mayo":</strong> W pattern forming directly AT the 200 EMA ("Mayo" = White EMA).</p>
+                            
+                            <div style="margin-top: 1rem;">
+                                <h5 style="color: var(--accent-blue);">What Makes This Special:</h5>
+                                <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                    <li><strong>Double Confluence:</strong> Reversal pattern + Major EMA support</li>
+                                    <li><strong>Best at Level 2 or 3</strong> (NOT Level 1/anchor)</li>
+                                    <li><strong>Stronger Bounce:</strong> 200 EMA acts as powerful dynamic support</li>
+                                    <li><strong>Similar to 50/50 Bounce</strong> but for reversals instead of continuations</li>
+                                </ul>
+                            </div>
+
+                            <div style="margin-top: 1rem;">
+                                <h5 style="color: var(--accent-green);">Entry Rules:</h5>
+                                <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                    <li>Wait for complete W pattern AT 200 EMA</li>
+                                    <li>Second valley must touch or approach 200 EMA</li>
+                                    <li>Break of neckline with all normal W confirmations</li>
+                                    <li>Second leg closes above 13 EMA</li>
+                                    <li>TDI confirmation (RSI above MBL, signal cross)</li>
+                                </ul>
+                            </div>
+
+                            <div style="margin-top: 1rem;">
+                                <h5 style="color: var(--accent-red);">Important Notes:</h5>
+                                <div class="alert alert-warning" style="margin-top: 0.5rem;">
+                                    <p><strong>⚠️ NOT advised to trade back at anchor (Level 1)</strong></p>
+                                    <p style="margin-top: 0.5rem;">Wait for Level 2 or Level 3 for best probability</p>
+                                    <p style="margin-top: 0.5rem;">If 200 EMA just broken, wait for retest before entering</p>
+                                </div>
+                            </div>
+
+                            <div style="margin-top: 1rem;">
+                                <h5 style="color: var(--accent-blue);">Best Timeframes:</h5>
+                                <ul style="padding-left: 1.5rem;">
+                                    <li><strong>1-Hour:</strong> Most reliable</li>
+                                    <li><strong>4-Hour:</strong> Larger moves</li>
+                                    <li><strong>15-Min:</strong> More entries but noisier</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info" style="margin-top: 1.5rem;">
+                            <p><strong>💡 Note:</strong> The <strong>Brinks Trade</strong> (time-based variation at 09:45 or 15:45) applies to BOTH M-Tops and W-Bottoms! See M-Top section above for complete details.</p>
+                        </div>
+                    </div>
+
+                    <h3 style="margin-top: 3rem; color: var(--accent-blue);">📚 TYPE 2: Asian 00 Bounce and Reverse Trades</h3>
+                    
+                    <div class="alert alert-info">
+                        <strong>🎯 Asian 00 Concept:</strong> M or W pattern forms AT the Asian range boundary (Asian High = 00 level for M-Top, Asian Low = 00 level for W-Bottom). Price "bounces" off this level and reverses!
+                    </div>
+
+                    <div class="pattern-card" style="border-left: 4px solid var(--accent-blue); margin-top: 1.5rem;">
+                        <div class="pattern-title">Type 2a: Symmetrical Legs (Equal Length)</div>
+                        
+                        <h4 style="color: var(--accent-blue); margin-top: 1rem;">📝 Rules:</h4>
+                        <div class="card">
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li><strong>Both legs of M or W are SYMMETRICAL in length and structure</strong></li>
+                                <li>First leg = approximately same pip distance as second leg</li>
+                                <li>Apex forms with clear rejection candlestick pattern</li>
+                                <li>Pattern forms AT Asian High (for M-Top) or Asian Low (for W-Bottom)</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-yellow); margin-top: 1.5rem;">📍 Optimal Location:</h4>
+                        <div class="card">
+                            <p><strong>Found near:</strong></p>
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li>Session High of Day (HOD) or Low of Day (LOD)</li>
+                                <li>After a liquidity sweep during session extremes</li>
+                                <li>Asian session high/low boundary</li>
+                                <li>Clean double top/bottom structure</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-green); margin-top: 1.5rem;">🎯 Use Case:</h4>
+                        <div class="card">
+                            <p><strong>Ideal for:</strong></p>
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li>Reversals when price forms clear double top/bottom</li>
+                                <li>London session opens and price tests Asian range</li>
+                                <li>NY session continuation after London sweep</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-blue); margin-top: 1.5rem;">✴️ Apex Formation:</h4>
+                        <div class="alert alert-success">
+                            <p><strong>Where Both Legs Meet:</strong></p>
+                            <ol style="padding-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 0;">
+                                <li>Apex is where both legs meet and reversal begins</li>
+                                <li>Confirmed by rejection candlestick (Morning/Evening Star, Railroad Tracks)</li>
+                                <li>Second leg must close above/below 13 EMA for entry</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="pattern-card" style="border-left: 4px solid var(--accent-yellow); margin-top: 1.5rem;">
+                        <div class="pattern-title">Type 2b: Extended Second Leg (Goes Further)</div>
+                        
+                        <h4 style="color: var(--accent-blue); margin-top: 1rem;">📝 Rules:</h4>
+                        <div class="card">
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li><strong>Second leg is EXTENDED further than first leg</strong></li>
+                                <li>First leg makes initial move, second leg pushes deeper</li>
+                                <li>Apex forms with candlestick rejection pattern (RR, Morning/Evening Star)</li>
+                                <li>Pattern at Asian High/Low (00 level)</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-yellow); margin-top: 1.5rem;">📍 Optimal Location:</h4>
+                        <div class="card">
+                            <p><strong>Found near:</strong></p>
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li>HOD/LOD or HOW/LOW (High/Low of Day/Week)</li>
+                                <li>5-day averaged ADR levels</li>
+                                <li>After large liquidity sweep beyond Asian range</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-green); margin-top: 1.5rem;">🎯 Use Case:</h4>
+                        <div class="card">
+                            <p><strong>Effective for:</strong></p>
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li>Trades during <strong>Brinks Timing</strong> (9:45 PM, 3:45 AM, 9:45 AM EST)</li>
+                                <li>Large liquidity sweep setups</li>
+                                <li>Extended moves that trap late entries</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-blue); margin-top: 1.5rem;">✴️ Stop Hunt Insight:</h4>
+                        <div class="alert alert-warning">
+                            <p><strong>⚠️ Extended Leg = Stop Hunt!</strong></p>
+                            <p style="margin-top: 0.5rem;">When second leg extends beyond first leg, it's typically grabbing liquidity (stop hunting). This creates a POWERFUL reversal setup when price finally rejects!</p>
+                        </div>
+                    </div>
+
+                    <div class="pattern-card" style="border-left: 4px solid var(--accent-green); margin-top: 1.5rem;">
+                        <div class="pattern-title">Type 2c: Pattern at Key EMA Levels</div>
+                        
+                        <h4 style="color: var(--accent-blue); margin-top: 1rem;">📝 Rules:</h4>
+                        <div class="card">
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li><strong>Pattern forms directly at significant EMA levels (13, 50, or 200 EMA)</strong></li>
+                                <li>Both legs interact with the EMA</li>
+                                <li>Second leg closes above (W) or below (M) the EMA</li>
+                                <li>Must be AT Asian High/Low (00 boundary)</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-yellow); margin-top: 1.5rem;">📍 Optimal Location:</h4>
+                        <div class="card">
+                            <p><strong>Found at:</strong></p>
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li>Session highs/lows that align with major EMAs</li>
+                                <li>Pullbacks to EMAs after a trend move</li>
+                                <li>Asian range boundary + EMA confluence</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-green); margin-top: 1.5rem;">🎯 Use Case:</h4>
+                        <div class="card">
+                            <p><strong>Best for:</strong></p>
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li>Trend continuation after EMA bounce</li>
+                                <li>Reversal setups during volatile sessions</li>
+                                <li>Multiple timeframe confluence (Asian + EMA + Session timing)</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-blue); margin-top: 1.5rem;">✴️ Dynamic EMA Confluence:</h4>
+                        <div class="alert alert-info">
+                            <p><strong>Triple Confluence Power:</strong></p>
+                            <ul style="padding-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 0;">
+                                <li>Asian Range Boundary (00 level)</li>
+                                <li>Key EMA (13, 50, or 200)</li>
+                                <li>M or W Pattern Formation</li>
+                            </ul>
+                            <p style="margin-top: 0.5rem;"><strong>= Highest probability reversal setup!</strong></p>
+                        </div>
+                    </div>
+
+                    <h4 style="margin-top: 2rem; color: var(--accent-blue);">🌟 Common Type 2 Features:</h4>
+                    <div class="card">
+                        <h5 style="color: var(--accent-green);">✴️ Apex Formation:</h5>
+                        <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                            <li>Apex = where both legs meet and reversal begins</li>
+                            <li>Confirmed by rejection candlestick (Morning/Evening Star, Railroad Tracks)</li>
+                            <li>Second leg closes above/below 13 EMA = entry trigger</li>
+                        </ul>
+
+                        <h5 style="color: var(--accent-yellow); margin-top: 1rem;">✴️ Dynamic EMA Interaction:</h5>
+                        <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                            <li>Patterns respect key EMAs (13, 50, 200)</li>
+                            <li>Second leg aligns with EMA bounce or rejection</li>
+                            <li>EMA adds confluence to Asian range boundary</li>
+                        </ul>
+
+                        <h5 style="color: var(--accent-blue); margin-top: 1rem;">✴️ Session Timing Alignment:</h5>
+                        <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                            <li><strong>London Session:</strong> 3:30-5:30 AM EST</li>
+                            <li><strong>New York Session:</strong> 9:30-11:00 AM EST</li>
+                            <li><strong>Brinks Timing:</strong> 9:45 PM, 3:45 AM, 9:45 AM EST</li>
+                        </ul>
+
+                        <h5 style="color: var(--accent-red); margin-top: 1rem;">✴️ Liquidity Targeting:</h5>
+                        <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                            <li>Sweeps session highs/lows or key levels (HOD/LOD, HOW/LOW, PWH/PWL)</li>
+                            <li>Entry triggered at liquidity points with reversal patterns</li>
+                        </ul>
+                    </div>
+
+                    <div class="alert alert-success" style="margin-top: 1.5rem;">
+                        <h4 style="margin-bottom: 0.5rem;">💡 Type 2 Trading Summary:</h4>
+                        <p><strong>Asian 00 Bounce = Pattern AT Asian High/Low</strong></p>
+                        <ul style="padding-left: 1.5rem; margin-top: 0.5rem;">
+                            <li><strong>Type 2a:</strong> Symmetrical legs (clean double top/bottom)</li>
+                            <li><strong>Type 2b:</strong> Extended second leg (stop hunt + liquidity grab)</li>
+                            <li><strong>Type 2c:</strong> EMA confluence (Asian boundary + EMA = triple confluence)</li>
+                        </ul>
+                        <p style="margin-top: 1rem;"><strong>All require:</strong> Pattern AT Asian 00 boundary + Rejection candlestick + Session timing + Close above/below 13 EMA</p>
+                    </div>
+
+                    <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(74, 158, 255, 0.1); border-left: 4px solid var(--accent-blue); border-radius: 8px;">
+                        <h4 style="color: var(--accent-blue); margin-bottom: 1rem;">📊 Visual Guide - Type 2a Example (Symmetrical Legs):</h4>
+                        <ol style="padding-left: 1.5rem; line-height: 2;">
+                            <li><strong>First Leg:</strong> Price moves into Asian High (00 level), respecting EMA</li>
+                            <li><strong>Apex Formation:</strong> Rejection candlestick forms (RR, Morning Star, COW)</li>
+                            <li><strong>Second Leg:</strong> Price retraces symmetrically to same level</li>
+                            <li><strong>Entry:</strong> Triggered at apex on confirmation of candlestick closing below 13 EMA</li>
+                        </ol>
+                    </div>
+
+                    <div class="alert alert-warning" style="margin-top: 1.5rem;">
+                        <h4 style="margin-bottom: 0.5rem;">🛠 Type 2 Execution Strategy:</h4>
+                        <ol style="padding-left: 1.5rem; line-height: 1.8; margin-bottom: 0;">
+                            <li><strong>🔍 Identify Setup:</strong> Look for symmetrical or extended leg formations at Asian 00 boundary</li>
+                            <li><strong>🎯 Entry Point:</strong> Enter at apex after candlestick confirmation (use pending orders if volatile)</li>
+                            <li><strong>📏 Risk Management:</strong> Stop Loss above/below apex, Take Profit 2:1 RR</li>
+                            <li><strong>⏰ Timing:</strong> London Session (3:30-5:30 AM), NY Session (9:30-11:00 AM), Brinks (9:45 PM, 3:45 AM, 9:45 AM)</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- LONDON → NY TAB -->
+                <div id="london-ny" class="tab-content" style="margin-top: 1.5rem;">
+                    <div class="pattern-card" style="border-left: 4px solid #4a9eff;">
+                        <div class="pattern-title">⚡ London Stop Hunt → NY Distribution (Most Common Intraday)</div>
+                        
+                        <h4 style="color: var(--accent-blue);">📊 The 4-Phase Daily Pattern:</h4>
+                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 1rem;">
+                            <div>
+                                <div class="card" style="border-left: 4px solid #4a9eff;">
+                                    <h4 style="color: var(--accent-blue);">Phase 1: Asian Accumulation (Daily Q1)</h4>
+                                    <p><strong>Time:</strong> 7:00 PM - 2:00 AM EST</p>
+                                    <p><strong>Action:</strong> Tight consolidation (20-40 pips)</p>
+                                    <p><strong>Example:</strong> EUR/USD 1.0850-1.0870</p>
+                                    <p><strong>EMAs:</strong> Flat, no clear direction</p>
+                                    <p style="margin-top: 0.5rem;"><strong>Your Job:</strong> Mark Asian high/low</p>
+                                </div>
+
+                                <div class="card" style="border-left: 4px solid #ffd700; margin-top: 1rem;">
+                                    <h4 style="color: var(--accent-yellow);">Phase 2: London Manipulation (Daily Q2)</h4>
+                                    <p><strong>Time:</strong> 2:00-4:00 AM EST (True Open: 1:30 AM)</p>
+                                    <p><strong>Action:</strong> Break Asian range (stop hunt)</p>
+                                    <p><strong>Example:</strong> Spikes to 1.0895 (M pattern) or drops to 1.0830 (W pattern)</p>
+                                    <p><strong>EMAs:</strong> 13/50 cross = Level I begins!</p>
+                                    <p><strong>TDI:</strong> Shark Fin at extreme</p>
+                                    <p style="margin-top: 0.5rem;"><strong>Your Job:</strong> Identify HOD or LOD (PF)</p>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="card" style="border-left: 4px solid #ff4a4a;">
+                                    <h4 style="color: var(--accent-red);">Phase 3: Re-Accumulation (Level II)</h4>
+                                    <p><strong>Time:</strong> 4:00-7:30 AM EST</p>
+                                    <p><strong>Action:</strong> Choppy, 30-90 min consolidation</p>
+                                    <p><strong>Example:</strong> Range 1.0875-1.0890</p>
+                                    <p><strong>EMAs:</strong> 50/200 cross = Level II (AVOID!)</p>
+                                    <p><strong>TDI:</strong> Flat, no direction</p>
+                                    <p style="margin-top: 0.5rem;"><strong>Your Job:</strong> WAIT patiently ⏸️</p>
+                                </div>
+
+                                <div class="card" style="border-left: 4px solid #00ff88; margin-top: 1rem; background: rgba(0, 255, 136, 0.05);">
+                                    <h4 style="color: var(--accent-green);">Phase 4: NY Distribution 🔥 (Daily Q3 + Level III)</h4>
+                                    <p><strong>Time:</strong> 9:00-10:30 AM EST (NY Q3)</p>
+                                    <p><strong>Action:</strong> <strong>ENTER OPPOSITE to London!</strong></p>
+                                    <p><strong>Example:</strong> Enter short, distributes down 80+ pips</p>
+                                    <p><strong>EMAs:</strong> 50/800 or 200/800 cross = Level III confirmed! 🔥</p>
+                                    <p><strong>TDI:</strong> Strong directional move</p>
+                                    <p style="margin-top: 0.5rem;"><strong>Your Job:</strong> TRADE IT!</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h4 style="color: var(--accent-yellow); margin-top: 1.5rem;">🎯 Entry Criteria Checklist:</h4>
+                        <ul class="checklist">
+                            <li><input type="checkbox"> Asian range marked (tight range = best)</li>
+                            <li><input type="checkbox"> London made clear HOD or LOD (PF established)</li>
+                            <li><input type="checkbox"> 30-90 min re-accumulation completed (Level II passed)</li>
+                            <li><input type="checkbox"> NY True Open 7:30 AM swept</li>
+                            <li><input type="checkbox"> Enter NY Q3 (9:00-10:30 AM EST) opposite to London</li>
+                            <li><input type="checkbox"> EMAs: 50/800 or 200/800 cross (Level III confirmed!)</li>
+                            <li><input type="checkbox"> TDI: Strong directional momentum</li>
+                            <li><input type="checkbox"> Multiple timeframes aligned</li>
+                        </ul>
+
+                        <div class="alert alert-success" style="margin-top: 1rem;">
+                            <strong>💡 The Golden Rule:</strong> If London makes HIGH (M pattern), NY distributes DOWN. If London makes LOW (W pattern), NY distributes UP. This happens <strong>70%+</strong> of the time!
+                        </div>
+
+                        <h4 style="color: var(--accent-blue); margin-top: 1.5rem;">📈 Example Trade (Bearish):</h4>
+                        <div class="card" style="background: rgba(74, 158, 255, 0.05);">
+                            <p><strong>Asian Session:</strong> EUR/USD tight range 1.0850-1.0860</p>
+                            <p><strong>London 2:00 AM:</strong> Pumps to 1.0895 (M-Top above Asian high)</p>
+                            <p><strong>Re-Accumulation 5:00 AM:</strong> Consolidates 1.0880-1.0890</p>
+                            <p><strong>NY Entry 9:15 AM:</strong> SHORT at 1.0885</p>
+                            <p><strong>Stop:</strong> 1.0900 (15 pips)</p>
+                            <p><strong>Target:</strong> 1.0840 (45 pips = 1:3 RR)</p>
+                            <p style="margin-top: 1rem; font-size: 1.1rem; color: var(--accent-green);"><strong>Result: +45 pips by 12pm!</strong></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- HALF BATMAN TAB -->
+                <div id="batman" class="tab-content" style="margin-top: 1.5rem;">
+                    <div class="pattern-card" style="border-left: 4px solid #a0aab7;">
+                        <div class="pattern-title">🦇 Half Batman - Advanced BTMM Pattern</div>
+                        
+                        <div class="alert alert-warning">
+                            <strong>⚠️ ADVANCED PATTERN:</strong> Master M and W patterns first! This requires experience to identify correctly.
+                        </div>
+
+                        <h4 style="color: var(--accent-blue);">📊 What is Half Batman?</h4>
+                        <div class="card">
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li>Complex M or W pattern with <strong>asymmetric "wings"</strong></li>
+                                <li>One side (wing) is extended/exaggerated</li>
+                                <li>Creates Batman-like shape when viewed on chart</li>
+                                <li>Indicates <strong>STRONG</strong> manipulation in one direction</li>
+                                <li>Usually traps maximum number of traders</li>
+                                <li>Results in explosive reversals (1:5+ common)</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-blue); margin-top: 1.5rem;">🔄 Two Types:</h4>
+                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 1rem;">
+                            <div class="card" style="border: 2px solid var(--accent-green);">
+                                <h4 style="color: var(--accent-green);">🟢 Bullish Half Batman</h4>
+                                <div style="margin-top: 1rem; font-family: monospace; color: var(--accent-green);">
+        ↑ ← Strong rally
+   ↗   /
+   \ /
+    W  ← Small low
+  /
+ /  ← DEEP low (extended left wing)
+                                </div>
+                                <ul style="padding-left: 1.5rem; margin-top: 1rem;">
+                                    <li><strong>Left low</strong> of W is MUCH deeper</li>
+                                    <li>Extreme stop hunt on left side</li>
+                                    <li>Right side shows strength (higher low)</li>
+                                    <li><strong>Entry:</strong> Break above center of W</li>
+                                    <li><strong>Target:</strong> Extended (1:5+ often hits)</li>
+                                </ul>
+                            </div>
+
+                            <div class="card" style="border: 2px solid var(--accent-red);">
+                                <h4 style="color: var(--accent-red);">🔴 Bearish Half Batman</h4>
+                                <div style="margin-top: 1rem; font-family: monospace; color: var(--accent-red);">
+ \  ← EXTREME high (extended left wing)
+  \
+   M  ← Small high
+   / \
+  /   \
+ /     ↓ ← Strong drop
+                                </div>
+                                <ul style="padding-left: 1.5rem; margin-top: 1rem;">
+                                    <li><strong>Left high</strong> of M is MUCH higher</li>
+                                    <li>Extreme stop hunt on left side</li>
+                                    <li>Right side shows weakness (lower high)</li>
+                                    <li><strong>Entry:</strong> Break below center of M</li>
+                                    <li><strong>Target:</strong> Extended (1:5+ often hits)</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <h4 style="color: var(--accent-yellow); margin-top: 1.5rem;">🎯 How to Trade Half Batman:</h4>
+                        <table>
+                            <tr>
+                                <th>Step</th>
+                                <th>Action</th>
+                                <th>Detail</th>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>Identify asymmetry</td>
+                                <td>One wing significantly extended vs other</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Wait for completion</td>
+                                <td>Both wings must form completely</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Enter on break</td>
+                                <td>Bullish: Above center | Bearish: Below center</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Wide stop</td>
+                                <td>Beyond extended wing + 20 pips</td>
+                            </tr>
+                            <tr style="background: rgba(0, 255, 136, 0.05);">
+                                <td>5</td>
+                                <td>Extended targets</td>
+                                <td>Go for TP2 and TP3 (1:4 to 1:8 possible)</td>
+                            </tr>
+                        </table>
+
+                        <div class="alert alert-info" style="margin-top: 1rem;">
+                            <strong>💡 Why It Works:</strong> Half Batman shows EXTREME liquidity grab. When institutions trap this many traders on wrong side, the reversal is powerful and sustained.
+                        </div>
+
+                        <div class="alert alert-danger" style="margin-top: 1rem;">
+                            <strong>⚠️ Only Trade If:</strong> You've successfully traded 50+ standard M/W patterns, have proper risk management, and can identify the asymmetry clearly.
+                        </div>
+                    </div>
+
+                    <h3 style="margin-top: 3rem; color: var(--accent-blue);">🦇 HALF BATMAN VARIATIONS (Type 1 & 2 Rules)</h3>
+                    
+                    <div class="alert alert-info">
+                        <strong>🎯 Advanced Half Batman Rules:</strong> These Type 1 & 2 variations apply specific EMA and Asian session rules to the Half Batman pattern for even higher probability setups!
+                    </div>
+
+                    <div class="pattern-card" style="border-left: 4px solid var(--accent-purple); margin-top: 1.5rem;">
+                        <div class="pattern-title">🦇 Half Batman - Type 1 Variation (Lev 3, 15 min)</div>
+                        
+                        <h4 style="color: var(--accent-blue); margin-top: 1rem;">📝 Type 1 Rules (Buy Setup):</h4>
+                        <div class="card">
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li><strong>Outside structure - First leg creates extreme move</strong></li>
+                                <li><strong>Price closes ABOVE 13 EMA</strong> after first leg (bullish)</li>
+                                <li>Price comes back to challenge first leg (retest low)</li>
+                                <li><strong>Price FAILS to reach first leg</strong> (asymmetry confirmed)</li>
+                                <li><strong>Entry trigger:</strong> Shift candle (change of character)</li>
+                                <li><strong>Shift candle closes ABOVE apex</strong> (middle of structure)</li>
+                                <li>Price closes above 13 EMA with TDI confirmation</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-yellow); margin-top: 1.5rem;">📊 Entry Process (Step by Step):</h4>
+                        <div class="card">
+                            <ol style="padding-left: 1.5rem; line-height: 2;">
+                                <li><strong>First Leg (Outside Structure):</strong> Price makes extreme move DOWN (stop hunt)</li>
+                                <li><strong>Close Above 13 EMA:</strong> Price recovers and closes above 13 EMA (momentum shift)</li>
+                                <li><strong>Retest Attempt:</strong> Price attempts to go back down but FAILS to reach first leg low</li>
+                                <li><strong>Apex Identification:</strong> Mark the middle point between first leg low and failed second leg</li>
+                                <li><strong>Shift Candle:</strong> Wait for shift candle (bullish engulfment, Pin, RR, Morning Star)</li>
+                                <li><strong>Apex Break:</strong> Shift candle must close ABOVE apex</li>
+                                <li><strong>TDI Confirmation:</strong> RSI crosses above MBL, moving toward upper band</li>
+                                <li><strong>Enter on close</strong> of shift candle above apex + TDI confirmed</li>
+                            </ol>
+                        </div>
+
+                        <h4 style="color: var(--accent-green); margin-top: 1.5rem;">✅ Confirmation Checklist:</h4>
+                        <div class="alert alert-success">
+                            <ol style="padding-left: 1.5rem; margin: 0;">
+                                <li>✅ First leg = extreme outside structure (liquidity grab)</li>
+                                <li>✅ Price closes above 13 EMA after first leg</li>
+                                <li>✅ Second leg FAILS to reach first leg (asymmetry)</li>
+                                <li>✅ Shift candle closes ABOVE apex</li>
+                                <li>✅ Price above 13 EMA</li>
+                                <li>✅ TDI RSI crosses MBL upward</li>
+                            </ol>
+                        </div>
+
+                        <h4 style="color: var(--accent-blue); margin-top: 1.5rem;">🎯 Best Locations for Type 1:</h4>
+                        <div class="card">
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li><strong>Level 3 Areas:</strong> Wednesday (Day 3), after M-D flip</li>
+                                <li><strong>London Session:</strong> 2:00-5:00 AM EST (early morning liquidity grab)</li>
+                                <li><strong>NY Session Open:</strong> 9:30-10:30 AM EST (major liquidity sweep)</li>
+                                <li><strong>Key Levels:</strong> PDL, PWL, Asian Low, ADR low boundary</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="pattern-card" style="border-left: 4px solid var(--accent-red); margin-top: 1.5rem;">
+                        <div class="pattern-title">🦇 Half Batman - Type 2 Variation (Lev 3, 15 min)</div>
+                        
+                        <h4 style="color: var(--accent-blue); margin-top: 1rem;">📝 Type 2 Rules (Sell Setup):</h4>
+                        <div class="card">
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li><strong>Outside structure - First leg creates extreme move UP</strong></li>
+                                <li><strong>Price closes BELOW 13 EMA</strong> after first leg (bearish)</li>
+                                <li>Price comes back to challenge first leg (retest high)</li>
+                                <li><strong>Price FAILS to reach first leg</strong> (asymmetry confirmed)</li>
+                                <li><strong>Entry trigger:</strong> Shift candle (bearish engulfment, Pin, RR, Evening Star)</li>
+                                <li><strong>Shift candle closes BELOW apex</strong> (middle of structure)</li>
+                                <li>Price closes below 13 EMA with TDI confirmation</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-yellow); margin-top: 1.5rem;">📊 Entry Process (Step by Step):</h4>
+                        <div class="card">
+                            <ol style="padding-left: 1.5rem; line-height: 2;">
+                                <li><strong>First Leg (Outside Structure):</strong> Price makes extreme move UP (stop hunt)</li>
+                                <li><strong>Close Below 13 EMA:</strong> Price drops and closes below 13 EMA (momentum shift)</li>
+                                <li><strong>Retest Attempt:</strong> Price attempts to go back up but FAILS to reach first leg high</li>
+                                <li><strong>Apex Identification:</strong> Mark the middle point between first leg high and failed second leg</li>
+                                <li><strong>Shift Candle:</strong> Wait for shift candle (bearish engulfment, Pin, RR, Evening Star)</li>
+                                <li><strong>Apex Break:</strong> Shift candle must close BELOW apex</li>
+                                <li><strong>TDI Confirmation:</strong> RSI crosses below MBL, moving toward lower band</li>
+                                <li><strong>Enter on close</strong> of shift candle below apex + TDI confirmed</li>
+                            </ol>
+                        </div>
+
+                        <h4 style="color: var(--accent-red); margin-top: 1.5rem;">✅ Confirmation Checklist:</h4>
+                        <div class="alert alert-warning">
+                            <ol style="padding-left: 1.5rem; margin: 0;">
+                                <li>✅ First leg = extreme outside structure (liquidity grab)</li>
+                                <li>✅ Price closes below 13 EMA after first leg</li>
+                                <li>✅ Second leg FAILS to reach first leg (asymmetry)</li>
+                                <li>✅ Shift candle closes BELOW apex</li>
+                                <li>✅ Price below 13 EMA</li>
+                                <li>✅ TDI RSI crosses MBL downward</li>
+                            </ol>
+                        </div>
+
+                        <h4 style="color: var(--accent-blue); margin-top: 1.5rem;">🎯 Best Locations for Type 2:</h4>
+                        <div class="card">
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li><strong>Level 3 Areas:</strong> Wednesday (Day 3), after A-M flip</li>
+                                <li><strong>London Session:</strong> 2:00-5:00 AM EST (early morning liquidity grab)</li>
+                                <li><strong>NY Session Open:</strong> 9:30-10:30 AM EST (major liquidity sweep)</li>
+                                <li><strong>Key Levels:</strong> PDH, PWH, Asian High, ADR high boundary</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h4 style="margin-top: 2rem; color: var(--accent-blue);">🌟 Key Differences: Type 1 vs Type 2</h4>
+                    <div class="card">
+                        <table style="width: 100%; border-collapse: collapse; margin-top: 0.5rem;">
+                            <tr style="background: rgba(74, 158, 255, 0.1);">
+                                <th style="padding: 0.75rem; text-align: left; border-bottom: 1px solid var(--border-color);">Aspect</th>
+                                <th style="padding: 0.75rem; text-align: left; border-bottom: 1px solid var(--border-color);">Type 1 (Buy)</th>
+                                <th style="padding: 0.75rem; text-align: left; border-bottom: 1px solid var(--border-color);">Type 2 (Sell)</th>
+                            </tr>
+                            <tr>
+                                <td style="padding: 0.75rem; border-bottom: 1px solid var(--border-color);"><strong>First Leg Direction</strong></td>
+                                <td style="padding: 0.75rem; border-bottom: 1px solid var(--border-color);">Extreme DOWN (stop hunt)</td>
+                                <td style="padding: 0.75rem; border-bottom: 1px solid var(--border-color);">Extreme UP (stop hunt)</td>
+                            </tr>
+                            <tr style="background: rgba(0, 255, 136, 0.05);">
+                                <td style="padding: 0.75rem; border-bottom: 1px solid var(--border-color);"><strong>EMA Close</strong></td>
+                                <td style="padding: 0.75rem; border-bottom: 1px solid var(--border-color);">Close ABOVE 13 EMA</td>
+                                <td style="padding: 0.75rem; border-bottom: 1px solid var(--border-color);">Close BELOW 13 EMA</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 0.75rem; border-bottom: 1px solid var(--border-color);"><strong>Shift Candle</strong></td>
+                                <td style="padding: 0.75rem; border-bottom: 1px solid var(--border-color);">Bullish (engulfment, Pin, RR, Morning Star)</td>
+                                <td style="padding: 0.75rem; border-bottom: 1px solid var(--border-color);">Bearish (engulfment, Pin, RR, Evening Star)</td>
+                            </tr>
+                            <tr style="background: rgba(0, 255, 136, 0.05);">
+                                <td style="padding: 0.75rem; border-bottom: 1px solid var(--border-color);"><strong>Apex Break</strong></td>
+                                <td style="padding: 0.75rem; border-bottom: 1px solid var(--border-color);">Close ABOVE apex</td>
+                                <td style="padding: 0.75rem; border-bottom: 1px solid var(--border-color);">Close BELOW apex</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 0.75rem;"><strong>TDI Confirmation</strong></td>
+                                <td style="padding: 0.75rem;">RSI crosses MBL UP</td>
+                                <td style="padding: 0.75rem;">RSI crosses MBL DOWN</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="alert alert-success" style="margin-top: 1.5rem;">
+                        <h4 style="margin-bottom: 0.5rem;">💡 Type 1 & 2 Half Batman Summary:</h4>
+                        <p><strong>What Makes These Variations Special:</strong></p>
+                        <ul style="padding-left: 1.5rem; margin-top: 0.5rem;">
+                            <li><strong>First Leg:</strong> Extreme outside structure (liquidity grab/stop hunt)</li>
+                            <li><strong>EMA Confirmation:</strong> Price must close above/below 13 EMA after first leg</li>
+                            <li><strong>Asymmetry:</strong> Second leg FAILS to reach first leg (key identifier)</li>
+                            <li><strong>Apex Break:</strong> Shift candle closes above/below apex (entry signal)</li>
+                            <li><strong>TDI:</strong> Adds final confirmation of momentum shift</li>
+                        </ul>
+                        <p style="margin-top: 1rem;"><strong>Success Rate:</strong> 80-85% when ALL confirmations present (Level 3 areas only!)</p>
+                    </div>
+
+                    <div class="alert alert-danger" style="margin-top: 1.5rem;">
+                        <h4 style="margin-bottom: 0.5rem;">⚠️ Critical Rules for Type 1 & 2:</h4>
+                        <ol style="padding-left: 1.5rem; line-height: 1.8; margin-bottom: 0;">
+                            <li><strong>Level 3 ONLY:</strong> Only trade these on Day 3 (Wednesday) or after major flip</li>
+                            <li><strong>15-Min Timeframe:</strong> Use 15-minute charts for entries</li>
+                            <li><strong>All Confirmations Required:</strong> Do NOT enter if ANY confirmation is missing</li>
+                            <li><strong>Asymmetry is KEY:</strong> If second leg reaches first leg = NOT a Half Batman!</li>
+                            <li><strong>Experience Required:</strong> 50+ successful M/W patterns before attempting</li>
+                        </ol>
+                    </div>
+
+                    <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(138, 43, 226, 0.1); border-left: 4px solid #8b2be2; border-radius: 8px;">
+                        <h4 style="color: #8b2be2; margin-bottom: 1rem;">🦇 Pro Tip - Spotting Half Batman in Real-Time:</h4>
+                        <p><strong>Watch for these signals:</strong></p>
+                        <ol style="padding-left: 1.5rem; line-height: 2; margin-top: 0.5rem; margin-bottom: 0;">
+                            <li><strong>Extreme Move:</strong> Price makes violent move into key level (PDH/PDL, ADR, Asian high/low)</li>
+                            <li><strong>Quick Reversal:</strong> Price immediately reverses and closes past 13 EMA</li>
+                            <li><strong>Weak Retest:</strong> Price tries to go back but doesn't reach the extreme</li>
+                            <li><strong>Shift Candle Appears:</strong> Strong reversal candle forms at second leg</li>
+                            <li><strong>Apex Break:</strong> That candle closes past the apex = ENTRY!</li>
+                        </ol>
+                        <p style="margin-top: 1rem;"><strong>Remember:</strong> The MORE extreme the first leg, the MORE powerful the reversal! 🚀</p>
+                    </div>
+                </div>
+
+                <!-- SHARK FIN TAB -->
+                <div id="shark" class="tab-content" style="margin-top: 1.5rem;">
+                    <div class="pattern-card" style="border-left: 4px solid #4a9eff;">
+                        <div class="pattern-title">🦈 Shark Fin - TDI Confirmation Pattern</div>
+                        
+                        <h4 style="color: var(--accent-blue);">📊 What is Shark Fin?</h4>
+                        <div class="card">
+                            <p>Shark Fin is NOT a price pattern - it's a <strong>confirmation indicator</strong> that appears on the Traders Dynamic Index (TDI) when combined with M or W patterns.</p>
+                            <p style="margin-top: 1rem;"><strong>Purpose:</strong> Provides DOUBLE confirmation of reversal = Higher probability trade</p>
+                        </div>
+
+                        <h4 style="color: var(--accent-blue); margin-top: 1.5rem;">🔄 Two Types:</h4>
+                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 1rem;">
+                            <div class="card" style="border: 2px solid var(--accent-green);">
+                                <h4 style="color: var(--accent-green);">🟢 Bullish Shark Fin</h4>
+                                <p><strong>Price Setup:</strong></p>
+                                <ul style="padding-left: 1.5rem;">
+                                    <li>W pattern forming on chart</li>
+                                    <li>Price at or below True Open</li>
+                                    <li>Stop hunt below support</li>
+                                </ul>
+                                <p style="margin-top: 1rem;"><strong>TDI Confirmation:</strong></p>
+                                <ul style="padding-left: 1.5rem;">
+                                    <li>RSI diving deep <strong>below 32</strong></li>
+                                    <li>Green line crosses <strong>above</strong> red line</li>
+                                    <li>"Fin" shape visible on TDI</li>
+                                    <li>Shows extreme oversold → reversal</li>
+                                </ul>
+                                <p style="margin-top: 1rem;"><strong>Action:</strong> Wait for W completion + Shark Fin → <strong>Enter LONG</strong> with high confidence</p>
+                            </div>
+
+                            <div class="card" style="border: 2px solid var(--accent-red);">
+                                <h4 style="color: var(--accent-red);">🔴 Bearish Shark Fin</h4>
+                                <p><strong>Price Setup:</strong></p>
+                                <ul style="padding-left: 1.5rem;">
+                                    <li>M pattern forming on chart</li>
+                                    <li>Price at or above True Open</li>
+                                    <li>Stop hunt above resistance</li>
+                                </ul>
+                                <p style="margin-top: 1rem;"><strong>TDI Confirmation:</strong></p>
+                                <ul style="padding-left: 1.5rem;">
+                                    <li>RSI rising <strong>above 68</strong></li>
+                                    <li>Red line crosses <strong>above</strong> green line</li>
+                                    <li>"Fin" shape visible on TDI</li>
+                                    <li>Shows extreme overbought → reversal</li>
+                                </ul>
+                                <p style="margin-top: 1rem;"><strong>Action:</strong> Wait for M completion + Shark Fin → <strong>Enter SHORT</strong> with high confidence</p>
+                            </div>
+                        </div>
+
+                        <h4 style="color: var(--accent-yellow); margin-top: 1.5rem;">🎯 Trading Shark Fin Setups:</h4>
+                        <table>
+                            <tr>
+                                <th>Step</th>
+                                <th>Requirement</th>
+                                <th>Status</th>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>M or W pattern forming on price chart</td>
+                                <td>Price Confirmation</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Stop hunt completed (above/below True Open)</td>
+                                <td>Manipulation Complete</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>TDI shows RSI extreme (>68 or <32)</td>
+                                <td>Momentum Confirmation</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>TDI lines cross (green/red crossover)</td>
+                                <td>Reversal Signal</td>
+                            </tr>
+                            <tr style="background: rgba(0, 255, 136, 0.05);">
+                                <td>5</td>
+                                <td>ENTER when BOTH price + TDI confirm</td>
+                                <td><strong>TRADE!</strong></td>
+                            </tr>
+                        </table>
+
+                        <div class="alert alert-success" style="margin-top: 1rem;">
+                            <h4>💡 Why Shark Fin Works</h4>
+                            <p>Shark Fin shows <strong>extreme momentum exhaustion</strong>. When combined with M/W pattern, you have:</p>
+                            <ul style="padding-left: 1.5rem; margin-top: 0.5rem;">
+                                <li>✅ Price pattern confirming manipulation</li>
+                                <li>✅ TDI confirming momentum exhaustion</li>
+                                <li>✅ DOUBLE confirmation = Higher win rate (80-90%!)</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-blue); margin-top: 1.5rem;">📈 Example Trade:</h4>
+                        <div class="card">
+                            <p><strong>Setup:</strong> EUR/USD forming W-Bottom</p>
+                            <p><strong>London 3:00 AM:</strong> Drops to 1.0830 (below True Open 1.0850)</p>
+                            <p><strong>TDI:</strong> RSI drops to 28, green line crosses above red = Shark Fin!</p>
+                            <p><strong>Entry 9:00 AM:</strong> LONG at 1.0855 (W complete + Shark Fin)</p>
+                            <p><strong>Result:</strong> Rallied to 1.0915 (+60 pips, 1:4 RR)</p>
+                            <p style="margin-top: 1rem; color: var(--accent-green);"><strong>Win Rate: ~85% when both signals align!</strong></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3-DAY CYCLE TAB -->
+                <div id="three-day" class="tab-content" style="margin-top: 1.5rem;">
+                    <div class="pattern-card" style="border-left: 4px solid #ffd700;">
+                        <div class="pattern-title">📅 3-Day Cycle Distribution - Weekly BTMM Pattern</div>
+                        
+                        <h4 style="color: var(--accent-blue);">📊 Formation Over 3 Days:</h4>
+                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1rem;">
+                            <div class="card" style="border-left: 4px solid #4a9eff;">
+                                <h4 style="color: var(--accent-blue); text-align: center;">Day 1 (Mon/Tue)</h4>
+                                <p style="text-align: center; font-size: 1.5rem; margin: 1rem 0;">📍 PF Setup</p>
+                                <ul style="padding-left: 1.5rem;">
+                                    <li>PF High or Low established</li>
+                                    <li>Market pumps/dumps</li>
+                                    <li>Retail trapped</li>
+                                    <li>Volume accumulates</li>
+                                </ul>
+                                <p style="text-align: center; margin-top: 1rem;"><strong>Action: OBSERVE</strong></p>
+                            </div>
+
+                            <div class="card" style="border-left: 4px solid #ffd700;">
+                                <h4 style="color: var(--accent-yellow); text-align: center;">Day 2 (Tue/Wed)</h4>
+                                <p style="text-align: center; font-size: 1.5rem; margin: 1rem 0;">⏳ Accumulation</p>
+                                <ul style="padding-left: 1.5rem;">
+                                    <li>Continues Day 1 direction</li>
+                                    <li>More traders trapped</li>
+                                    <li>May extend PF slightly</li>
+                                    <li>Retail adds positions</li>
+                                </ul>
+                                <p style="text-align: center; margin-top: 1rem;"><strong>Action: PREPARE</strong></p>
+                            </div>
+
+                            <div class="card" style="border-left: 4px solid #00ff88; background: rgba(0, 255, 136, 0.05);">
+                                <h4 style="color: var(--accent-green); text-align: center;">Day 3 (Wed/Thu)</h4>
+                                <p style="text-align: center; font-size: 1.5rem; margin: 1rem 0;">🔥 Distribution</p>
+                                <ul style="padding-left: 1.5rem;">
+                                    <li>Reverses HARD</li>
+                                    <li>Breaks opposite way</li>
+                                    <li>Stops triggered</li>
+                                    <li>Extended ranges</li>
+                                </ul>
+                                <p style="text-align: center; margin-top: 1rem;"><strong style="color: var(--accent-green);">Action: TRADE!</strong></p>
+                            </div>
+                        </div>
+
+                        <h4 style="color: var(--accent-blue); margin-top: 1.5rem;">📈 Example 3-Day Bearish Cycle:</h4>
+                        <div class="card" style="background: rgba(255, 74, 74, 0.05);">
+                            <p><strong>Monday (Day 1):</strong> USD/JPY pumps from 149.50 → 150.30</p>
+                            <p style="margin-left: 2rem;">→ PF High at 150.30 established</p>
+                            <p style="margin-left: 2rem;">→ Retail long, trapped at highs</p>
+                            
+                            <p style="margin-top: 1rem;"><strong>Tuesday (Day 2):</strong> Consolidates 149.90-150.20, small spike to 150.35</p>
+                            <p style="margin-left: 2rem;">→ PF High confirmed/extended to 150.35</p>
+                            <p style="margin-left: 2rem;">→ Even MORE longs trapped</p>
+                            
+                            <p style="margin-top: 1rem;"><strong>Wednesday (Day 3):</strong> Gaps down to 149.85, breaks below True Week Open</p>
+                            <p style="margin-left: 2rem; color: var(--accent-green);">→ <strong>ENTER SHORT</strong> at 149.80</p>
+                            <p style="margin-left: 2rem;">→ Stop: 150.40 (60 pips)</p>
+                            <p style="margin-left: 2rem;">→ Target: 149.00 (80 pips = 1:1.3)</p>
+                            <p style="margin-left: 2rem;">→ Extended to 148.40 (140 pips = 1:2.3)</p>
+                            
+                            <p style="margin-top: 1rem; font-size: 1.1rem; color: var(--accent-green);"><strong>Result: +110 pips average exit!</strong></p>
+                        </div>
+
+                        <h4 style="color: var(--accent-yellow); margin-top: 1.5rem;">🎯 Entry Criteria Checklist:</h4>
+                        <ul class="checklist">
+                            <li><input type="checkbox"> Day 1 PF clearly identified (High or Low)</li>
+                            <li><input type="checkbox"> Day 2 extended or confirmed PF</li>
+                            <li><input type="checkbox"> Day 3 breaks opposite direction</li>
+                            <li><input type="checkbox"> M pattern (bearish) or W pattern (bullish) over 3 days</li>
+                            <li><input type="checkbox"> Multiple timeframes aligned</li>
+                            <li><input type="checkbox"> Enter on Day 3 opposite to PF</li>
+                            <li><input type="checkbox"> Wednesday (best day for Day 3)</li>
+                        </ul>
+
+                        <h4 style="color: var(--accent-blue); margin-top: 1.5rem;">🎯 Trading Plan:</h4>
+                        <table>
+                            <tr>
+                                <th>Element</th>
+                                <th>Placement</th>
+                            </tr>
+                            <tr>
+                                <td><strong>Entry</strong></td>
+                                <td>Day 3, opposite to Day 1-2 PF</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Stop Loss</strong></td>
+                                <td>Above/below Day 1 PF + 20-50 pips (wider for swing)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>TP1</strong></td>
+                                <td>50% retracement of 3-day move</td>
+                            </tr>
+                            <tr>
+                                <td><strong>TP2</strong></td>
+                                <td>Previous week high/low</td>
+                            </tr>
+                            <tr>
+                                <td><strong>TP3</strong></td>
+                                <td>Monthly level / Extended targets</td>
+                            </tr>
+                            <tr style="background: rgba(0, 255, 136, 0.05);">
+                                <td><strong>Hold Time</strong></td>
+                                <td><strong>1-3 days</strong> (this is a SWING trade!)</td>
+                            </tr>
+                        </table>
+
+                        <div class="alert alert-success" style="margin-top: 1rem;">
+                            <strong>🌟 Pro Tip:</strong> 3-Day Cycle is the SAME as intraday BTMM, just on a larger timeframe. Day 1 = Q1/Q2, Day 2 = Q2, Day 3 = Q3. Same pattern, different scale!
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2ND LEG OUT OF ASIA TAB -->
+                <div id="asia-leg" class="tab-content" style="margin-top: 1.5rem;">
+                    <h3 style="color: var(--accent-blue); margin-bottom: 1.5rem;">🌅 2ND LEG OUT OF ASIA - Early Morning M/W Setup</h3>
+                    
+                    <div class="alert alert-info">
+                        <strong>🎯 2nd Leg Out of Asia Concept:</strong> M or W pattern where the FIRST LEG is created INSIDE Asian session, and the PULLBACK (second leg formation) happens AFTER midnight during London session. This is a powerful early-morning reversal setup!
+                    </div>
+
+                    <div class="pattern-card" style="border-left: 4px solid var(--accent-blue); margin-top: 1.5rem;">
+                        <div class="pattern-title">🌅 2nd Leg Out of Asia - M Setup (Bearish)</div>
+                        
+                        <h4 style="color: var(--accent-blue); margin-top: 1rem;">📝 Rules for M-Top Setup:</h4>
+                        <div class="card">
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li><strong>First Leg: Created INSIDE Asian session</strong> (before midnight EST)</li>
+                                <li>Price makes high during Asian session (5:00 PM - 12:00 AM EST)</li>
+                                <li><strong>Pullback: Happens AFTER midnight</strong> (London session begins)</li>
+                                <li>Price pulls back from Asian high toward Asian low</li>
+                                <li><strong>Second Leg: Forms during London session (12:00 AM - 4:00 AM EST)</strong></li>
+                                <li>Price attempts to retest Asian high but forms M-Top</li>
+                                <li><strong>Entry Trigger:</strong> RR, Star, Cord of Woods pattern on second leg</li>
+                                <li>Second leg closes below 13 EMA with TDI confirmation</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-yellow); margin-top: 1.5rem;">⏰ Timing Breakdown:</h4>
+                        <div class="card">
+                            <table style="width: 100%; border-collapse: collapse; margin-top: 0.5rem;">
+                                <tr style="background: rgba(74, 158, 255, 0.1);">
+                                    <th style="padding: 0.75rem; text-align: left; border-bottom: 1px solid var(--border-color);">Session</th>
+                                    <th style="padding: 0.75rem; text-align: left; border-bottom: 1px solid var(--border-color);">Time (EST)</th>
+                                    <th style="padding: 0.75rem; text-align: left; border-bottom: 1px solid var(--border-color);">Action</th>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 0.75rem; border-bottom: 1px solid var(--border-color);"><strong>Asian Session</strong></td>
+                                    <td style="padding: 0.75rem; border-bottom: 1px solid var(--border-color);">5:00 PM - 12:00 AM</td>
+                                    <td style="padding: 0.75rem; border-bottom: 1px solid var(--border-color);">First leg forms (price makes high)</td>
+                                </tr>
+                                <tr style="background: rgba(0, 255, 136, 0.05);">
+                                    <td style="padding: 0.75rem; border-bottom: 1px solid var(--border-color);"><strong>Transition</strong></td>
+                                    <td style="padding: 0.75rem; border-bottom: 1px solid var(--border-color);">12:00 AM - 2:00 AM</td>
+                                    <td style="padding: 0.75rem; border-bottom: 1px solid var(--border-color);">Pullback from Asian high</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 0.75rem;"><strong>London Open</strong></td>
+                                    <td style="padding: 0.75rem;">2:00 AM - 4:00 AM</td>
+                                    <td style="padding: 0.75rem;">Second leg forms (M-Top completes, entry signal)</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <h4 style="color: var(--accent-green); margin-top: 1.5rem;">✅ Setup Process (Step by Step):</h4>
+                        <div class="alert alert-success">
+                            <ol style="padding-left: 1.5rem; margin: 0;">
+                                <li><strong>Asian Session:</strong> Identify Asian high (first leg of M)</li>
+                                <li><strong>After Midnight:</strong> Watch for pullback from Asian high</li>
+                                <li><strong>London Open (2-4 AM):</strong> Watch for second leg attempting to retest high</li>
+                                <li><strong>Pattern Formation:</strong> Look for RR, Star, Cord of Woods at second leg peak</li>
+                                <li><strong>Entry Signal:</strong> Second leg closes below 13 EMA</li>
+                                <li><strong>TDI Confirmation:</strong> RSI crosses below MBL</li>
+                                <li><strong>Enter on confirmation</strong></li>
+                            </ol>
+                        </div>
+
+                        <h4 style="color: var(--accent-blue); margin-top: 1.5rem;">🎯 Best Locations:</h4>
+                        <div class="card">
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li><strong>At 3200 EMA (200 on 15-min):</strong> Mayo resistance</li>
+                                <li><strong>At 800 EMA (50 on 15-min):</strong> Water resistance</li>
+                                <li><strong>At 200 EMA (13 on 15-min):</strong> Bread & Butter</li>
+                                <li><strong>Asian High confluence:</strong> When Asian high aligns with key EMA</li>
+                                <li><strong>PDH/PWH levels:</strong> Previous period highs</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-red); margin-top: 1.5rem;">⚠️ Key Candlestick Patterns to Watch:</h4>
+                        <div class="card">
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li><strong>RR (Railroad Tracks):</strong> Two consecutive candles with matching highs/lows</li>
+                                <li><strong>Evening Star:</strong> Three-candle bearish reversal pattern</li>
+                                <li><strong>COW (Cord of Woods):</strong> Multiple small-body candles showing indecision, then reversal</li>
+                                <li><strong>Pin Bar:</strong> Long wick showing rejection at Asian high</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="pattern-card" style="border-left: 4px solid var(--accent-green); margin-top: 1.5rem;">
+                        <div class="pattern-title">🌅 2nd Leg Out of Asia - W Setup (Bullish)</div>
+                        
+                        <h4 style="color: var(--accent-blue); margin-top: 1rem;">📝 Rules for W-Bottom Setup:</h4>
+                        <div class="card">
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li><strong>First Leg: Created INSIDE Asian session</strong> (before midnight EST)</li>
+                                <li>Price makes low during Asian session (5:00 PM - 12:00 AM EST)</li>
+                                <li><strong>Pullback: Happens AFTER midnight</strong> (London session begins)</li>
+                                <li>Price bounces from Asian low toward Asian high</li>
+                                <li><strong>Second Leg: Forms during London session (12:00 AM - 4:00 AM EST)</strong></li>
+                                <li>Price attempts to retest Asian low but forms W-Bottom</li>
+                                <li><strong>Entry Trigger:</strong> RR, Morning Star, Cord of Woods pattern on second leg</li>
+                                <li>Second leg closes above 13 EMA with TDI confirmation</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-yellow); margin-top: 1.5rem;">⏰ Timing Breakdown:</h4>
+                        <div class="card">
+                            <table style="width: 100%; border-collapse: collapse; margin-top: 0.5rem;">
+                                <tr style="background: rgba(74, 158, 255, 0.1);">
+                                    <th style="padding: 0.75rem; text-align: left; border-bottom: 1px solid var(--border-color);">Session</th>
+                                    <th style="padding: 0.75rem; text-align: left; border-bottom: 1px solid var(--border-color);">Time (EST)</th>
+                                    <th style="padding: 0.75rem; text-align: left; border-bottom: 1px solid var(--border-color);">Action</th>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 0.75rem; border-bottom: 1px solid var(--border-color);"><strong>Asian Session</strong></td>
+                                    <td style="padding: 0.75rem; border-bottom: 1px solid var(--border-color);">5:00 PM - 12:00 AM</td>
+                                    <td style="padding: 0.75rem; border-bottom: 1px solid var(--border-color);">First leg forms (price makes low)</td>
+                                </tr>
+                                <tr style="background: rgba(0, 255, 136, 0.05);">
+                                    <td style="padding: 0.75rem; border-bottom: 1px solid var(--border-color);"><strong>Transition</strong></td>
+                                    <td style="padding: 0.75rem; border-bottom: 1px solid var(--border-color);">12:00 AM - 2:00 AM</td>
+                                    <td style="padding: 0.75rem; border-bottom: 1px solid var(--border-color);">Bounce from Asian low</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 0.75rem;"><strong>London Open</strong></td>
+                                    <td style="padding: 0.75rem;">2:00 AM - 4:00 AM</td>
+                                    <td style="padding: 0.75rem;">Second leg forms (W-Bottom completes, entry signal)</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <h4 style="color: var(--accent-green); margin-top: 1.5rem;">✅ Setup Process (Step by Step):</h4>
+                        <div class="alert alert-success">
+                            <ol style="padding-left: 1.5rem; margin: 0;">
+                                <li><strong>Asian Session:</strong> Identify Asian low (first leg of W)</li>
+                                <li><strong>After Midnight:</strong> Watch for bounce from Asian low</li>
+                                <li><strong>London Open (2-4 AM):</strong> Watch for second leg attempting to retest low</li>
+                                <li><strong>Pattern Formation:</strong> Look for RR, Morning Star, Cord of Woods at second leg bottom</li>
+                                <li><strong>Entry Signal:</strong> Second leg closes above 13 EMA</li>
+                                <li><strong>TDI Confirmation:</strong> RSI crosses above MBL</li>
+                                <li><strong>Enter on confirmation</strong></li>
+                            </ol>
+                        </div>
+
+                        <h4 style="color: var(--accent-blue); margin-top: 1.5rem;">🎯 Best Locations:</h4>
+                        <div class="card">
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li><strong>At 3200 EMA (200 on 15-min):</strong> Mayo support</li>
+                                <li><strong>At 800 EMA (50 on 15-min):</strong> Water support</li>
+                                <li><strong>At 200 EMA (13 on 15-min):</strong> Bread & Butter</li>
+                                <li><strong>Asian Low confluence:</strong> When Asian low aligns with key EMA</li>
+                                <li><strong>PDL/PWL levels:</strong> Previous period lows</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-green); margin-top: 1.5rem;">✅ Key Candlestick Patterns to Watch:</h4>
+                        <div class="card">
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li><strong>RR (Railroad Tracks):</strong> Two consecutive candles with matching highs/lows</li>
+                                <li><strong>Morning Star:</strong> Three-candle bullish reversal pattern</li>
+                                <li><strong>COW (Cord of Woods):</strong> Multiple small-body candles showing indecision, then reversal</li>
+                                <li><strong>Pin Bar:</strong> Long wick showing rejection at Asian low</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h4 style="margin-top: 2rem; color: var(--accent-blue);">🌟 Why "2nd Leg Out of Asia" Works So Well:</h4>
+                    <div class="card">
+                        <ol style="padding-left: 1.5rem; line-height: 2;">
+                            <li><strong>Asian Session = Low Liquidity:</strong> First leg forms in quiet market</li>
+                            <li><strong>London Open = High Liquidity:</strong> Institutions enter and reverse Asian move</li>
+                            <li><strong>Time-Based Edge:</strong> London traders take opposite side of Asian range</li>
+                            <li><strong>Clear Structure:</strong> First leg already formed, just waiting for second leg confirmation</li>
+                            <li><strong>Multiple Confirmations:</strong> Candlestick pattern + EMA + TDI + Session timing</li>
+                        </ol>
+                    </div>
+
+                    <div class="alert alert-success" style="margin-top: 1.5rem;">
+                        <h4 style="margin-bottom: 0.5rem;">💡 2nd Leg Out of Asia Trading Summary:</h4>
+                        <p><strong>M-Top (Bearish):</strong> First leg in Asian session makes high → Pullback after midnight → Second leg during London (2-4 AM) → Entry on RR/Star/COW below 13 EMA</p>
+                        <p style="margin-top: 1rem;"><strong>W-Bottom (Bullish):</strong> First leg in Asian session makes low → Bounce after midnight → Second leg during London (2-4 AM) → Entry on RR/Morning Star/COW above 13 EMA</p>
+                        <p style="margin-top: 1rem;"><strong>Best Confluence:</strong> When Asian high/low aligns with key EMAs (3200, 800, 200) or previous period levels (PDH/PDL, PWH/PWL)</p>
+                    </div>
+
+                    <div class="alert alert-warning" style="margin-top: 1.5rem;">
+                        <h4 style="margin-bottom: 0.5rem;">⏰ Optimal Trading Window:</h4>
+                        <ul style="padding-left: 1.5rem; line-height: 1.8; margin-bottom: 0;">
+                            <li><strong>Best Entry Time:</strong> 2:00 AM - 4:00 AM EST (London Open)</li>
+                            <li><strong>Pattern Forms:</strong> Between midnight and 4 AM</li>
+                            <li><strong>Confirmation Required:</strong> Wait for candlestick pattern + EMA close + TDI</li>
+                            <li><strong>Hold Time:</strong> Target London session extremes or NY open (6-12 hours)</li>
+                        </ul>
+                    </div>
+
+                    <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(255, 193, 7, 0.1); border-left: 4px solid var(--accent-yellow); border-radius: 8px;">
+                        <h4 style="color: var(--accent-yellow); margin-bottom: 1rem;">🎯 Pro Strategy - Combining 2nd Leg with Brinks Timing:</h4>
+                        <p><strong>If 2nd Leg Out of Asia completes near Brinks time (3:45 AM EST), you have DOUBLE confluence:</strong></p>
+                        <ol style="padding-left: 1.5rem; line-height: 2; margin-top: 0.5rem; margin-bottom: 0;">
+                            <li>✅ 2nd leg pattern complete (M or W)</li>
+                            <li>✅ Brinks timing (3:45 AM) liquidity spike</li>
+                            <li>✅ London session momentum</li>
+                            <li>✅ Key EMA confluence</li>
+                        </ol>
+                        <p style="margin-top: 1rem;"><strong>Result:</strong> 85%+ win rate setup! 🚀</p>
+                    </div>
+                </div>
+
+                <!-- EMA BOUNCE SETUPS TAB -->
+                <div id="ema-bounce" class="tab-content" style="margin-top: 1.5rem;">
+                    <h3 style="color: var(--accent-blue); margin-bottom: 1.5rem;">📈 EMA Bounce Continuation Setups</h3>
+                    
+                    <div class="alert alert-info">
+                        <strong>💡 Setup Type:</strong> Trend continuation setups. Trade PULLBACKS within an existing trend, not reversals!
+                    </div>
+
+                    <!-- ID 50 SETUP -->
+                    <div class="pattern-card" style="border-left: 4px solid var(--accent-green); margin-top: 2rem;">
+                        <div class="pattern-title">ID 50 - Intraday 50 EMA Bounce (15-Minute)</div>
+                        
+                        <div class="alert alert-info">
+                            <strong>🔗 Integration:</strong> This is a Level I trend continuation setup. Use during NY Q3 (9:00-10:30 AM EST) for best results!
+                        </div>
+
+                        <h4 style="color: var(--accent-blue); margin-top: 1.5rem;">What is ID 50?</h4>
+                        <div class="card">
+                            <p><strong>Definition:</strong> Intraday trend continuation after an "anchor" (13/50 EMA cross) where price pulls back to 50 EMA and bounces for continuation.</p>
+                            <p style="margin-top: 0.5rem;"><strong>Best During:</strong> Level I of the 3-Day Cycle, first pullback after trend establishment</p>
+                        </div>
+
+                        <h4 style="color: var(--accent-yellow); margin-top: 1.5rem;">Setup Requirements:</h4>
+                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 1rem;">
+                            <div class="card" style="border-left: 4px solid var(--accent-green);">
+                                <h4 style="color: var(--accent-green);">✅ Required Elements:</h4>
+                                <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                    <li><strong>Anchor Present:</strong> 13/50 EMA cross already occurred (on left side of chart)</li>
+                                    <li><strong>Clear Trend:</strong> Direction established by anchor</li>
+                                    <li><strong>First Pullback:</strong> Price pulls back 20-25 pips to 50 EMA</li>
+                                    <li><strong>50 EMA Rejection:</strong> Price bounces off 50 EMA</li>
+                                    <li><strong>Confirmation Candle:</strong> Must close above/below 13 EMA</li>
+                                </ul>
+                            </div>
+
+                            <div class="card" style="border-left: 4px solid var(--accent-yellow);">
+                                <h4 style="color: var(--accent-yellow);">📊 Entry Triggers:</h4>
+                                <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                    <li>Rejection candle at 50 EMA (RR, COW, Pin Bar)</li>
+                                    <li>Closes in trend direction past 13 EMA</li>
+                                    <li>TDI: RSI/Signal line cross (NOT required above/below MBL for this setup)</li>
+                                    <li>Entry on confirmation candle close</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <h4 style="color: var(--accent-blue); margin-top: 1.5rem;">Trading Parameters:</h4>
+                        <table style="margin-top: 1rem;">
+                            <tr>
+                                <th>Parameter</th>
+                                <th>Value</th>
+                                <th>Notes</th>
+                            </tr>
+                            <tr>
+                                <td><strong>Stop Loss</strong></td>
+                                <td>20-25 pips beyond 50 EMA</td>
+                                <td>Tighter than other setups</td>
+                            </tr>
+                            <tr style="background: rgba(0, 255, 136, 0.05);">
+                                <td><strong>TP1</strong></td>
+                                <td>Previous high/low</td>
+                                <td>Take 50% off</td>
+                            </tr>
+                            <tr style="background: rgba(0, 255, 136, 0.05);">
+                                <td><strong>TP2</strong></td>
+                                <td>Next major level</td>
+                                <td>Take 30% off</td>
+                            </tr>
+                            <tr style="background: rgba(0, 255, 136, 0.08);">
+                                <td><strong>TP3</strong></td>
+                                <td>Extension of trend</td>
+                                <td>Trail final 20%</td>
+                            </tr>
+                        </table>
+
+                        <h4 style="color: var(--accent-red); margin-top: 1.5rem;">⚠️ Avoid When:</h4>
+                        <div class="alert alert-danger">
+                            <ul style="padding-left: 1.5rem; margin: 0;">
+                                <li>❌ Level II (choppy phase)</li>
+                                <li>❌ Multiple pullbacks already occurred (not first pullback)</li>
+                                <li>❌ No clear anchor visible on chart</li>
+                                <li>❌ Range-bound market</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 50/50 BOUNCE SETUP -->
+                    <div class="pattern-card" style="border-left: 4px solid var(--accent-green); margin-top: 2rem;">
+                        <div class="pattern-title">50/50 Bounce - 1-Hour EMA Bounce (Larger Targets)</div>
+                        
+                        <div class="alert alert-success">
+                            <strong>🎯 Best For:</strong> Swing traders, catching 100+ pip moves, pairs with high ADR (GBP/USD, GBP/JPY)
+                        </div>
+
+                        <h4 style="color: var(--accent-blue); margin-top: 1.5rem;">Difference from ID 50:</h4>
+                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 1rem;">
+                            <div class="card">
+                                <h4 style="color: var(--accent-blue);">ID 50 (15-Min)</h4>
+                                <ul style="padding-left: 1.5rem;">
+                                    <li>Smaller timeframe</li>
+                                    <li>Faster moves (30-50 pips)</li>
+                                    <li>Tighter stops (20-25 pips)</li>
+                                    <li>More frequent</li>
+                                    <li>Day trading</li>
+                                </ul>
+                            </div>
+
+                            <div class="card" style="background: rgba(0, 255, 136, 0.05);">
+                                <h4 style="color: var(--accent-green);">50/50 Bounce (1-Hour)</h4>
+                                <ul style="padding-left: 1.5rem;">
+                                    <li>Larger timeframe</li>
+                                    <li>Bigger moves (100+ pips)</li>
+                                    <li>Wider stops (30-40 pips)</li>
+                                    <li>Less frequent but higher quality</li>
+                                    <li>Swing trading</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <h4 style="color: var(--accent-yellow); margin-top: 1.5rem;">Same Rules Apply:</h4>
+                        <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                            <li>Anchor must be present (13/50 cross on left)</li>
+                            <li>First pullback to 50 EMA</li>
+                            <li>Price traps at 50 EMA</li>
+                            <li>Rejection candle</li>
+                            <li>Close above/below 13 EMA</li>
+                            <li>TDI confirmation</li>
+                        </ul>
+
+                        <h4 style="color: var(--accent-blue); margin-top: 1.5rem;">Take Profit Targets:</h4>
+                        <table style="margin-top: 1rem;">
+                            <tr>
+                                <th>Target</th>
+                                <th>Pips</th>
+                                <th>Action</th>
+                            </tr>
+                            <tr style="background: rgba(0, 255, 136, 0.05);">
+                                <td><strong>TP1</strong></td>
+                                <td>50-70 pips</td>
+                                <td>Take 50% off, move stop to BE</td>
+                            </tr>
+                            <tr style="background: rgba(0, 255, 136, 0.05);">
+                                <td><strong>TP2</strong></td>
+                                <td>100+ pips</td>
+                                <td>Take 30% off, trail stop</td>
+                            </tr>
+                            <tr style="background: rgba(0, 255, 136, 0.08);">
+                                <td><strong>TP3</strong></td>
+                                <td>Trail with 50 EMA</td>
+                                <td>Let final 20% run</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <h3 style="margin-top: 3rem; color: var(--accent-blue);">📚 TYPE 3: Asian 50 Bounce and Reverse Trades</h3>
+                    
+                    <div class="alert alert-info">
+                        <strong>🎯 Asian 50 Concept:</strong> Price bounces off the 50% level (midpoint) of Asian session range OR the 50 EMA, then reverses! This is a powerful continuation or reversal setup.
+                    </div>
+
+                    <div class="pattern-card" style="border-left: 4px solid var(--accent-blue); margin-top: 1.5rem;">
+                        <div class="pattern-title">Type 3a: 50 EMA Bounce (Trend Continuation)</div>
+                        
+                        <h4 style="color: var(--accent-blue); margin-top: 1rem;">📝 Rules:</h4>
+                        <div class="card">
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li><strong>Price pulls back to 50 EMA after clear trend or breakout</strong></li>
+                                <li>Must have established trend (price already away from 50 EMA)</li>
+                                <li>Entry confirmed with candlestick rejection pattern (RR, Pin Bar, Morning/Evening Star)</li>
+                                <li>50 EMA acts as dynamic support/resistance</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-yellow); margin-top: 1.5rem;">📍 Optimal Location:</h4>
+                        <div class="card">
+                            <p><strong>Found during:</strong></p>
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li>Pullback in trending market</li>
+                                <li>Typically around session highs/lows or continuation points</li>
+                                <li>After significant breakout (Day 3, Level III)</li>
+                                <li>London/NY session momentum continuation</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-green); margin-top: 1.5rem;">🎯 Use Case:</h4>
+                        <div class="card">
+                            <p><strong>Best for:</strong></p>
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li><strong>Trend continuation trades</strong> after significant breakout</li>
+                                <li>Day 3 (Level III) continuation setups</li>
+                                <li>When 50 EMA aligns with session momentum</li>
+                                <li>Multiple timeframe confluence (1H trend + 15M entry)</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-blue); margin-top: 1.5rem;">⚡ Entry Triggers:</h4>
+                        <div class="alert alert-success">
+                            <ol style="padding-left: 1.5rem; margin: 0;">
+                                <li>Established trend (price away from 50 EMA)</li>
+                                <li>Price retraces to 50 EMA</li>
+                                <li>Rejection candlestick forms at EMA (RR, Pin, COW)</li>
+                                <li>Candle closes in direction of trend</li>
+                                <li>TDI confirms (RSI bounces off MBL)</li>
+                            </ol>
+                        </div>
+
+                        <h4 style="color: var(--accent-red); margin-top: 1.5rem;">⚠️ Critical Rules:</h4>
+                        <div class="alert alert-warning">
+                            <p><strong>DO NOT trade if:</strong></p>
+                            <ul style="padding-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 0;">
+                                <li>No clear trend established (price choppy around 50 EMA)</li>
+                                <li>50 EMA is flat (indicates ranging market)</li>
+                                <li>Price breaks THROUGH 50 EMA without rejection</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="pattern-card" style="border-left: 4px solid var(--accent-yellow); margin-top: 1.5rem;">
+                        <div class="pattern-title">Type 3b: Asian Range 50% Bounce</div>
+                        
+                        <h4 style="color: var(--accent-blue); margin-top: 1rem;">📝 Rules:</h4>
+                        <div class="card">
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li><strong>Price respects the 50% level (midpoint) of Asian session range</strong></li>
+                                <li>OR bounces off Asian range high/low</li>
+                                <li>Entry confirmed with candlestick patterns</li>
+                                <li>Works best during London and NY sessions</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-yellow); margin-top: 1.5rem;">📍 Optimal Location:</h4>
+                        <div class="card">
+                            <p><strong>Found at:</strong></p>
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li><strong>Asian High/Low:</strong> Full boundary of Asian session</li>
+                                <li><strong>Asian 50% (Midpoint):</strong> Exact middle of Asian range</li>
+                                <li>London session open (2:00-4:00 AM EST)</li>
+                                <li>NY session open (9:30-11:00 AM EST)</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-green); margin-top: 1.5rem;">🎯 Use Case:</h4>
+                        <div class="card">
+                            <p><strong>Effective for:</strong></p>
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li>London/NY sessions when price retraces to Asian range boundary</li>
+                                <li>Continuation trades after Asian range breakout</li>
+                                <li>Reversals when price respects Asian 50% midpoint</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-blue); margin-top: 1.5rem;">📊 Asian Range Reference:</h4>
+                        <div class="card">
+                            <table style="width: 100%; border-collapse: collapse; margin-top: 0.5rem;">
+                                <tr style="background: rgba(74, 158, 255, 0.1);">
+                                    <th style="padding: 0.75rem; text-align: left; border-bottom: 1px solid var(--border-color);">Level</th>
+                                    <th style="padding: 0.75rem; text-align: left; border-bottom: 1px solid var(--border-color);">Description</th>
+                                    <th style="padding: 0.75rem; text-align: left; border-bottom: 1px solid var(--border-color);">Action</th>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 0.75rem; border-bottom: 1px solid var(--border-color);"><strong>Asian High</strong></td>
+                                    <td style="padding: 0.75rem; border-bottom: 1px solid var(--border-color);">Highest point in Asian session</td>
+                                    <td style="padding: 0.75rem; border-bottom: 1px solid var(--border-color);">Watch for rejection (M-Top setup)</td>
+                                </tr>
+                                <tr style="background: rgba(0, 255, 136, 0.05);">
+                                    <td style="padding: 0.75rem; border-bottom: 1px solid var(--border-color);"><strong>Asian 50%</strong></td>
+                                    <td style="padding: 0.75rem; border-bottom: 1px solid var(--border-color);">Midpoint of Asian range</td>
+                                    <td style="padding: 0.75rem; border-bottom: 1px solid var(--border-color);">Strong bounce zone (continuation)</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 0.75rem;"><strong>Asian Low</strong></td>
+                                    <td style="padding: 0.75rem;">Lowest point in Asian session</td>
+                                    <td style="padding: 0.75rem;">Watch for rejection (W-Bottom setup)</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="pattern-card" style="border-left: 4px solid var(--accent-green); margin-top: 1.5rem;">
+                        <div class="pattern-title">Type 3c: ADR/Key Level Rejection</div>
+                        
+                        <h4 style="color: var(--accent-blue); margin-top: 1rem;">📝 Rules:</h4>
+                        <div class="card">
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li><strong>Price rejects significant levels like ADR, PDH/PDL, or YH/YL</strong></li>
+                                <li>Entry after candlestick rejection pattern confirms level</li>
+                                <li>Must align with trend direction</li>
+                                <li>Best when multiple levels align (ADR + PDH + 50 EMA)</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-yellow); margin-top: 1.5rem;">📍 Optimal Location:</h4>
+                        <div class="card">
+                            <p><strong>Found at:</strong></p>
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li><strong>ADR High/Low:</strong> 5-day average daily range boundaries</li>
+                                <li><strong>PDH/PDL:</strong> Previous Day High/Low</li>
+                                <li><strong>PWH/PWL:</strong> Previous Week High/Low</li>
+                                <li><strong>YH/YL:</strong> Yearly High/Low</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-green); margin-top: 1.5rem;">🎯 Use Case:</h4>
+                        <div class="card">
+                            <p><strong>Best for:</strong></p>
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li><strong>Continuation trades</strong> where price aligns with trend after rejecting key level</li>
+                                <li>Day 3 setups when ADR nearly met (90%+)</li>
+                                <li>Level III reversals at major institutional levels</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-blue); margin-top: 1.5rem;">✴️ Confluence Power:</h4>
+                        <div class="alert alert-info">
+                            <p><strong>Maximum Confluence Setup:</strong></p>
+                            <ul style="padding-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 0;">
+                                <li>ADR boundary (90%+ of ADR met)</li>
+                                <li>Key institutional level (PDH, PWH, etc.)</li>
+                                <li>50 EMA alignment</li>
+                                <li>Rejection candlestick pattern</li>
+                                <li>Session timing (London open, NY open, Brinks)</li>
+                            </ul>
+                            <p style="margin-top: 0.5rem;"><strong>= 80%+ win rate setup!</strong></p>
+                        </div>
+                    </div>
+
+                    <h4 style="margin-top: 2rem; color: var(--accent-blue);">🌟 Common Type 3 Features:</h4>
+                    <div class="card">
+                        <h5 style="color: var(--accent-green);">✴️ Bounce Points:</h5>
+                        <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                            <li>Type 3 relies on price interacting with key level (50 EMA, Asian 50%, ADR)</li>
+                            <li>Level serves as dynamic support/resistance for continuation</li>
+                        </ul>
+
+                        <h5 style="color: var(--accent-yellow); margin-top: 1rem;">✴️ Dynamic EMA Interaction:</h5>
+                        <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                            <li>50 EMA plays pivotal role in confirming trend direction</li>
+                            <li>Rejection patterns form at EMA, signaling entry points</li>
+                        </ul>
+
+                        <h5 style="color: var(--accent-blue); margin-top: 1rem;">✴️ Session Timing:</h5>
+                        <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                            <li><strong>London Session:</strong> 3:30-5:30 AM EST</li>
+                            <li><strong>New York Session:</strong> 9:30-11:00 AM EST</li>
+                            <li><strong>Brinks Timing:</strong> 9:45 PM, 3:45 AM, 9:45 AM EST</li>
+                        </ul>
+
+                        <h5 style="color: var(--accent-red); margin-top: 1rem;">✴️ Liquidity Targeting:</h5>
+                        <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                            <li>Focus on price sweeps at session highs/lows</li>
+                            <li>Rejection points within ADR boundary</li>
+                        </ul>
+                    </div>
+
+                    <div class="alert alert-success" style="margin-top: 1.5rem;">
+                        <h4 style="margin-bottom: 0.5rem;">💡 Type 3 Trading Summary:</h4>
+                        <p><strong>Asian 50 / 50 EMA Bounce = Continuation Setups</strong></p>
+                        <ul style="padding-left: 1.5rem; margin-top: 0.5rem;">
+                            <li><strong>Type 3a:</strong> 50 EMA bounce (trend continuation after breakout)</li>
+                            <li><strong>Type 3b:</strong> Asian 50% bounce (midpoint or boundary retest)</li>
+                            <li><strong>Type 3c:</strong> ADR/Key level rejection (institutional level confluence)</li>
+                        </ul>
+                        <p style="margin-top: 1rem;"><strong>All require:</strong> Established trend + Key level bounce + Rejection candlestick + Session timing</p>
+                    </div>
+
+                    <h3 style="margin-top: 3rem; color: var(--accent-blue);">📚 TYPE 4: Breakout, Bounce Off Asian 00, Then Continuation</h3>
+                    
+                    <div class="alert alert-info">
+                        <strong>🎯 Type 4 Concept:</strong> Price BREAKS OUT strongly from consolidation/range, then RETRACES to test breakout level (or EMA), and CONTINUES in breakout direction! High-probability continuation setup.
+                    </div>
+
+                    <div class="pattern-card" style="border-left: 4px solid var(--accent-blue); margin-top: 1.5rem;">
+                        <div class="pattern-title">Type 4a: 50 EMA Continuation (After Breakout)</div>
+                        
+                        <h4 style="color: var(--accent-blue); margin-top: 1rem;">📝 Rules:</h4>
+                        <div class="card">
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li><strong>Price breaks out strongly from consolidation or range</strong></li>
+                                <li><strong>Retraces to 50 EMA</strong>, respecting it as dynamic support/resistance</li>
+                                <li>Confirmation: Rejection candlestick pattern at EMA</li>
+                                <li>Continues in breakout direction</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-yellow); margin-top: 1.5rem;">📍 Optimal Location:</h4>
+                        <div class="card">
+                            <p><strong>Found during:</strong></p>
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li>Mid-session retracements during London or NY sessions</li>
+                                <li>After initial session breakout (Day 3, Level III)</li>
+                                <li>When 50 EMA aligns with session momentum</li>
+                                <li>Typically 1-3 hours after breakout occurs</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-green); margin-top: 1.5rem;">🎯 Use Case:</h4>
+                        <div class="card">
+                            <p><strong>Ideal for:</strong></p>
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li><strong>Trend continuation</strong> where 50 EMA aligns with session momentum</li>
+                                <li>Day 3 breakout continuation</li>
+                                <li>London breakout → NY continuation</li>
+                                <li>Clean retracement after impulsive move</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-blue); margin-top: 1.5rem;">⚡ Entry Strategy:</h4>
+                        <div class="alert alert-success">
+                            <ol style="padding-left: 1.5rem; margin: 0;">
+                                <li><strong>Breakout:</strong> Price breaks consolidation/range strongly</li>
+                                <li><strong>Retracement:</strong> Price pulls back to 50 EMA</li>
+                                <li><strong>Rejection:</strong> Candlestick rejection pattern at EMA (RR, Pin, COW)</li>
+                                <li><strong>Entry:</strong> Close in breakout direction</li>
+                                <li><strong>Confirmation:</strong> TDI RSI bounces off MBL</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="pattern-card" style="border-left: 4px solid var(--accent-yellow); margin-top: 1.5rem;">
+                        <div class="pattern-title">Type 4b: Breakout Pullback (Test of Breakout Level)</div>
+                        
+                        <h4 style="color: var(--accent-blue); margin-top: 1rem;">📝 Rules:</h4>
+                        <div class="card">
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li><strong>Price breaks out of significant level</strong> (PDH, PDL, Asian high/low, ADR boundary)</li>
+                                <li><strong>Retraces to TEST the breakout level</strong></li>
+                                <li>Forms rejection candlestick pattern at retest</li>
+                                <li>Continues in breakout direction</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-yellow); margin-top: 1.5rem;">📍 Optimal Location:</h4>
+                        <div class="card">
+                            <p><strong>Breakout levels:</strong></p>
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li><strong>PDH/PDL:</strong> Previous Day High/Low breakout</li>
+                                <li><strong>ADR Boundaries:</strong> Breaking 5-day ADR high/low</li>
+                                <li><strong>Asian High/Low:</strong> London session breaks Asian range</li>
+                                <li><strong>Session Extremes:</strong> YH/YL, PWH/PWL breakouts</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-green); margin-top: 1.5rem;">🎯 Use Case:</h4>
+                        <div class="card">
+                            <p><strong>Effective for:</strong></p>
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li>Trades during <strong>Brinks Timing</strong> (9:45 PM, 3:45 AM, 9:45 AM EST)</li>
+                                <li>After London Open breakout (2:00-4:00 AM EST)</li>
+                                <li>NY session continuation after London breakout</li>
+                                <li>Day 3 breakouts that retest Day 2 peak</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-blue); margin-top: 1.5rem;">✴️ Breakout Retest Logic:</h4>
+                        <div class="alert alert-info">
+                            <p><strong>Why Retests Work:</strong></p>
+                            <p style="margin-top: 0.5rem;">After breakout, price often retests the breakout level to:</p>
+                            <ul style="padding-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 0;">
+                                <li>Grab liquidity from late sellers/buyers</li>
+                                <li>Test if breakout is "real" (valid) or "fake"</li>
+                                <li>Give institutions opportunity to add positions</li>
+                            </ul>
+                            <p style="margin-top: 0.5rem;"><strong>If retest holds = CONTINUATION IS CONFIRMED!</strong></p>
+                        </div>
+                    </div>
+
+                    <div class="pattern-card" style="border-left: 4px solid var(--accent-green); margin-top: 1.5rem;">
+                        <div class="pattern-title">Type 4c: Trend Continuation with 200 EMA</div>
+                        
+                        <h4 style="color: var(--accent-blue); margin-top: 1rem;">📝 Rules:</h4>
+                        <div class="card">
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li><strong>Price trends strongly above/below 200 EMA</strong> (long-term momentum)</li>
+                                <li>Retraces to 200 EMA or consolidates before continuing</li>
+                                <li>Confirmation: Candlestick pattern at 200 EMA</li>
+                                <li>Continues in direction of trend</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-yellow); margin-top: 1.5rem;">📍 Optimal Location:</h4>
+                        <div class="card">
+                            <p><strong>Found during:</strong></p>
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li>Trending markets at mid-session</li>
+                                <li>After key breakout (Level III, Day 3)</li>
+                                <li>Higher timeframe alignment (4H, Daily)</li>
+                                <li>Major trend continuation setups</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-green); margin-top: 1.5rem;">🎯 Use Case:</h4>
+                        <div class="card">
+                            <p><strong>Best for:</strong></p>
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li><strong>Higher timeframe confluence</strong> (1H, 4H, Daily)</li>
+                                <li>Major trend continuation setups</li>
+                                <li>When 200 EMA aligns with institutional levels</li>
+                                <li>Long-term directional trades (swing trades)</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-blue); margin-top: 1.5rem;">✴️ 200 EMA Power:</h4>
+                        <div class="alert alert-warning">
+                            <p><strong>⚠️ Mayo (200 EMA) = Institutional Level!</strong></p>
+                            <p style="margin-top: 0.5rem;">The 200 EMA (Mayo) is watched by ALL institutional traders. When price:</p>
+                            <ul style="padding-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 0;">
+                                <li><strong>Above 200 EMA</strong> = Strong bullish trend (institutions buying)</li>
+                                <li><strong>Below 200 EMA</strong> = Strong bearish trend (institutions selling)</li>
+                                <li><strong>Bounces off 200 EMA</strong> = Trend continuation confirmed!</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h4 style="margin-top: 2rem; color: var(--accent-blue);">🌟 Common Type 4 Features:</h4>
+                    <div class="card">
+                        <h5 style="color: var(--accent-green);">✴️ Breakout and Retracement:</h5>
+                        <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                            <li>Type 4 capitalizes on breakouts followed by retracement to confirm move</li>
+                            <li>Retracement aligns with key EMA (50 or 200) or significant level (PDH/PDL, ADR)</li>
+                        </ul>
+
+                        <h5 style="color: var(--accent-yellow); margin-top: 1rem;">✴️ Dynamic EMA Interaction:</h5>
+                        <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                            <li>50 EMA and 200 EMA critical for trend direction and retracement zones</li>
+                            <li>Price respects these levels before continuing breakout move</li>
+                        </ul>
+
+                        <h5 style="color: var(--accent-blue); margin-top: 1rem;">✴️ Session Timing:</h5>
+                        <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                            <li><strong>London Session Breakout:</strong> 3:30-5:30 AM EST</li>
+                            <li><strong>NY Continuation:</strong> 9:30-11:00 AM EST</li>
+                            <li><strong>Brinks Timing:</strong> 9:45 PM, 3:45 AM, 9:45 AM EST</li>
+                        </ul>
+
+                        <h5 style="color: var(--accent-red); margin-top: 1rem;">✴️ Liquidity Targeting:</h5>
+                        <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                            <li>Targets liquidity above/below key levels (session highs/lows, ADR boundaries)</li>
+                            <li>Confirms breakout or continuation after clearing liquidity pools</li>
+                        </ul>
+                    </div>
+
+                    <div class="alert alert-success" style="margin-top: 1.5rem;">
+                        <h4 style="margin-bottom: 0.5rem;">💡 Type 4 Trading Summary:</h4>
+                        <p><strong>Breakout → Retest → Continuation</strong></p>
+                        <ul style="padding-left: 1.5rem; margin-top: 0.5rem;">
+                            <li><strong>Type 4a:</strong> 50 EMA continuation (retracement to 50 EMA after breakout)</li>
+                            <li><strong>Type 4b:</strong> Breakout pullback (retest of breakout level = confirmation)</li>
+                            <li><strong>Type 4c:</strong> 200 EMA continuation (higher timeframe trend continuation)</li>
+                        </ul>
+                        <p style="margin-top: 1rem;"><strong>All require:</strong> Strong breakout + Retracement to key level + Rejection candlestick + Continuation in breakout direction</p>
+                    </div>
+
+                    <div class="alert alert-warning" style="margin-top: 1.5rem;">
+                        <h4 style="margin-bottom: 0.5rem;">🛠 Type 4 Execution Strategy:</h4>
+                        <ol style="padding-left: 1.5rem; line-height: 1.8; margin-bottom: 0;">
+                            <li><strong>🔍 Identify Setup:</strong> Look for breakout from key level, then retracement to 50/200 EMA or breakout level</li>
+                            <li><strong>🎯 Entry Point:</strong> Enter at rejection point after retracement (use pending orders if volatile)</li>
+                            <li><strong>📏 Risk Management:</strong> Stop Loss 10-15 pips above/below retracement point, TP 2:1 RR or ADR boundaries</li>
+                            <li><strong>⏰ Timing:</strong> London Breakout (3:30-5:30 AM), NY Continuation (9:30-11:00 AM), Brinks (9:45 PM, 3:45 AM, 9:45 AM)</li>
+                        </ol>
+                    </div>
+
+                    <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(0, 255, 136, 0.1); border-left: 4px solid var(--accent-green); border-radius: 8px;">
+                        <h4 style="color: var(--accent-green); margin-bottom: 1rem;">🏆 Type 4 Power Play:</h4>
+                        <p><strong>Why Type 4 is so effective:</strong></p>
+                        <ol style="padding-left: 1.5rem; line-height: 2; margin-top: 0.5rem; margin-bottom: 0;">
+                            <li><strong>Breakout = Clear direction established</strong></li>
+                            <li><strong>Retest = Stops late traders, grabs liquidity</strong></li>
+                            <li><strong>Rejection at retest = Confirmation institutions are supporting move</strong></li>
+                            <li><strong>Continuation = High probability, large targets</strong></li>
+                        </ol>
+                        <p style="margin-top: 1rem;"><strong>Result:</strong> 75-85% win rate when ALL confirmations present!</p>
+                    </div>
+                </div>
+
+                <!-- AR LEVEL SETUPS TAB -->
+                <div id="ar-setups" class="tab-content" style="margin-top: 1.5rem;">
+                    <h3 style="color: var(--accent-yellow); margin-bottom: 1.5rem;">📏 AR Level Setups (Average Range)</h3>
+                    
+                    <div class="pattern-card" style="border-left: 4px solid var(--accent-yellow);">
+                        <div class="pattern-title">AR 00 / AR 50 - Average Range Level Setups</div>
+                        
+                        <h4 style="color: var(--accent-blue);">Concept:</h4>
+                        <div class="card">
+                            <p><strong>AR 00:</strong> Full round numbers (1.3000, 1.3100, 1.3200, etc.) within ADR</p>
+                            <p><strong>AR 50:</strong> Half levels (1.3050, 1.3150, 1.3250, etc.) within ADR</p>
+                            <p style="margin-top: 1rem;"><strong>Why They Work:</strong> Market makers often target these psychological levels as profit targets or reversal points.</p>
+                        </div>
+
+                        <h4 style="color: var(--accent-yellow); margin-top: 1.5rem;">Setup Process:</h4>
+                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 1rem;">
+                            <div class="card" style="border-left: 4px solid var(--accent-blue);">
+                                <h4 style="color: var(--accent-blue);">Identify:</h4>
+                                <ol style="padding-left: 1.5rem; line-height: 1.8;">
+                                    <li>Calculate today's ADR high and low</li>
+                                    <li>Mark major round numbers (00 levels)</li>
+                                    <li>Mark half levels (50 levels)</li>
+                                    <li>Watch for price approach</li>
+                                </ol>
+                            </div>
+
+                            <div class="card" style="border-left: 4px solid var(--accent-green);">
+                                <h4 style="color: var(--accent-green);">Entry Types:</h4>
+                                <p><strong>Bounce Play:</strong></p>
+                                <ul style="padding-left: 1.5rem;">
+                                    <li>Price approaches AR level</li>
+                                    <li>Rejection candle forms</li>
+                                    <li>Enter in direction of rejection</li>
+                                    <li>Stop beyond level + 20 pips</li>
+                                </ul>
+                                <p style="margin-top: 1rem;"><strong>Break & Retest:</strong></p>
+                                <ul style="padding-left: 1.5rem;">
+                                    <li>Price breaks through AR level</li>
+                                    <li>Pulls back to retest</li>
+                                    <li>Rejection on retest</li>
+                                    <li>Enter in break direction</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <h4 style="color: var(--accent-yellow); margin-top: 1.5rem;">Best Combined With:</h4>
+                        <div class="alert alert-success">
+                            <ul style="padding-left: 1.5rem; margin: 0;">
+                                <li>✅ M/W patterns at these levels (double confluence!)</li>
+                                <li>✅ Level 2 or 3 of 3-Day Cycle</li>
+                                <li>✅ Session opens (London 1:30 AM, NY 7:30 AM EST)</li>
+                                <li>✅ Major EMA confluence (50, 200, 800)</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-red); margin-top: 1.5rem;">Risk Management:</h4>
+                        <div class="alert alert-warning">
+                            <p><strong>⚠️ Important:</strong> AR levels act as magnets - don't fight the pull to these levels!</p>
+                            <p style="margin-top: 0.5rem;"><strong>Once ADR met:</strong> Expect reversal or consolidation. Avoid new entries when ADR 90%+ complete.</p>
+                        </div>
+
+                        <h4 style="color: var(--accent-blue); margin-top: 1.5rem;">Trading Parameters:</h4>
+                        <table style="margin-top: 1rem;">
+                            <tr>
+                                <th>Parameter</th>
+                                <th>AR 00 (Round Number)</th>
+                                <th>AR 50 (Half Level)</th>
+                            </tr>
+                            <tr>
+                                <td><strong>Significance</strong></td>
+                                <td>High - Major psychological</td>
+                                <td>Medium - Secondary level</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Stop Loss</strong></td>
+                                <td>25-30 pips beyond level</td>
+                                <td>20-25 pips beyond level</td>
+                            </tr>
+                            <tr style="background: rgba(0, 255, 136, 0.05);">
+                                <td><strong>Target</strong></td>
+                                <td>Next AR 00 or ADR extreme</td>
+                                <td>Next AR 00 level</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Best Time</strong></td>
+                                <td>London/NY sessions</td>
+                                <td>Any session</td>
+                            </tr>
+                        </table>
+
+                        <div class="alert alert-info" style="margin-top: 1.5rem;">
+                            <p><strong>💡 Pro Tip:</strong> Watch how price reacts at AR 00 levels first. If it bounces strongly, consider AR 50 as next entry opportunity in same direction!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ADVANCED CYCLE TRADES TAB -->
+                <div id="advanced-cycle" class="tab-content" style="margin-top: 1.5rem;">
+                    <h3 style="color: var(--accent-yellow); margin-bottom: 1.5rem;">⚡ Advanced BTMM Cycle Variations</h3>
+                    
+                    <div class="alert alert-warning">
+                        <strong>⚠️ Advanced Setups:</strong> These require solid understanding of the basic 3-Day Cycle and Level I/II/III framework. Master the fundamentals FIRST!
+                    </div>
+
+                    <!-- STRAIGHT AWAY TRADE -->
+                    <div class="pattern-card" style="border-left: 4px solid var(--accent-blue); margin-top: 2rem;">
+                        <div class="pattern-title">Straight Away Trade - Direct Level I to Level III</div>
+                        
+                        <div class="alert alert-warning">
+                            <strong>⚠️ Exception to the Rule:</strong> Sometimes Level II doesn't occur - market goes straight from Level I to Level III!
+                        </div>
+
+                        <h4 style="color: var(--accent-blue); margin-top: 1.5rem;">What is It?</h4>
+                        <div class="card">
+                            <p><strong>Definition:</strong> Direct move without Level II consolidation. Market skips the typical consolidation/correction phase.</p>
+                            <p style="margin-top: 0.5rem;"><strong>Why It Happens:</strong> Strong institutional conviction, major news catalyst, or overwhelming market maker positioning.</p>
+                        </div>
+
+                        <h4 style="color: var(--accent-yellow); margin-top: 1.5rem;">Characteristics:</h4>
+                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 1rem;">
+                            <div class="card" style="border-left: 4px solid var(--accent-blue);">
+                                <h5 style="color: var(--accent-blue);">What You See:</h5>
+                                <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                    <li>No clear Level II forming</li>
+                                    <li>Continuous higher highs or lower lows</li>
+                                    <li>Minimal retracement (less than 20%)</li>
+                                    <li>Strong momentum throughout</li>
+                                    <li>Fast-moving, aggressive price action</li>
+                                </ul>
+                            </div>
+
+                            <div class="card" style="border-left: 4px solid var(--accent-green);">
+                                <h5 style="color: var(--accent-green);">Why It Happens:</h5>
+                                <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                    <li>Major news catalyst</li>
+                                    <li>Strong fundamental driver</li>
+                                    <li>Market makers very confident</li>
+                                    <li>Minimal retail resistance</li>
+                                    <li>Clear institutional positioning</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <h4 style="color: var(--accent-green); margin-top: 1.5rem;">Trading Approach:</h4>
+                        <div class="card" style="background: rgba(0, 255, 136, 0.05);">
+                            <h5 style="color: var(--accent-green);">✅ DO:</h5>
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li><strong>Recognize it early</strong> - No Level II = Straight Away</li>
+                                <li><strong>Trade WITH momentum</strong> - Don't fight it!</li>
+                                <li><strong>Enter on pullbacks</strong> - Small pullbacks to 13 or 50 EMA</li>
+                                <li><strong>Quick rejection and continuation</strong> - Enter on bounce</li>
+                            </ul>
+                        </div>
+
+                        <div class="card" style="background: rgba(255, 74, 74, 0.05); margin-top: 1rem;">
+                            <h5 style="color: var(--accent-red);">❌ DON'T:</h5>
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li><strong>Try to pick tops/bottoms</strong> - Fast moves can reverse quickly</li>
+                                <li><strong>Fight the momentum</strong> - Trade WITH the straight away</li>
+                                <li><strong>Use tight stops</strong> - Fast moves = wider stops needed</li>
+                                <li><strong>Overtrade</strong> - Be selective even in strong trends</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-blue); margin-top: 1.5rem;">Entry Options:</h4>
+                        <table style="margin-top: 1rem;">
+                            <tr>
+                                <th>Option</th>
+                                <th>Method</th>
+                                <th>Risk</th>
+                            </tr>
+                            <tr>
+                                <td><strong>Option 1</strong></td>
+                                <td>Trend Following - Enter on small pullbacks to 13/50 EMA</td>
+                                <td>Medium - requires quick decision</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Option 2</strong></td>
+                                <td>Wait for Completion - Eventually forms M/W at extreme</td>
+                                <td>Lower - but may miss big move</td>
+                            </tr>
+                        </table>
+
+                        <div class="alert alert-success" style="margin-top: 1.5rem;">
+                            <p><strong>🎯 Bottom Line:</strong> When you recognize a Straight Away Trade, don't wait for Level II that won't come. Trade the momentum with proper risk management!</p>
+                        </div>
+                    </div>
+
+                    <!-- 12/21/22 TRADE -->
+                    <div class="pattern-card" style="border-left: 4px solid var(--accent-yellow); margin-top: 2rem;">
+                        <div class="pattern-title">12/21/22 Trade - Multi-Day Level III Structure</div>
+                        
+                        <div class="alert alert-info">
+                            <strong>🎯 Advanced Setup:</strong> Multi-day structure trade at Level III. For experienced traders only!
+                        </div>
+
+                        <h4 style="color: var(--accent-blue); margin-top: 1.5rem;">What is It?</h4>
+                        <div class="card">
+                            <p><strong>Definition:</strong> Multi-day structure trade at major turning points (Big Turns) with specific bar counts or date sequences.</p>
+                            <p style="margin-top: 0.5rem;"><strong>Complexity:</strong> Requires understanding of multi-day patterns and market structure. Not for beginners!</p>
+                        </div>
+
+                        <h4 style="color: var(--accent-yellow); margin-top: 1.5rem;">Characteristics:</h4>
+                        <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                            <li><strong>Builds over multiple days</strong> - Not intraday setup</li>
+                            <li><strong>Forms at major turning points</strong> - Big Turn (BT) points on chart</li>
+                            <li><strong>Level III reversal setup</strong> - Must be at Level III</li>
+                            <li><strong>Multi-day structure clear</strong> - Pattern visible across days</li>
+                            <li><strong>Specific count sequences</strong> - 12, 21, 22 bar/day patterns</li>
+                        </ul>
+
+                        <h4 style="color: var(--accent-green); margin-top: 1.5rem;">Entry Requirements:</h4>
+                        <div class="card" style="border: 2px solid var(--accent-green);">
+                            <ul style="padding-left: 1.5rem; line-height: 1.8; margin: 0;">
+                                <li><strong>Only at Level III</strong> - Market makers returning</li>
+                                <li><strong>Multi-day structure complete</strong> - Pattern fully formed</li>
+                                <li><strong>Clear reversal signals</strong> - Multiple confirmations</li>
+                                <li><strong>High conviction setup</strong> - All factors align</li>
+                                <li><strong>Best for swing trading</strong> - Multi-day hold expected</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-red); margin-top: 1.5rem;">Important Notes:</h4>
+                        <div class="alert alert-danger">
+                            <p><strong>⚠️ Advanced Pattern:</strong> This requires significant experience to identify correctly.</p>
+                            <p style="margin-top: 0.5rem;"><strong>Pattern Recognition:</strong> Study historical charts to recognize multi-day structures.</p>
+                            <p style="margin-top: 0.5rem;"><strong>Don't Force It:</strong> Wait for clear, obvious setups. When in doubt, don't trade!</p>
+                        </div>
+
+                        <div class="alert alert-success" style="margin-top: 1rem;">
+                            <p><strong>💡 Learning Path:</strong> Master the basic 3-day cycle FIRST before attempting multi-day structures like 12/21/22 Trade.</p>
+                        </div>
+                    </div>
+
+                    <!-- 33 TRADE -->
+                    <div class="pattern-card" style="background: linear-gradient(135deg, rgba(74, 158, 255, 0.1), rgba(255, 215, 0, 0.05)); margin-top: 2rem;">
+                        <div class="pattern-title">33 Trade - Level III on 15-Minute</div>
+                        
+                        <h4 style="color: var(--accent-blue);">Quick Summary:</h4>
+                        <div class="card">
+                            <p><strong>Definition:</strong> Specific Level III setup on 15-minute timeframe with particular count or structure.</p>
+                            <p style="margin-top: 0.5rem;"><strong>When:</strong> Level III only, precise timing on 15-min chart</p>
+                            <p style="margin-top: 0.5rem;"><strong>Best For:</strong> Day traders looking for quick entries at Level III</p>
+                        </div>
+
+                        <h4 style="color: var(--accent-yellow); margin-top: 1.5rem;">Requirements:</h4>
+                        <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                            <li>Wait for Level III confirmation (50/800 or 200/800 cross)</li>
+                            <li>Pattern completion on 15-min chart</li>
+                            <li>All normal confirmations present (EMA, TDI, candles)</li>
+                            <li>Fast entry execution required</li>
+                        </ul>
+
+                        <div class="alert alert-info" style="margin-top: 1rem;">
+                            <p><strong>💡 Note:</strong> See Entry Rules page for complete details on Level III entry strategies.</p>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-warning" style="margin-top: 2rem;">
+                        <h4 style="margin-bottom: 0.5rem;">🎓 Master the Basics First</h4>
+                        <p>These advanced setups require:</p>
+                        <ul style="padding-left: 1.5rem; margin-top: 0.5rem;">
+                            <li>100+ trades with basic 3-Day Cycle</li>
+                            <li>Deep understanding of Level I/II/III framework</li>
+                            <li>Consistent profitability with M/W patterns</li>
+                            <li>Strong pattern recognition skills</li>
+                        </ul>
+                        <p style="margin-top: 1rem;"><strong>Don't rush!</strong> These setups aren't going anywhere. Build your foundation first.</p>
+                    </div>
+                </div>
+
+                <!-- SUMMARY TAB -->
+                <div id="summary" class="tab-content" style="margin-top: 1.5rem;">
+                    <div class="pattern-card">
+                        <div class="pattern-title">📊 Pattern Summary & Success Rates</div>
+                        
+                        <h4 style="color: var(--accent-blue);">🏆 All Patterns at a Glance:</h4>
+                        <table>
+                            <tr>
+                                <th>Pattern</th>
+                                <th>Type</th>
+                                <th>Timeframe</th>
+                                <th>Success Rate</th>
+                                <th>Typical RR</th>
+                                <th>Difficulty</th>
+                            </tr>
+                            <tr>
+                                <td>🔴 M-Top</td>
+                                <td>Bearish Reversal</td>
+                                <td>15M-1H</td>
+                                <td><span class="badge badge-success">75-80%</span></td>
+                                <td>1:3 to 1:5</td>
+                                <td><span class="badge badge-success">Beginner</span></td>
+                            </tr>
+                            <tr>
+                                <td>🟢 W-Bottom</td>
+                                <td>Bullish Reversal</td>
+                                <td>15M-1H</td>
+                                <td><span class="badge badge-success">75-80%</span></td>
+                                <td>1:3 to 1:5</td>
+                                <td><span class="badge badge-success">Beginner</span></td>
+                            </tr>
+                            <tr style="background: rgba(0, 255, 136, 0.05);">
+                                <td>⚡ London → NY</td>
+                                <td>Intraday Reversal</td>
+                                <td>15M-1H</td>
+                                <td><span class="badge badge-success">80-85%</span></td>
+                                <td>1:4 to 1:6</td>
+                                <td><span class="badge badge-info">Intermediate</span></td>
+                            </tr>
+                            <tr>
+                                <td>🦇 Half Batman</td>
+                                <td>Extended Reversal</td>
+                                <td>1H-4H</td>
+                                <td><span class="badge badge-info">65-70%</span></td>
+                                <td>1:5 to 1:8</td>
+                                <td><span class="badge badge-danger">Advanced</span></td>
+                            </tr>
+                            <tr style="background: rgba(0, 255, 136, 0.05);">
+                                <td>🦈 Shark Fin + M/W</td>
+                                <td>Confirmed Reversal</td>
+                                <td>15M-1H</td>
+                                <td><span class="badge badge-success">85-90%</span></td>
+                                <td>1:3 to 1:6</td>
+                                <td><span class="badge badge-info">Intermediate</span></td>
+                            </tr>
+                            <tr>
+                                <td>📅 3-Day Cycle</td>
+                                <td>Weekly Distribution</td>
+                                <td>4H-Daily</td>
+                                <td><span class="badge badge-success">80-85%</span></td>
+                                <td>1:3 to 1:5</td>
+                                <td><span class="badge badge-info">Intermediate</span></td>
+                            </tr>
+                            <tr style="background: rgba(0, 255, 136, 0.05);">
+                                <td>🌅 2nd Leg Asia</td>
+                                <td>Early Morning Reversal</td>
+                                <td>15M-1H</td>
+                                <td><span class="badge badge-success">80-85%</span></td>
+                                <td>1:4 to 1:7</td>
+                                <td><span class="badge badge-info">Intermediate</span></td>
+                            </tr>
+                            <tr>
+                                <td>📈 ID 50</td>
+                                <td>Trend Continuation</td>
+                                <td>15M</td>
+                                <td><span class="badge badge-success">70-75%</span></td>
+                                <td>1:2 to 1:3</td>
+                                <td><span class="badge badge-success">Beginner</span></td>
+                            </tr>
+                            <tr>
+                                <td>📈 50/50 Bounce</td>
+                                <td>Trend Continuation</td>
+                                <td>1H</td>
+                                <td><span class="badge badge-success">70-75%</span></td>
+                                <td>1:3 to 1:5</td>
+                                <td><span class="badge badge-success">Beginner</span></td>
+                            </tr>
+                            <tr>
+                                <td>📏 AR 00/AR 50</td>
+                                <td>Level Bounce/Break</td>
+                                <td>15M-1H</td>
+                                <td><span class="badge badge-info">65-70%</span></td>
+                                <td>1:2 to 1:4</td>
+                                <td><span class="badge badge-info">Intermediate</span></td>
+                            </tr>
+                            <tr>
+                                <td>⚡ Straight Away</td>
+                                <td>Direct I → III</td>
+                                <td>15M-1H</td>
+                                <td><span class="badge badge-info">65-70%</span></td>
+                                <td>1:4 to 1:8</td>
+                                <td><span class="badge badge-danger">Advanced</span></td>
+                            </tr>
+                            <tr>
+                                <td>⚡ 12/21/22 Trade</td>
+                                <td>Multi-Day Level III</td>
+                                <td>4H-Daily</td>
+                                <td><span class="badge badge-success">75-80%</span></td>
+                                <td>1:5 to 1:10</td>
+                                <td><span class="badge badge-danger">Advanced</span></td>
+                            </tr>
+                            <tr>
+                                <td>⚡ 33 Trade</td>
+                                <td>Level III Intraday</td>
+                                <td>15M</td>
+                                <td><span class="badge badge-success">70-75%</span></td>
+                                <td>1:3 to 1:5</td>
+                                <td><span class="badge badge-info">Intermediate</span></td>
+                            </tr>
+                        </table>
+
+                        <div class="alert alert-success" style="margin-top: 1.5rem;">
+                            <h4 style="margin-bottom: 0.5rem;">🎯 Complete Pattern Library</h4>
+                            <p><strong>35+ Total Setups Available!</strong> (Including all variations: Type 1a/1b/1c, Type 2a/2b/2c, Type 3a/3b/3c, Type 4a/4b/4c, Half Batman Types, M/W off Mayo, and Brinks Trade)</p>
+                            <p style="margin-top: 0.5rem;">You now have a comprehensive pattern library covering:</p>
+                            <ul style="padding-left: 1.5rem; margin-top: 0.5rem;">
+                                <li><strong>Reversal Patterns:</strong> M-Top, W-Bottom, Half Batman, Shark Fin + M/W</li>
+                                <li><strong>Session Transitions:</strong> London → NY, 2nd Leg Out of Asia, 3-Day Cycle</li>
+                                <li><strong>Trend Continuations:</strong> ID 50, 50/50 Bounce</li>
+                                <li><strong>Level Setups:</strong> AR 00, AR 50</li>
+                                <li><strong>Advanced Variations:</strong> Straight Away, 12/21/22, 33 Trade</li>
+                                <li><strong>Time-Based:</strong> Brinks Trade, M/W off Mayo</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--accent-blue); margin-top: 2rem;">🎓 Learning Path:</h4>
+                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 1rem;">
+                            <div class="card" style="border-left: 4px solid var(--accent-green);">
+                                <h4 style="color: var(--accent-green);">Week 1-2: Foundations</h4>
+                                <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                    <li>✅ Master <strong>M-Top</strong> pattern only</li>
+                                    <li>✅ Master <strong>W-Bottom</strong> pattern only</li>
+                                    <li>✅ Demo trade 20+ times each</li>
+                                    <li>✅ Achieve 70%+ win rate</li>
+                                </ul>
+                            </div>
+
+                            <div class="card" style="border-left: 4px solid var(--accent-blue);">
+                                <h4 style="color: var(--accent-blue);">Week 3-4: Integration</h4>
+                                <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                    <li>✅ Add <strong>London → NY</strong> pattern</li>
+                                    <li>✅ Add <strong>3-Day Cycle</strong></li>
+                                    <li>✅ Demo trade 30+ times combined</li>
+                                    <li>✅ Ready for small live positions</li>
+                                </ul>
+                            </div>
+
+                            <div class="card" style="border-left: 4px solid var(--accent-yellow);">
+                                <h4 style="color: var(--accent-yellow);">Week 5-6: Confirmation</h4>
+                                <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                    <li>✅ Add <strong>Shark Fin</strong> for confirmation</li>
+                                    <li>✅ Combine TDI with M/W patterns</li>
+                                    <li>✅ Increase position size gradually</li>
+                                    <li>✅ Build confidence</li>
+                                </ul>
+                            </div>
+
+                            <div class="card" style="border-left: 4px solid var(--accent-red);">
+                                <h4 style="color: var(--accent-red);">Week 7+: Advanced</h4>
+                                <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                    <li>✅ Study <strong>Half Batman</strong></li>
+                                    <li>✅ Only if 50+ M/W trades successful</li>
+                                    <li>✅ Advanced risk management</li>
+                                    <li>✅ Consistent profitability</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <h4 style="color: var(--accent-yellow); margin-top: 2rem;">🔑 Key Takeaways:</h4>
+                        <div class="alert alert-success">
+                            <ul style="padding-left: 1.5rem; margin: 0;">
+                                <li>✅ <strong>All patterns are variations of M or W</strong> at different timeframes</li>
+                                <li>✅ <strong>London → NY is the most reliable</strong> intraday pattern (80-85%)</li>
+                                <li>✅ <strong>Shark Fin adds confirmation</strong> and increases win rate to 85-90%</li>
+                                <li>✅ <strong>3-Day Cycle is just weekly M/W</strong> - same concept, bigger scale</li>
+                                <li>✅ <strong>Half Batman is for advanced traders only</strong> - don't rush!</li>
+                                <li>✅ <strong>Master basics first, add complexity later</strong></li>
+                            </ul>
+                        </div>
+
+                        <div class="alert alert-info" style="margin-top: 1.5rem;">
+                            <h4 style="margin-bottom: 0.5rem;">📚 Next Steps</h4>
+                            <p>Now that you understand all patterns:</p>
+                            <ul style="padding-left: 1.5rem; margin-top: 0.5rem;">
+                                <li><a href="entry-rules.html" style="color: var(--accent-blue);">Entry Rules</a> - Learn exactly when and how to enter</li>
+                                <li><a href="examples.html" style="color: var(--accent-blue);">Trade Examples</a> - See these patterns in real trades</li>
+                                <li><a href="checklist.html" style="color: var(--accent-blue);">Trading Checklist</a> - Verify patterns before trading</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <div class="footer">
+                <p><strong>Remember:</strong> Patterns repeat because manipulation repeats. Learn the patterns = Learn to profit.</p>
+                <p style="margin-top: 1rem; color: var(--accent-blue);">Trade Quarterly. Beat the Market Makers. Win Consistently.</p>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

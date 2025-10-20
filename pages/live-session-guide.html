@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Trading Session Guide - Trading Guide</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="header-content">
+            <div>
+                <h1>Quarterly Theory & BTMM Trading Guide</h1>
+                <div class="header-subtitle">Live Trading Session Guide</div>
+            </div>
+            <div class="current-time">
+                <div class="time-display" id="currentTime">--:--:-- EST</div>
+                <div class="session-indicator" id="sessionIndicator">Loading...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search guide..." />
+            </div>
+            
+            <h3>📚 Navigation (Top-Down)</h3>
+            <ul class="nav-menu">
+                <li><a href="../index.html" class="nav-link">🏠 Home</a></li>
+                <li style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color);"><a href="core-philosophy.html" class="nav-link">🎯 Core Philosophy</a></li>
+                <li><a href="weekly-schedule.html" class="nav-link">📅 Weekly Structure</a></li>
+                <li><a href="btmm-cycle.html" class="nav-link">🔄 BTMM 3-Day Cycle</a></li>
+                <li><a href="daily-sessions.html" class="nav-link">🕐 Daily Sessions</a></li>
+                <li><a href="micro-quarters.html" class="nav-link">⏱️ Micro Quarters</a></li>
+                <li style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color);"><a href="technical-setup.html" class="nav-link">🔧 Technical Setup</a></li>
+                <li><a href="patterns.html" class="nav-link">📊 Patterns</a></li>
+                <li><a href="entry-rules.html" class="nav-link">📈 Entry Rules</a></li>
+                <li><a href="risk-management.html" class="nav-link">🛡️ Risk Management</a></li>
+                <li><a href="checklist.html" class="nav-link">✅ Trading Checklist</a></li>
+                <li><a href="examples.html" class="nav-link">💡 Trade Examples</a></li>
+                <li style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color);"><a href="live-session-guide.html" class="nav-link active">📡 Live Session Guide</a></li>
+                <li><a href="quick-reference.html" class="nav-link">⚡ Quick Reference</a></li>
+            </ul>
+
+            <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
+                <h3>📄 Resources</h3>
+                <ul class="nav-menu">
+                    <li><a href="../Complete_Top_Down_Trading_Guide.md" class="nav-link" target="_blank">📖 Full Guide (MD)</a></li>
+                    <li><a href="../Quick_Reference_Cheat_Sheet.md" class="nav-link" target="_blank">📋 Cheat Sheet (MD)</a></li>
+                    <li><a href="../Micro_Quarter_Timing_Reference.md" class="nav-link" target="_blank">⏰ Micro Timing (MD)</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Content -->
+        <main class="content" id="mainContent">
+            <section class="section">
+                <h2>📡 Live Trading Session Guide</h2>
+                
+                <div class="alert alert-info">
+                    <strong>📊 Real-Time Market Analysis:</strong> This page provides live market context based on current time, session, and quarterly cycle theory. Use this as your real-time decision-making companion while trading.
+                </div>
+
+                <!-- Live Market Sentiment Panel -->
+                <div id="liveMarketPanel" style="background: linear-gradient(135deg, rgba(74, 158, 255, 0.2), rgba(138, 43, 226, 0.2)); padding: 2.5rem 2rem; border-radius: 15px; margin-bottom: 3rem; border: 2px solid rgba(74, 158, 255, 0.4); box-shadow: 0 8px 24px rgba(0,0,0,0.3);">
+                    <div style="text-align: center; margin-bottom: 2rem;">
+                        <h2 style="font-size: 2rem; color: var(--accent-blue); margin-bottom: 0.5rem;">📊 Live Market Sentiment</h2>
+                        <div style="font-size: 1.3rem; color: var(--accent-yellow); font-weight: bold;" id="liveTimeDisplay">--:--:-- EST</div>
+                    </div>
+
+                    <!-- Current Session & Quarter -->
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+                        <!-- Session Info -->
+                        <div style="background: var(--card-bg); padding: 1.5rem; border-radius: 10px; border-left: 4px solid var(--accent-blue);">
+                            <div style="font-size: 0.9rem; color: var(--text-tertiary); margin-bottom: 0.5rem;">CURRENT SESSION</div>
+                            <div style="font-size: 1.8rem; font-weight: bold; color: var(--accent-blue); margin-bottom: 0.5rem;" id="currentSession">Loading...</div>
+                            <div style="font-size: 0.85rem; color: var(--text-secondary);" id="sessionTime">--</div>
+                        </div>
+
+                        <!-- Quarter Info -->
+                        <div style="background: var(--card-bg); padding: 1.5rem; border-radius: 10px; border-left: 4px solid var(--accent-green);">
+                            <div style="font-size: 0.9rem; color: var(--text-tertiary); margin-bottom: 0.5rem;">CURRENT QUARTER</div>
+                            <div style="font-size: 1.8rem; font-weight: bold; color: var(--accent-green); margin-bottom: 0.5rem;" id="currentQuarter">Q?</div>
+                            <div style="font-size: 0.85rem; color: var(--text-secondary);" id="quarterPhase">--</div>
+                        </div>
+
+                        <!-- Day of Week -->
+                        <div style="background: var(--card-bg); padding: 1.5rem; border-radius: 10px; border-left: 4px solid var(--accent-yellow);">
+                            <div style="font-size: 0.9rem; color: var(--text-tertiary); margin-bottom: 0.5rem;">WEEKLY POSITION</div>
+                            <div style="font-size: 1.8rem; font-weight: bold; color: var(--accent-yellow); margin-bottom: 0.5rem;" id="dayOfWeek">--</div>
+                            <div style="font-size: 0.85rem; color: var(--text-secondary);" id="weeklyPhase">--</div>
+                        </div>
+                    </div>
+
+                    <!-- What to Anticipate Section -->
+                    <div style="background: rgba(0, 0, 0, 0.3); padding: 2rem; border-radius: 12px; border: 1px solid rgba(74, 158, 255, 0.3);">
+                        <h3 style="color: var(--accent-green); margin-bottom: 1.5rem; text-align: center;">🎯 What to Anticipate Right Now</h3>
+                        
+                        <div id="anticipationContent">
+                            <!-- Dynamic content will be inserted here -->
+                        </div>
+
+                        <!-- Action Items -->
+                        <div style="margin-top: 1.5rem; padding: 1.5rem; background: rgba(74, 158, 255, 0.1); border-radius: 8px; border-left: 4px solid var(--accent-blue);">
+                            <h4 style="color: var(--accent-blue); margin-bottom: 1rem;">📋 Action Checklist</h4>
+                            <div id="actionChecklist" style="line-height: 2;">
+                                <!-- Dynamic checklist will be inserted here -->
+                            </div>
+                        </div>
+
+                        <!-- Next Key Time -->
+                        <div style="margin-top: 1.5rem; text-align: center; padding: 1rem; background: rgba(255, 193, 7, 0.1); border-radius: 8px;">
+                            <div style="font-size: 0.9rem; color: var(--text-tertiary); margin-bottom: 0.5rem;">NEXT KEY TIME WINDOW</div>
+                            <div style="font-size: 1.5rem; font-weight: bold; color: var(--accent-yellow);" id="nextKeyTime">--</div>
+                            <div style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem;" id="nextTimeDescription">--</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- How to Use This Page -->
+                <div class="card" style="margin-top: 2rem;">
+                    <div class="card-title">💡 How to Use This Live Guide</div>
+                    <ul style="line-height: 2;">
+                        <li><strong>Keep It Open:</strong> Keep this page open in a separate browser tab while trading</li>
+                        <li><strong>Pre-Session Review:</strong> Check this page 15-30 minutes before key session opens (London 2 AM, NY 9:30 AM)</li>
+                        <li><strong>Follow the Checklist:</strong> Complete each action item in the checklist before placing trades</li>
+                        <li><strong>Time-Based Alerts:</strong> Set alerts for the "Next Key Time Window" shown at the bottom</li>
+                        <li><strong>Context First:</strong> Always understand WHICH quarter and session you're in before trading</li>
+                        <li><strong>Day-Specific Strategy:</strong> Pay special attention to Monday (Q1 - observe), Wednesday (Q3 - trade!), and Friday (Q4 - caution)</li>
+                    </ul>
+                </div>
+
+                <!-- Quick Session Timing Reference -->
+                <h3 style="margin-top: 2rem;">⏰ Key Session Times (EST)</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                    <div class="card" style="background: rgba(255, 193, 7, 0.1); border-left: 4px solid var(--accent-yellow);">
+                        <strong>🌙 Asian Session</strong>
+                        <div style="color: var(--text-secondary); margin-top: 0.5rem;">5:00 PM - 2:00 AM EST</div>
+                        <div style="font-size: 0.85rem; margin-top: 0.5rem; color: var(--text-tertiary);">Low liquidity, mark levels</div>
+                    </div>
+                    <div class="card" style="background: rgba(74, 158, 255, 0.1); border-left: 4px solid var(--accent-blue);">
+                        <strong>🌍 London Session</strong>
+                        <div style="color: var(--text-secondary); margin-top: 0.5rem;">2:00 AM - 9:00 AM EST</div>
+                        <div style="font-size: 0.85rem; margin-top: 0.5rem; color: var(--text-tertiary);">High volatility, reversals</div>
+                    </div>
+                    <div class="card" style="background: rgba(0, 255, 136, 0.1); border-left: 4px solid var(--accent-green);">
+                        <strong>🗽 New York Session</strong>
+                        <div style="color: var(--text-secondary); margin-top: 0.5rem;">9:00 AM - 4:00 PM EST</div>
+                        <div style="font-size: 0.85rem; margin-top: 0.5rem; color: var(--accent-tertiary);">BEST trading window</div>
+                    </div>
+                </div>
+
+                <!-- Brinks Trade Timing -->
+                <h3 style="margin-top: 2rem;">🎯 Precision Entry Windows (Brinks Times)</h3>
+                <table style="margin-top: 1rem;">
+                    <thead>
+                        <tr>
+                            <th>Time (EST)</th>
+                            <th>Session</th>
+                            <th>Purpose</th>
+                            <th>What to Look For</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong style="color: var(--accent-yellow);">9:45 PM</strong></td>
+                            <td>Asian Session</td>
+                            <td>Liquidity Spike</td>
+                            <td>Range boundaries, M/W patterns</td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color: var(--accent-blue);">3:45 AM</strong></td>
+                            <td>London Session</td>
+                            <td>Major Move Setup</td>
+                            <td>2nd leg out of Asia, stop hunt reversal</td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color: var(--accent-green);">9:45 AM</strong></td>
+                            <td>NY Session</td>
+                            <td>Best Entry Window</td>
+                            <td>M/W at session extremes, EMA bounces</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Weekly Context -->
+                <h3 style="margin-top: 2rem;">📅 Weekly Cycle Context</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                    <div class="card" style="border-left: 4px solid var(--text-tertiary);">
+                        <strong>Monday</strong>
+                        <div style="color: var(--text-tertiary); margin-top: 0.5rem;">Q1 - Accumulation</div>
+                        <div style="font-size: 0.85rem; margin-top: 0.5rem;">⚠️ Observe, mark levels</div>
+                    </div>
+                    <div class="card" style="border-left: 4px solid var(--accent-yellow);">
+                        <strong>Tuesday</strong>
+                        <div style="color: var(--accent-yellow); margin-top: 0.5rem;">Q2 - Manipulation</div>
+                        <div style="font-size: 0.85rem; margin-top: 0.5rem;">⚠️ Stop hunts occur</div>
+                    </div>
+                    <div class="card" style="border-left: 4px solid var(--accent-green);">
+                        <strong>Wednesday</strong>
+                        <div style="color: var(--accent-green); margin-top: 0.5rem;">Q3 - Distribution</div>
+                        <div style="font-size: 0.85rem; margin-top: 0.5rem;">🔥 BEST DAY!</div>
+                    </div>
+                    <div class="card" style="border-left: 4px solid var(--accent-green);">
+                        <strong>Thursday</strong>
+                        <div style="color: var(--accent-green); margin-top: 0.5rem;">Q3 Continuation</div>
+                        <div style="font-size: 0.85rem; margin-top: 0.5rem;">✅ Good trading day</div>
+                    </div>
+                    <div class="card" style="border-left: 4px solid var(--accent-red);">
+                        <strong>Friday</strong>
+                        <div style="color: var(--accent-red); margin-top: 0.5rem;">Q4 - Reversal</div>
+                        <div style="font-size: 0.85rem; margin-top: 0.5rem;">⚠️ Tighten stops</div>
+                    </div>
+                </div>
+
+                <div class="alert alert-warning" style="margin-top: 2rem;">
+                    <strong>⚠️ Important Reminder:</strong> This live guide is a tool, not a replacement for proper analysis. Always confirm setups with your technical indicators (EMAs, TDI), check multiple timeframes, and follow your risk management rules!
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <div class="footer">
+                <p><strong>Remember:</strong> The cycle repeats. Your edge is knowing WHEN.</p>
+                <p style="margin-top: 1rem; color: var(--accent-blue);">Trade Quarterly. Beat the Market Makers. Win Consistently.</p>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>
+

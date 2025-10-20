@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trading Checklist - Trading Guide</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="header-content">
+            <div>
+                <h1>Quarterly Theory & BTMM Trading Guide</h1>
+                <div class="header-subtitle">Trading Checklist</div>
+            </div>
+            <div class="current-time">
+                <div class="time-display" id="currentTime">--:--:-- EST</div>
+                <div class="session-indicator" id="sessionIndicator">Loading...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search guide..." />
+            </div>
+            
+            <h3>📚 Navigation (Top-Down)</h3>
+            <ul class="nav-menu">
+                <li><a href="../index.html" class="nav-link">🏠 Home</a></li>
+                <li style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color);"><a href="core-philosophy.html" class="nav-link">🎯 Core Philosophy</a></li>
+                <li><a href="weekly-schedule.html" class="nav-link">📅 Weekly Structure</a></li>
+                <li><a href="btmm-cycle.html" class="nav-link">🔄 BTMM 3-Day Cycle</a></li>
+                <li><a href="daily-sessions.html" class="nav-link">🕐 Daily Sessions</a></li>
+                <li><a href="micro-quarters.html" class="nav-link">⏱️ Micro Quarters</a></li>
+                <li style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color);"><a href="technical-setup.html" class="nav-link">🔧 Technical Setup</a></li>
+                <li><a href="patterns.html" class="nav-link">📊 Patterns</a></li>
+                <li><a href="entry-rules.html" class="nav-link">📈 Entry Rules</a></li>
+                <li><a href="risk-management.html" class="nav-link">🛡️ Risk Management</a></li>
+                <li><a href="checklist.html" class="nav-link active">✅ Trading Checklist</a></li>
+                <li><a href="examples.html" class="nav-link">💡 Trade Examples</a></li>
+                <li style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color);"><a href="live-session-guide.html" class="nav-link">📡 Live Session Guide</a></li>
+                <li><a href="quick-reference.html" class="nav-link">⚡ Quick Reference</a></li>
+            </ul>
+        </aside>
+
+        <!-- Content -->
+        <main class="content" id="mainContent">
+            <section class="section">
+                <h2>✅ Complete Trading Checklist</h2>
+                
+                <div class="alert alert-success">
+                    <strong>💾 Auto-Save:</strong> Your checklist progress is automatically saved! Come back anytime to continue.
+                </div>
+
+                <div class="alert alert-warning">
+                    <strong>⚠️ CRITICAL RULE:</strong> Complete ALL sections before entering any trade. If ANY checkbox is unchecked, DO NOT TRADE!
+                </div>
+
+                <h3>📋 30-Second Pre-Trade Checklist</h3>
+                <div class="card" style="border: 2px solid var(--accent-green);">
+                    <p><strong>Use this for EVERY trade - No exceptions!</strong></p>
+                    <ul class="checklist">
+                        <li><input type="checkbox"> What quarter am I in? (Must be Q2 ending or Q3)</li>
+                        <li><input type="checkbox"> Where is True Open? (Price positioned correctly vs it?)</li>
+                        <li><input type="checkbox"> M or W pattern complete? (Stop hunt occurred?)</li>
+                        <li><input type="checkbox"> 30-90 min re-accumulation done? (If intraday)</li>
+                        <li><input type="checkbox"> Stop loss = 1-2% risk max? (RR minimum 1:2?)</li>
+                    </ul>
+                    <div class="alert alert-success" style="margin-top: 1rem;">
+                        <strong>ALL YES = ENTER | ANY NO = WAIT</strong>
+                    </div>
+                </div>
+
+                <h3>🎯 Complete Pre-Trade Checklist</h3>
+
+                <h4>1️⃣ Time Alignment (Quarterly Theory)</h4>
+                <ul class="checklist">
+                    <li><input type="checkbox"> I know which quarter we're in (session, daily, weekly)</li>
+                    <li><input type="checkbox"> I've identified the True Open for this timeframe</li>
+                    <li><input type="checkbox"> We are past Q2 manipulation phase</li>
+                    <li><input type="checkbox"> Preferably trading in Q3 distribution phase</li>
+                    <li><input type="checkbox"> Higher timeframe quarters are aligned</li>
+                </ul>
+
+                <h4>2️⃣ Price Action (BTMM)</h4>
+                <ul class="checklist">
+                    <li><input type="checkbox"> Clear M or W pattern has formed</li>
+                    <li><input type="checkbox"> Stop hunt/manipulation has occurred</li>
+                    <li><input type="checkbox"> 30-90 min re-accumulation period completed (if intraday)</li>
+                    <li><input type="checkbox"> Price is positioned correctly vs True Open</li>
+                    <li><input type="checkbox"> Bullish: Entering BELOW True Open after stop hunt below</li>
+                    <li><input type="checkbox"> Bearish: Entering ABOVE True Open after stop hunt above</li>
+                    <li><input type="checkbox"> Reversal candlestick pattern confirms (hammer, engulfing, etc.)</li>
+                </ul>
+
+                <h4>3️⃣ Technical Confirmation</h4>
+                <ul class="checklist">
+                    <li><input type="checkbox"> EMAs aligned with trade direction</li>
+                    <li><input type="checkbox"> 8 EMA > 21 EMA > 50 EMA (bullish) OR reverse (bearish)</li>
+                    <li><input type="checkbox"> Previous HOD/LOD supports trade idea</li>
+                    <li><input type="checkbox"> Not at major resistance (for longs) or support (for shorts)</li>
+                    <li><input type="checkbox"> Enough room to profit target (minimum 1:2 RR)</li>
+                    <li><input type="checkbox"> TDI confirms (if using) - Shark Fin visible</li>
+                </ul>
+
+                <h4>4️⃣ Risk Management</h4>
+                <ul class="checklist">
+                    <li><input type="checkbox"> Stop loss identified and acceptable</li>
+                    <li><input type="checkbox"> Stop placed beyond manipulation extreme (5-20 pips)</li>
+                    <li><input type="checkbox"> Position size calculated (1-2% risk MAX)</li>
+                    <li><input type="checkbox"> Profit targets set (TP1, TP2, TP3)</li>
+                    <li><input type="checkbox"> Risk/Reward minimum 1:2, preferably 1:3+</li>
+                    <li><input type="checkbox"> Not over-leveraged (max 3 positions total)</li>
+                    <li><input type="checkbox"> Daily loss limit not reached (2-3% max)</li>
+                    <li><input type="checkbox"> Weekly loss limit not reached (5-6% max)</li>
+                </ul>
+
+                <h4>5️⃣ Contextual Checks</h4>
+                <ul class="checklist">
+                    <li><input type="checkbox"> Not trading during major news (unless planned)</li>
+                    <li><input type="checkbox"> Within my trading session hours</li>
+                    <li><input type="checkbox"> Not Monday (unless crystal clear setup)</li>
+                    <li><input type="checkbox"> Not Friday (unless crystal clear setup)</li>
+                    <li><input type="checkbox"> Not revenge trading after a loss</li>
+                    <li><input type="checkbox"> Clear mind and focused</li>
+                    <li><input type="checkbox"> Sufficient time to manage trade</li>
+                    <li><input type="checkbox"> Trading journal ready for documentation</li>
+                </ul>
+
+                <div class="alert alert-danger" style="margin-top: 2rem;">
+                    <h4 style="margin-bottom: 0.5rem;">⛔ DO NOT TRADE IF:</h4>
+                    <ul style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                        <li>Any checkbox above is unchecked</li>
+                        <li>You feel emotional or uncertain</li>
+                        <li>Daily or weekly loss limit reached</li>
+                        <li>Currently in Q1 (accumulation)</li>
+                        <li>Manipulation hasn't occurred yet</li>
+                        <li>Risk/reward is less than 1:2</li>
+                    </ul>
+                </div>
+
+                <h3>📅 Daily Trading Routine</h3>
+
+                <h4>Pre-Market (30 min before session)</h4>
+                <ul class="checklist">
+                    <li><input type="checkbox"> Mark True Day Open (midnight price)</li>
+                    <li><input type="checkbox"> Mark True Week Open (Tuesday midnight)</li>
+                    <li><input type="checkbox"> Mark True Month Open (if applicable)</li>
+                    <li><input type="checkbox"> Note previous day HOD/LOD on chart</li>
+                    <li><input type="checkbox"> Identify Asian range (8pm-12am) - tight or extended?</li>
+                    <li><input type="checkbox"> Determine 3-day BTMM cycle position (Day 1, 2, or 3?)</li>
+                    <li><input type="checkbox"> Check weekly quarter (Mon=Q1, Tue=Q2, Wed=Q3, Thu=Q4)</li>
+                    <li><input type="checkbox"> Set alerts for quarter changes (90-min)</li>
+                    <li><input type="checkbox"> Note any major news events today</li>
+                    <li><input type="checkbox"> Determine daily bias (above/below True Day Open)</li>
+                </ul>
+
+                <h4>During Trading Session</h4>
+                <ul class="checklist">
+                    <li><input type="checkbox"> Watch Q1 accumulation (NO TRADES)</li>
+                    <li><input type="checkbox"> Identify Q2 manipulation (MARK LEVELS ONLY)</li>
+                    <li><input type="checkbox"> Mark the stop hunt high or low</li>
+                    <li><input type="checkbox"> Wait for 30-90 min re-accumulation after stop hunt</li>
+                    <li><input type="checkbox"> Look for reversal candlestick patterns</li>
+                    <li><input type="checkbox"> Enter in Q3 distribution (BEST RR)</li>
+                    <li><input type="checkbox"> Set stop loss immediately after entry</li>
+                    <li><input type="checkbox"> Set profit targets (TP1, TP2, TP3)</li>
+                    <li><input type="checkbox"> Move stop to breakeven after TP1 hit</li>
+                    <li><input type="checkbox"> Trail stop after TP2 hit</li>
+                    <li><input type="checkbox"> Manage trade through Q4</li>
+                </ul>
+
+                <h4>Post-Market Review (15 min)</h4>
+                <ul class="checklist">
+                    <li><input type="checkbox"> Journal the trade(s) in detail</li>
+                    <li><input type="checkbox"> Did the A-M-D-X cycle play out as expected?</li>
+                    <li><input type="checkbox"> Where did the stop hunt occur?</li>
+                    <li><input type="checkbox"> Did I enter during Q3 distribution?</li>
+                    <li><input type="checkbox"> Was my entry relative to True Open correct?</li>
+                    <li><input type="checkbox"> Did I follow my rules?</li>
+                    <li><input type="checkbox"> What went well?</li>
+                    <li><input type="checkbox"> What could improve?</li>
+                    <li><input type="checkbox"> Mark tomorrow's potential PF if visible</li>
+                    <li><input type="checkbox"> Prepare analysis for next session</li>
+                </ul>
+
+                <h3>📊 Weekly Preparation Checklist</h3>
+                <ul class="checklist">
+                    <li><input type="checkbox"> Review previous week's trades</li>
+                    <li><input type="checkbox"> Calculate win rate for the week</li>
+                    <li><input type="checkbox"> Calculate average RR for the week</li>
+                    <li><input type="checkbox"> Identify most profitable setups</li>
+                    <li><input type="checkbox"> Identify mistake patterns</li>
+                    <li><input type="checkbox"> Plan for upcoming week's key levels</li>
+                    <li><input type="checkbox"> Mark True Week Open for this week (Tuesday 12am)</li>
+                    <li><input type="checkbox"> Note any major news events this week</li>
+                    <li><input type="checkbox"> Determine where we are in monthly cycle</li>
+                    <li><input type="checkbox"> Set trading goals for the week</li>
+                </ul>
+
+                <h3>🎓 Learning & Improvement Checklist</h3>
+                <ul class="checklist">
+                    <li><input type="checkbox"> Reviewed all sections of the Trading Guide</li>
+                    <li><input type="checkbox"> Understand A-M-D-X cycle on all timeframes</li>
+                    <li><input type="checkbox"> Can identify True Opens accurately</li>
+                    <li><input type="checkbox"> Can recognize M and W patterns</li>
+                    <li><input type="checkbox"> Understand BTMM 3-day cycle</li>
+                    <li><input type="checkbox"> Know best days to trade (Wednesday = best)</li>
+                    <li><input type="checkbox"> Know best times to trade (NY Q3 = 9:00-10:30 AM)</li>
+                    <li><input type="checkbox"> Practiced on demo account (50+ trades)</li>
+                    <li><input type="checkbox"> Maintained 60%+ win rate on demo</li>
+                    <li><input type="checkbox"> Consistently achieving 1:3+ RR</li>
+                    <li><input type="checkbox"> Ready for live trading with small size</li>
+                </ul>
+
+                <div class="alert alert-success" style="margin-top: 2rem;">
+                    <h4 style="margin-bottom: 0.5rem;">🏆 Mastery Checklist</h4>
+                    <p>You've mastered the system when you can:</p>
+                    <ul style="padding-left: 1.5rem; margin-top: 0.5rem;">
+                        <li>✅ Identify current quarter without thinking</li>
+                        <li>✅ Mark True Opens automatically each day</li>
+                        <li>✅ Spot M/W patterns before they complete</li>
+                        <li>✅ Know when to trade and when to sit out</li>
+                        <li>✅ Follow your rules even when emotional</li>
+                        <li>✅ Accept losses without revenge trading</li>
+                        <li>✅ Let winners run to full targets</li>
+                        <li>✅ Journal consistently without excuses</li>
+                    </ul>
+                </div>
+
+                <div class="alert alert-info" style="margin-top: 2rem;">
+                    <h4 style="margin-bottom: 0.5rem;">🔗 Related Pages</h4>
+                    <ul style="padding-left: 1.5rem; margin-top: 0.5rem;">
+                        <li><a href="quick-reference.html" style="color: var(--accent-blue);">Quick Reference</a> - Fast access to rules</li>
+                        <li><a href="entry-rules.html" style="color: var(--accent-blue);">Entry Rules</a> - Detailed entry criteria</li>
+                        <li><a href="risk-management.html" style="color: var(--accent-blue);">Risk Management</a> - Position sizing rules</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <div class="footer">
+                <p><strong>Remember:</strong> Checklists save accounts. Follow them every time.</p>
+                <p style="margin-top: 1rem; color: var(--accent-blue);">Trade Quarterly. Beat the Market Makers. Win Consistently.</p>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>
+

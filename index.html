@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trading Guide Hub - Quarterly Theory & BTMM</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="header-content">
+            <div>
+                <h1>Quarterly Theory & BTMM Trading Guide</h1>
+                <div class="header-subtitle">Complete Reference & Study Tool</div>
+            </div>
+            <div class="current-time">
+                <div class="time-display" id="currentTime">--:--:-- EST</div>
+                <div class="session-indicator" id="sessionIndicator">Loading...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search guide..." />
+            </div>
+            
+            <h3>📚 Navigation (Top-Down)</h3>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link active">🏠 Home</a></li>
+                <li style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color);"><a href="pages/core-philosophy.html" class="nav-link">🎯 Core Philosophy</a></li>
+                <li><a href="pages/weekly-schedule.html" class="nav-link">📅 Weekly Structure</a></li>
+                <li><a href="pages/btmm-cycle.html" class="nav-link">🔄 BTMM 3-Day Cycle</a></li>
+                <li><a href="pages/daily-sessions.html" class="nav-link">🕐 Daily Sessions</a></li>
+                <li><a href="pages/micro-quarters.html" class="nav-link">⏱️ Micro Quarters</a></li>
+                <li style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color);"><a href="pages/technical-setup.html" class="nav-link">🔧 Technical Setup</a></li>
+                <li><a href="pages/patterns.html" class="nav-link">📊 Patterns</a></li>
+                <li><a href="pages/entry-rules.html" class="nav-link">📈 Entry Rules</a></li>
+                <li><a href="pages/risk-management.html" class="nav-link">🛡️ Risk Management</a></li>
+                <li><a href="pages/checklist.html" class="nav-link">✅ Trading Checklist</a></li>
+                <li><a href="pages/examples.html" class="nav-link">💡 Trade Examples</a></li>
+                <li style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color);"><a href="pages/live-session-guide.html" class="nav-link">📡 Live Session Guide</a></li>
+                <li><a href="pages/quick-reference.html" class="nav-link">⚡ Quick Reference</a></li>
+            </ul>
+
+            <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
+                <h3>📄 Resources</h3>
+                <ul class="nav-menu">
+                    <li><a href="Complete_Top_Down_Trading_Guide.md" class="nav-link" target="_blank">📖 Full Guide (MD)</a></li>
+                    <li><a href="Quick_Reference_Cheat_Sheet.md" class="nav-link" target="_blank">📋 Cheat Sheet (MD)</a></li>
+                    <li><a href="Micro_Quarter_Timing_Reference.md" class="nav-link" target="_blank">⏰ Micro Timing (MD)</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Content -->
+        <main class="content" id="mainContent">
+            <!-- Home Section -->
+            <section class="section">
+                <!-- Hero Welcome Section -->
+                <div style="text-align: center; padding: 3rem 2rem; background: linear-gradient(135deg, rgba(74, 158, 255, 0.15), rgba(138, 43, 226, 0.15)); border-radius: 15px; margin-bottom: 3rem; border: 2px solid rgba(74, 158, 255, 0.3);">
+                    <h1 style="font-size: 2.5rem; margin-bottom: 1rem; color: var(--accent-blue); text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
+                        🎯 Welcome to Your Complete Trading System
+                    </h1>
+                    <p style="font-size: 1.3rem; margin-bottom: 1.5rem; color: var(--text-secondary);">
+                        Master the Markets with <strong style="color: var(--accent-green);">Quarterly Theory</strong> + <strong style="color: var(--accent-yellow);">BTMM Method</strong>
+                    </p>
+                    <p style="font-size: 1.1rem; max-width: 800px; margin: 0 auto 2rem; line-height: 1.8;">
+                        This comprehensive guide combines <strong>Trader Daye's precision timing system</strong> with <strong>Steve Mauro's market maker psychology</strong> into one powerful trading approach. Learn to trade WITH institutions, not against them.
+                    </p>
+                    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem;">
+                        <a href="pages/core-philosophy.html" style="padding: 1rem 2rem; background: var(--accent-green); color: var(--bg-primary); border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 1.1rem; box-shadow: 0 4px 12px rgba(0, 255, 136, 0.3); transition: transform 0.2s;">
+                            🚀 Start Learning
+                        </a>
+                        <a href="pages/quick-reference.html" style="padding: 1rem 2rem; background: rgba(74, 158, 255, 0.2); color: var(--accent-blue); border: 2px solid var(--accent-blue); border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 1.1rem; transition: transform 0.2s;">
+                            ⚡ Quick Reference
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Live Trading Session Guide CTA -->
+                <div style="text-align: center; padding: 2.5rem 2rem; background: linear-gradient(135deg, rgba(0, 255, 136, 0.15), rgba(74, 158, 255, 0.15)); border-radius: 15px; margin-bottom: 3rem; border: 2px solid rgba(0, 255, 136, 0.3); box-shadow: 0 8px 24px rgba(0,0,0,0.3);">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">📡</div>
+                    <h2 style="font-size: 2rem; margin-bottom: 1rem; color: var(--accent-green);">Ready to Trade RIGHT NOW?</h2>
+                    <p style="font-size: 1.2rem; margin-bottom: 2rem; color: var(--text-secondary); max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.8;">
+                        Get real-time market context, session analysis, and actionable trading guidance based on current time and quarterly cycle theory. Know exactly what to look for and when!
+                    </p>
+                    <a href="pages/live-session-guide.html" style="display: inline-block; padding: 1.25rem 3rem; background: var(--accent-green); color: var(--bg-primary); border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 1.2rem; box-shadow: 0 6px 20px rgba(0, 255, 136, 0.4); transition: transform 0.2s, box-shadow 0.2s;">
+                        📊 Open Live Session Guide
+                    </a>
+                    <div style="margin-top: 1.5rem; font-size: 0.9rem; color: var(--text-tertiary);">
+                        🔄 Updates every second • Session timing • Action checklist • Next key time window
+                    </div>
+                </div>
+
+                <!-- Stats Section -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 3rem;">
+                    <div style="background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 255, 136, 0.05)); padding: 1.5rem; border-radius: 12px; text-align: center; border-left: 4px solid var(--accent-green);">
+                        <div style="font-size: 2.5rem; font-weight: bold; color: var(--accent-green); margin-bottom: 0.5rem;">31+</div>
+                        <div style="color: var(--text-secondary);">Trading Patterns</div>
+                        <div style="font-size: 0.85rem; margin-top: 0.5rem; color: var(--text-tertiary);">All variations included</div>
+                    </div>
+                    <div style="background: linear-gradient(135deg, rgba(74, 158, 255, 0.1), rgba(74, 158, 255, 0.05)); padding: 1.5rem; border-radius: 12px; text-align: center; border-left: 4px solid var(--accent-blue);">
+                        <div style="font-size: 2.5rem; font-weight: bold; color: var(--accent-blue); margin-bottom: 0.5rem;">13</div>
+                        <div style="color: var(--text-secondary);">Comprehensive Pages</div>
+                        <div style="font-size: 0.85rem; margin-top: 0.5rem; color: var(--text-tertiary);">Fully documented</div>
+                    </div>
+                    <div style="background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(255, 193, 7, 0.05)); padding: 1.5rem; border-radius: 12px; text-align: center; border-left: 4px solid var(--accent-yellow);">
+                        <div style="font-size: 2.5rem; font-weight: bold; color: var(--accent-yellow); margin-bottom: 0.5rem;">100%</div>
+                        <div style="color: var(--text-secondary);">BTMM Integration</div>
+                        <div style="font-size: 0.85rem; margin-top: 0.5rem; color: var(--text-tertiary);">Complete system</div>
+                    </div>
+                    <div style="background: linear-gradient(135deg, rgba(138, 43, 226, 0.1), rgba(138, 43, 226, 0.05)); padding: 1.5rem; border-radius: 12px; text-align: center; border-left: 4px solid #8b2be2;">
+                        <div style="font-size: 2.5rem; font-weight: bold; color: #8b2be2; margin-bottom: 0.5rem;">14</div>
+                        <div style="color: var(--text-secondary);">Key Levels Tracked</div>
+                        <div style="font-size: 0.85rem; margin-top: 0.5rem; color: var(--text-tertiary);">PDH, PWH, HOD, etc.</div>
+                    </div>
+                </div>
+
+                <!-- What You'll Learn Section -->
+                <div style="background: rgba(74, 158, 255, 0.05); padding: 2rem; border-radius: 12px; margin-bottom: 3rem; border: 1px solid rgba(74, 158, 255, 0.2);">
+                    <h2 style="text-align: center; color: var(--accent-blue); margin-bottom: 2rem;">🎓 What You'll Master</h2>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+                        <div style="padding: 1.5rem; background: var(--card-bg); border-radius: 8px; border-left: 4px solid var(--accent-green);">
+                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">⏰</div>
+                            <h4 style="color: var(--accent-green); margin-bottom: 0.75rem;">Precision Timing</h4>
+                            <p style="color: var(--text-secondary); line-height: 1.6;">Know EXACTLY when to enter trades using True Opens, A-M-D-X cycles, and 22.5-minute quarters.</p>
+                        </div>
+                        <div style="padding: 1.5rem; background: var(--card-bg); border-radius: 8px; border-left: 4px solid var(--accent-yellow);">
+                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">🧠</div>
+                            <h4 style="color: var(--accent-yellow); margin-bottom: 0.75rem;">Market Maker Psychology</h4>
+                            <p style="color: var(--text-secondary); line-height: 1.6;">Understand how institutions manipulate price and learn to trade WITH them using BTMM 3-Day Cycle.</p>
+                        </div>
+                        <div style="padding: 1.5rem; background: var(--card-bg); border-radius: 8px; border-left: 4px solid var(--accent-blue);">
+                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">📊</div>
+                            <h4 style="color: var(--accent-blue); margin-bottom: 0.75rem;">31+ Pattern Setups</h4>
+                            <p style="color: var(--text-secondary); line-height: 1.6;">Master M-Top, W-Bottom, Half Batman, Type 1-4 variations, and advanced multi-day structures.</p>
+                        </div>
+                        <div style="padding: 1.5rem; background: var(--card-bg); border-radius: 8px; border-left: 4px solid #8b2be2;">
+                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">🎯</div>
+                            <h4 style="color: #8b2be2; margin-bottom: 0.75rem;">Confluence Strategy</h4>
+                            <p style="color: var(--text-secondary); line-height: 1.6;">Stack EMAs, key levels, session timing, and patterns for 75-85% win rate setups.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Philosophy Highlight -->
+                <div style="background: linear-gradient(135deg, rgba(255, 193, 7, 0.15), rgba(255, 193, 7, 0.05)); padding: 2.5rem; border-radius: 12px; margin-bottom: 3rem; border: 2px solid rgba(255, 193, 7, 0.3); text-align: center;">
+                    <h3 style="font-size: 1.8rem; color: var(--accent-yellow); margin-bottom: 1rem;">🎯 Core Philosophy</h3>
+                    <p style="font-size: 1.4rem; font-weight: bold; margin-bottom: 1rem; color: var(--text-primary);">
+                        Time + Price = Your Edge
+                    </p>
+                    <p style="max-width: 700px; margin: 0 auto; line-height: 1.8; color: var(--text-secondary);">
+                        When you combine <strong style="color: var(--accent-blue);">precise timing</strong> (knowing WHEN institutions move) with <strong style="color: var(--accent-green);">price action patterns</strong> (knowing WHERE they move), you gain an unfair advantage. This is the secret to consistent profitability.
+                    </p>
+                    <a href="pages/core-philosophy.html" style="display: inline-block; margin-top: 1.5rem; padding: 0.75rem 1.5rem; background: var(--accent-yellow); color: var(--bg-primary); border-radius: 6px; text-decoration: none; font-weight: bold;">
+                        Learn the Philosophy →
+                    </a>
+                </div>
+
+                <h3>The A-M-D-X Cycle (Every Timeframe)</h3>
+                <div class="quarters-grid">
+                    <div class="quarter-card q1">
+                        <div class="quarter-title">Q1 - Accumulation</div>
+                        <div class="quarter-desc">Tight range, consolidation<br><strong>→ OBSERVE ONLY</strong></div>
+                    </div>
+                    <div class="quarter-card q2">
+                        <div class="quarter-title">Q2 - Manipulation</div>
+                        <div class="quarter-desc">Judas Swing, stop hunt<br><strong>→ MARK LEVELS</strong></div>
+                    </div>
+                    <div class="quarter-card q3">
+                        <div class="quarter-title">Q3 - Distribution</div>
+                        <div class="quarter-desc">Real move, best entries<br><strong>→ TRADE HERE ⭐</strong></div>
+                    </div>
+                    <div class="quarter-card q4">
+                        <div class="quarter-title">Q4 - Reversal/Continuation</div>
+                        <div class="quarter-desc">Reset for next cycle<br><strong>→ CAUTION</strong></div>
+                    </div>
+                </div>
+
+                <!-- Recently Added Section -->
+                <div style="background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 255, 136, 0.05)); padding: 2rem; border-radius: 12px; margin-bottom: 3rem; border-left: 4px solid var(--accent-green);">
+                    <h3 style="color: var(--accent-green); margin-bottom: 1.5rem; text-align: center;">🆕 Recently Added: Complete BTMM Integration</h3>
+                    <div style="max-width: 900px; margin: 0 auto;">
+                        <p style="text-align: center; margin-bottom: 1.5rem; font-size: 1.1rem; color: var(--text-secondary);">
+                            <strong style="color: var(--accent-green);">31+ Total Patterns</strong> now fully integrated with Quarterly Theory!
+                        </p>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                            <div style="background: var(--card-bg); padding: 1rem; border-radius: 8px;">
+                                <div style="font-weight: bold; color: var(--accent-blue); margin-bottom: 0.5rem;">📈 Type 1-4 Variations</div>
+                                <div style="font-size: 0.9rem; color: var(--text-tertiary);">12 M/W pattern sub-types</div>
+                            </div>
+                            <div style="background: var(--card-bg); padding: 1rem; border-radius: 8px;">
+                                <div style="font-weight: bold; color: var(--accent-yellow); margin-bottom: 0.5rem;">🦇 Half Batman 1&2</div>
+                                <div style="font-size: 0.9rem; color: var(--text-tertiary);">Advanced Level 3 setups</div>
+                            </div>
+                            <div style="background: var(--card-bg); padding: 1rem; border-radius: 8px;">
+                                <div style="font-weight: bold; color: var(--accent-green); margin-bottom: 0.5rem;">🌅 2nd Leg Asia</div>
+                                <div style="font-size: 0.9rem; color: var(--text-tertiary);">London session entries</div>
+                            </div>
+                            <div style="background: var(--card-bg); padding: 1rem; border-radius: 8px;">
+                                <div style="font-weight: bold; color: #8b2be2; margin-bottom: 0.5rem;">📍 Key Level Tracking</div>
+                                <div style="font-size: 0.9rem; color: var(--text-tertiary);">14 institutional levels</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Access Section -->
+                <h2 style="text-align: center; color: var(--accent-blue); margin-bottom: 2rem;">📚 Explore Your Trading System</h2>
+                <div class="quick-access-grid" style="margin-bottom: 3rem;">
+                    <a href="pages/quick-reference.html" class="quick-card" style="background: linear-gradient(135deg, rgba(255, 193, 7, 0.15), rgba(255, 193, 7, 0.05)); border: 2px solid var(--accent-yellow);">
+                        <div class="quick-icon">⚡</div>
+                        <div class="quick-title" style="color: var(--accent-yellow);">Quick Reference</div>
+                        <div class="quick-desc">Essential rules & cheat sheet</div>
+                        <div style="margin-top: 0.5rem; font-size: 0.85rem; color: var(--accent-yellow); font-weight: bold;">★ START HERE</div>
+                    </a>
+
+                    <a href="pages/core-philosophy.html" class="quick-card">
+                        <div class="quick-icon">🎯</div>
+                        <div class="quick-title">Core Philosophy</div>
+                        <div class="quick-desc">Foundation & principles</div>
+                    </a>
+
+                    <a href="pages/weekly-schedule.html" class="quick-card">
+                        <div class="quick-icon">📅</div>
+                        <div class="quick-title">Weekly Structure</div>
+                        <div class="quick-desc">Monday-Friday strategy</div>
+                    </a>
+
+                    <a href="pages/btmm-cycle.html" class="quick-card">
+                        <div class="quick-icon">🔄</div>
+                        <div class="quick-title">BTMM 3-Day Cycle</div>
+                        <div class="quick-desc">Level I/II/III framework</div>
+                    </a>
+
+                    <a href="pages/daily-sessions.html" class="quick-card">
+                        <div class="quick-icon">🕐</div>
+                        <div class="quick-title">Daily Sessions</div>
+                        <div class="quick-desc">Asian, London, NY timing</div>
+                    </a>
+
+                    <a href="pages/micro-quarters.html" class="quick-card">
+                        <div class="quick-icon">⏱️</div>
+                        <div class="quick-title">Micro Quarters</div>
+                        <div class="quick-desc">22.5-min precision (Advanced)</div>
+                    </a>
+
+                    <a href="pages/technical-setup.html" class="quick-card" style="border: 2px solid var(--accent-green);">
+                        <div class="quick-icon">🔧</div>
+                        <div class="quick-title">Technical Setup</div>
+                        <div class="quick-desc">EMAs, TDI, Key Levels</div>
+                        <div style="margin-top: 0.5rem; font-size: 0.85rem; color: var(--accent-green); font-weight: bold;">✨ UPDATED</div>
+                    </a>
+
+                    <a href="pages/patterns.html" class="quick-card" style="border: 2px solid var(--accent-blue);">
+                        <div class="quick-icon">📊</div>
+                        <div class="quick-title">Patterns & Setups</div>
+                        <div class="quick-desc">31+ pattern variations</div>
+                        <div style="margin-top: 0.5rem; font-size: 0.85rem; color: var(--accent-blue); font-weight: bold;">✨ COMPLETE</div>
+                    </a>
+
+                    <a href="pages/entry-rules.html" class="quick-card">
+                        <div class="quick-icon">📈</div>
+                        <div class="quick-title">Entry Rules</div>
+                        <div class="quick-desc">Step-by-step entries</div>
+                    </a>
+
+                    <a href="pages/risk-management.html" class="quick-card">
+                        <div class="quick-icon">🛡️</div>
+                        <div class="quick-title">Risk Management</div>
+                        <div class="quick-desc">Position sizing & stops</div>
+                    </a>
+
+                    <a href="pages/checklist.html" class="quick-card">
+                        <div class="quick-icon">✅</div>
+                        <div class="quick-title">Trading Checklist</div>
+                        <div class="quick-desc">Daily trading routine</div>
+                    </a>
+
+                    <a href="pages/examples.html" class="quick-card">
+                        <div class="quick-icon">💡</div>
+                        <div class="quick-title">Trade Examples</div>
+                        <div class="quick-desc">Real setup analysis</div>
+                    </a>
+                </div>
+
+                <!-- Learning Path Section -->
+                <div style="background: rgba(138, 43, 226, 0.05); padding: 2.5rem 2rem; border-radius: 12px; margin-bottom: 3rem; border: 1px solid rgba(138, 43, 226, 0.2);">
+                    <h2 style="text-align: center; color: #8b2be2; margin-bottom: 2.5rem;">🎓 Your Learning Roadmap</h2>
+                    
+                    <div style="display: grid; gap: 2rem; max-width: 900px; margin: 0 auto;">
+                        <!-- Phase 1 -->
+                        <div style="display: grid; grid-template-columns: auto 1fr; gap: 1.5rem; background: var(--card-bg); padding: 1.5rem; border-radius: 10px; border-left: 4px solid var(--accent-green);">
+                            <div style="background: linear-gradient(135deg, rgba(0, 255, 136, 0.2), rgba(0, 255, 136, 0.1)); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: bold; color: var(--accent-green); flex-shrink: 0;">1</div>
+                            <div>
+                                <h4 style="color: var(--accent-green); margin-bottom: 0.5rem; font-size: 1.2rem;">🌱 Foundation (Weeks 1-4)</h4>
+                                <p style="color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.6;">Build your base understanding of timing and psychology</p>
+                                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                                    <a href="pages/core-philosophy.html" style="padding: 0.5rem 1rem; background: rgba(0, 255, 136, 0.1); color: var(--accent-green); border-radius: 6px; text-decoration: none; font-size: 0.9rem;">Core Philosophy</a>
+                                    <a href="pages/quick-reference.html" style="padding: 0.5rem 1rem; background: rgba(0, 255, 136, 0.1); color: var(--accent-green); border-radius: 6px; text-decoration: none; font-size: 0.9rem;">Quick Reference</a>
+                                    <a href="pages/daily-sessions.html" style="padding: 0.5rem 1rem; background: rgba(0, 255, 136, 0.1); color: var(--accent-green); border-radius: 6px; text-decoration: none; font-size: 0.9rem;">Daily Sessions</a>
+                                </div>
+                                <div style="margin-top: 0.75rem; font-size: 0.9rem; color: var(--text-tertiary);">✅ Goal: Understand WHY and WHEN institutions move</div>
+                            </div>
+                        </div>
+
+                        <!-- Phase 2 -->
+                        <div style="display: grid; grid-template-columns: auto 1fr; gap: 1.5rem; background: var(--card-bg); padding: 1.5rem; border-radius: 10px; border-left: 4px solid var(--accent-blue);">
+                            <div style="background: linear-gradient(135deg, rgba(74, 158, 255, 0.2), rgba(74, 158, 255, 0.1)); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: bold; color: var(--accent-blue); flex-shrink: 0;">2</div>
+                            <div>
+                                <h4 style="color: var(--accent-blue); margin-bottom: 0.5rem; font-size: 1.2rem;">📚 Application (Weeks 5-12)</h4>
+                                <p style="color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.6;">Learn the patterns and how to execute them</p>
+                                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                                    <a href="pages/patterns.html" style="padding: 0.5rem 1rem; background: rgba(74, 158, 255, 0.1); color: var(--accent-blue); border-radius: 6px; text-decoration: none; font-size: 0.9rem;">Patterns (31+)</a>
+                                    <a href="pages/entry-rules.html" style="padding: 0.5rem 1rem; background: rgba(74, 158, 255, 0.1); color: var(--accent-blue); border-radius: 6px; text-decoration: none; font-size: 0.9rem;">Entry Rules</a>
+                                    <a href="pages/btmm-cycle.html" style="padding: 0.5rem 1rem; background: rgba(74, 158, 255, 0.1); color: var(--accent-blue); border-radius: 6px; text-decoration: none; font-size: 0.9rem;">BTMM Cycle</a>
+                                </div>
+                                <div style="margin-top: 0.75rem; font-size: 0.9rem; color: var(--text-tertiary);">✅ Goal: Master M/W patterns (50+ trades, 60%+ win rate)</div>
+                            </div>
+                        </div>
+
+                        <!-- Phase 3 -->
+                        <div style="display: grid; grid-template-columns: auto 1fr; gap: 1.5rem; background: var(--card-bg); padding: 1.5rem; border-radius: 10px; border-left: 4px solid var(--accent-yellow);">
+                            <div style="background: linear-gradient(135deg, rgba(255, 193, 7, 0.2), rgba(255, 193, 7, 0.1)); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: bold; color: var(--accent-yellow); flex-shrink: 0;">3</div>
+                            <div>
+                                <h4 style="color: var(--accent-yellow); margin-bottom: 0.5rem; font-size: 1.2rem;">⚡ Practice (Months 4-6)</h4>
+                                <p style="color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.6;">Develop consistency through repetition on demo</p>
+                                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                                    <a href="pages/checklist.html" style="padding: 0.5rem 1rem; background: rgba(255, 193, 7, 0.1); color: var(--accent-yellow); border-radius: 6px; text-decoration: none; font-size: 0.9rem;">Trading Checklist</a>
+                                    <a href="pages/examples.html" style="padding: 0.5rem 1rem; background: rgba(255, 193, 7, 0.1); color: var(--accent-yellow); border-radius: 6px; text-decoration: none; font-size: 0.9rem;">Trade Examples</a>
+                                    <a href="pages/risk-management.html" style="padding: 0.5rem 1rem; background: rgba(255, 193, 7, 0.1); color: var(--accent-yellow); border-radius: 6px; text-decoration: none; font-size: 0.9rem;">Risk Management</a>
+                                </div>
+                                <div style="margin-top: 0.75rem; font-size: 0.9rem; color: var(--text-tertiary);">✅ Goal: 100+ demo trades, consistent profitability</div>
+                            </div>
+                        </div>
+
+                        <!-- Phase 4 -->
+                        <div style="display: grid; grid-template-columns: auto 1fr; gap: 1.5rem; background: var(--card-bg); padding: 1.5rem; border-radius: 10px; border-left: 4px solid #8b2be2;">
+                            <div style="background: linear-gradient(135deg, rgba(138, 43, 226, 0.2), rgba(138, 43, 226, 0.1)); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: bold; color: #8b2be2; flex-shrink: 0;">4</div>
+                            <div>
+                                <h4 style="color: #8b2be2; margin-bottom: 0.5rem; font-size: 1.2rem;">🚀 Mastery (Months 7-12+)</h4>
+                                <p style="color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.6;">Advanced patterns and professional execution</p>
+                                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                                    <a href="pages/micro-quarters.html" style="padding: 0.5rem 1rem; background: rgba(138, 43, 226, 0.1); color: #8b2be2; border-radius: 6px; text-decoration: none; font-size: 0.9rem;">Micro Quarters</a>
+                                    <a href="pages/technical-setup.html" style="padding: 0.5rem 1rem; background: rgba(138, 43, 226, 0.1); color: #8b2be2; border-radius: 6px; text-decoration: none; font-size: 0.9rem;">Advanced Setups</a>
+                                    <a href="pages/patterns.html#advanced-cycle" style="padding: 0.5rem 1rem; background: rgba(138, 43, 226, 0.1); color: #8b2be2; border-radius: 6px; text-decoration: none; font-size: 0.9rem;">12/21/22 Trade</a>
+                                </div>
+                                <div style="margin-top: 0.75rem; font-size: 0.9rem; color: var(--text-tertiary);">✅ Goal: Professional-level execution, all patterns mastered</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Call to Action -->
+                <div style="text-align: center; background: linear-gradient(135deg, rgba(0, 255, 136, 0.15), rgba(74, 158, 255, 0.15)); padding: 2.5rem 2rem; border-radius: 12px; border: 2px solid var(--accent-green);">
+                    <h3 style="font-size: 1.8rem; color: var(--accent-green); margin-bottom: 1rem;">🚀 Ready to Begin Your Journey?</h3>
+                    <p style="font-size: 1.1rem; max-width: 600px; margin: 0 auto 2rem; line-height: 1.8; color: var(--text-secondary);">
+                        Start with the <strong style="color: var(--accent-yellow);">Quick Reference</strong> to learn the essential rules, then dive into <strong style="color: var(--accent-blue);">Core Philosophy</strong> to understand the foundation.
+                    </p>
+                    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                        <a href="pages/quick-reference.html" style="padding: 1rem 2rem; background: var(--accent-yellow); color: var(--bg-primary); border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 1.1rem; box-shadow: 0 4px 12px rgba(255, 193, 7, 0.4);">
+                            ⚡ Quick Reference
+                        </a>
+                        <a href="pages/core-philosophy.html" style="padding: 1rem 2rem; background: rgba(74, 158, 255, 0.2); color: var(--accent-blue); border: 2px solid var(--accent-blue); border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 1.1rem;">
+                            🎯 Core Philosophy
+                        </a>
+                        <a href="pages/checklist.html" style="padding: 1rem 2rem; background: rgba(0, 255, 136, 0.2); color: var(--accent-green); border: 2px solid var(--accent-green); border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 1.1rem;">
+                            ✅ Daily Checklist
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <div class="footer">
+                <p><strong>Remember:</strong> The cycle repeats every 22.5 min, 90 min, session, day, week, month, year.</p>
+                <p><strong>YOUR EDGE:</strong> You know when manipulation happens and when distribution occurs.</p>
+                <p style="margin-top: 1rem; color: var(--accent-blue);">Trade Quarterly. Beat the Market Makers. Win Consistently.</p>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
+
