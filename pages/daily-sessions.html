@@ -89,6 +89,11 @@
                         <strong>🔗 Integration:</strong> BTMM Sessions = Quarterly Theory phases. They're the SAME system!
                     </div>
 
+                    <!-- LIVE CYCLE CARDS -->
+                    <div id="live-cycle-overview" style="margin: 1.5rem 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem;">
+                        <!-- Cards will be populated by JavaScript -->
+                    </div>
+
                     <table style="margin-top: 1.5rem;">
                         <tr>
                             <th>Time (EST)</th>
@@ -1461,6 +1466,169 @@
         
         updateCyclePosition();
         setInterval(updateCyclePosition, 5000); // Update every 5 seconds
+        
+        // LIVE CYCLE OVERVIEW CARDS
+        function updateLiveCycleOverview() {
+            const container = document.getElementById('live-cycle-overview');
+            if (!container) return;
+            
+            const now = new Date();
+            const estTimeString = now.toLocaleString('en-US', { 
+                timeZone: 'America/New_York',
+                hour12: false,
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            });
+            
+            const [hours, minutes, seconds] = estTimeString.split(':').map(Number);
+            const totalMinutes = hours * 60 + minutes + (seconds / 60);
+            
+            // Determine current session
+            let sessionName = '';
+            let sessionStart = 0;
+            let sessionDuration = 0;
+            let sessionColor = '';
+            let sessionBorder = '';
+            
+            if (totalMinutes >= 19 * 60 || totalMinutes < 2 * 60) {
+                sessionName = 'Asian Session';
+                sessionStart = 19 * 60;
+                sessionDuration = 7 * 60;
+                sessionColor = 'rgba(74, 158, 255, 0.1)';
+                sessionBorder = 'var(--accent-blue)';
+            } else if (totalMinutes >= 2 * 60 && totalMinutes < 9 * 60) {
+                sessionName = 'London Session';
+                sessionStart = 2 * 60;
+                sessionDuration = 7 * 60;
+                sessionColor = 'rgba(255, 215, 0, 0.1)';
+                sessionBorder = 'var(--accent-yellow)';
+            } else if (totalMinutes >= 9 * 60 && totalMinutes < 12 * 60) {
+                sessionName = 'NY Session';
+                sessionStart = 9 * 60;
+                sessionDuration = 3 * 60;
+                sessionColor = 'rgba(0, 255, 136, 0.1)';
+                sessionBorder = 'var(--accent-green)';
+            } else {
+                sessionName = 'PM Session';
+                sessionStart = 12 * 60;
+                sessionDuration = 7 * 60;
+                sessionColor = 'rgba(255, 152, 0, 0.1)';
+                sessionBorder = 'var(--accent-red)';
+            }
+            
+            // Calculate time since session start
+            let minutesSinceStart = totalMinutes >= sessionStart 
+                ? totalMinutes - sessionStart 
+                : (24 * 60 - sessionStart) + totalMinutes;
+            
+            // Daily cycle progress and time left
+            let dailyProgress = Math.min((minutesSinceStart / sessionDuration) * 100, 100);
+            let dailyTimeLeft = sessionDuration - minutesSinceStart;
+            
+            // 90-min cycle
+            let cycleNumber = Math.floor(minutesSinceStart / 90);
+            let minuteInCycle = minutesSinceStart % 90;
+            let ninetyMinProgress = (minuteInCycle / 90) * 100;
+            let ninetyMinTimeLeft = 90 - minuteInCycle;
+            
+            let quarter90 = '';
+            if (minuteInCycle < 22.5) quarter90 = 'Q1';
+            else if (minuteInCycle < 45) quarter90 = 'Q2';
+            else if (minuteInCycle < 67.5) quarter90 = 'Q3';
+            else quarter90 = 'Q4';
+            
+            // Micro cycle (22.5 min quarters)
+            let microQuarter = '';
+            let microProgress = 0;
+            let microTimeLeft = 0;
+            
+            if (minuteInCycle < 22.5) {
+                microQuarter = 'Q1 - Accumulation';
+                microProgress = (minuteInCycle / 22.5) * 100;
+                microTimeLeft = 22.5 - minuteInCycle;
+            } else if (minuteInCycle < 45) {
+                microQuarter = 'Q2 - Manipulation';
+                microProgress = ((minuteInCycle - 22.5) / 22.5) * 100;
+                microTimeLeft = 45 - minuteInCycle;
+            } else if (minuteInCycle < 67.5) {
+                microQuarter = 'Q3 - Distribution';
+                microProgress = ((minuteInCycle - 45) / 22.5) * 100;
+                microTimeLeft = 67.5 - minuteInCycle;
+            } else {
+                microQuarter = 'Q4 - Reversal';
+                microProgress = ((minuteInCycle - 67.5) / 22.5) * 100;
+                microTimeLeft = 90 - minuteInCycle;
+            }
+            
+            // Format time remaining
+            function formatTime(mins) {
+                if (mins < 0) return '0:00';
+                const hrs = Math.floor(mins / 60);
+                const min = Math.floor(mins % 60);
+                const sec = Math.floor((mins % 1) * 60);
+                
+                if (hrs > 0) {
+                    return `${hrs}h ${min}m`;
+                } else {
+                    return `${min}:${String(sec).padStart(2, '0')}`;
+                }
+            }
+            
+            container.innerHTML = `
+                <!-- Daily Cycle Card -->
+                <div style="background: linear-gradient(135deg, ${sessionColor}, rgba(0, 0, 0, 0.05)); padding: 1rem; border-radius: 8px; border: 2px solid ${sessionBorder};">
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+                        <div style="font-size: 0.75rem; color: var(--text-secondary); font-weight: bold;">🌍 DAILY CYCLE</div>
+                        <div style="font-size: 0.7rem; padding: 0.15rem 0.4rem; background: ${sessionColor}; border-radius: 4px; color: ${sessionBorder}; font-weight: bold;">Q${sessionName === 'Asian Session' ? '1' : sessionName === 'London Session' ? '2' : sessionName === 'NY Session' ? '3' : '4'}</div>
+                    </div>
+                    <div style="font-weight: bold; color: ${sessionBorder}; font-size: 1rem; margin-bottom: 0.5rem;">${sessionName}</div>
+                    <div style="background: rgba(255, 255, 255, 0.1); height: 6px; border-radius: 3px; overflow: hidden; margin-bottom: 0.5rem;">
+                        <div style="background: ${sessionBorder}; height: 100%; width: ${dailyProgress}%; transition: width 0.5s;"></div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div style="font-size: 0.7rem; color: var(--text-secondary);">${Math.round(dailyProgress)}% done</div>
+                        <div style="font-size: 0.75rem; color: ${sessionBorder}; font-weight: bold;">${formatTime(dailyTimeLeft)}</div>
+                    </div>
+                </div>
+                
+                <!-- 90-Min Cycle Card -->
+                <div style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 215, 0, 0.05)); padding: 1rem; border-radius: 8px; border: 2px solid var(--accent-yellow);">
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+                        <div style="font-size: 0.75rem; color: var(--text-secondary); font-weight: bold;">⏱️ 90-MIN CYCLE</div>
+                        <div style="font-size: 0.7rem; padding: 0.15rem 0.4rem; background: rgba(255, 215, 0, 0.25); border-radius: 4px; color: var(--accent-yellow); font-weight: bold;">${quarter90}</div>
+                    </div>
+                    <div style="font-weight: bold; color: var(--accent-yellow); font-size: 1rem; margin-bottom: 0.5rem;">Cycle ${cycleNumber + 1}</div>
+                    <div style="background: rgba(255, 255, 255, 0.1); height: 6px; border-radius: 3px; overflow: hidden; margin-bottom: 0.5rem;">
+                        <div style="background: var(--accent-yellow); height: 100%; width: ${ninetyMinProgress}%; transition: width 0.5s;"></div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div style="font-size: 0.7rem; color: var(--text-secondary);">${Math.round(ninetyMinProgress)}% done</div>
+                        <div style="font-size: 0.75rem; color: var(--accent-yellow); font-weight: bold;">${formatTime(ninetyMinTimeLeft)}</div>
+                    </div>
+                </div>
+                
+                <!-- Micro Cycle Card -->
+                <div style="background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 255, 136, 0.05)); padding: 1rem; border-radius: 8px; border: 2px solid var(--accent-green);">
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+                        <div style="font-size: 0.75rem; color: var(--text-secondary); font-weight: bold;">⚡ MICRO (22.5min)</div>
+                        <div style="font-size: 0.7rem; padding: 0.15rem 0.4rem; background: rgba(0, 255, 136, 0.25); border-radius: 4px; color: var(--accent-green); font-weight: bold;">${quarter90}</div>
+                    </div>
+                    <div style="font-weight: bold; color: var(--accent-green); font-size: 1rem; margin-bottom: 0.5rem;">${microQuarter}</div>
+                    <div style="background: rgba(255, 255, 255, 0.1); height: 6px; border-radius: 3px; overflow: hidden; margin-bottom: 0.5rem;">
+                        <div style="background: var(--accent-green); height: 100%; width: ${microProgress}%; transition: width 0.5s;"></div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div style="font-size: 0.7rem; color: var(--text-secondary);">${Math.round(microProgress)}% done</div>
+                        <div style="font-size: 0.75rem; color: var(--accent-green); font-weight: bold;">${formatTime(microTimeLeft)}</div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Initialize and update every second
+        updateLiveCycleOverview();
+        setInterval(updateLiveCycleOverview, 1000);
     </script>
     <script src="../js/keyboard-shortcuts.js"></script>
     <script src="../js/alerts.js"></script>
