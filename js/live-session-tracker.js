@@ -98,6 +98,21 @@ class LiveSessionTracker {
         else return { quarter: 'Q4', phase: 'Reversal', progress: ((minuteIn90Min - 67.5) / 22.5) * 100 };
     }
 
+    formatTimeRemaining(minutes) {
+        if (minutes < 0) return '0:00';
+        const hrs = Math.floor(minutes / 60);
+        const mins = Math.floor(minutes % 60);
+        const secs = Math.floor((minutes % 1) * 60);
+        
+        if (hrs > 0) {
+            return `${hrs}h ${mins}m`;
+        } else if (mins > 0) {
+            return `${mins}:${String(secs).padStart(2, '0')}`;
+        } else {
+            return `0:${String(secs).padStart(2, '0')}`;
+        }
+    }
+
     updateSessionIndicator(tabName) {
         const currentSession = this.getCurrentSession();
         const estNow = this.getESTTime(); // Use EST time
@@ -197,7 +212,10 @@ class LiveSessionTracker {
                         <div style="background: rgba(255, 255, 255, 0.1); height: 6px; border-radius: 3px; overflow: hidden; margin-bottom: 0.5rem;">
                             <div style="background: var(--accent-blue); height: 100%; width: ${sessionInfo.dailyProgress}%; transition: width 0.5s;"></div>
                         </div>
-                        <div style="font-size: 0.7rem; color: var(--text-secondary);">${sessionInfo.dailyPhase}</div>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div style="font-size: 0.7rem; color: var(--text-secondary);">${sessionInfo.dailyPhase}</div>
+                            <div style="font-size: 0.75rem; color: var(--accent-blue); font-weight: bold;">${sessionInfo.dailyTimeLeft}</div>
+                        </div>
                     </div>
                     
                     <!-- 90-Min Cycle Card -->
@@ -210,7 +228,10 @@ class LiveSessionTracker {
                         <div style="background: rgba(255, 255, 255, 0.1); height: 6px; border-radius: 3px; overflow: hidden; margin-bottom: 0.5rem;">
                             <div style="background: var(--accent-yellow); height: 100%; width: ${sessionInfo.ninetyMinProgress}%; transition: width 0.5s;"></div>
                         </div>
-                        <div style="font-size: 0.7rem; color: var(--text-secondary);">${sessionInfo.ninetyMinPhase}</div>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div style="font-size: 0.7rem; color: var(--text-secondary);">${sessionInfo.ninetyMinPhase}</div>
+                            <div style="font-size: 0.75rem; color: var(--accent-yellow); font-weight: bold;">${sessionInfo.ninetyMinTimeLeft}</div>
+                        </div>
                     </div>
                     
                     <!-- Micro Cycle Card -->
@@ -223,7 +244,10 @@ class LiveSessionTracker {
                         <div style="background: rgba(255, 255, 255, 0.1); height: 6px; border-radius: 3px; overflow: hidden; margin-bottom: 0.5rem;">
                             <div style="background: var(--accent-green); height: 100%; width: ${sessionInfo.microProgress}%; transition: width 0.5s;"></div>
                         </div>
-                        <div style="font-size: 0.7rem; color: var(--text-secondary);">${sessionInfo.microPhase} • ${Math.round(sessionInfo.microProgress)}% done</div>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div style="font-size: 0.7rem; color: var(--text-secondary);">${sessionInfo.microPhase}</div>
+                            <div style="font-size: 0.75rem; color: var(--accent-green); font-weight: bold;">${sessionInfo.microTimeLeft}</div>
+                        </div>
                     </div>
                 </div>
 
@@ -266,14 +290,17 @@ class LiveSessionTracker {
             dailyCycleName: '',
             dailyPhase: '',
             dailyProgress: 0,
+            dailyTimeLeft: '',
             ninetyMinCycle: '',
             ninetyMinName: '',
             ninetyMinPhase: '',
             ninetyMinProgress: 0,
+            ninetyMinTimeLeft: '',
             microCycle: '',
             microName: '',
             microPhase: '',
             microProgress: 0,
+            microTimeLeft: '',
             cycle90: '',
             progress: 0,
             actionIcon: '',
@@ -298,6 +325,10 @@ class LiveSessionTracker {
                 let asianDuration = 7 * 60; // 7 hours
                 info.dailyProgress = Math.min((minutesSinceAsianStart / asianDuration) * 100, 100);
                 
+                // Calculate time remaining for daily cycle
+                let asianTimeLeft = asianDuration - minutesSinceAsianStart;
+                info.dailyTimeLeft = this.formatTimeRemaining(asianTimeLeft);
+                
                 let asian90 = this.get90MinCycle(0, minutesSinceAsianStart);
                 
                 if (asian90) {
@@ -307,12 +338,25 @@ class LiveSessionTracker {
                     info.ninetyMinPhase = 'Observe range formation';
                     info.ninetyMinProgress = ((asian90.cycleNumber * 90 + asian90.minuteInQuarter) / (4 * 90)) * 100;
                     
+                    // Calculate 90-min cycle time remaining
+                    let ninetyMinTimeLeft = 90 - (asian90.minuteInQuarter);
+                    info.ninetyMinTimeLeft = this.formatTimeRemaining(ninetyMinTimeLeft);
+                    
                     let micro = this.getMicroCycle(asian90.minuteInQuarter);
                     info.microCycle = micro.quarter;
                     info.microName = `${micro.phase} Quarter`;
                     info.microPhase = micro.phase;
                     info.microProgress = micro.progress;
                     info.progress = micro.progress;
+                    
+                    // Calculate micro cycle time remaining (22.5 minutes per quarter)
+                    let microQuarterStart = 0;
+                    if (micro.quarter === 'Q2') microQuarterStart = 22.5;
+                    else if (micro.quarter === 'Q3') microQuarterStart = 45;
+                    else if (micro.quarter === 'Q4') microQuarterStart = 67.5;
+                    
+                    let microTimeLeft = (microQuarterStart + 22.5) - asian90.minuteInQuarter;
+                    info.microTimeLeft = this.formatTimeRemaining(microTimeLeft);
                 }
                 
                 info.actionIcon = '👀';
@@ -336,6 +380,10 @@ class LiveSessionTracker {
                 let londonDuration = 7 * 60; // 7 hours
                 info.dailyProgress = Math.min((minutesSinceLondonStart / londonDuration) * 100, 100);
                 
+                // Calculate time remaining for daily cycle
+                let londonTimeLeft = londonDuration - minutesSinceLondonStart;
+                info.dailyTimeLeft = this.formatTimeRemaining(londonTimeLeft);
+                
                 // Calculate 90-min cycle (starting from 2 AM)
                 let london90 = this.get90MinCycle(0, minutesSinceLondonStart);
                 
@@ -346,12 +394,25 @@ class LiveSessionTracker {
                     info.ninetyMinPhase = london90.quarter === 'Q2' ? 'Peak Formation Window' : 'Manipulation phase';
                     info.ninetyMinProgress = ((london90.cycleNumber * 90 + london90.minuteInQuarter) / (4 * 90)) * 100;
                     
+                    // Calculate 90-min cycle time remaining
+                    let ninetyMinTimeLeft = 90 - (london90.minuteInQuarter);
+                    info.ninetyMinTimeLeft = this.formatTimeRemaining(ninetyMinTimeLeft);
+                    
                     let micro = this.getMicroCycle(london90.minuteInQuarter);
                     info.microCycle = micro.quarter;
                     info.microName = `${micro.phase} Quarter`;
                     info.microPhase = micro.phase;
                     info.microProgress = micro.progress;
                     info.progress = micro.progress;
+                    
+                    // Calculate micro cycle time remaining
+                    let microQuarterStart = 0;
+                    if (micro.quarter === 'Q2') microQuarterStart = 22.5;
+                    else if (micro.quarter === 'Q3') microQuarterStart = 45;
+                    else if (micro.quarter === 'Q4') microQuarterStart = 67.5;
+                    
+                    let microTimeLeft = (microQuarterStart + 22.5) - london90.minuteInQuarter;
+                    info.microTimeLeft = this.formatTimeRemaining(microTimeLeft);
                     
                     // Special actions based on cycle
                     if (london90.quarter === 'Q2' && hours >= 3 && hours < 5) {
@@ -384,6 +445,10 @@ class LiveSessionTracker {
                 let nyDuration = 3 * 60; // 3 hours (prime trading window)
                 info.dailyProgress = Math.min((minutesSinceNYStart / nyDuration) * 100, 100);
                 
+                // Calculate time remaining for daily cycle
+                let nyTimeLeft = nyDuration - minutesSinceNYStart;
+                info.dailyTimeLeft = this.formatTimeRemaining(nyTimeLeft);
+                
                 // Calculate 90-min cycle (starting from 9 AM)
                 let ny90 = this.get90MinCycle(0, minutesSinceNYStart);
                 
@@ -394,12 +459,25 @@ class LiveSessionTracker {
                     info.ninetyMinPhase = ny90.quarter === 'Q3' ? 'Distribution - Prime time!' : 'Accumulation phase';
                     info.ninetyMinProgress = ((ny90.cycleNumber * 90 + ny90.minuteInQuarter) / (2 * 90)) * 100;
                     
+                    // Calculate 90-min cycle time remaining
+                    let ninetyMinTimeLeft = 90 - (ny90.minuteInQuarter);
+                    info.ninetyMinTimeLeft = this.formatTimeRemaining(ninetyMinTimeLeft);
+                    
                     let micro = this.getMicroCycle(ny90.minuteInQuarter);
                     info.microCycle = micro.quarter;
                     info.microName = `${micro.phase} Quarter`;
                     info.microPhase = micro.phase;
                     info.microProgress = micro.progress;
                     info.progress = micro.progress;
+                    
+                    // Calculate micro cycle time remaining
+                    let microQuarterStart = 0;
+                    if (micro.quarter === 'Q2') microQuarterStart = 22.5;
+                    else if (micro.quarter === 'Q3') microQuarterStart = 45;
+                    else if (micro.quarter === 'Q4') microQuarterStart = 67.5;
+                    
+                    let microTimeLeft = (microQuarterStart + 22.5) - ny90.minuteInQuarter;
+                    info.microTimeLeft = this.formatTimeRemaining(microTimeLeft);
                     
                     // Critical trading windows
                     if (hours === 9 && minutes >= 22 && minutes <= 45) {
@@ -444,6 +522,10 @@ class LiveSessionTracker {
                 let pmDuration = 7 * 60; // 7 hours
                 info.dailyProgress = Math.min((minutesSincePMStart / pmDuration) * 100, 100);
                 
+                // Calculate time remaining for daily cycle
+                let pmTimeLeft = pmDuration - minutesSincePMStart;
+                info.dailyTimeLeft = this.formatTimeRemaining(pmTimeLeft);
+                
                 // Calculate 90-min cycle (starting from 12 PM)
                 let pm90 = this.get90MinCycle(0, minutesSincePMStart);
                 
@@ -454,12 +536,25 @@ class LiveSessionTracker {
                     info.ninetyMinPhase = 'Reversal - Consolidation';
                     info.ninetyMinProgress = ((pm90.cycleNumber * 90 + pm90.minuteInQuarter) / (4 * 90)) * 100;
                     
+                    // Calculate 90-min cycle time remaining
+                    let ninetyMinTimeLeft = 90 - (pm90.minuteInQuarter);
+                    info.ninetyMinTimeLeft = this.formatTimeRemaining(ninetyMinTimeLeft);
+                    
                     let micro = this.getMicroCycle(pm90.minuteInQuarter);
                     info.microCycle = micro.quarter;
                     info.microName = `${micro.phase} Quarter`;
                     info.microPhase = micro.phase;
                     info.microProgress = micro.progress;
                     info.progress = micro.progress;
+                    
+                    // Calculate micro cycle time remaining
+                    let microQuarterStart = 0;
+                    if (micro.quarter === 'Q2') microQuarterStart = 22.5;
+                    else if (micro.quarter === 'Q3') microQuarterStart = 45;
+                    else if (micro.quarter === 'Q4') microQuarterStart = 67.5;
+                    
+                    let microTimeLeft = (microQuarterStart + 22.5) - pm90.minuteInQuarter;
+                    info.microTimeLeft = this.formatTimeRemaining(microTimeLeft);
                 }
                 
                 info.actionIcon = '📊';
