@@ -5,14 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daily Sessions - Trading Guide</title>
     <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../print.css" media="print">
 </head>
 <body>
-    <!-- Header -->
+    <!-- Skip Link -->
+    <a href="#mainContent" class="skip-link">Skip to main content</a>
+    
     <div class="header">
         <div class="header-content">
             <div>
                 <h1>Quarterly Theory & BTMM Trading Guide</h1>
-                <div class="header-subtitle">Daily Session Structure</div>
+                <div class="header-subtitle">Daily Sessions + 90-Min Cycles + Micro Quarters</div>
             </div>
             <div class="current-time">
                 <div class="time-display" id="currentTime">--:--:-- EST</div>
@@ -21,647 +24,1446 @@
         </div>
     </div>
 
-    <!-- Main Container -->
     <div class="main-container">
-        <!-- Sidebar -->
-        <aside class="sidebar">
-            <div class="search-box">
-                <input type="text" id="searchInput" placeholder="Search guide..." />
+        <nav class="sidebar" id="sidebar" aria-label="Main navigation">
+            <div class="nav-header">
+                <a href="../index.html" style="text-decoration: none; color: inherit;">
+                    <h2>📚 Trading Guide</h2>
+                </a>
             </div>
-            
-            <h3>📚 Navigation (Top-Down)</h3>
-            <ul class="nav-menu">
-                <li><a href="../index.html" class="nav-link">🏠 Home</a></li>
-                <li style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color);"><a href="core-philosophy.html" class="nav-link">🎯 Core Philosophy</a></li>
-                <li><a href="weekly-schedule.html" class="nav-link">📅 Weekly Structure</a></li>
-                <li><a href="btmm-cycle.html" class="nav-link">🔄 BTMM 3-Day Cycle</a></li>
-                <li><a href="daily-sessions.html" class="nav-link active">🕐 Daily Sessions</a></li>
-                <li><a href="micro-quarters.html" class="nav-link">⏱️ Micro Quarters</a></li>
-                <li style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color);"><a href="technical-setup.html" class="nav-link">🔧 Technical Setup</a></li>
-                <li><a href="patterns.html" class="nav-link">📊 Patterns</a></li>
-                <li><a href="entry-rules.html" class="nav-link">📈 Entry Rules</a></li>
-                <li><a href="risk-management.html" class="nav-link">🛡️ Risk Management</a></li>
-                <li><a href="checklist.html" class="nav-link">✅ Trading Checklist</a></li>
-                <li><a href="examples.html" class="nav-link">💡 Trade Examples</a></li>
-                <li style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color);"><a href="live-session-guide.html" class="nav-link">📡 Live Session Guide</a></li>
-                <li><a href="quick-reference.html" class="nav-link">⚡ Quick Reference</a></li>
-            </ul>
-        </aside>
+            <div class="search-box">
+                <label for="searchInput" class="visually-hidden">Search guide</label>
+                <input type="text" id="searchInput" placeholder="Search guide..." aria-label="Search the trading guide" />
+            </div>
+            <div class="nav-links" id="navLinks">
+                <!-- Navigation will be loaded by navigation.js -->
+            </div>
+        </nav>
 
         <!-- Content -->
-        <main class="content" id="mainContent">
+        <main class="content" id="mainContent" role="main">
             <section class="section">
+                <!-- LIVE MULTI-TIMEFRAME CYCLE BANNER -->
+                <div id="cyclePositionBanner" style="position: sticky; top: 0; z-index: 100; background: linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(20, 20, 40, 0.95)); border: 2px solid var(--accent-blue); border-radius: 12px; padding: 1rem 1.5rem; margin-bottom: 1.5rem; backdrop-filter: blur(10px); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);">
+                    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+                        <div style="flex: 1; min-width: 200px;">
+                            <div style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.25rem;">🌐 CYCLE POSITION</div>
+                            <div id="cyclePositionText" style="font-size: 1.1rem; font-weight: bold; color: var(--accent-green);">Loading...</div>
+                        </div>
+                        <div id="tradeQualityIndicator" style="padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: bold; text-align: center; min-width: 180px; animation: pulse 2s infinite;">
+                            <div style="font-size: 0.85rem; margin-bottom: 0.25rem;">TRADE QUALITY</div>
+                            <div id="tradeQualityText" style="font-size: 1.2rem;">--</div>
+                        </div>
+                        <div style="text-align: right; min-width: 150px;">
+                            <div style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.25rem;">NEXT OPTIMAL</div>
+                            <div id="nextOptimalTime" style="font-size: 1rem; font-weight: bold; color: var(--accent-yellow);">--</div>
+                        </div>
+                    </div>
+                    <div id="cycleDetails" style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid rgba(255, 255, 255, 0.1); font-size: 0.9rem; color: var(--text-secondary);"></div>
+                    
+                    <!-- KEY TRADING PHASES TIMELINE -->
+                    <div id="tradingPhasesTimeline" style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255, 255, 255, 0.1); display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;"></div>
+                </div>
+
                 <h2>🕐 Daily Session Structure (EST)</h2>
                 
                 <div class="alert alert-info">
                     <strong>💡 Key Concept:</strong> The 24-hour trading day begins at 5:00 PM EST (Daily True Open). Each session aligns with Quarterly Theory phases and BTMM cycles.
                 </div>
 
-                <div class="alert alert-success" style="margin-top: 1rem;">
-                    <strong>🔗 Integration:</strong> BTMM Sessions = Quarterly Theory phases. They're the SAME system!
+                <!-- TABBED NAVIGATION -->
+                <div class="tabs" style="margin: 2rem 0;">
+                    <button class="tab-button active" data-tab="overview">📊 Overview</button>
+                    <button class="tab-button" data-tab="asian">🌙 Asian Session</button>
+                    <button class="tab-button" data-tab="london">🌍 London Session</button>
+                    <button class="tab-button" data-tab="ny">🗽 NY Session</button>
+                    <button class="tab-button" data-tab="pm">🌆 PM Session</button>
+                    <button class="tab-button" data-tab="timing">⏰ Timing & Bias</button>
                 </div>
 
-                <table>
-                    <tr>
-                        <th>Time (EST)</th>
-                        <th>Session</th>
-                        <th>Quarterly Phase</th>
-                        <th>BTMM Phase</th>
-                        <th>Action</th>
-                    </tr>
-                    <tr style="background: rgba(74, 158, 255, 0.05);">
-                        <td><strong>5:00 PM</strong></td>
-                        <td colspan="4" style="text-align: center;"><strong>DAILY TRUE OPEN</strong> - Reset point for new 24-hour cycle</td>
-                    </tr>
-                    <tr>
-                        <td>7:00 PM - 2:00 AM</td>
-                        <td>ASIAN</td>
-                        <td>Daily Q1</td>
-                        <td>Accumulation</td>
-                        <td>OBSERVE - Mark range high/low</td>
-                    </tr>
-                    <tr style="background: rgba(255, 215, 0, 0.05);">
-                        <td><strong>1:30 AM</strong></td>
-                        <td colspan="4" style="text-align: center;"><strong>LONDON TRUE OPEN</strong> - Q2 begins</td>
-                    </tr>
-                    <tr>
-                        <td>2:00 AM - 11:00 AM</td>
-                        <td>LONDON</td>
-                        <td>Daily Q2</td>
-                        <td>Manipulation</td>
-                        <td>WATCH - Identify stop hunt & PF</td>
-                    </tr>
-                    <tr style="background: rgba(0, 255, 136, 0.05);">
-                        <td><strong>7:30 AM</strong></td>
-                        <td colspan="4" style="text-align: center;"><strong>NY TRUE OPEN</strong> - Q3 begins</td>
-                    </tr>
-                    <tr style="background: rgba(0, 255, 136, 0.08); border: 2px solid var(--accent-green);">
-                        <td><strong>9:00 AM - 10:30 AM</strong></td>
-                        <td><strong>NY Q3</strong></td>
-                        <td><strong>Daily Q3</strong></td>
-                        <td><strong>Distribution</strong></td>
-                        <td><strong>🔥 TRADE HERE! 🔥</strong></td>
-                    </tr>
-                    <tr>
-                        <td>12:00 PM - 5:00 PM</td>
-                        <td>NY PM</td>
-                        <td>Daily Q4</td>
-                        <td>Reversal/Continuation</td>
-                        <td>MANAGE - Exit or hold runners</td>
-                    </tr>
-                    <tr style="background: rgba(255, 74, 74, 0.05);">
-                        <td>4:00 PM - 7:00 PM</td>
-                        <td>GAP TIME</td>
-                        <td>Between Cycles</td>
-                        <td>Low Liquidity</td>
-                        <td>❌ DON'T TRADE</td>
-                    </tr>
-                </table>
-
-                <h3>🌙 ASIAN SESSION (7:00 PM - 2:00 AM EST)</h3>
-                <div class="card">
-                    <div class="card-title">Daily Q1 - Accumulation (BTMM: Accumulation)</div>
-                    <p><strong>Characteristics:</strong></p>
-                    <ul style="padding-left: 1.5rem;">
-                        <li>Tight range consolidation (typically 20-40 pips)</li>
-                        <li>Low volume compared to other sessions</li>
-                        <li>Market makers building positions</li>
-                        <li>Sets the range for London manipulation</li>
-                        <li>EMAs typically flat or slightly trending</li>
-                    </ul>
-                    <p style="margin-top: 1rem;"><strong>Strategy:</strong></p>
-                    <ul style="padding-left: 1.5rem;">
-                        <li><span class="badge badge-warning">OBSERVE ONLY</span></li>
-                        <li>Mark the Asian range high and low</li>
-                        <li>Tight range = Expect strong breakout in London/NY</li>
-                        <li>Extended range = Expect quieter subsequent sessions</li>
-                        <li>NO trading - just mark levels</li>
-                    </ul>
-                </div>
-
-                <h3>🌍 LONDON SESSION (2:00 AM - 11:00 AM EST)</h3>
-                <div class="card">
-                    <div class="card-title">Daily Q2 - Manipulation (BTMM: Manipulation Phase)</div>
-                    <p><strong>London True Open:</strong> 1:30 AM EST</p>
+                <!-- TAB 1: OVERVIEW -->
+                <div id="overview" class="tab-content active">
+                    <h3>📅 Session Overview & Structure</h3>
                     
-                    <p style="margin-top: 1rem;"><strong>Characteristics:</strong></p>
-                    <ul style="padding-left: 1.5rem;">
-                        <li>Break of Asian range (usually around 2:00-4:00 AM)</li>
-                        <li>"3 swipes" pattern - creates HOD or LOD (Weekly PF)</li>
-                        <li>Spreads widen to trigger stop orders</li>
-                        <li>Establishes High/Low of Day (HOD/LOD)</li>
-                        <li>30-90 min re-accumulation after initial move</li>
-                        <li><strong>EMA Signal:</strong> Look for 13/50 EMA cross = Level I begins</li>
-                        <li><strong>TDI:</strong> Sharp spike then consolidation (Shark Fin pattern)</li>
-                    </ul>
+                    <div class="alert alert-success" style="margin-top: 1rem;">
+                        <strong>🔗 Integration:</strong> BTMM Sessions = Quarterly Theory phases. They're the SAME system!
+                    </div>
 
-                    <p style="margin-top: 1rem;"><strong>Strategy:</strong></p>
-                    <ul style="padding-left: 1.5rem;">
-                        <li><span class="badge badge-info">WATCH & MARK LEVELS</span></li>
-                        <li>Identify the stop hunt direction (M or W forming)</li>
-                        <li>Mark manipulation high or low (this is your PF!)</li>
-                        <li>Wait for 30-90 min re-accumulation</li>
-                        <li>Prepare for NY distribution phase</li>
-                        <li>❌ DON'T trade during Level II consolidation</li>
-                    </ul>
+                    <table style="margin-top: 1.5rem;">
+                        <tr>
+                            <th>Time (EST)</th>
+                            <th>Session</th>
+                            <th>Quarterly Phase</th>
+                            <th>BTMM Phase</th>
+                            <th>Action</th>
+                        </tr>
+                        <tr style="background: rgba(74, 158, 255, 0.05);">
+                            <td><strong>5:00 PM</strong></td>
+                            <td colspan="4" style="text-align: center;"><strong>DAILY TRUE OPEN</strong> - Reset point for new 24-hour cycle</td>
+                        </tr>
+                        <tr>
+                            <td>7:00 PM - 2:00 AM</td>
+                            <td>ASIAN</td>
+                            <td>Daily Q1</td>
+                            <td>Accumulation</td>
+                            <td>OBSERVE - Mark range high/low</td>
+                        </tr>
+                        <tr style="background: rgba(255, 215, 0, 0.05);">
+                            <td><strong>1:30 AM</strong></td>
+                            <td colspan="4" style="text-align: center;"><strong>LONDON TRUE OPEN</strong> - Q2 begins</td>
+                        </tr>
+                        <tr>
+                            <td>2:00 AM - 11:00 AM</td>
+                            <td>LONDON</td>
+                            <td>Daily Q2</td>
+                            <td>Manipulation</td>
+                            <td>WATCH - Identify stop hunt & PF</td>
+                        </tr>
+                        <tr style="background: rgba(0, 255, 136, 0.05);">
+                            <td><strong>7:30 AM</strong></td>
+                            <td colspan="4" style="text-align: center;"><strong>NY TRUE OPEN</strong> - Q3 begins</td>
+                        </tr>
+                        <tr style="background: rgba(0, 255, 136, 0.08); border: 2px solid var(--accent-green);">
+                            <td><strong>9:00 AM - 10:30 AM</strong></td>
+                            <td><strong>NY BEST WINDOW ⭐</strong></td>
+                            <td><strong>Q3 Distribution</strong></td>
+                            <td><strong>Level III</strong></td>
+                            <td><strong>TRADE HERE!</strong></td>
+                        </tr>
+                        <tr>
+                            <td>11:00 AM - 5:00 PM</td>
+                            <td>NY PM</td>
+                            <td>Daily Q4</td>
+                            <td>Continuation/Reversal</td>
+                            <td>TRAIL/CLOSE - Lower probability</td>
+                        </tr>
+                    </table>
+
+                    <div class="pattern-card" style="margin-top: 2rem;">
+                        <h4>📊 Session Interaction & Flow:</h4>
+                        <ol style="padding-left: 1.5rem; line-height: 1.8;">
+                            <li><strong>Asian establishes range</strong> (7 PM - 2 AM) → Mark Asian High/Low</li>
+                            <li><strong>London sweeps Asian range</strong> (2 AM - 9:30 AM) → Stop hunt creates PF</li>
+                            <li><strong>NY reverses London move</strong> (9:30 AM - 12 PM) → True distribution</li>
+                            <li><strong>PM consolidates or extends</strong> (12 PM - 5 PM) → Prepare for next day</li>
+                        </ol>
+                    </div>
+
+                    <div class="alert alert-warning" style="margin-top: 1.5rem;">
+                        <strong>⚠️ Critical Rule:</strong> If London moves UP, NY will move DOWN (and vice versa) - 70%+ of the time!
+                    </div>
+
+                    <!-- Live Trading Considerations -->
+                    <div style="background: linear-gradient(135deg, rgba(74, 158, 255, 0.15), rgba(138, 43, 226, 0.15)); padding: 2rem; border-radius: 12px; margin-top: 2rem; border: 2px solid var(--accent-blue);">
+                        <h4 style="color: var(--accent-blue); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                            📊 Live Trading Considerations
+                        </h4>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+                            <div style="background: var(--card-bg); padding: 1.25rem; border-radius: 8px; border-left: 4px solid var(--accent-green);">
+                                <div style="font-weight: bold; color: var(--accent-green); margin-bottom: 0.5rem;">✅ What to Monitor</div>
+                                <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.95rem; line-height: 1.6;">
+                                    <li>Which session is currently active?</li>
+                                    <li>Time until next session opens</li>
+                                    <li>Are we in a key time window?</li>
+                                    <li>Session volume levels</li>
+                                </ul>
+                            </div>
+                            <div style="background: var(--card-bg); padding: 1.25rem; border-radius: 8px; border-left: 4px solid var(--accent-yellow);">
+                                <div style="font-weight: bold; color: var(--accent-yellow); margin-bottom: 0.5rem;">⏰ Timing is Key</div>
+                                <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.95rem; line-height: 1.6;">
+                                    <li>Best entries: 9:00-10:30 AM EST</li>
+                                    <li>Brinks Times: 9:45 AM, 3:45 AM</li>
+                                    <li>Avoid: Hour before True Opens</li>
+                                    <li>Session overlap = volatility</li>
+                                </ul>
+                            </div>
+                            <div style="background: var(--card-bg); padding: 1.25rem; border-radius: 8px; border-left: 4px solid var(--accent-red);">
+                                <div style="font-weight: bold; color: var(--accent-red); margin-bottom: 0.5rem;">⚠️ Risk Management</div>
+                                <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.95rem; line-height: 1.6;">
+                                    <li>Max 1-2% risk per trade</li>
+                                    <li>No more than 3 positions open</li>
+                                    <li>Tighter stops during low volume</li>
+                                    <li>Scale out at targets (TP1, TP2, TP3)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <h4>London 90-Minute Quarters</h4>
-                <div class="quarters-grid">
-                    <div class="quarter-card q1">
-                        <div class="quarter-title">12:00am - 1:30am</div>
-                        <div class="quarter-desc">Pre-manipulation<br>Price coiling for move</div>
-                    </div>
-                    <div class="quarter-card q2">
-                        <div class="quarter-title">1:30am - 3:00am</div>
-                        <div class="quarter-desc">Manipulation begins<br><strong>True London Open</strong></div>
-                    </div>
-                    <div class="quarter-card q3">
-                        <div class="quarter-title">3:00am - 4:30am</div>
-                        <div class="quarter-desc">Direction becoming clear<br>Early distribution</div>
-                    </div>
-                    <div class="quarter-card q4">
-                        <div class="quarter-title">4:30am - 6:00am</div>
-                        <div class="quarter-desc">Continuation or handoff<br>Prepare for NY</div>
-                    </div>
-                </div>
-
-                <h3>🗽 NEW YORK SESSION (7:30 AM - 5:00 PM EST)</h3>
-                <div class="card" style="border: 3px solid var(--accent-green); background: rgba(0, 255, 136, 0.05);">
-                    <div class="card-title" style="color: var(--accent-green);">Daily Q3 - Distribution ⭐⭐⭐ (BTMM: Level III)</div>
-                    <p><strong>NY True Open:</strong> 7:30 AM EST</p>
-                    <p><strong>PRIME ENTRY WINDOW:</strong> 9:00-10:30 AM EST 🔥</p>
+                <!-- TAB 2: ASIAN SESSION -->
+                <div id="asian" class="tab-content">
+                    <h3>🌙 ASIAN SESSION (7:00 PM - 2:00 AM EST)</h3>
                     
-                    <p style="margin-top: 1rem;"><strong>Characteristics:</strong></p>
-                    <ul style="padding-left: 1.5rem;">
-                        <li>Highest volume session of the day</li>
-                        <li>Real trend develops (100-150+ pip moves)</li>
-                        <li>Clearest price action and follow-through</li>
-                        <li>Best risk/reward opportunities</li>
-                        <li>Multiple entry opportunities in Q3 (9:00-10:30 AM)</li>
-                        <li><strong>EMA Signal:</strong> 50/800 or 200/800 cross = Level III confirmed!</li>
-                        <li><strong>TDI:</strong> Strong directional move, RSI pushing extremes</li>
-                        <li>Market makers RETURN - final distribution push</li>
-                    </ul>
+                    <div class="card" style="border-left: 4px solid var(--accent-blue);">
+                        <div class="card-title">Daily Q1 - Accumulation (BTMM: Accumulation)</div>
+                        
+                        <h4 style="color: var(--accent-yellow); margin-top: 1rem;">Characteristics:</h4>
+                        <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                            <li><strong>Low volatility</strong> - Typically 40-80 pip range</li>
+                            <li><strong>Tight consolidation</strong> - Slow, choppy price action</li>
+                            <li><strong>Range-bound</strong> - Price stays within Asian High/Low</li>
+                            <li><strong>Accumulation phase</strong> - Market makers positioning</li>
+                            <li><strong>Gap from previous day's close</strong> - Creates imbalance</li>
+                        </ul>
 
-                    <p style="margin-top: 1rem;"><strong>Strategy:</strong></p>
-                    <ul style="padding-left: 1.5rem;">
-                        <li><span class="badge badge-success">🔥 TRADE HERE - PRIMARY WINDOW 🔥</span></li>
-                        <li>Enter in NY Q3 (9:00-10:30 AM) - BEST TIME!</li>
-                        <li>Trade in direction opposite to London manipulation</li>
-                        <li>Look for M or W pattern completion at London PF</li>
-                        <li>Best entries after 7:30 AM True Open sweep</li>
-                        <li>Use full position size (within risk rules)</li>
-                        <li>Target TP2 and TP3 - let winners run!</li>
-                    </ul>
-                </div>
-
-                <h4>New York 90-Minute Quarters</h4>
-                <div class="quarters-grid">
-                    <div class="quarter-card q1">
-                        <div class="quarter-title">6:00am - 7:30am</div>
-                        <div class="quarter-desc">Pre-open positioning<br>Final accumulation</div>
-                    </div>
-                    <div class="quarter-card q2">
-                        <div class="quarter-title">7:30am - 9:00am</div>
-                        <div class="quarter-desc">Manipulation phase<br><strong>True NY Open ⚠️</strong></div>
-                    </div>
-                    <div class="quarter-card q3">
-                        <div class="quarter-title">9:00am - 10:30am</div>
-                        <div class="quarter-desc"><strong>PRIME ENTRY TIME ⭐⭐⭐</strong><br>Distribution begins</div>
-                    </div>
-                    <div class="quarter-card q4">
-                        <div class="quarter-title">10:30am - 12:00pm</div>
-                        <div class="quarter-desc">Trend continuation<br>Trail stops</div>
-                    </div>
-                </div>
-
-                <div class="alert alert-success">
-                    <h4 style="margin-bottom: 0.5rem;">🎯 Best Entry Window</h4>
-                    <p><strong>9:00 AM - 10:30 AM EST</strong></p>
-                    <p>This is when Daily Q3, Session Q3, and often 90-Min Q3 align = Maximum probability!</p>
-                </div>
-
-                <h3>🌆 NEW YORK PM SESSION (12:00 PM - 6:00 PM EST)</h3>
-                <div class="card">
-                    <div class="card-title">Daily Q4 - Reversal/Continuation</div>
-                    <p><strong>True PM Open:</strong> 1:30pm</p>
-                    
-                    <p style="margin-top: 1rem;"><strong>Characteristics:</strong></p>
-                    <ul style="padding-left: 1.5rem;">
-                        <li>Volume decreases after 12pm</li>
-                        <li>Profit-taking from morning positions</li>
-                        <li>Price often returns toward daily open</li>
-                        <li>Market decides next direction</li>
-                        <li>Sets up for next day's cycle</li>
-                    </ul>
-
-                    <p style="margin-top: 1rem;"><strong>Strategy:</strong></p>
-                    <ul style="padding-left: 1.5rem;">
-                        <li><span class="badge badge-warning">CAUTION - Manage Existing Trades</span></li>
-                        <li>Take profits from morning trades</li>
-                        <li>Avoid new positions unless clear setup</li>
-                        <li>Can trade pullbacks in established trend</li>
-                        <li>Prepare for next trading day</li>
-                    </ul>
-                </div>
-
-                <h3>📊 Session Interaction & Flow</h3>
-                <div class="pattern-card">
-                    <h4>Typical Daily Flow:</h4>
-                    <ol style="padding-left: 1.5rem;">
-                        <li><strong>Asian (6pm-12am):</strong> Establishes tight range</li>
-                        <li><strong>London (12am-6am):</strong> Breaks range, creates HOD/LOD, stop hunt</li>
-                        <li><strong>NY AM (6am-12pm):</strong> Distributes opposite to London manipulation</li>
-                        <li><strong>NY PM (12pm-6pm):</strong> Continuation or reversal, profit-taking</li>
-                    </ol>
-
-                    <p style="margin-top: 1rem;"><strong>Example Bearish Day:</strong></p>
-                    <ul style="padding-left: 1.5rem;">
-                        <li>Asian: Range 1.0850-1.0865</li>
-                        <li>London: Pumps to 1.0895 (M pattern, stop hunt above)</li>
-                        <li>NY: Distributes down from 1.0880 → 1.0800 (80 pips)</li>
-                        <li>PM: Consolidates 1.0800-1.0820, sets up next day</li>
-                    </ul>
-                </div>
-
-                <h3>🔑 Key Takeaways</h3>
-                <div class="alert alert-info">
-                    <ul style="padding-left: 1.5rem; margin: 0;">
-                        <li><strong>Asian:</strong> Mark the range, don't trade it</li>
-                        <li><strong>London:</strong> Identify manipulation, mark levels</li>
-                        <li><strong>NY AM:</strong> Your primary trading window (9:00-10:30 AM)</li>
-                        <li><strong>NY PM:</strong> Manage trades, take profits</li>
-                        <li><strong>Best trades:</strong> Enter NY Q3 opposite to London manipulation</li>
-                    </ul>
-                </div>
-
-                <h3 style="margin-top: 3rem;">📊 ASIAN RANGE MONITORING & DAILY PATTERN</h3>
-                
-                <div class="pattern-card" style="border-left: 4px solid var(--accent-blue);">
-                    <div class="pattern-title">Using Asian Session as Daily Reference</div>
-                    
-                    <div class="alert alert-info">
-                        <strong>🎯 Key Concept:</strong> The Asian session range acts as a liquidity map for London and NY sessions!
-                    </div>
-
-                    <h4 style="color: var(--accent-blue); margin-top: 1.5rem;">📍 What to Mark:</h4>
-                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 1rem;">
-                        <div class="card" style="border-left: 4px solid var(--accent-green);">
-                            <h4 style="color: var(--accent-green);">Asian High (AH)</h4>
-                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
-                                <li>Highest point during 7:00 PM - 2:00 AM EST</li>
-                                <li>Acts as resistance for liquidity sweep</li>
-                                <li>Often gets "swiped" in London session</li>
-                                <li><strong>Action:</strong> Mark as dashed horizontal line</li>
+                        <h4 style="color: var(--accent-green); margin-top: 1.5rem;">Your Strategy:</h4>
+                        <div class="alert alert-info">
+                            <p><strong>DO NOT TRADE!</strong> (Unless scalping within tight range)</p>
+                            <ul style="padding-left: 1.5rem; margin-top: 0.5rem;">
+                                <li>✅ Mark Asian High (AR High)</li>
+                                <li>✅ Mark Asian Low (AR Low)</li>
+                                <li>✅ Calculate 50% midpoint</li>
+                                <li>✅ Set alerts for range breakouts</li>
+                                <li>✅ Note range size (HOW-LOW pips)</li>
                             </ul>
                         </div>
 
-                        <div class="card" style="border-left: 4px solid var(--accent-red);">
-                            <h4 style="color: var(--accent-red);">Asian Low (AL)</h4>
-                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
-                                <li>Lowest point during Asian session</li>
-                                <li>Acts as support for liquidity sweep</li>
-                                <li>Often gets "swiped" in London session</li>
-                                <li><strong>Action:</strong> Mark as dashed horizontal line</li>
+                        <h4 style="color: var(--accent-yellow); margin-top: 1.5rem;">Why Asian Range Matters:</h4>
+                        <p style="line-height: 1.8;">The Asian range becomes your <strong>reference point</strong> for the entire day. London will typically sweep one side of this range (stop hunt), then NY will reverse through it.</p>
+                        
+                        <!-- FRACTAL: 90-Minute Session Cycles -->
+                        <div style="margin-top: 2rem; padding: 1.5rem; background: linear-gradient(135deg, rgba(74, 158, 255, 0.1), rgba(138, 43, 226, 0.1)); border-radius: 12px; border: 2px solid rgba(74, 158, 255, 0.3);">
+                            <h4 style="color: var(--accent-blue); margin-bottom: 1rem;">🔄 Fractal Structure: 90-Minute Session Cycles</h4>
+                            <p style="color: var(--text-secondary); margin-bottom: 1rem;">Asian Session divides into 4x 90-minute quarters (macros):</p>
+                            
+                            <table style="width: 100%; margin-top: 1rem;">
+                                <tr style="background: rgba(74, 158, 255, 0.1);">
+                                    <th>Time (EST)</th>
+                                    <th>90-Min Quarter</th>
+                                    <th>Phase</th>
+                                    <th>Daily + Session Alignment</th>
+                                </tr>
+                                <tr>
+                                    <td><strong>7:00 PM - 8:30 PM</strong></td>
+                                    <td>Session Q1</td>
+                                    <td>Accumulation</td>
+                                    <td><span style="background: rgba(74, 158, 255, 0.2); padding: 0.25rem 0.5rem; border-radius: 4px; font-weight: bold;">Daily Q1 + Session Q1 = Double Accumulation</span></td>
+                                </tr>
+                                <tr style="background: rgba(255, 255, 255, 0.02);">
+                                    <td><strong>8:30 PM - 10:00 PM</strong></td>
+                                    <td>Session Q2</td>
+                                    <td>Manipulation</td>
+                                    <td><span style="background: rgba(255, 215, 0, 0.2); padding: 0.25rem 0.5rem; border-radius: 4px;">Daily Q1 + Session Q2</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>10:00 PM - 11:30 PM</strong></td>
+                                    <td>Session Q3</td>
+                                    <td>Distribution</td>
+                                    <td><span style="background: rgba(0, 255, 136, 0.2); padding: 0.25rem 0.5rem; border-radius: 4px;">Daily Q1 + Session Q3</span></td>
+                                </tr>
+                                <tr style="background: rgba(255, 255, 255, 0.02);">
+                                    <td><strong>11:30 PM - 1:00 AM</strong></td>
+                                    <td>Session Q4</td>
+                                    <td>Reversal</td>
+                                    <td><span style="background: rgba(255, 87, 34, 0.2); padding: 0.25rem 0.5rem; border-radius: 4px;">Daily Q1 + Session Q4</span></td>
+                                </tr>
+                            </table>
+                            
+                            <div class="alert alert-info" style="margin-top: 1rem;">
+                                <strong>📊 Probability Note:</strong> Since Daily Cycle is Q1 (Accumulation) during entire Asian session, even the Session Q3 (10-11:30 PM) has lower probability than when both align in Q3 (like NY Session).
+                            </div>
+                        </div>
+                        
+                        <div class="pattern-card" style="margin-top: 1rem; border-left: 4px solid var(--accent-green);">
+                            <p><strong>Example:</strong></p>
+                            <p>Asian Range: 1.2500 (Low) to 1.2580 (High)</p>
+                            <p>Midpoint: 1.2540</p>
+                            <p>→ London sweeps above 1.2580 (stop hunt)</p>
+                            <p>→ NY reverses below 1.2500 (real move)</p>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-warning" style="margin-top: 1.5rem;">
+                        <strong>🔔 Best Practice:</strong> Go to sleep knowing your Asian levels. When London starts (1:30 AM), you'll wake up to a clear picture of manipulation.
+                    </div>
+
+                    <!-- Cycle Theory Timing for Asian Session -->
+                    <h4 style="margin-top: 2rem; color: var(--accent-blue);">🔄 Cycle Theory: Asian Session Breakdown</h4>
+                    <div class="pattern-card" style="border-left: 4px solid var(--accent-blue);">
+                        <h4 style="color: var(--accent-yellow);">Daily Cycle Position:</h4>
+                        <p><strong>Asian Session = Daily Q1 (Accumulation Phase)</strong></p>
+                        <p>The entire 7-hour Asian session represents the ACCUMULATION phase of the daily cycle.</p>
+
+                        <h4 style="color: var(--accent-green); margin-top: 1.5rem;">90-Minute Cycles Within Asian:</h4>
+                        <div class="quarters-grid" style="margin-top: 1rem;">
+                            <div class="quarter-card q1">
+                                <div class="quarter-title">7:00 PM - 8:30 PM</div>
+                                <div class="quarter-desc">Asian Q1<br>Accumulation begins</div>
+                            </div>
+                            <div class="quarter-card q2">
+                                <div class="quarter-title">8:30 PM - 10:00 PM</div>
+                                <div class="quarter-desc">Asian Q2<br>Manipulation (minor)</div>
+                            </div>
+                            <div class="quarter-card q3">
+                                <div class="quarter-title">10:00 PM - 11:30 PM</div>
+                                <div class="quarter-desc">Asian Q3<br>Distribution (minor)</div>
+                            </div>
+                            <div class="quarter-card q4">
+                                <div class="quarter-title">11:30 PM - 1:00 AM</div>
+                                <div class="quarter-desc">Asian Q4<br>Reversal/Setup for London</div>
+                            </div>
+                        </div>
+
+                        <h4 style="color: var(--accent-yellow); margin-top: 1.5rem;">22.5-Minute Micro Quarters (Example: First 90-Min):</h4>
+                        <table style="margin-top: 1rem; font-size: 0.9rem;">
+                            <tr>
+                                <th>Time</th>
+                                <th>Micro Phase</th>
+                                <th>What's Happening</th>
+                            </tr>
+                            <tr style="background: rgba(74, 158, 255, 0.05);">
+                                <td>7:00 - 7:22 PM</td>
+                                <td>Q1 Accumulation</td>
+                                <td>Tight range, observe</td>
+                            </tr>
+                            <tr style="background: rgba(255, 215, 0, 0.05);">
+                                <td>7:22 - 7:45 PM</td>
+                                <td>Q2 Manipulation</td>
+                                <td>Minor sweep, stop hunt</td>
+                            </tr>
+                            <tr style="background: rgba(0, 255, 136, 0.05);">
+                                <td>7:45 - 8:07 PM</td>
+                                <td>Q3 Distribution</td>
+                                <td>Mini move completes</td>
+                            </tr>
+                            <tr>
+                                <td>8:07 - 8:30 PM</td>
+                                <td>Q4 Reversal</td>
+                                <td>Reset for next 90-min</td>
+                            </tr>
+                        </table>
+
+                        <div class="alert alert-info" style="margin-top: 1rem;">
+                            <strong>💡 Key Insight:</strong> Asian session is ONE big accumulation phase (Daily Q1), but it contains its own 90-minute and 22.5-minute cycles. Most traders ignore these micro cycles during Asian - which is correct! Just mark the levels.
+                        </div>
+                    </div>
+
+                    <!-- Live Trading Considerations -->
+                    <div style="background: linear-gradient(135deg, rgba(74, 158, 255, 0.15), rgba(138, 43, 226, 0.15)); padding: 2rem; border-radius: 12px; margin-top: 2rem; border: 2px solid var(--accent-blue);">
+                        <h4 style="color: var(--accent-blue); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                            🌙 Asian Session Live Considerations
+                        </h4>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+                            <div style="background: var(--card-bg); padding: 1.25rem; border-radius: 8px; border-left: 4px solid var(--accent-green);">
+                                <div style="font-weight: bold; color: var(--accent-green); margin-bottom: 0.5rem;">✅ Pre-Market Routine</div>
+                                <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.95rem; line-height: 1.6;">
+                                    <li>Set alerts at Asian High/Low</li>
+                                    <li>Mark 50% midpoint on chart</li>
+                                    <li>Note range size (tight = explosive)</li>
+                                    <li>Prepare watchlist for London</li>
+                                </ul>
+                            </div>
+                            <div style="background: var(--card-bg); padding: 1.25rem; border-radius: 8px; border-left: 4px solid var(--accent-yellow);">
+                                <div style="font-weight: bold; color: var(--accent-yellow); margin-bottom: 0.5rem;">📊 What to Track</div>
+                                <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.95rem; line-height: 1.6;">
+                                    <li>Asian High: _______</li>
+                                    <li>Asian Low: _______</li>
+                                    <li>Midpoint: _______</li>
+                                    <li>Range: _______ pips</li>
+                                </ul>
+                            </div>
+                            <div style="background: var(--card-bg); padding: 1.25rem; border-radius: 8px; border-left: 4px solid var(--accent-red);">
+                                <div style="font-weight: bold; color: var(--accent-red); margin-bottom: 0.5rem;">🚫 Trading Rules</div>
+                                <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.95rem; line-height: 1.6;">
+                                    <li><strong>DO NOT TRADE</strong> during Asian</li>
+                                    <li>Only observe & mark levels</li>
+                                    <li>No scalping (unless expert)</li>
+                                    <li>Save capital for NY session</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 3: LONDON SESSION -->
+                <div id="london" class="tab-content">
+                    <h3>🌍 LONDON SESSION (2:00 AM - 11:00 AM EST)</h3>
+                    
+                    <div class="card" style="border-left: 4px solid var(--accent-yellow);">
+                        <div class="card-title">Daily Q2 - Manipulation (BTMM: Manipulation Phase)</div>
+                        <p><strong>London True Open:</strong> 1:30 AM EST</p>
+                        
+                        <h4 style="color: var(--accent-yellow); margin-top: 1rem;">Characteristics:</h4>
+                        <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                            <li><strong>HIGH volatility</strong> - Largest moves of the day</li>
+                            <li><strong>Stop hunting</strong> - Sweeps Asian High OR Low</li>
+                            <li><strong>False breakouts</strong> - Creates "Peak Formation" (PF)</li>
+                            <li><strong>Manipulation complete</strong> - Retail trapped in wrong positions</li>
+                            <li><strong>Volume imbalance</strong> - Sets up for NY reversal</li>
+                        </ul>
+
+                        <h4 style="color: var(--accent-green); margin-top: 1.5rem;">Your Strategy:</h4>
+                        <div class="alert alert-warning">
+                            <p><strong>WATCH & MARK - Don't Chase!</strong></p>
+                            <ul style="padding-left: 1.5rem; margin-top: 0.5rem;">
+                                <li>✅ Did London sweep Asian High or Low?</li>
+                                <li>✅ Mark Peak Formation (PF) - extreme high or low</li>
+                                <li>✅ Wait for first rejection/reversal signal</li>
+                                <li>✅ Prepare for NY to trade opposite direction</li>
+                                <li>✅ Note if PF occurs near 4-6 AM (typical)</li>
                             </ul>
                         </div>
 
-                        <div class="card" style="border-left: 4px solid var(--accent-yellow);">
-                            <h4 style="color: var(--accent-yellow);">Asian Midpoint (50%)</h4>
-                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
-                                <li>Halfway between AH and AL</li>
-                                <li>Critical bounce/rejection zone</li>
-                                <li>Price often returns to midpoint</li>
-                                <li><strong>Action:</strong> Mark as dotted line</li>
+                        <div class="pattern-card" style="margin-top: 1.5rem; border-left: 4px solid var(--accent-red);">
+                            <h4>🎯 London PF (Peak Formation) Strategy:</h4>
+                            <p><strong>If London makes NEW HIGH:</strong></p>
+                            <ul style="padding-left: 1.5rem;">
+                                <li>→ Expect NY to distribute DOWN</li>
+                                <li>→ Look for M-Top pattern</li>
+                                <li>→ Sell at PF rejection</li>
                             </ul>
-                        </div>
-
-                        <div class="card" style="border-left: 4px solid var(--accent-blue);">
-                            <h4 style="color: var(--accent-blue);">Asian Range Size</h4>
-                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
-                                <li><strong>Tight Range (< 30 pips):</strong> Expect explosive breakout</li>
-                                <li><strong>Normal Range (30-60 pips):</strong> Standard volatility expected</li>
-                                <li><strong>Wide Range (> 60 pips):</strong> Expect quieter London/NY</li>
+                            <p style="margin-top: 1rem;"><strong>If London makes NEW LOW:</strong></p>
+                            <ul style="padding-left: 1.5rem;">
+                                <li>→ Expect NY to distribute UP</li>
+                                <li>→ Look for W-Bottom pattern</li>
+                                <li>→ Buy at PF rejection</li>
                             </ul>
                         </div>
                     </div>
 
-                    <h4 style="color: var(--accent-green); margin-top: 2rem;">🎯 Daily Pattern Recognition:</h4>
-                    <div class="card">
-                        <p><strong>Monitor the Daily Cycle for:</strong></p>
-                        <ol style="padding-left: 1.5rem; line-height: 1.8; margin-top: 0.5rem;">
-                            <li><strong>Reversal Signals:</strong>
-                                <ul style="padding-left: 1.5rem; margin-top: 0.5rem;">
-                                    <li>Price reaches ADR boundary</li>
-                                    <li>M or W pattern forms at HOD/LOD</li>
-                                    <li>TDI Shark Fin at extreme</li>
-                                    <li>D1 zone flip completes</li>
+                    <h4 style="margin-top: 2rem;">⏰ Key London Times:</h4>
+                    <table>
+                        <tr>
+                            <th>Time</th>
+                            <th>Event</th>
+                            <th>Significance</th>
+                        </tr>
+                        <tr>
+                            <td><strong>1:30 AM</strong></td>
+                            <td>London True Open</td>
+                            <td>Initial momentum begins</td>
+                        </tr>
+                        <tr style="background: rgba(255, 215, 0, 0.1);">
+                            <td><strong>3:45 AM</strong></td>
+                            <td>London Brinks Time</td>
+                            <td>⭐ Major liquidity spike</td>
+                        </tr>
+                        <tr>
+                            <td><strong>4:00-6:00 AM</strong></td>
+                            <td>PF Window</td>
+                            <td>Peak Formation typically forms</td>
+                        </tr>
+                        <tr>
+                            <td><strong>8:30 AM</strong></td>
+                            <td>US Data Release</td>
+                            <td>High volatility (NFP, CPI, etc.)</td>
+                        </tr>
+                    </table>
+
+                    <!-- Cycle Theory Timing for London Session -->
+                    <h4 style="margin-top: 2rem; color: var(--accent-yellow);">🔄 Cycle Theory: London Session Breakdown</h4>
+                    <div class="pattern-card" style="border-left: 4px solid var(--accent-yellow);">
+                        <h4 style="color: var(--accent-yellow);">Daily Cycle Position:</h4>
+                        <p><strong>London Session = Daily Q2 (Manipulation Phase)</strong></p>
+                        <p>London creates the Peak Formation (PF) that NY will trade against. This is THE stop hunt!</p>
+
+                        <h4 style="color: var(--accent-green); margin-top: 1.5rem;">90-Minute Cycles Within London:</h4>
+                        <div class="quarters-grid" style="margin-top: 1rem;">
+                            <div class="quarter-card q1">
+                                <div class="quarter-title">1:30 AM - 3:00 AM</div>
+                                <div class="quarter-desc">London Q1<br>True Open, initial move</div>
+                            </div>
+                            <div class="quarter-card q2">
+                                <div class="quarter-title">3:00 AM - 4:30 AM</div>
+                                <div class="quarter-desc">London Q2<br><strong>PF forms here! ⭐</strong></div>
+                            </div>
+                            <div class="quarter-card q3">
+                                <div class="quarter-title">4:30 AM - 6:00 AM</div>
+                                <div class="quarter-desc">London Q3<br>Manipulation extension</div>
+                            </div>
+                            <div class="quarter-card q4">
+                                <div class="quarter-title">6:00 AM - 7:30 AM</div>
+                                <div class="quarter-desc">London Q4<br>Pre-NY positioning</div>
+                            </div>
+                        </div>
+                        
+                        <!-- FRACTAL ALIGNMENT TABLE -->
+                        <div style="margin-top: 2rem; padding: 1.5rem; background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 215, 0, 0.05)); border-radius: 12px; border: 2px solid rgba(255, 215, 0, 0.3);">
+                            <h4 style="color: var(--accent-yellow); margin-bottom: 1rem;">🎯 Multi-Timeframe Alignment - London Session</h4>
+                            
+                            <table style="width: 100%; margin-top: 1rem;">
+                                <tr style="background: rgba(255, 215, 0, 0.1);">
+                                    <th>Time (EST)</th>
+                                    <th>90-Min Quarter</th>
+                                    <th>Phase</th>
+                                    <th>Daily + Session Alignment</th>
+                                    <th>Probability</th>
+                                </tr>
+                                <tr>
+                                    <td><strong>1:30 AM - 3:00 AM</strong></td>
+                                    <td>Session Q1</td>
+                                    <td>Accumulation</td>
+                                    <td><span style="background: rgba(255, 215, 0, 0.2); padding: 0.25rem 0.5rem; border-radius: 4px;">Daily Q2 + Session Q1</span></td>
+                                    <td>Medium</td>
+                                </tr>
+                                <tr style="background: rgba(255, 215, 0, 0.05); border: 2px solid var(--accent-yellow);">
+                                    <td><strong>3:00 AM - 4:30 AM</strong></td>
+                                    <td>Session Q2</td>
+                                    <td>Manipulation</td>
+                                    <td><span style="background: rgba(255, 215, 0, 0.3); padding: 0.25rem 0.5rem; border-radius: 4px; font-weight: bold;">Daily Q2 + Session Q2 = DOUBLE MANIPULATION ⭐</span></td>
+                                    <td><strong>HIGH - PF Window!</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>4:30 AM - 6:00 AM</strong></td>
+                                    <td>Session Q3</td>
+                                    <td>Distribution</td>
+                                    <td><span style="background: rgba(0, 255, 136, 0.2); padding: 0.25rem 0.5rem; border-radius: 4px;">Daily Q2 + Session Q3</span></td>
+                                    <td>Medium</td>
+                                </tr>
+                                <tr style="background: rgba(255, 255, 255, 0.02);">
+                                    <td><strong>6:00 AM - 7:30 AM</strong></td>
+                                    <td>Session Q4</td>
+                                    <td>Reversal</td>
+                                    <td><span style="background: rgba(255, 87, 34, 0.2); padding: 0.25rem 0.5rem; border-radius: 4px;">Daily Q2 + Session Q4</span></td>
+                                    <td>Medium</td>
+                                </tr>
+                            </table>
+                            
+                            <div class="alert alert-success" style="margin-top: 1rem;">
+                                <strong>🔥 Key Insight:</strong> 3:00-4:30 AM is when BOTH Daily and Session cycles are in Q2 (Manipulation). This is THE Peak Formation window! When both align in manipulation = maximum stop hunt probability.
+                            </div>
+                        </div>
+
+                        <h4 style="color: var(--accent-blue); margin-top: 1.5rem;">22.5-Minute Micro Quarters (3:00-4:30 AM - PF Window):</h4>
+                        <table style="margin-top: 1rem; font-size: 0.9rem;">
+                            <tr>
+                                <th>Time</th>
+                                <th>Micro Phase</th>
+                                <th>What's Happening</th>
+                            </tr>
+                            <tr style="background: rgba(74, 158, 255, 0.05);">
+                                <td>3:00 - 3:22 AM</td>
+                                <td>Q1 Accumulation</td>
+                                <td>Building for big move</td>
+                            </tr>
+                            <tr style="background: rgba(255, 215, 0, 0.05);">
+                                <td>3:22 - 3:45 AM</td>
+                                <td>Q2 Manipulation</td>
+                                <td><strong>Brinks Time! ⭐</strong></td>
+                            </tr>
+                            <tr style="background: rgba(0, 255, 136, 0.05);">
+                                <td>3:45 - 4:07 AM</td>
+                                <td>Q3 Distribution</td>
+                                <td>PF High/Low formed</td>
+                            </tr>
+                            <tr>
+                                <td>4:07 - 4:30 AM</td>
+                                <td>Q4 Reversal</td>
+                                <td>First rejection signals</td>
+                            </tr>
+                        </table>
+
+                        <div class="alert alert-success" style="margin-top: 1rem;">
+                            <strong>🎯 Trading Edge:</strong> The London Q2 (3:00-4:30 AM) is when Peak Formation typically completes. Within this 90-min window, the 3:45 AM Brinks Time (micro Q2) is the EXACT liquidity spike where PF often forms. Mark this level - NY will trade opposite!
+                        </div>
+                    </div>
+
+                    <!-- Live Trading Considerations -->
+                    <div style="background: linear-gradient(135deg, rgba(255, 193, 7, 0.15), rgba(255, 152, 0, 0.15)); padding: 2rem; border-radius: 12px; margin-top: 2rem; border: 2px solid var(--accent-yellow);">
+                        <h4 style="color: var(--accent-yellow); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                            🌍 London Session Live Considerations
+                        </h4>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+                            <div style="background: var(--card-bg); padding: 1.25rem; border-radius: 8px; border-left: 4px solid var(--accent-green);">
+                                <div style="font-weight: bold; color: var(--accent-green); margin-bottom: 0.5rem;">✅ Key Questions</div>
+                                <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.95rem; line-height: 1.6;">
+                                    <li>Did price sweep Asian High or Low?</li>
+                                    <li>Where is Peak Formation (PF)?</li>
+                                    <li>M-Top or W-Bottom forming?</li>
+                                    <li>Rejection or continuation?</li>
+                                </ul>
+                            </div>
+                            <div style="background: var(--card-bg); padding: 1.25rem; border-radius: 8px; border-left: 4px solid var(--accent-yellow);">
+                                <div style="font-weight: bold; color: var(--accent-yellow); margin-bottom: 0.5rem;">📍 Mark These Levels</div>
+                                <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.95rem; line-height: 1.6;">
+                                    <li>Peak Formation High/Low</li>
+                                    <li>London Open price (1:30 AM)</li>
+                                    <li>First rejection candle</li>
+                                    <li>3:45 AM Brinks Time level</li>
+                                </ul>
+                            </div>
+                            <div style="background: var(--card-bg); padding: 1.25rem; border-radius: 8px; border-left: 4px solid var(--accent-red);">
+                                <div style="font-weight: bold; color: var(--accent-red); margin-bottom: 0.5rem;">⚠️ Common Traps</div>
+                                <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.95rem; line-height: 1.6;">
+                                    <li>Don't chase the breakout!</li>
+                                    <li>Don't enter during stop hunt</li>
+                                    <li>Wait for rejection confirmation</li>
+                                    <li>Prepare for NY reversal</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 4: NY SESSION -->
+                <div id="ny" class="tab-content">
+                    <h3>🗽 NEW YORK SESSION (7:30 AM - 5:00 PM EST)</h3>
+                    
+                    <div class="card" style="border: 3px solid var(--accent-green); background: rgba(0, 255, 136, 0.05);">
+                        <div class="card-title" style="color: var(--accent-green);">Daily Q3 - Distribution ⭐⭐⭐ (BTMM: Level III)</div>
+                        <p><strong>NY True Open:</strong> 7:30 AM EST</p>
+                        <p><strong>BEST TRADING WINDOW:</strong> 9:00 AM - 10:30 AM EST</p>
+                        
+                        <h4 style="color: var(--accent-green); margin-top: 1rem;">Why NY is THE Session:</h4>
+                        <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                            <li><strong>Highest volume</strong> - US market participation</li>
+                            <li><strong>True institutional moves</strong> - Not manipulation</li>
+                            <li><strong>Multiple timeframes align</strong> - Daily Q3 + Session Q3 + 90-Min Q3</li>
+                            <li><strong>70%+ win rate</strong> - When setup is proper</li>
+                            <li><strong>Clear directional moves</strong> - Trend continuation or reversal</li>
+                        </ul>
+
+                        <h4 style="color: var(--accent-green); margin-top: 1.5rem;">Your Strategy:</h4>
+                        <div class="alert alert-success">
+                            <p><strong>🎯 THIS IS YOUR WINDOW!</strong></p>
+                            <ul style="padding-left: 1.5rem; margin-top: 0.5rem;">
+                                <li>✅ Trade OPPOSITE of London direction (70% rule)</li>
+                                <li>✅ Enter at NY True Open rejection (7:30 AM)</li>
+                                <li>✅ Or wait for 9:30 AM Open sweep</li>
+                                <li>✅ Best entries: 9:45 AM (Brinks Time)</li>
+                                <li>✅ Look for M/W patterns at session extremes</li>
+                                <li>✅ Confirm with EMA alignment (13, 50, 200)</li>
+                                <li>✅ Only 1-2% risk per trade, max 3 positions</li>
+                            </ul>
+                        </div>
+
+                        <div class="pattern-card" style="margin-top: 1.5rem; border-left: 4px solid var(--accent-blue);">
+                            <h4>📊 NY Opening Scenarios:</h4>
+                            
+                            <p><strong>Scenario 1: Gap & Go</strong></p>
+                            <p>→ Price gaps in direction of daily bias</p>
+                            <p>→ Look for retest of gap, then continuation</p>
+                            
+                            <p style="margin-top: 1rem;"><strong>Scenario 2: Sweep & Reverse</strong></p>
+                            <p>→ 9:30 AM sweeps Asian High/Low</p>
+                            <p>→ Immediately reverses (classic manipulation)</p>
+                            <p>→ Enter on first pullback</p>
+                            
+                            <p style="margin-top: 1rem;"><strong>Scenario 3: Range Bound</strong></p>
+                            <p>→ Consolidation first 30 minutes</p>
+                            <p>→ Wait for 9:45 AM or 10:00 AM breakout</p>
+                            <p>→ Confirm with volume and EMA cross</p>
+                        </div>
+                    </div>
+
+                    <h4 style="margin-top: 2rem;">⏰ Critical NY Times:</h4>
+                    <table>
+                        <tr>
+                            <th>Time</th>
+                            <th>Event</th>
+                            <th>Action</th>
+                        </tr>
+                        <tr>
+                            <td><strong>7:30 AM</strong></td>
+                            <td>NY True Open</td>
+                            <td>Mark opening price, prepare for direction</td>
+                        </tr>
+                        <tr style="background: rgba(0, 255, 136, 0.1);">
+                            <td><strong>9:15 AM</strong></td>
+                            <td>915 Rule Window</td>
+                            <td>Multiple timeframes align</td>
+                        </tr>
+                        <tr style="background: rgba(0, 255, 136, 0.15); border: 2px solid var(--accent-green);">
+                            <td><strong>9:30 AM</strong></td>
+                            <td>Stock Market Open</td>
+                            <td>⭐⭐⭐ Initial sweep, watch for reversal</td>
+                        </tr>
+                        <tr style="background: rgba(0, 255, 136, 0.15); border: 2px solid var(--accent-green);">
+                            <td><strong>9:45 AM</strong></td>
+                            <td>NY Brinks Time</td>
+                            <td>⭐⭐⭐ BEST entry window</td>
+                        </tr>
+                        <tr>
+                            <td><strong>10:00-10:30 AM</strong></td>
+                            <td>Session Q3 Peak</td>
+                            <td>Last optimal entries</td>
+                        </tr>
+                    </table>
+
+                    <div class="alert alert-success" style="margin-top: 1.5rem;">
+                        <strong>🎯 Perfect Storm Setup:</strong> When Daily Q3, Session Q3, and 90-Min Q3 all align between 9:00-10:30 AM = Maximum probability trade!
+                    </div>
+
+                    <!-- Cycle Theory Timing for NY Session -->
+                    <h4 style="margin-top: 2rem; color: var(--accent-green);">🔄 Cycle Theory: NY Session Breakdown (CRITICAL!)</h4>
+                    <div class="pattern-card" style="border-left: 4px solid var(--accent-green); background: rgba(0, 255, 136, 0.03);">
+                        <h4 style="color: var(--accent-green);">Daily Cycle Position:</h4>
+                        <p><strong>NY Session = Daily Q3 (Distribution Phase) ⭐⭐⭐</strong></p>
+                        <p>THIS IS IT! The real institutional move. Daily Q3 + Session Q3 + 90-Min Q3 = MAXIMUM EDGE!</p>
+
+                        <h4 style="color: var(--accent-blue); margin-top: 1.5rem;">90-Minute Cycles Within NY (MOST IMPORTANT):</h4>
+                        <div class="quarters-grid" style="margin-top: 1rem;">
+                            <div class="quarter-card q1">
+                                <div class="quarter-title">7:30 AM - 9:00 AM</div>
+                                <div class="quarter-desc">NY Q1<br>True Open, accumulation</div>
+                            </div>
+                            <div class="quarter-card q2">
+                                <div class="quarter-title">9:00 AM - 10:30 AM</div>
+                                <div class="quarter-desc">NY Q2<br><strong>Minor manipulation</strong></div>
+                            </div>
+                            <div class="quarter-card q3" style="border: 3px solid var(--accent-green); background: rgba(0, 255, 136, 0.15);">
+                                <div class="quarter-title">10:30 AM - 12:00 PM</div>
+                                <div class="quarter-desc"><strong>NY Q3 ⭐⭐⭐</strong><br>BEST WINDOW!</div>
+                            </div>
+                            <div class="quarter-card q4">
+                                <div class="quarter-title">12:00 PM - 1:30 PM</div>
+                                <div class="quarter-desc">NY Q4<br>Transition to PM</div>
+                            </div>
+                        </div>
+
+                        <h4 style="color: var(--accent-yellow); margin-top: 1.5rem;">22.5-Minute Micro Quarters (9:00-10:30 AM - PRIME ENTRY WINDOW):</h4>
+                        <table style="margin-top: 1rem; font-size: 0.9rem;">
+                            <tr>
+                                <th>Time</th>
+                                <th>Micro Phase</th>
+                                <th>What's Happening</th>
+                                <th>Action</th>
+                            </tr>
+                            <tr style="background: rgba(74, 158, 255, 0.05);">
+                                <td>9:00 - 9:22 AM</td>
+                                <td>Q1 Accumulation</td>
+                                <td>9:15 AM - 915 Rule alignment</td>
+                                <td>WATCH for setup</td>
+                            </tr>
+                            <tr style="background: rgba(255, 215, 0, 0.1); border: 2px solid var(--accent-yellow);">
+                                <td><strong>9:22 - 9:45 AM</strong></td>
+                                <td><strong>Q2 Manipulation</strong></td>
+                                <td><strong>9:30 NYSE Open + 9:45 Brinks!</strong></td>
+                                <td><strong>🔥 ENTER HERE!</strong></td>
+                            </tr>
+                            <tr style="background: rgba(0, 255, 136, 0.1); border: 2px solid var(--accent-green);">
+                                <td><strong>9:45 - 10:07 AM</strong></td>
+                                <td><strong>Q3 Distribution</strong></td>
+                                <td><strong>Real move begins!</strong></td>
+                                <td><strong>🎯 TP1 hits</strong></td>
+                            </tr>
+                            <tr style="background: rgba(0, 255, 136, 0.05);">
+                                <td>10:07 - 10:30 AM</td>
+                                <td>Q4 Continuation</td>
+                                <td>Trend extension, last entries</td>
+                                <td>Trail stops to BE</td>
+                            </tr>
+                        </table>
+
+                        <div class="alert alert-success" style="margin-top: 1rem; background: rgba(0, 255, 136, 0.1); border: 2px solid var(--accent-green);">
+                            <h4 style="margin-bottom: 0.5rem; color: var(--accent-green);">💎 THE PERFECT STORM (Maximum Confluence):</h4>
+                            <p style="margin: 0; line-height: 1.8;">
+                                <strong>When:</strong> 9:45 AM - 10:07 AM<br>
+                                <strong>Why:</strong> Daily Q3 + Session Q3 + 90-Min Q3 + Micro Q3 + Brinks Time ALL ALIGN<br>
+                                <strong>What:</strong> This 22-minute window has the highest probability of any time in the 24-hour cycle!<br>
+                                <strong>How:</strong> Enter at 9:45 AM Brinks Time rejection, ride the Q3 distribution wave
+                            </p>
+                        </div>
+                        
+                        <!-- FRACTAL ALIGNMENT TABLE - MOST IMPORTANT! -->
+                        <div style="margin-top: 2rem; padding: 2rem; background: linear-gradient(135deg, rgba(0, 255, 136, 0.15), rgba(0, 255, 136, 0.05)); border-radius: 12px; border: 3px solid var(--accent-green); box-shadow: 0 8px 32px rgba(0, 255, 136, 0.3);">
+                            <h4 style="color: var(--accent-green); margin-bottom: 1rem; font-size: 1.3rem;">🎯 Multi-Timeframe Alignment - NY Session (HOLY GRAIL!)</h4>
+                            <p style="color: var(--text-secondary); margin-bottom: 1rem;">This table shows when Daily and Session cycles align for maximum probability:</p>
+                            
+                            <table style="width: 100%; margin-top: 1rem;">
+                                <tr style="background: rgba(0, 255, 136, 0.1);">
+                                    <th>Time (EST)</th>
+                                    <th>90-Min Quarter</th>
+                                    <th>Phase</th>
+                                    <th>Daily + Session Alignment</th>
+                                    <th>Probability</th>
+                                </tr>
+                                <tr>
+                                    <td><strong>7:30 AM - 9:00 AM</strong></td>
+                                    <td>Session Q1</td>
+                                    <td>Accumulation</td>
+                                    <td><span style="background: rgba(74, 158, 255, 0.2); padding: 0.25rem 0.5rem; border-radius: 4px;">Daily Q3 + Session Q1</span></td>
+                                    <td>Medium-High</td>
+                                </tr>
+                                <tr style="background: rgba(255, 215, 0, 0.05);">
+                                    <td><strong>9:00 AM - 10:30 AM</strong></td>
+                                    <td>Session Q2</td>
+                                    <td>Manipulation</td>
+                                    <td><span style="background: rgba(255, 215, 0, 0.2); padding: 0.25rem 0.5rem; border-radius: 4px;">Daily Q3 + Session Q2</span></td>
+                                    <td>High (Brinks 9:45 AM!)</td>
+                                </tr>
+                                <tr style="background: rgba(0, 255, 136, 0.12); border: 3px solid var(--accent-green); box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);">
+                                    <td><strong>10:30 AM - 12:00 PM</strong></td>
+                                    <td>Session Q3</td>
+                                    <td>Distribution</td>
+                                    <td><span style="background: rgba(0, 255, 136, 0.4); padding: 0.4rem 0.7rem; border-radius: 4px; font-weight: bold; font-size: 1.05rem;">Daily Q3 + Session Q3 = MAXIMUM EDGE ⭐⭐⭐</span></td>
+                                    <td><strong style="color: var(--accent-green); font-size: 1.1rem;">HIGHEST!</strong></td>
+                                </tr>
+                                <tr style="background: rgba(255, 255, 255, 0.02);">
+                                    <td><strong>12:00 PM - 1:30 PM</strong></td>
+                                    <td>Session Q4</td>
+                                    <td>Reversal</td>
+                                    <td><span style="background: rgba(255, 87, 34, 0.2); padding: 0.25rem 0.5rem; border-radius: 4px;">Daily Q3 + Session Q4</span></td>
+                                    <td>Medium</td>
+                                </tr>
+                            </table>
+                            
+                            <div class="alert alert-success" style="margin-top: 1.5rem; background: rgba(0, 255, 136, 0.15); border: 2px solid var(--accent-green);">
+                                <h4 style="color: var(--accent-green); margin-bottom: 0.5rem;">🔥 CRITICAL INSIGHT:</h4>
+                                <p style="margin: 0; line-height: 1.9; font-size: 1.05rem;">
+                                    <strong>10:30 AM - 12:00 PM</strong> is when BOTH Daily and Session cycles are in Q3 (Distribution). This is THE window!<br><br>
+                                    <strong>Why it matters:</strong> When both timeframes align in Q3 = Real institutional distribution happens. This is NOT manipulation - this is the ACTUAL MOVE.<br><br>
+                                    <strong>Win Rate:</strong> 70-80% when all conditions are met (PF marked, EMAs aligned, volume confirms).<br><br>
+                                    <strong>Trade Here:</strong> If you only take ONE trade per day, make it during this window!
+                                </p>
+                            </div>
+                            
+                            <div style="margin-top: 1rem; padding: 1rem; background: rgba(255, 215, 0, 0.1); border-radius: 8px; border-left: 4px solid var(--accent-yellow);">
+                                <strong style="color: var(--accent-yellow);">⚡ Comparison Example:</strong><br>
+                                <span style="color: var(--text-secondary);">
+                                    • Asian Session: Daily Q1 + Session Q3 = Medium probability (conflicting signals)<br>
+                                    • London Session: Daily Q2 + Session Q2 = High probability (double manipulation for PF)<br>
+                                    • <strong style="color: var(--accent-green);">NY Session: Daily Q3 + Session Q3 = MAXIMUM probability (double distribution!)</strong>
+                                </span>
+                            </div>
+                        </div>
+
+                        <h4 style="color: var(--accent-blue); margin-top: 1.5rem;">📊 Alternative Entry: 10:30 AM - 12:00 PM (Session Q3):</h4>
+                        <p>If you miss the 9:45 AM window, the 10:30 AM - 12:00 PM period is Session Q3 (still excellent).</p>
+                        <table style="margin-top: 1rem; font-size: 0.9rem;">
+                            <tr>
+                                <th>Time</th>
+                                <th>Micro Phase</th>
+                                <th>Action</th>
+                            </tr>
+                            <tr>
+                                <td>10:30 - 10:52 AM</td>
+                                <td>Q1</td>
+                                <td>Pullback entry opportunity</td>
+                            </tr>
+                            <tr>
+                                <td>10:52 - 11:15 AM</td>
+                                <td>Q2</td>
+                                <td>Minor consolidation</td>
+                            </tr>
+                            <tr style="background: rgba(0, 255, 136, 0.05);">
+                                <td>11:15 - 11:37 AM</td>
+                                <td>Q3</td>
+                                <td>Trend continuation</td>
+                            </tr>
+                            <tr>
+                                <td>11:37 - 12:00 PM</td>
+                                <td>Q4</td>
+                                <td>Prepare for lunch hour</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <!-- Live Trading Considerations -->
+                    <div style="background: linear-gradient(135deg, rgba(0, 255, 136, 0.15), rgba(0, 200, 100, 0.15)); padding: 2rem; border-radius: 12px; margin-top: 2rem; border: 2px solid var(--accent-green);">
+                        <h4 style="color: var(--accent-green); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                            🗽 NY Session Live Considerations (PRIMARY WINDOW)
+                        </h4>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+                            <div style="background: var(--card-bg); padding: 1.25rem; border-radius: 8px; border-left: 4px solid var(--accent-green);">
+                                <div style="font-weight: bold; color: var(--accent-green); margin-bottom: 0.5rem;">✅ Entry Checklist</div>
+                                <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.95rem; line-height: 1.6;">
+                                    <li>☑️ Trading opposite London direction?</li>
+                                    <li>☑️ M/W pattern confirmed?</li>
+                                    <li>☑️ EMA alignment (13, 50, 200)?</li>
+                                    <li>☑️ At key level (PDH/PDL)?</li>
+                                    <li>☑️ Within 9:00-10:30 AM window?</li>
+                                </ul>
+                            </div>
+                            <div style="background: var(--card-bg); padding: 1.25rem; border-radius: 8px; border-left: 4px solid var(--accent-yellow);">
+                                <div style="font-weight: bold; color: var(--accent-yellow); margin-bottom: 0.5rem;">🎯 Execution Plan</div>
+                                <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.95rem; line-height: 1.6;">
+                                    <li><strong>Entry:</strong> 9:30 or 9:45 AM sweep</li>
+                                    <li><strong>Stop:</strong> Beyond PF (20-30 pips)</li>
+                                    <li><strong>TP1:</strong> 1:1 RR (scale out 33%)</li>
+                                    <li><strong>TP2:</strong> 2:1 RR (scale out 33%)</li>
+                                    <li><strong>TP3:</strong> Let runner go to ADR</li>
+                                </ul>
+                            </div>
+                            <div style="background: var(--card-bg); padding: 1.25rem; border-radius: 8px; border-left: 4px solid var(--accent-blue);">
+                                <div style="font-weight: bold; color: var(--accent-blue); margin-bottom: 0.5rem;">💎 Masterpiece Setup</div>
+                                <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.95rem; line-height: 1.6;">
+                                    <li>Wednesday (Day 3 of BTMM)</li>
+                                    <li>9:45 AM Brinks Time entry</li>
+                                    <li>Against Monday/Tuesday PF</li>
+                                    <li>All EMAs + Pattern + Level align</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 5: PM SESSION -->
+                <div id="pm" class="tab-content">
+                    <h3>🌆 NEW YORK PM SESSION (12:00 PM - 6:00 PM EST)</h3>
+                    
+                    <div class="card" style="border-left: 4px solid var(--accent-red);">
+                        <div class="card-title">Daily Q4 - Reversal/Continuation</div>
+                        <p><strong>True PM Open:</strong> 1:30 PM EST</p>
+                        
+                        <h4 style="color: var(--accent-yellow); margin-top: 1rem;">Characteristics:</h4>
+                        <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                            <li><strong>Lower volume</strong> - Lunch hour + institutions closing</li>
+                            <li><strong>Choppy price action</strong> - Consolidation common</li>
+                            <li><strong>Reversal potential</strong> - If AM move exhausted</li>
+                            <li><strong>Or continuation</strong> - If strong directional momentum</li>
+                            <li><strong>Preparing for overnight</strong> - Positions get closed</li>
+                        </ul>
+
+                        <h4 style="color: var(--accent-green); margin-top: 1.5rem;">Your Strategy:</h4>
+                        <div class="alert alert-warning">
+                            <p><strong>TRAIL STOPS or CLOSE POSITIONS</strong></p>
+                            <ul style="padding-left: 1.5rem; margin-top: 0.5rem;">
+                                <li>✅ Trail stops to breakeven on AM trades</li>
+                                <li>✅ Take partial profits if targets hit</li>
+                                <li>✅ Avoid new entries unless clear Level 3 setup</li>
+                                <li>✅ Watch 2-3 PM for reversal signals</li>
+                                <li>✅ Be flat by 4 PM market close (day traders)</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="margin-top: 1.5rem;">🕐 PM Time Windows:</h4>
+                        <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                            <li><strong>12:00-2:00 PM:</strong> Lunch hour - avoid (choppy)</li>
+                            <li><strong>2:00-3:00 PM:</strong> Potential reversal window</li>
+                            <li><strong>3:00-4:00 PM:</strong> Final push or consolidation</li>
+                            <li><strong>4:00 PM:</strong> Stock market close - volatility spike</li>
+                            <li><strong>4:00-5:00 PM:</strong> After hours - thin liquidity</li>
+                        </ul>
+                    </div>
+
+                    <div class="alert alert-info" style="margin-top: 1.5rem;">
+                        <strong>💡 PM Session Rule:</strong> Only trade if you see a clear Level 3 setup with all confirmations. Otherwise, preserve capital and prepare for tomorrow!
+                    </div>
+
+                    <!-- Cycle Theory Timing for PM Session -->
+                    <h4 style="margin-top: 2rem; color: var(--accent-red);">🔄 Cycle Theory: PM Session Breakdown</h4>
+                    <div class="pattern-card" style="border-left: 4px solid var(--accent-red);">
+                        <h4 style="color: var(--accent-red);">Daily Cycle Position:</h4>
+                        <p><strong>PM Session = Daily Q4 (Reversal/Continuation Phase)</strong></p>
+                        <p>Lower probability window. Manage existing trades, avoid new entries unless setup is pristine.</p>
+
+                        <h4 style="color: var(--accent-yellow); margin-top: 1.5rem;">90-Minute Cycles Within PM:</h4>
+                        <div class="quarters-grid" style="margin-top: 1rem;">
+                            <div class="quarter-card q1">
+                                <div class="quarter-title">1:30 PM - 3:00 PM</div>
+                                <div class="quarter-desc">PM Q1<br>True PM Open, consolidation</div>
+                            </div>
+                            <div class="quarter-card q2">
+                                <div class="quarter-title">3:00 PM - 4:30 PM</div>
+                                <div class="quarter-desc">PM Q2<br>Final push or reversal</div>
+                            </div>
+                            <div class="quarter-card q4">
+                                <div class="quarter-title">4:30 PM - 6:00 PM</div>
+                                <div class="quarter-desc">PM Q3/Q4<br>Close out, prepare for tomorrow</div>
+                            </div>
+                        </div>
+
+                        <!-- FRACTAL ALIGNMENT TABLE - PM SESSION -->
+                        <div style="margin-top: 2rem; padding: 1.5rem; background: linear-gradient(135deg, rgba(255, 87, 34, 0.1), rgba(255, 87, 34, 0.05)); border-radius: 12px; border: 2px solid rgba(255, 87, 34, 0.3);">
+                            <h4 style="color: var(--accent-red); margin-bottom: 1rem;">🎯 Multi-Timeframe Alignment - PM Session</h4>
+                            <p style="color: var(--text-secondary); margin-bottom: 1rem;">PM Session is Daily Q4 (Reversal) - lower probability but still tradeable with proper setup:</p>
+                            
+                            <table style="width: 100%; margin-top: 1rem;">
+                                <tr style="background: rgba(255, 87, 34, 0.1);">
+                                    <th>Time (EST)</th>
+                                    <th>90-Min Quarter</th>
+                                    <th>Phase</th>
+                                    <th>Daily + Session Alignment</th>
+                                    <th>Probability</th>
+                                </tr>
+                                <tr>
+                                    <td><strong>12:00 PM - 1:30 PM</strong></td>
+                                    <td>Transition</td>
+                                    <td>Lunch Hour</td>
+                                    <td><span style="background: rgba(255, 87, 34, 0.2); padding: 0.25rem 0.5rem; border-radius: 4px;">Daily Q4 (Lunch)</span></td>
+                                    <td>Low (Avoid)</td>
+                                </tr>
+                                <tr style="background: rgba(255, 255, 255, 0.02);">
+                                    <td><strong>1:30 PM - 3:00 PM</strong></td>
+                                    <td>Session Q1</td>
+                                    <td>Accumulation</td>
+                                    <td><span style="background: rgba(74, 158, 255, 0.2); padding: 0.25rem 0.5rem; border-radius: 4px;">Daily Q4 + Session Q1</span></td>
+                                    <td>Low-Medium</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>3:00 PM - 4:30 PM</strong></td>
+                                    <td>Session Q2</td>
+                                    <td>Manipulation</td>
+                                    <td><span style="background: rgba(255, 215, 0, 0.2); padding: 0.25rem 0.5rem; border-radius: 4px;">Daily Q4 + Session Q2</span></td>
+                                    <td>Medium (3:45 PM Brinks)</td>
+                                </tr>
+                                <tr style="background: rgba(255, 255, 255, 0.02);">
+                                    <td><strong>4:30 PM - 6:00 PM</strong></td>
+                                    <td>Session Q3/Q4</td>
+                                    <td>Close Out</td>
+                                    <td><span style="background: rgba(255, 87, 34, 0.2); padding: 0.25rem 0.5rem; border-radius: 4px;">Daily Q4 + Session Q3/Q4</span></td>
+                                    <td>Low (Close positions)</td>
+                                </tr>
+                            </table>
+                            
+                            <div class="alert alert-warning" style="margin-top: 1rem;">
+                                <strong>⚠️ Key Insight:</strong> PM Session is Daily Q4 (Reversal phase). Even if Session Q3 occurs (4:30-6 PM), the overall probability is lower because the Daily Cycle is Q4. This is why experienced traders focus on AM sessions and close positions by lunch.
+                            </div>
+                            
+                            <div style="margin-top: 1rem; padding: 1rem; background: rgba(74, 158, 255, 0.1); border-radius: 8px; border-left: 4px solid var(--accent-blue);">
+                                <strong style="color: var(--accent-blue);">💡 Comparison to NY AM:</strong><br>
+                                <span style="color: var(--text-secondary);">
+                                    • NY AM (10:30-12): Daily Q3 + Session Q3 = <strong style="color: var(--accent-green);">MAXIMUM (70-80%)</strong><br>
+                                    • PM (3-4:30): Daily Q4 + Session Q2 = Medium (50-60%)<br>
+                                    • PM (4:30-6): Daily Q4 + Session Q3 = Medium (50-60%)<br><br>
+                                    <strong>Conclusion:</strong> Save your bullets for the AM! PM is for managing trades, not initiating them.
+                                </span>
+                            </div>
+                        </div>
+
+                        <h4 style="color: var(--accent-yellow); margin-top: 1.5rem;">22.5-Minute Micro Quarters (If Trading PM):</h4>
+                        <table style="margin-top: 1rem; font-size: 0.9rem;">
+                            <tr>
+                                <th>Time</th>
+                                <th>Phase</th>
+                                <th>What's Happening</th>
+                            </tr>
+                            <tr>
+                                <td>1:30 - 1:52 PM</td>
+                                <td>Micro Q1</td>
+                                <td>Lunch hour - choppy, avoid</td>
+                            </tr>
+                            <tr>
+                                <td>1:52 - 2:15 PM</td>
+                                <td>Micro Q2</td>
+                                <td>Potential reversal setup</td>
+                            </tr>
+                            <tr>
+                                <td>2:15 - 2:37 PM</td>
+                                <td>Micro Q3</td>
+                                <td>IF Level 3 setup, enter here</td>
+                            </tr>
+                            <tr>
+                                <td>2:37 - 3:00 PM</td>
+                                <td>Micro Q4</td>
+                                <td>Manage/trail stops</td>
+                            </tr>
+                        </table>
+
+                        <div class="alert alert-warning" style="margin-top: 1rem;">
+                            <strong>⚠️ PM Session Reality:</strong> Even though PM has its own 90-minute and 22.5-minute cycles, the DAILY Q4 phase means lower probability. Most professional traders close positions by 12-2 PM and prepare for next day. Only trade PM if you have pristine Level 3 setup with all confirmations.
+                        </div>
+                    </div>
+
+                    <!-- Live Trading Considerations -->
+                    <div style="background: linear-gradient(135deg, rgba(255, 152, 0, 0.15), rgba(255, 87, 34, 0.15)); padding: 2rem; border-radius: 12px; margin-top: 2rem; border: 2px solid var(--accent-red);">
+                        <h4 style="color: var(--accent-red); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                            🌆 PM Session Live Considerations
+                        </h4>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+                            <div style="background: var(--card-bg); padding: 1.25rem; border-radius: 8px; border-left: 4px solid var(--accent-green);">
+                                <div style="font-weight: bold; color: var(--accent-green); margin-bottom: 0.5rem;">✅ Trade Management</div>
+                                <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.95rem; line-height: 1.6;">
+                                    <li>Move stops to breakeven</li>
+                                    <li>Trail TP3 runner if still open</li>
+                                    <li>Take profits at TP2 if not hit</li>
+                                    <li>Close all by 4 PM (day traders)</li>
+                                </ul>
+                            </div>
+                            <div style="background: var(--card-bg); padding: 1.25rem; border-radius: 8px; border-left: 4px solid var(--accent-yellow);">
+                                <div style="font-weight: bold; color: var(--accent-yellow); margin-bottom: 0.5rem;">📊 Session Analysis</div>
+                                <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.95rem; line-height: 1.6;">
+                                    <li>Did trade hit targets?</li>
+                                    <li>Was bias correct?</li>
+                                    <li>Pattern played out as expected?</li>
+                                    <li>What worked? What didn't?</li>
+                                </ul>
+                            </div>
+                            <div style="background: var(--card-bg); padding: 1.25rem; border-radius: 8px; border-left: 4px solid var(--accent-red);">
+                                <div style="font-weight: bold; color: var(--accent-red); margin-bottom: 0.5rem;">⚠️ Avoid These</div>
+                                <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.95rem; line-height: 1.6;">
+                                    <li>No revenge trading if stopped out</li>
+                                    <li>Don't add to losing positions</li>
+                                    <li>Avoid lunch hour chop (12-2 PM)</li>
+                                    <li>Don't fight trend exhaustion</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 6: TIMING & BIAS -->
+                <div id="timing" class="tab-content">
+                    <h3>⏰ PRECISE TIMING WINDOWS & BIAS DETERMINATION</h3>
+                    
+                    <div class="pattern-card">
+                        <h4>🎯 Optimal Entry Windows (Brinks Trade Timing):</h4>
+                        <table style="margin-top: 1rem;">
+                            <tr>
+                                <th>Time</th>
+                                <th>Window</th>
+                                <th>Description</th>
+                                <th>Priority</th>
+                            </tr>
+                            <tr style="background: rgba(0, 255, 136, 0.15); border: 2px solid var(--accent-green);">
+                                <td><strong>9:45 AM</strong></td>
+                                <td>NY Brinks</td>
+                                <td>Highest volume spike of the day</td>
+                                <td><strong>⭐⭐⭐ #1</strong></td>
+                            </tr>
+                            <tr style="background: rgba(0, 255, 136, 0.1);">
+                                <td><strong>9:30 AM</strong></td>
+                                <td>NYSE Open</td>
+                                <td>Initial sweep & reversal</td>
+                                <td><strong>⭐⭐⭐ #2</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong>9:15 AM</strong></td>
+                                <td>915 Rule</td>
+                                <td>Multiple TF alignment</td>
+                                <td><strong>⭐⭐ #3</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong>3:45 AM</strong></td>
+                                <td>London Brinks</td>
+                                <td>London PF formation</td>
+                                <td><strong>⭐⭐ #4</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong>10:00 AM</strong></td>
+                                <td>Top of Hour</td>
+                                <td>Session Q3 peak</td>
+                                <td><strong>⭐ #5</strong></td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <h4 style="margin-top: 2rem;">📊 Daily Bias Determination Checklist:</h4>
+                    <div class="card" style="background: rgba(74, 158, 255, 0.05); border-left: 4px solid var(--accent-blue);">
+                        <p><strong>Check These in Order:</strong></p>
+                        <ol style="padding-left: 1.5rem; line-height: 1.8;">
+                            <li><strong>Higher Timeframe Bias:</strong>
+                                <ul style="margin-top: 0.5rem;">
+                                    <li>Weekly trend direction?</li>
+                                    <li>Above or below weekly/monthly pivots?</li>
+                                    <li>Day 1, 2, or 3 of BTMM cycle?</li>
                                 </ul>
                             </li>
-                            <li><strong>Continuation Signals:</strong>
-                                <ul style="padding-left: 1.5rem; margin-top: 0.5rem;">
-                                    <li>Clean break of Asian range</li>
-                                    <li>Pullback to 50 EMA holds</li>
-                                    <li>Higher timeframe trend intact</li>
-                                    <li>No zone flip on D1</li>
+                            <li><strong>Asian Session:</strong>
+                                <ul style="margin-top: 0.5rem;">
+                                    <li>Marked Asian High and Low?</li>
+                                    <li>Range size (normal, expanded, or tight)?</li>
                                 </ul>
                             </li>
-                            <li><strong>Liquidity Sweeps:</strong>
-                                <ul style="padding-left: 1.5rem; margin-top: 0.5rem;">
-                                    <li>Use Asian H/L as liquidity reference</li>
-                                    <li>Sweep = Stop hunt above/below range</li>
-                                    <li>After sweep, watch for reversal</li>
-                                    <li>2nd leg of M/W often forms after sweep</li>
+                            <li><strong>London Session:</strong>
+                                <ul style="margin-top: 0.5rem;">
+                                    <li>Did London sweep Asian High or Low?</li>
+                                    <li>Where did PF form?</li>
+                                    <li>Rejection or continuation?</li>
+                                </ul>
+                            </li>
+                            <li><strong>Key Levels:</strong>
+                                <ul style="margin-top: 0.5rem;">
+                                    <li>PDH, PDL, PWH, PWL positions?</li>
+                                    <li>EMA alignment (13, 50, 200)?</li>
+                                    <li>Major S/R zones nearby?</li>
+                                </ul>
+                            </li>
+                            <li><strong>News Events:</strong>
+                                <ul style="margin-top: 0.5rem;">
+                                    <li>Any high-impact news today?</li>
+                                    <li>NFP, CPI, FOMC, Jobless Claims?</li>
+                                    <li>→ If yes, stay flat 30 min before/after</li>
                                 </ul>
                             </li>
                         </ol>
                     </div>
 
-                    <div class="alert alert-warning" style="margin-top: 1.5rem;">
-                        <p><strong>⚠️ Critical Rule:</strong> If Asian range is very tight (< 20 pips), expect a VIOLENT breakout in London. Be cautious with entries until direction is clear!</p>
-                    </div>
-                </div>
-
-                <h3 style="margin-top: 3rem;">⏰ PRECISE SESSION TIMING WINDOWS</h3>
-
-                <div class="pattern-card">
-                    <div class="pattern-title">Optimal Entry Windows & Brinks Trade Timing</div>
-                    
-                    <div class="alert alert-success">
-                        <strong>💡 Timing is Everything!</strong> These specific windows have the highest probability setups.
-                    </div>
-
-                    <h4 style="color: var(--accent-blue); margin-top: 1.5rem;">🔥 High-Probability Time Windows:</h4>
-                    <table style="margin-top: 1rem;">
-                        <tr>
-                            <th>Time (EST)</th>
-                            <th>Event/Window</th>
-                            <th>Purpose/Use Case</th>
-                            <th>Action</th>
-                        </tr>
-                        <tr style="background: rgba(255, 74, 74, 0.05);">
-                            <td><strong>7:00 PM</strong></td>
-                            <td>Pre-Asian Stop Hunt</td>
-                            <td>Hour BEFORE 12-candle window</td>
-                            <td><span class="badge badge-danger">DON'T TRADE!</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>9:00 PM</strong></td>
-                            <td>Asian Movement Window</td>
-                            <td>Equity markets open hour, multiple TF traders active</td>
-                            <td><span class="badge badge-info">OBSERVE</span></td>
-                        </tr>
-                        <tr style="background: rgba(255, 215, 0, 0.05);">
-                            <td><strong>9:45 PM</strong></td>
-                            <td>🎯 Brinks Trade #1</td>
-                            <td>Liquidity spike, precise entry timing</td>
-                            <td><span class="badge badge-success">TRADE WINDOW!</span></td>
-                        </tr>
-                        <tr style="background: rgba(255, 74, 74, 0.05);">
-                            <td><strong>1:00 AM</strong></td>
-                            <td>Pre-London Stop Hunt</td>
-                            <td>Hour BEFORE London True Open</td>
-                            <td><span class="badge badge-danger">DON'T TRADE!</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>1:30 AM</strong></td>
-                            <td>London True Open</td>
-                            <td>Quarterly Q2 begins, manipulation starts</td>
-                            <td><span class="badge badge-warning">MARK LEVELS</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>3:00 AM</strong></td>
-                            <td>London Movement Window</td>
-                            <td>Major liquidity, breakout potential</td>
-                            <td><span class="badge badge-info">WATCH</span></td>
-                        </tr>
-                        <tr style="background: rgba(255, 215, 0, 0.05);">
-                            <td><strong>3:45 AM</strong></td>
-                            <td>🎯 Brinks Trade #2</td>
-                            <td>Liquidity spike, mid-London reversal</td>
-                            <td><span class="badge badge-success">TRADE WINDOW!</span></td>
-                        </tr>
-                        <tr style="background: rgba(255, 74, 74, 0.05);">
-                            <td><strong>7:00 AM</strong></td>
-                            <td>Pre-NY Stop Hunt</td>
-                            <td>Hour BEFORE NY True Open</td>
-                            <td><span class="badge badge-danger">DON'T TRADE!</span></td>
-                        </tr>
-                        <tr style="background: rgba(0, 255, 136, 0.05);">
-                            <td><strong>7:30 AM</strong></td>
-                            <td>NY True Open</td>
-                            <td>Quarterly Q3 begins - Distribution phase</td>
-                            <td><span class="badge badge-warning">PREPARE!</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>9:00 AM</strong></td>
-                            <td>NY Movement Window</td>
-                            <td>Equity markets open, maximum volume</td>
-                            <td><span class="badge badge-info">WATCH</span></td>
-                        </tr>
-                        <tr style="background: rgba(0, 255, 136, 0.1); border: 2px solid var(--accent-green);">
-                            <td><strong>9:30-10:15 AM</strong></td>
-                            <td>🔥 Early NY Reversal Window</td>
-                            <td>PRIME TIME! Liquidity sweeps, stop hunts, reversals</td>
-                            <td><span class="badge badge-success">TRADE HERE! 🔥</span></td>
-                        </tr>
-                        <tr style="background: rgba(255, 215, 0, 0.05);">
-                            <td><strong>9:45 AM</strong></td>
-                            <td>🎯 Brinks Trade #3</td>
-                            <td>Peak liquidity spike during NY session</td>
-                            <td><span class="badge badge-success">TRADE WINDOW!</span></td>
-                        </tr>
-                        <tr style="background: rgba(0, 255, 136, 0.08);">
-                            <td><strong>9:30 AM-12:00 PM</strong></td>
-                            <td>NY Distribution Phase</td>
-                            <td>Main trending moves, high probability setups</td>
-                            <td><span class="badge badge-success">PRIMARY TRADING</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>2:00-3:00 PM</strong></td>
-                            <td>Mid-Afternoon Reversal</td>
-                            <td>Session exhaustion, potential reversals</td>
-                            <td><span class="badge badge-warning">WATCH FOR REVERSALS</span></td>
-                        </tr>
-                        <tr style="background: rgba(255, 74, 74, 0.05);">
-                            <td><strong>4:00-7:00 PM</strong></td>
-                            <td>Gap Time</td>
-                            <td>Low liquidity, changeover period</td>
-                            <td><span class="badge badge-danger">DON'T TRADE!</span></td>
-                        </tr>
-                    </table>
-
-                    <h4 style="color: var(--accent-yellow); margin-top: 2rem;">⚡ Brinks Trade Timing Explained:</h4>
-                    <div class="card" style="background: rgba(255, 215, 0, 0.05); border: 2px solid var(--accent-yellow);">
-                        <p><strong>"Brinks Truck" - Delivering Money!</strong></p>
-                        <p style="margin-top: 0.5rem;"><strong>Concept:</strong> These are specific 15-minute windows where liquidity spikes occur due to institutional order flow.</p>
-                        
-                        <div style="margin-top: 1rem;">
-                            <p><strong>🎯 Three Brinks Windows:</strong></p>
-                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
-                                <li><strong>9:45 PM EST:</strong> Asian session liquidity spike</li>
-                                <li><strong>3:45 AM EST:</strong> Mid-London session spike (best for 2nd leg M/W)</li>
-                                <li><strong>9:45 AM EST:</strong> NY session spike (highest volume of all three)</li>
-                            </ul>
-                        </div>
-
-                        <div style="margin-top: 1rem;">
-                            <p><strong>🔍 How to Trade Brinks Windows:</strong></p>
-                            <ol style="padding-left: 1.5rem; line-height: 1.8;">
-                                <li>Watch for M or W pattern forming into the window</li>
-                                <li>Second leg of M/W should fall INSIDE the 15-min Brinks window</li>
-                                <li>Look for rejection candlestick at the apex</li>
-                                <li>Enter on confirmation candle after Brinks window closes</li>
-                            </ol>
-                        </div>
-
-                        <div class="alert alert-success" style="margin-top: 1rem;">
-                            <strong>💡 Pro Tip:</strong> If a perfect M/W setup aligns with Brinks timing + key level (PDH/PDL) + EMA confluence = This is a "Masterpiece Trade"!
-                        </div>
-                    </div>
-
-                    <h4 style="color: var(--accent-red); margin-top: 2rem;">🚫 Stop Hunt Windows (AVOID TRADING):</h4>
-                    <div class="alert alert-danger">
-                        <p><strong>Critical Rule: Hour BEFORE the 12-Candle Window</strong></p>
-                        <ul style="padding-left: 1.5rem; margin-top: 0.5rem;">
-                            <li><strong>7:00 PM:</strong> Stop hunt before Asian movement (9:00 PM)</li>
-                            <li><strong>1:00 AM:</strong> Stop hunt before London True Open (1:30 AM)</li>
-                            <li><strong>7:00 AM:</strong> Stop hunt before NY True Open (7:30 AM)</li>
-                        </ul>
-                        <p style="margin-top: 1rem;"><strong>What Happens:</strong> Market makers push price to trigger stops, then reverse. This creates fake moves that trap retail traders.</p>
-                        <p style="margin-top: 0.5rem;"><strong>Your Action:</strong> OBSERVE ONLY. Do not enter trades during these windows! Wait for the actual session to begin.</p>
-                    </div>
-
-                    <h4 style="color: var(--accent-blue); margin-top: 2rem;">📊 915 Rule - Multiple Timeframe Confluence:</h4>
-                    <div class="card">
-                        <p><strong>Why 9:15 AM / 3:15 AM / 9:15 PM are special:</strong></p>
-                        <ul style="padding-left: 1.5rem; line-height: 1.8; margin-top: 0.5rem;">
-                            <li>Multiple different timeframe traders are active simultaneously</li>
-                            <li>15-minute, 1-hour, and 4-hour chart alignments occur</li>
-                            <li>Increased volume from various trading strategies converging</li>
-                            <li>Creates reliable reversal or continuation setups</li>
-                        </ul>
-                        <p style="margin-top: 1rem;"><strong>How to Use:</strong> Watch for setup completion around these times. If your pattern forms at 915, it has multi-timeframe backing!</p>
-                    </div>
-                </div>
-
-                <h3 style="margin-top: 3rem;">🎯 BIAS DETERMINATION CHECKLIST</h3>
-
-                <div class="pattern-card">
-                    <div class="pattern-title">Determining Your Daily Bias</div>
-                    
-                    <div class="alert alert-info">
-                        <strong>🎯 Before Taking ANY Trade:</strong> Answer these questions to determine if you should go long or short today.
-                    </div>
-
-                    <h4 style="color: var(--accent-green); margin-top: 1.5rem;">✅ Bias Checklist:</h4>
-                    <div class="card">
-                        <h4 style="color: var(--accent-blue);">📍 1. High/Low Status:</h4>
-                        <ul class="checklist">
-                            <li><input type="checkbox"> <strong>Is HOD locked in?</strong> (High of Day - no new highs for 2+ hours)</li>
-                            <li><input type="checkbox"> <strong>Is LOD locked in?</strong> (Low of Day - no new lows for 2+ hours)</li>
-                            <li><input type="checkbox"> <strong>Is HOM/HOW locked?</strong> (High of Month/Week)</li>
-                            <li><input type="checkbox"> <strong>Is LOM/LOW locked?</strong> (Low of Month/Week)</li>
-                        </ul>
-                        <p style="margin-top: 1rem; font-style: italic;">→ If HOD is locked = Bearish bias. If LOD is locked = Bullish bias.</p>
-
-                        <h4 style="color: var(--accent-blue); margin-top: 1.5rem;">📍 2. Session High/Low Status:</h4>
-                        <ul class="checklist">
-                            <li><input type="checkbox"> <strong>Is session high locked in?</strong> (Asian/London/NY session high)</li>
-                            <li><input type="checkbox"> <strong>Is session low locked in?</strong></li>
-                            <li><input type="checkbox"> <strong>Has Asian range been swept?</strong> (Above high or below low)</li>
-                        </ul>
-                        <p style="margin-top: 1rem; font-style: italic;">→ Sweep above Asian high then rejection = Bearish. Sweep below Asian low then rejection = Bullish.</p>
-
-                        <h4 style="color: var(--accent-blue); margin-top: 1.5rem;">📍 3. Higher Timeframe Alignment:</h4>
-                        <ul class="checklist">
-                            <li><input type="checkbox"> <strong>D1 trend direction:</strong> Up or Down?</li>
-                            <li><input type="checkbox"> <strong>Any recent D1 zone flips?</strong> (Old support becomes resistance or vice versa)</li>
-                            <li><input type="checkbox"> <strong>Weekly trend direction:</strong> Up or Down?</li>
-                            <li><input type="checkbox"> <strong>Are we at ADR extreme?</strong> (90%+ of ADR met = expect reversal)</li>
-                        </ul>
-                        <p style="margin-top: 1rem; font-style: italic;"><strong>Critical:</strong> NEVER trade against a D1 zone flip! Only trade in direction of D1 trend.</p>
-
-                        <h4 style="color: var(--accent-blue); margin-top: 1.5rem;">📍 4. BTMM Cycle Position:</h4>
-                        <ul class="checklist">
-                            <li><input type="checkbox"> <strong>What day of the week?</strong> (Monday = Day 1, Tuesday = Day 2, Wednesday = Day 3)</li>
-                            <li><input type="checkbox"> <strong>Has PF been established?</strong> (Peak Formation on Day 1 or Day 2)</li>
-                            <li><input type="checkbox"> <strong>Are we at Level III?</strong> (50/800 or 200/800 EMA cross completed)</li>
-                            <li><input type="checkbox"> <strong>Wednesday Q3 alignment?</strong> (Best day + best time = max edge)</li>
-                        </ul>
-                        <p style="margin-top: 1rem; font-style: italic;">→ Trade AGAINST the PF on Day 3. If PF High on Monday/Tuesday, go SHORT on Wednesday.</p>
-
-                        <h4 style="color: var(--accent-blue); margin-top: 1.5rem;">📍 5. Key Level Proximity:</h4>
-                        <ul class="checklist">
-                            <li><input type="checkbox"> <strong>Near PDH or PDL?</strong> (Previous Day High/Low)</li>
-                            <li><input type="checkbox"> <strong>Near PWH or PWL?</strong> (Previous Week High/Low)</li>
-                            <li><input type="checkbox"> <strong>At major EMA?</strong> (200 or 800 EMA)</li>
-                            <li><input type="checkbox"> <strong>At round number?</strong> (1.3000, 1.3100, etc.)</li>
-                        </ul>
-                        <p style="margin-top: 1rem; font-style: italic;">→ Confluence at key levels = Higher probability reversal.</p>
-                    </div>
-
-                    <h4 style="color: var(--accent-green); margin-top: 2rem;">✅ Bias Decision Matrix:</h4>
-                    <table style="margin-top: 1rem;">
-                        <tr>
-                            <th>If This...</th>
-                            <th>Then Bias Is...</th>
-                            <th>Action</th>
-                        </tr>
-                        <tr style="background: rgba(0, 255, 136, 0.05);">
-                            <td>LOD locked + D1 uptrend + Level III confirmed</td>
-                            <td><strong style="color: var(--accent-green);">BULLISH</strong></td>
-                            <td>Look for W-Bottom, bullish M/W, buy setups</td>
-                        </tr>
-                        <tr style="background: rgba(255, 74, 74, 0.05);">
-                            <td>HOD locked + D1 downtrend + Level III confirmed</td>
-                            <td><strong style="color: var(--accent-red);">BEARISH</strong></td>
-                            <td>Look for M-Top, bearish M/W, sell setups</td>
-                        </tr>
-                        <tr>
-                            <td>ADR 90%+ met + at key level + TDI Shark Fin</td>
-                            <td><strong style="color: var(--accent-yellow);">REVERSAL</strong></td>
-                            <td>Expect reversal, look for M/W pattern</td>
-                        </tr>
-                        <tr>
-                            <td>Wednesday + PF High on Mon/Tue + Level III + Q3</td>
-                            <td><strong style="color: var(--accent-green);">BEARISH (High Prob)</strong></td>
-                            <td>SHORT against PF High - "Masterpiece Trade"</td>
-                        </tr>
-                        <tr>
-                            <td>Choppy price + Level II + no clear HOD/LOD</td>
-                            <td><strong>NEUTRAL - AVOID</strong></td>
-                            <td>Do not trade! Wait for clarity.</td>
-                        </tr>
-                    </table>
-
                     <div class="alert alert-success" style="margin-top: 1.5rem;">
-                        <p><strong>💡 Golden Rule:</strong> When in doubt, SIT IT OUT. Only trade when bias is CRYSTAL CLEAR and multiple factors align!</p>
-                        <p style="margin-top: 0.5rem;"><strong>Quality over Quantity:</strong> 5 high-probability trades per week beats 25 mediocre ones every time.</p>
+                        <strong>✅ If All Align:</strong> You have a Level 3 setup (EMA + Pattern + Timing + Key Level). Take the trade with confidence!
+                    </div>
+
+                    <div class="alert alert-danger" style="margin-top: 1rem;">
+                        <strong>⚠️ If Conflicting Signals:</strong> Stay flat! Don't force trades. There's always tomorrow.
+                    </div>
+
+                    <!-- Live Trading Considerations -->
+                    <div style="background: linear-gradient(135deg, rgba(138, 43, 226, 0.15), rgba(156, 39, 176, 0.15)); padding: 2rem; border-radius: 12px; margin-top: 2rem; border: 2px solid #8b2be2;">
+                        <h4 style="color: #8b2be2; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                            ⏰ Pre-Trade Timing & Bias Live Checklist
+                        </h4>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+                            <div style="background: var(--card-bg); padding: 1.25rem; border-radius: 8px; border-left: 4px solid var(--accent-green);">
+                                <div style="font-weight: bold; color: var(--accent-green); margin-bottom: 0.5rem;">✅ Before Entry (30 sec)</div>
+                                <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.95rem; line-height: 1.6;">
+                                    <li>☑️ HOD/LOD locked in?</li>
+                                    <li>☑️ Which Brinks window am I in?</li>
+                                    <li>☑️ EMA alignment confirmed?</li>
+                                    <li>☑️ News event coming up?</li>
+                                    <li>☑️ Risk calculated (1-2%)?</li>
+                                </ul>
+                            </div>
+                            <div style="background: var(--card-bg); padding: 1.25rem; border-radius: 8px; border-left: 4px solid var(--accent-yellow);">
+                                <div style="font-weight: bold; color: var(--accent-yellow); margin-bottom: 0.5rem;">🎯 Optimal Windows</div>
+                                <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.95rem; line-height: 1.6;">
+                                    <li><strong>9:45 AM:</strong> Best entry (⭐⭐⭐)</li>
+                                    <li><strong>9:30 AM:</strong> NYSE open (⭐⭐⭐)</li>
+                                    <li><strong>9:15 AM:</strong> Multi-TF (⭐⭐)</li>
+                                    <li><strong>3:45 AM:</strong> London PF (⭐⭐)</li>
+                                </ul>
+                            </div>
+                            <div style="background: var(--card-bg); padding: 1.25rem; border-radius: 8px; border-left: 4px solid var(--accent-red);">
+                                <div style="font-weight: bold; color: var(--accent-red); margin-bottom: 0.5rem;">🚫 DO NOT Trade If...</div>
+                                <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.95rem; line-height: 1.6;">
+                                    <li>Bias is unclear or conflicting</li>
+                                    <li>Hour before True Open (stop hunt)</li>
+                                    <li>High-impact news in 30 minutes</li>
+                                    <li>Choppy price action (Level II)</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div style="background: var(--card-bg); padding: 1.25rem; border-radius: 8px; margin-top: 1rem; text-align: center;">
+                            <p style="margin: 0; color: var(--accent-green); font-weight: bold; font-size: 1.1rem;">
+                                💎 "When all factors align, take the trade with confidence. When they don't, preservation of capital is the trade."
+                            </p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="alert alert-success" style="margin-top: 2rem;">
-                    <h4 style="margin-bottom: 0.5rem;">🚀 Next Steps</h4>
-                    <p>Learn more about timing:</p>
-                    <ul style="padding-left: 1.5rem; margin-top: 0.5rem;">
-                        <li><a href="weekly-schedule.html" style="color: var(--accent-green);">Weekly Schedule</a> - Best days to trade</li>
-                        <li><a href="micro-quarters.html" style="color: var(--accent-green);">Micro Quarters</a> - 22.5-min precision timing</li>
-                        <li><a href="entry-rules.html" style="color: var(--accent-green);">Entry Rules</a> - How to enter during sessions</li>
-                    </ul>
-                </div>
             </section>
-
-            <!-- Footer -->
-            <div class="footer">
-                <p><strong>Remember:</strong> Asian sets the range. London manipulates it. NY distributes it. PM resets it.</p>
-                <p style="margin-top: 1rem; color: var(--accent-blue);">Trade Quarterly. Beat the Market Makers. Win Consistently.</p>
-            </div>
         </main>
     </div>
 
+    <script src="../js/error-handler.js"></script>
+    <script src="../js/navigation.js"></script>
     <script src="../js/main.js"></script>
+    <script>
+        // Tab functionality
+        document.querySelectorAll('.tab-button').forEach(button => {
+            button.addEventListener('click', () => {
+                const tab = button.dataset.tab;
+                document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                button.classList.add('active');
+                document.getElementById(tab)?.classList.add('active');
+            });
+        });
+
+        // LIVE: Highlight current session
+        function highlightCurrentSession() {
+            const now = new Date();
+            // Get hour in EST - FIXED
+            const estTimeString = now.toLocaleString('en-US', { 
+                timeZone: 'America/New_York',
+                hour12: false,
+                hour: '2-digit'
+            });
+            const hours = parseInt(estTimeString.split(':')[0]);
+            let currentSession = '';
+            
+            if (hours >= 19 || hours < 2) {
+                currentSession = 'asian';
+            } else if (hours >= 2 && hours < 9) {
+                currentSession = 'london';
+            } else if (hours >= 9 && hours < 17) {
+                currentSession = 'ny';
+            } else {
+                currentSession = 'pm';
+            }
+            
+            const sessionTab = document.querySelector(`[data-tab="${currentSession}"]`);
+            if (sessionTab && !sessionTab.textContent.includes('🔴')) {
+                sessionTab.style.background = 'linear-gradient(135deg, rgba(255, 0, 0, 0.2), rgba(255, 87, 34, 0.2))';
+                sessionTab.style.border = '2px solid #ff0000';
+                sessionTab.style.fontWeight = 'bold';
+                const liveDot = document.createElement('span');
+                liveDot.textContent = ' 🔴 LIVE';
+                liveDot.style.animation = 'pulse 2s infinite';
+                sessionTab.appendChild(liveDot);
+            }
+        }
+        
+        highlightCurrentSession();
+        setInterval(highlightCurrentSession, 60000);
+
+        // LIVE MULTI-TIMEFRAME CYCLE POSITION TRACKER
+        function updateCyclePosition() {
+            const now = new Date();
+            
+            // Get EST time properly - FIXED
+            const estTimeString = now.toLocaleString('en-US', { 
+                timeZone: 'America/New_York',
+                hour12: false,
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            });
+            const [hours, minutes, seconds] = estTimeString.split(':').map(Number);
+            
+            // Get EST date properly
+            const estDateString = now.toLocaleString('en-US', { 
+                timeZone: 'America/New_York',
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit'
+            });
+            const [month, dayOfMonth, year] = estDateString.split('/').map(Number);
+            
+            // Get day of week in EST
+            const estDayString = now.toLocaleDateString('en-US', { timeZone: 'America/New_York', weekday: 'long' });
+            const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            const dayOfWeek = dayNames.indexOf(estDayString);
+            
+            // Determine cycles
+            let yearlyQ = (month - 1) <= 2 ? 'Q1' : (month - 1) <= 5 ? 'Q2' : (month - 1) <= 8 ? 'Q3' : 'Q4'; // month is 1-12, need 0-11
+            let monthlyWeek = dayOfMonth <= 7 ? 'Week 1' : dayOfMonth <= 14 ? 'Week 2' : dayOfMonth <= 21 ? 'Week 3' : 'Week 4';
+            const dayNamesShort = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            let weeklyDay = dayNamesShort[dayOfWeek];
+            let session = hours >= 19 || hours < 2 ? 'Asian' : hours < 9 ? 'London' : hours < 17 ? 'NY' : 'PM';
+            
+            // Calculate trade quality (0-5 scale)
+            let quality = 0;
+            let reasons = [];
+            
+            if (yearlyQ === 'Q3') { quality++; reasons.push('Yearly Q3 ⭐'); }
+            if (monthlyWeek === 'Week 3') { quality++; reasons.push('Monthly Week 3 ⭐'); }
+            if (weeklyDay === 'Wed') { quality++; reasons.push('Wednesday ⭐'); }
+            if (session === 'NY' && hours >= 9 && hours < 12) { quality += 2; reasons.push('NY AM Session Q3 ⭐⭐'); }
+            else if (session === 'NY') { quality++; reasons.push('NY Session ⭐'); }
+            
+            // Update banner
+            const positionText = `${yearlyQ} • ${monthlyWeek} • ${weeklyDay} • ${session} Session`;
+            document.getElementById('cyclePositionText').textContent = positionText;
+            
+            // Quality indicator
+            const qualityEl = document.getElementById('tradeQualityIndicator');
+            const qualityTextEl = document.getElementById('tradeQualityText');
+            
+            if (quality >= 4) {
+                qualityEl.style.background = 'linear-gradient(135deg, rgba(0, 255, 136, 0.3), rgba(0, 255, 136, 0.1))';
+                qualityEl.style.border = '2px solid var(--accent-green)';
+                qualityTextEl.textContent = 'MAXIMUM ⭐⭐⭐';
+                qualityTextEl.style.color = 'var(--accent-green)';
+            } else if (quality === 3) {
+                qualityEl.style.background = 'linear-gradient(135deg, rgba(0, 255, 136, 0.2), rgba(0, 255, 136, 0.05))';
+                qualityEl.style.border = '2px solid var(--accent-green)';
+                qualityTextEl.textContent = 'HIGH ⭐⭐';
+                qualityTextEl.style.color = 'var(--accent-green)';
+            } else if (quality === 2) {
+                qualityEl.style.background = 'linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 215, 0, 0.05))';
+                qualityEl.style.border = '2px solid var(--accent-yellow)';
+                qualityTextEl.textContent = 'MEDIUM ⭐';
+                qualityTextEl.style.color = 'var(--accent-yellow)';
+            } else {
+                qualityEl.style.background = 'linear-gradient(135deg, rgba(255, 87, 34, 0.2), rgba(255, 87, 34, 0.05))';
+                qualityEl.style.border = '2px solid var(--accent-red)';
+                qualityTextEl.textContent = 'LOW';
+                qualityTextEl.style.color = 'var(--accent-red)';
+            }
+            
+            // Details
+            const detailsEl = document.getElementById('cycleDetails');
+            if (reasons.length > 0) {
+                detailsEl.innerHTML = `<strong>✅ Active Alignments:</strong> ${reasons.join(' • ')}`;
+            } else {
+                detailsEl.innerHTML = `<strong>⚠️ No major alignments active.</strong> Consider waiting for higher probability windows.`;
+            }
+            
+            // Next optimal time
+            const nextOptimalEl = document.getElementById('nextOptimalTime');
+            if (weeklyDay === 'Wed' && hours >= 9 && hours < 12) {
+                nextOptimalEl.textContent = 'RIGHT NOW! 🔥';
+                nextOptimalEl.style.color = 'var(--accent-green)';
+            } else if (weeklyDay === 'Wed') {
+                nextOptimalEl.textContent = 'Today 10:30 AM';
+                nextOptimalEl.style.color = 'var(--accent-green)';
+            } else if (weeklyDay === 'Tue') {
+                nextOptimalEl.textContent = 'Tomorrow (Wed)';
+                nextOptimalEl.style.color = 'var(--accent-yellow)';
+            } else if (weeklyDay === 'Thu') {
+                nextOptimalEl.textContent = 'Next Wednesday';
+                nextOptimalEl.style.color = 'var(--accent-yellow)';
+            } else {
+                nextOptimalEl.textContent = 'Next Wednesday 10:30 AM';
+                nextOptimalEl.style.color = 'var(--text-secondary)';
+            }
+            
+            // TRADING PHASES TIMELINE
+            updateTradingPhasesTimeline(hours, weeklyDay);
+        }
+        
+        function updateTradingPhasesTimeline(currentHour, currentDay) {
+            const timelineEl = document.getElementById('tradingPhasesTimeline');
+            if (!timelineEl) return;
+            
+            let phases = [];
+            
+            // Determine next Consolidation (Asian Session - 7 PM)
+            let nextConsolidation = '';
+            let consolidationStatus = '';
+            if (currentHour >= 19 || currentHour < 2) {
+                nextConsolidation = 'NOW - Asian Session';
+                consolidationStatus = 'active';
+            } else if (currentHour >= 2 && currentHour < 19) {
+                const hoursUntil = 19 - currentHour;
+                nextConsolidation = `In ${hoursUntil}h - Tonight 7 PM`;
+                consolidationStatus = 'upcoming';
+            }
+            
+            // Determine next PF (London Session - 3-4:30 AM)
+            let nextPF = '';
+            let pfStatus = '';
+            if (currentHour >= 3 && currentHour < 5) {
+                nextPF = 'NOW - London PF Window';
+                pfStatus = 'active';
+            } else if (currentHour < 3) {
+                const hoursUntil = 3 - currentHour;
+                nextPF = `In ${hoursUntil}h - Tonight 3 AM`;
+                pfStatus = 'upcoming';
+            } else {
+                nextPF = 'Tomorrow 3-4:30 AM';
+                pfStatus = 'future';
+            }
+            
+            // Determine next Distribution (NY AM - 9-10:30 AM on Wednesday)
+            let nextDistribution = '';
+            let distributionStatus = '';
+            if (currentDay === 'Wed' && currentHour >= 9 && currentHour < 12) {
+                nextDistribution = 'NOW - NY Q3! 🔥';
+                distributionStatus = 'active';
+            } else if (currentDay === 'Wed' && currentHour < 9) {
+                const hoursUntil = 9 - currentHour;
+                nextDistribution = `In ${hoursUntil}h - Today 9 AM`;
+                distributionStatus = 'upcoming';
+            } else if (currentDay === 'Tue') {
+                nextDistribution = 'Tomorrow 9-10:30 AM ⭐';
+                distributionStatus = 'upcoming';
+            } else if (currentDay === 'Thu') {
+                nextDistribution = 'Next Wed 9-10:30 AM';
+                distributionStatus = 'future';
+            } else {
+                nextDistribution = 'Next Wed 9-10:30 AM';
+                distributionStatus = 'future';
+            }
+            
+            // Build HTML
+            timelineEl.innerHTML = `
+                <div style="background: ${consolidationStatus === 'active' ? 'rgba(74, 158, 255, 0.2)' : 'rgba(74, 158, 255, 0.1)'}; padding: 0.75rem; border-radius: 8px; border-left: 4px solid var(--accent-blue);">
+                    <div style="font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 0.25rem;">📊 CONSOLIDATION (Q1)</div>
+                    <div style="font-size: 0.95rem; font-weight: bold; color: var(--accent-blue);">${nextConsolidation}</div>
+                    <div style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.25rem;">Asian Session - Mark levels</div>
+                </div>
+                
+                <div style="background: ${pfStatus === 'active' ? 'rgba(255, 215, 0, 0.2)' : 'rgba(255, 215, 0, 0.1)'}; padding: 0.75rem; border-radius: 8px; border-left: 4px solid var(--accent-yellow);">
+                    <div style="font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 0.25rem;">⚡ PF WINDOW (Q2)</div>
+                    <div style="font-size: 0.95rem; font-weight: bold; color: var(--accent-yellow);">${nextPF}</div>
+                    <div style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.25rem;">London 3-4:30 AM - Peak Formation</div>
+                </div>
+                
+                <div style="background: ${distributionStatus === 'active' ? 'rgba(0, 255, 136, 0.2)' : 'rgba(0, 255, 136, 0.1)'}; padding: 0.75rem; border-radius: 8px; border-left: 4px solid var(--accent-green); ${distributionStatus === 'active' ? 'border: 2px solid var(--accent-green); animation: pulse 2s infinite;' : ''}">
+                    <div style="font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 0.25rem;">🔥 DISTRIBUTION (Q3)</div>
+                    <div style="font-size: 0.95rem; font-weight: bold; color: var(--accent-green);">${nextDistribution}</div>
+                    <div style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.25rem;">Wed NY AM - BEST WINDOW</div>
+                </div>
+            `;
+        }
+        
+        updateCyclePosition();
+        setInterval(updateCyclePosition, 5000); // Update every 5 seconds
+    </script>
+    <script src="../js/keyboard-shortcuts.js"></script>
+    <script src="../js/alerts.js"></script>
+    <script src="../js/live-session-tracker.js"></script>
 </body>
 </html>
-

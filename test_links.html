@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link Tester - Trading Guide</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0d1117;
+            color: #e6edf3;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #4a9eff;
+            margin-bottom: 2rem;
+        }
+        .test-section {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .test-section h2 {
+            color: #00ff88;
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        .link-item {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            background: #0d1117;
+            border-radius: 4px;
+            border-left: 3px solid transparent;
+        }
+        .link-item.success {
+            border-left-color: #00ff88;
+        }
+        .link-item.error {
+            border-left-color: #ff4444;
+        }
+        .link-item.testing {
+            border-left-color: #ffc107;
+        }
+        .status {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-right: 1rem;
+            display: inline-block;
+        }
+        .status.success {
+            background: #00ff88;
+        }
+        .status.error {
+            background: #ff4444;
+        }
+        .status.testing {
+            background: #ffc107;
+            animation: pulse 1s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .link-text {
+            flex: 1;
+        }
+        .link-url {
+            color: #4a9eff;
+            text-decoration: none;
+            margin-left: 1rem;
+        }
+        .link-url:hover {
+            text-decoration: underline;
+        }
+        button {
+            background: #4a9eff;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-bottom: 2rem;
+        }
+        button:hover {
+            background: #3a8eef;
+        }
+        .summary {
+            background: #161b22;
+            border: 2px solid #30363d;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            text-align: center;
+        }
+        .summary h3 {
+            margin-top: 0;
+            color: #ffc107;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 1rem;
+        }
+        .stat-item {
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        .stat-number.success {
+            color: #00ff88;
+        }
+        .stat-number.error {
+            color: #ff4444;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔗 Trading Guide - Link Tester</h1>
+    
+    <button onclick="testAllLinks()">🧪 Test All Links</button>
+    
+    <div class="test-section">
+        <h2>📚 Foundation Pages</h2>
+        <div id="foundation-links"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>📊 Timeframe Analysis Pages</h2>
+        <div id="timeframe-links"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>🎯 Trade Execution Pages</h2>
+        <div id="execution-links"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>📡 Practical Application Pages</h2>
+        <div id="practical-links"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>🛠️ Trading Tools</h2>
+        <div id="tools-links"></div>
+    </div>
+    
+    <div class="summary" id="summary" style="display: none;">
+        <h3>📊 Test Results Summary</h3>
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number success" id="successCount">0</div>
+                <div>✅ Passed</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number error" id="errorCount">0</div>
+                <div>❌ Failed</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="totalCount">0</div>
+                <div>📝 Total</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const links = {
+            foundation: [
+                { name: '🧠 Trading Philosophy', url: 'pages/core-philosophy.html' }
+            ],
+            timeframe: [
+                { name: '📊 Yearly & Monthly Cycles', url: 'pages/core-philosophy.html' },
+                { name: '📅 Weekly Cycle (BTMM)', url: 'pages/weekly-schedule.html' },
+                { name: '🌍 Daily Structure & Sessions', url: 'pages/daily-sessions.html' },
+                { name: '⏱️ Intraday Quarters (90min)', url: 'pages/micro-quarters.html' }
+            ],
+            execution: [
+                { name: '🔧 Chart Setup & Indicators', url: 'pages/technical-setup.html' },
+                { name: '📐 Price Action Patterns', url: 'pages/patterns.html' },
+                { name: '🎯 Entry & Exit Rules', url: 'pages/entry-rules.html' },
+                { name: '🛡️ Risk Management', url: 'pages/risk-management.html' }
+            ],
+            practical: [
+                { name: '📡 Live Trading Guide', url: 'pages/live-session-guide.html' },
+                { name: '✅ Daily Checklist', url: 'pages/checklist.html' },
+                { name: '💡 Trade Examples', url: 'pages/examples.html' },
+                { name: '⚡ Quick Reference', url: 'pages/quick-reference.html' }
+            ],
+            tools: [
+                { name: '📊 Trading Journal', url: 'pages/trading-journal.html' },
+                { name: '🧮 Calculators', url: 'pages/calculators.html' },
+                { name: '🎓 Pattern Trainer', url: 'pages/pattern-trainer.html' },
+                { name: '📈 Visual Market', url: 'pages/market-visuals.html' }
+            ]
+        };
+
+        let testResults = {
+            success: 0,
+            error: 0,
+            total: 0
+        };
+
+        function createLinkItem(link) {
+            return `
+                <div class="link-item testing" id="link-${link.url.replace(/[\/\.]/g, '-')}">
+                    <span class="status testing"></span>
+                    <span class="link-text">${link.name}</span>
+                    <a href="${link.url}" class="link-url" target="_blank">${link.url}</a>
+                </div>
+            `;
+        }
+
+        function renderLinks() {
+            document.getElementById('foundation-links').innerHTML = links.foundation.map(createLinkItem).join('');
+            document.getElementById('timeframe-links').innerHTML = links.timeframe.map(createLinkItem).join('');
+            document.getElementById('execution-links').innerHTML = links.execution.map(createLinkItem).join('');
+            document.getElementById('practical-links').innerHTML = links.practical.map(createLinkItem).join('');
+            document.getElementById('tools-links').innerHTML = links.tools.map(createLinkItem).join('');
+        }
+
+        async function testLink(link) {
+            const elementId = `link-${link.url.replace(/[\/\.]/g, '-')}`;
+            const element = document.getElementById(elementId);
+            
+            try {
+                const response = await fetch(link.url, { method: 'HEAD' });
+                
+                if (response.ok) {
+                    element.className = 'link-item success';
+                    element.querySelector('.status').className = 'status success';
+                    testResults.success++;
+                    return true;
+                } else {
+                    element.className = 'link-item error';
+                    element.querySelector('.status').className = 'status error';
+                    testResults.error++;
+                    return false;
+                }
+            } catch (error) {
+                element.className = 'link-item error';
+                element.querySelector('.status').className = 'status error';
+                testResults.error++;
+                return false;
+            }
+        }
+
+        async function testAllLinks() {
+            testResults = { success: 0, error: 0, total: 0 };
+            document.getElementById('summary').style.display = 'none';
+            
+            // Reset all links to testing state
+            renderLinks();
+            
+            // Count total links
+            const allLinks = [
+                ...links.foundation,
+                ...links.timeframe,
+                ...links.execution,
+                ...links.practical,
+                ...links.tools
+            ];
+            
+            testResults.total = allLinks.length;
+            
+            // Test all links
+            for (const link of allLinks) {
+                await testLink(link);
+                // Small delay between tests
+                await new Promise(resolve => setTimeout(resolve, 100));
+            }
+            
+            // Show summary
+            document.getElementById('successCount').textContent = testResults.success;
+            document.getElementById('errorCount').textContent = testResults.error;
+            document.getElementById('totalCount').textContent = testResults.total;
+            document.getElementById('summary').style.display = 'block';
+            
+            // Scroll to summary
+            document.getElementById('summary').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Initial render
+        renderLinks();
+    </script>
+</body>
+</html>
+

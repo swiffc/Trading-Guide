@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Link Test - Trading Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0d1117;
+            color: #e6edf3;
+            padding: 2rem;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            color: #4a9eff;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .controls {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        button {
+            background: #4a9eff;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        button:hover {
+            background: #3a8eef;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(74, 158, 255, 0.4);
+        }
+        
+        button:disabled {
+            background: #555;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .summary {
+            background: #161b22;
+            border: 2px solid #30363d;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .stat-card {
+            background: #0d1117;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #30363d;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-number.success { color: #00ff88; }
+        .stat-number.error { color: #ff4444; }
+        .stat-number.total { color: #4a9eff; }
+        
+        .stat-label {
+            color: #8b949e;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .test-card {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .test-card.testing {
+            border-left: 4px solid #ffc107;
+            background: rgba(255, 193, 7, 0.05);
+        }
+        
+        .test-card.success {
+            border-left: 4px solid #00ff88;
+            background: rgba(0, 255, 136, 0.05);
+        }
+        
+        .test-card.error {
+            border-left: 4px solid #ff4444;
+            background: rgba(255, 68, 68, 0.05);
+        }
+        
+        .test-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .status-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        
+        .status-icon.testing {
+            background: #ffc107;
+            animation: pulse 1.5s infinite;
+        }
+        
+        .status-icon.success {
+            background: #00ff88;
+        }
+        
+        .status-icon.error {
+            background: #ff4444;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(0.95); }
+        }
+        
+        .test-name {
+            font-weight: bold;
+            color: #e6edf3;
+            flex: 1;
+        }
+        
+        .test-url {
+            font-size: 0.85rem;
+            color: #8b949e;
+            margin-bottom: 0.5rem;
+            word-break: break-all;
+        }
+        
+        .test-result {
+            font-size: 0.85rem;
+            padding: 0.5rem;
+            border-radius: 4px;
+            margin-top: 0.5rem;
+        }
+        
+        .test-result.success {
+            background: rgba(0, 255, 136, 0.1);
+            color: #00ff88;
+        }
+        
+        .test-result.error {
+            background: rgba(255, 68, 68, 0.1);
+            color: #ff4444;
+        }
+        
+        .section-title {
+            color: #ffc107;
+            font-size: 1.2rem;
+            margin: 2rem 0 1rem 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #30363d;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #30363d;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 1rem;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4a9eff, #00ff88);
+            width: 0%;
+            transition: width 0.3s;
+        }
+        
+        .log {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 2rem;
+            max-height: 300px;
+            overflow-y: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+        }
+        
+        .log-entry {
+            padding: 0.25rem 0;
+            color: #8b949e;
+        }
+        
+        .log-entry.success { color: #00ff88; }
+        .log-entry.error { color: #ff4444; }
+        .log-entry.info { color: #4a9eff; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔗 Trading Guide - Complete Link Test</h1>
+        
+        <div class="controls">
+            <button id="testAllBtn" onclick="testAllLinks()">🧪 Test All Links</button>
+            <button id="testFoundationBtn" onclick="testSection('foundation')">Test Foundation</button>
+            <button id="testTimeframeBtn" onclick="testSection('timeframe')">Test Timeframe</button>
+            <button id="testExecutionBtn" onclick="testSection('execution')">Test Execution</button>
+            <button id="testPracticalBtn" onclick="testSection('practical')">Test Practical</button>
+            <button id="testToolsBtn" onclick="testSection('tools')">Test Tools</button>
+        </div>
+        
+        <div class="summary">
+            <h2 style="color: #ffc107; margin-bottom: 1rem;">📊 Test Results</h2>
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-number success" id="successCount">0</div>
+                    <div class="stat-label">✅ Passed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number error" id="errorCount">0</div>
+                    <div class="stat-label">❌ Failed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number total" id="totalCount">0</div>
+                    <div class="stat-label">📝 Total Tests</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" style="color: #ffc107;" id="progressPercent">0%</div>
+                    <div class="stat-label">⏳ Progress</div>
+                </div>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+        </div>
+        
+        <div id="foundation-section">
+            <div class="section-title">📚 FOUNDATION</div>
+            <div class="test-grid" id="foundation-tests"></div>
+        </div>
+        
+        <div id="timeframe-section">
+            <div class="section-title">📊 TIMEFRAME ANALYSIS</div>
+            <div class="test-grid" id="timeframe-tests"></div>
+        </div>
+        
+        <div id="execution-section">
+            <div class="section-title">🎯 TRADE EXECUTION</div>
+            <div class="test-grid" id="execution-tests"></div>
+        </div>
+        
+        <div id="practical-section">
+            <div class="section-title">📡 PRACTICAL APPLICATION</div>
+            <div class="test-grid" id="practical-tests"></div>
+        </div>
+        
+        <div id="tools-section">
+            <div class="section-title">🛠️ TRADING TOOLS</div>
+            <div class="test-grid" id="tools-tests"></div>
+        </div>
+        
+        <div class="log" id="testLog"></div>
+    </div>
+
+    <script>
+        const links = {
+            foundation: [
+                { name: '🧠 Trading Philosophy', url: 'pages/core-philosophy.html' }
+            ],
+            timeframe: [
+                { name: '📊 Yearly & Monthly Cycles', url: 'pages/core-philosophy.html' },
+                { name: '📅 Weekly Cycle (BTMM)', url: 'pages/weekly-schedule.html' },
+                { name: '🌍 Daily Structure & Sessions', url: 'pages/daily-sessions.html' },
+                { name: '⏱️ Intraday Quarters (90min)', url: 'pages/micro-quarters.html' }
+            ],
+            execution: [
+                { name: '🔧 Chart Setup & Indicators', url: 'pages/technical-setup.html' },
+                { name: '📐 Price Action Patterns', url: 'pages/patterns.html' },
+                { name: '🎯 Entry & Exit Rules', url: 'pages/entry-rules.html' },
+                { name: '🛡️ Risk Management', url: 'pages/risk-management.html' }
+            ],
+            practical: [
+                { name: '📡 Live Trading Guide', url: 'pages/live-session-guide.html' },
+                { name: '✅ Daily Checklist', url: 'pages/checklist.html' },
+                { name: '💡 Trade Examples', url: 'pages/examples.html' },
+                { name: '⚡ Quick Reference', url: 'pages/quick-reference.html' }
+            ],
+            tools: [
+                { name: '📊 Trading Journal', url: 'pages/trading-journal.html' },
+                { name: '🧮 Calculators', url: 'pages/calculators.html' },
+                { name: '🎓 Pattern Trainer', url: 'pages/pattern-trainer.html' },
+                { name: '📈 Visual Market', url: 'pages/market-visuals.html' }
+            ]
+        };
+
+        let testResults = {
+            success: 0,
+            error: 0,
+            total: 0,
+            tested: 0
+        };
+
+        function createTestCard(link, section) {
+            const id = `test-${section}-${link.url.replace(/[\/\.]/g, '-')}`;
+            return `
+                <div class="test-card" id="${id}">
+                    <div class="test-header">
+                        <div class="status-icon" id="${id}-icon"></div>
+                        <div class="test-name">${link.name}</div>
+                    </div>
+                    <div class="test-url">${link.url}</div>
+                    <div class="test-result" id="${id}-result" style="display: none;"></div>
+                </div>
+            `;
+        }
+
+        function renderAllTests() {
+            Object.keys(links).forEach(section => {
+                const container = document.getElementById(`${section}-tests`);
+                container.innerHTML = links[section].map(link => createTestCard(link, section)).join('');
+            });
+        }
+
+        function addLog(message, type = 'info') {
+            const log = document.getElementById('testLog');
+            const entry = document.createElement('div');
+            entry.className = `log-entry ${type}`;
+            const timestamp = new Date().toLocaleTimeString();
+            entry.textContent = `[${timestamp}] ${message}`;
+            log.appendChild(entry);
+            log.scrollTop = log.scrollHeight;
+        }
+
+        async function testLink(link, section) {
+            const id = `test-${section}-${link.url.replace(/[\/\.]/g, '-')}`;
+            const card = document.getElementById(id);
+            const icon = document.getElementById(`${id}-icon`);
+            const result = document.getElementById(`${id}-result`);
+            
+            card.className = 'test-card testing';
+            icon.className = 'status-icon testing';
+            result.style.display = 'none';
+            
+            addLog(`Testing: ${link.name}...`, 'info');
+            
+            try {
+                const response = await fetch(link.url, { method: 'HEAD' });
+                
+                if (response.ok) {
+                    card.className = 'test-card success';
+                    icon.className = 'status-icon success';
+                    result.className = 'test-result success';
+                    result.textContent = `✅ Success (${response.status})`;
+                    result.style.display = 'block';
+                    testResults.success++;
+                    addLog(`✅ ${link.name} - PASSED`, 'success');
+                    return true;
+                } else {
+                    card.className = 'test-card error';
+                    icon.className = 'status-icon error';
+                    result.className = 'test-result error';
+                    result.textContent = `❌ Error ${response.status}: ${response.statusText}`;
+                    result.style.display = 'block';
+                    testResults.error++;
+                    addLog(`❌ ${link.name} - FAILED (${response.status})`, 'error');
+                    return false;
+                }
+            } catch (error) {
+                card.className = 'test-card error';
+                icon.className = 'status-icon error';
+                result.className = 'test-result error';
+                result.textContent = `❌ Network Error: ${error.message}`;
+                result.style.display = 'block';
+                testResults.error++;
+                addLog(`❌ ${link.name} - FAILED (${error.message})`, 'error');
+                return false;
+            } finally {
+                testResults.tested++;
+                updateProgress();
+            }
+        }
+
+        function updateProgress() {
+            document.getElementById('successCount').textContent = testResults.success;
+            document.getElementById('errorCount').textContent = testResults.error;
+            document.getElementById('totalCount').textContent = testResults.total;
+            
+            const percent = testResults.total > 0 ? Math.round((testResults.tested / testResults.total) * 100) : 0;
+            document.getElementById('progressPercent').textContent = `${percent}%`;
+            document.getElementById('progressFill').style.width = `${percent}%`;
+        }
+
+        async function testSection(section) {
+            addLog(`Starting ${section.toUpperCase()} section tests...`, 'info');
+            
+            const sectionLinks = links[section];
+            for (const link of sectionLinks) {
+                await testLink(link, section);
+                await new Promise(resolve => setTimeout(resolve, 200));
+            }
+            
+            addLog(`${section.toUpperCase()} section complete!`, 'info');
+        }
+
+        async function testAllLinks() {
+            // Reset
+            testResults = { success: 0, error: 0, total: 0, tested: 0 };
+            document.getElementById('testLog').innerHTML = '';
+            
+            // Count total
+            Object.values(links).forEach(section => {
+                testResults.total += section.length;
+            });
+            
+            updateProgress();
+            addLog('🚀 Starting comprehensive link test...', 'info');
+            addLog(`Total links to test: ${testResults.total}`, 'info');
+            
+            // Disable buttons
+            document.querySelectorAll('button').forEach(btn => btn.disabled = true);
+            
+            // Test all sections
+            for (const section of Object.keys(links)) {
+                await testSection(section);
+            }
+            
+            // Re-enable buttons
+            document.querySelectorAll('button').forEach(btn => btn.disabled = false);
+            
+            // Final summary
+            addLog('', 'info');
+            addLog('═══════════════════════════════════════', 'info');
+            addLog(`✅ PASSED: ${testResults.success}`, 'success');
+            addLog(`❌ FAILED: ${testResults.error}`, 'error');
+            addLog(`📝 TOTAL: ${testResults.total}`, 'info');
+            
+            if (testResults.error === 0) {
+                addLog('🎉 ALL TESTS PASSED! Navigation is working perfectly!', 'success');
+            } else {
+                addLog(`⚠️ ${testResults.error} link(s) failed. Please check the errors above.`, 'error');
+            }
+        }
+
+        // Initialize
+        renderAllTests();
+        updateProgress();
+        addLog('Test suite ready. Click "Test All Links" to begin.', 'info');
+    </script>
+</body>
+</html>
+

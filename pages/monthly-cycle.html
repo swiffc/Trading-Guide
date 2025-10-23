@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monthly Cycle - Trading Guide</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <div>
+                <h1>Quarterly Theory & BTMM Trading Guide</h1>
+                <div class="header-subtitle">Monthly Cycle (30-Day)</div>
+            </div>
+            <div class="current-time">
+                <div class="time-display" id="currentTime">--:--:-- EST</div>
+                <div class="session-indicator" id="sessionIndicator">Loading...</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <nav class="sidebar" id="sidebar">
+            <div class="nav-header">
+                <a href="../index.html" style="text-decoration: none; color: inherit;">
+                    <h2>📚 Trading Guide</h2>
+                </a>
+            </div>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search guide..." />
+            </div>
+            <div class="nav-links" id="navLinks"></div>
+        </nav>
+
+        <main class="content" id="mainContent">
+            <section class="section">
+                <h2>📅 Monthly Cycle Overview</h2>
+                
+                <div class="alert alert-info">
+                    <strong>💡 Core Concept:</strong> Every 30-day month divides into 4 weeks following A-M-D-X. Week 3 = Q3 Distribution = Best trading week. True Open = 2nd Monday.
+                </div>
+
+                <div class="alert alert-success" style="margin-top: 1rem;">
+                    <strong>🎯 THE TARGET:</strong> Week 3 Wednesday NY Session 10:30 AM-12 PM = Monthly Q3 + Weekly Q3 + Daily Q3 + Session Q3 = MAXIMUM EDGE!
+                </div>
+
+                <!-- TABBED NAVIGATION -->
+                <div class="tabs" style="margin: 2rem 0;">
+                    <button class="tab-button active" data-tab="overview">📊 Overview</button>
+                    <button class="tab-button" data-tab="week1">Week 1 (Q1)</button>
+                    <button class="tab-button" data-tab="week2">Week 2 (Q2)</button>
+                    <button class="tab-button" data-tab="week3">Week 3 (Q3) ⭐</button>
+                    <button class="tab-button" data-tab="week4">Week 4 (Q4)</button>
+                </div>
+
+                <!-- TAB CONTENT: OVERVIEW -->
+                <div id="overview" class="tab-content active">
+                <h3 style="margin-top: 2rem;">📊 Monthly Structure</h3>
+                <table>
+                    <tr>
+                        <th>Week</th>
+                        <th>Days</th>
+                        <th>Phase</th>
+                        <th>Strategy</th>
+                        <th>Trade %</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Week 1</strong></td>
+                        <td>1-7</td>
+                        <td>Q1 Accumulation</td>
+                        <td>Observe, mark levels, NFP Friday</td>
+                        <td>10%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Week 2</strong></td>
+                        <td>8-14</td>
+                        <td>Q2 Manipulation</td>
+                        <td>Mark 2nd Monday True Open, watch PF</td>
+                        <td>10%</td>
+                    </tr>
+                    <tr style="background: rgba(0, 255, 136, 0.1); border: 2px solid var(--accent-green);">
+                        <td><strong>Week 3</strong></td>
+                        <td>15-21</td>
+                        <td><strong>Q3 Distribution ⭐⭐⭐</strong></td>
+                        <td><strong>TRADE AGGRESSIVELY HERE!</strong></td>
+                        <td><strong>70%</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Week 4</strong></td>
+                        <td>22-30</td>
+                        <td>Q4 Reversal</td>
+                        <td>Close positions, month-end flows</td>
+                        <td>10%</td>
+                    </tr>
+                </table>
+
+                <div style="margin-top: 2rem; padding: 2rem; background: linear-gradient(135deg, rgba(0, 255, 136, 0.15), rgba(0, 255, 136, 0.05)); border-radius: 12px; border: 3px solid var(--accent-green);">
+                    <h3 style="color: var(--accent-green);">🔄 Fractal Alignment: Monthly + Weekly + Daily</h3>
+                    <p>Week 3 is powerful because monthly Q3 aligns with weekly cycles:</p>
+                    <table style="width: 100%; margin-top: 1rem;">
+                        <tr>
+                            <th>Day of Week 3</th>
+                            <th>Weekly Q</th>
+                            <th>Best Time</th>
+                            <th>Alignment</th>
+                            <th>Probability</th>
+                        </tr>
+                        <tr>
+                            <td>Monday</td>
+                            <td>Q1</td>
+                            <td>NY 10:30-12</td>
+                            <td>Monthly Q3 + Weekly Q1 + Daily Q3 + Session Q3</td>
+                            <td>High</td>
+                        </tr>
+                        <tr>
+                            <td>Tuesday</td>
+                            <td>Q2</td>
+                            <td>NY 10:30-12</td>
+                            <td>Monthly Q3 + Weekly Q2 + Daily Q3 + Session Q3</td>
+                            <td>High</td>
+                        </tr>
+                        <tr style="background: rgba(0, 255, 136, 0.12); border: 3px solid var(--accent-green);">
+                            <td><strong>WEDNESDAY</strong></td>
+                            <td><strong>Q3</strong></td>
+                            <td><strong>NY 10:30-12</strong></td>
+                            <td><strong>Monthly Q3 + Weekly Q3 + Daily Q3 + Session Q3 ⭐⭐⭐⭐</strong></td>
+                            <td><strong>MAXIMUM 70-80%</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Thursday</td>
+                            <td>Q4</td>
+                            <td>NY 10:30-12</td>
+                            <td>Monthly Q3 + Weekly Q4 + Daily Q3 + Session Q3</td>
+                            <td>High</td>
+                        </tr>
+                    </table>
+                    
+                    <div class="alert alert-success" style="margin-top: 1.5rem;">
+                        <strong>🔥 THE HOLY GRAIL:</strong> Week 3 Wednesday 10:30 AM-12 PM = 4 timeframes in Q3! This happens EVERY MONTH. Mark your calendar!
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 2.5rem;">📅 Economic Calendar</h3>
+                <table>
+                    <tr>
+                        <th>Event</th>
+                        <th>When</th>
+                        <th>Impact</th>
+                        <th>Strategy</th>
+                    </tr>
+                    <tr>
+                        <td>NFP (Non-Farm Payrolls)</td>
+                        <td>1st Friday (Week 1)</td>
+                        <td>EXTREME</td>
+                        <td>Trade only if experienced, 100+ pip moves</td>
+                    </tr>
+                    <tr>
+                        <td>CPI (Inflation)</td>
+                        <td>Mid-month (Week 2-3)</td>
+                        <td>HIGH</td>
+                        <td>Can set monthly trend</td>
+                    </tr>
+                    <tr>
+                        <td>FOMC Meeting</td>
+                        <td>Varies (8x/year)</td>
+                        <td>EXTREME</td>
+                        <td>Avoid or close all before announcement</td>
+                    </tr>
+                    <tr>
+                        <td>Month-End Rebalancing</td>
+                        <td>Last 2 days (Week 4)</td>
+                        <td>MEDIUM</td>
+                        <td>Choppy - avoid new trades</td>
+                    </tr>
+                </table>
+
+                </div><!-- End Overview Tab -->
+
+                <!-- TAB: WEEK 1 -->
+                <div id="week1" class="tab-content">
+                <h3>Week 1 (Days 1-7) - Q1 Accumulation</h3>
+                <div class="alert alert-info">Monthly Q1: Focus 10%</div>
+                <div class="card" style="margin-top: 1.5rem; border-left: 4px solid var(--accent-blue);">
+                    <p><strong>Characteristics:</strong> New month begins, range forming, NFP Friday volatility</p>
+                    <p><strong>Strategy:</strong> Observe and mark levels. Wait for Week 3.</p>
+                    <p><strong>Best Day:</strong> Wednesday if trading (Weekly Q3 + Daily Q3)</p>
+                </div>
+                </div><!-- End Week 1 -->
+
+                <!-- TAB: WEEK 2 -->
+                <div id="week2" class="tab-content">
+                <h3>Week 2 (Days 8-14) - Q2 Manipulation</h3>
+                <div class="alert alert-warning">Monthly Q2: Focus 10% - Mark True Open (2nd Monday)</div>
+                <div class="card" style="margin-top: 1.5rem; border-left: 4px solid var(--accent-yellow);">
+                    <p><strong>Characteristics:</strong> 2nd Monday = True Open, stop hunting, CPI often released</p>
+                    <p><strong>Strategy:</strong> Mark which weekly high/low gets swept. Prepare for Week 3 reversal.</p>
+                    <p><strong>Key Insight:</strong> Tuesday of Week 2 = Monthly Q2 + Weekly Q2 = Double Manipulation (Monthly PF forms!)</p>
+                </div>
+                </div><!-- End Week 2 -->
+
+                <!-- TAB: WEEK 3 (MOST IMPORTANT) -->
+                <div id="week3" class="tab-content">
+                <h3>Week 3 (Days 15-21) - Q3 Distribution ⭐⭐⭐</h3>
+                <div class="alert alert-success" style="background: rgba(0, 255, 136, 0.15); border: 3px solid var(--accent-green);">
+                    <strong>🔥 THE WEEK!</strong> Monthly Q3 = Best trading week. Focus 70%
+                </div>
+                <div class="card" style="margin-top: 1.5rem; border: 3px solid var(--accent-green); background: rgba(0, 255, 136, 0.05);">
+                    <p><strong>THIS IS THE WEEK!</strong></p>
+                    <p><strong>Characteristics:</strong> Major moves happen, clear direction opposite of Week 2, highest volume</p>
+                    <p><strong>Strategy:</strong></p>
+                    <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                        <li>✅ Trade OPPOSITE of Week 2 direction (70% rule)</li>
+                        <li>✅ Focus on Wednesday 10:30 AM-12 PM (MAXIMUM EDGE)</li>
+                        <li>✅ Use full position size</li>
+                        <li>✅ Go for TP2 and TP3 targets</li>
+                        <li>✅ Can take 2-3 positions this week</li>
+                    </ul>
+                    <p style="margin-top: 1rem;"><strong>Win Rate:</strong> 70-80% when setup is proper</p>
+                </div>
+                </div><!-- End Week 3 -->
+
+                <!-- TAB: WEEK 4 -->
+                <div id="week4" class="tab-content">
+                <h3>Week 4 (Days 22-30) - Q4 Reversal</h3>
+                <div class="alert alert-warning">Monthly Q4: Focus 10% - Month-end flows, close positions</div>
+                <div class="card" style="margin-top: 1.5rem; border-left: 4px solid var(--accent-red);">
+                    <p><strong>Characteristics:</strong> Month-end flows, profit taking, choppy action, institutions rebalancing</p>
+                    <p><strong>Strategy:</strong> Close positions by Wednesday. Avoid new trades. Prepare for next month.</p>
+                    <p><strong>Warning:</strong> Even Wednesday of Week 4 has lower probability because Monthly Cycle is Q4.</p>
+                </div>
+                </div><!-- End Week 4 -->
+
+                <div class="alert alert-warning" style="margin-top: 2rem;">
+                    <h4>⚠️ Monthly Trading Rules</h4>
+                    <ul style="padding-left: 1.5rem;">
+                        <li><strong>80% of your trades</strong> should be in Week 3</li>
+                        <li><strong>Focus Wednesday</strong> of Week 3 for maximum edge</li>
+                        <li><strong>Avoid Week 4</strong> entirely (month-end chop)</li>
+                        <li><strong>Use Week 1-2</strong> only for observation and PF marking</li>
+                        <li><strong>NFP Friday</strong> = trade only if experienced</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(74, 158, 255, 0.1); border-radius: 8px;">
+                    <h4>💡 Why Week 3 Works</h4>
+                    <p style="line-height: 1.8;">
+                        Week 2 (Q2 Manipulation) creates the monthly Peak Formation (PF) - just like London session creates daily PF. 
+                        Week 3 (Q3 Distribution) is when the REAL move happens against that PF. This is institutional distribution, not manipulation.
+                    </p>
+                    <p style="margin-top: 1rem; line-height: 1.8;">
+                        <strong>Historical data shows:</strong> Week 3 has 60-70% more profitable trading opportunities than other weeks. 
+                        When you add Wednesday (Weekly Q3) + NY Session (Daily Q3) = probability jumps to 70-80%.
+                    </p>
+                </div>
+
+                <div class="alert alert-success" style="margin-top: 2rem; background: rgba(0, 255, 136, 0.15); border: 3px solid var(--accent-green);">
+                    <h4 style="color: var(--accent-green);">🎯 Monthly Game Plan</h4>
+                    <p style="font-size: 1.1rem; line-height: 1.9;">
+                        <strong>Week 1:</strong> Mark levels, observe NFP Friday<br>
+                        <strong>Week 2:</strong> Mark True Open (2nd Monday), watch for PF formation<br>
+                        <strong>Week 3:</strong> TRADE! Focus Wednesday 10:30 AM-12 PM<br>
+                        <strong>Week 4:</strong> Close everything, prepare for next month<br><br>
+                        <strong>Result:</strong> Clear, focused, high-probability trading every month!
+                    </p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../js/navigation.js"></script>
+    <script src="../js/clock.js"></script>
+    <script>
+        // Tab functionality
+        document.querySelectorAll('.tab-button').forEach(button => {
+            button.addEventListener('click', () => {
+                const tab = button.dataset.tab;
+                document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                button.classList.add('active');
+                document.getElementById(tab)?.classList.add('active');
+            });
+        });
+
+        // LIVE: Highlight current week
+        function highlightCurrentWeek() {
+            const now = new Date();
+            // Get day in EST timezone
+            const estDate = new Date(now.toLocaleString('en-US', { timeZone: 'America/New_York' }));
+            const day = estDate.getDate();
+            let currentWeek = '';
+            if (day >= 1 && day <= 7) currentWeek = 'week1';
+            else if (day >= 8 && day <= 14) currentWeek = 'week2';
+            else if (day >= 15 && day <= 21) currentWeek = 'week3';
+            else currentWeek = 'week4';
+            
+            const currentTab = document.querySelector(`[data-tab="${currentWeek}"]`);
+            if (currentTab && !currentTab.textContent.includes('🔴')) {
+                currentTab.style.background = 'linear-gradient(135deg, rgba(255, 0, 0, 0.2), rgba(255, 87, 34, 0.2))';
+                currentTab.style.border = '2px solid #ff0000';
+                currentTab.style.fontWeight = 'bold';
+                const liveDot = document.createElement('span');
+                liveDot.textContent = ' 🔴';
+                liveDot.style.animation = 'pulse 2s infinite';
+                currentTab.appendChild(liveDot);
+            }
+        }
+        highlightCurrentWeek();
+        setInterval(highlightCurrentWeek, 60000);
+    </script>
+</body>
+</html>

@@ -21,29 +21,19 @@
     </div>
 
     <div class="main-container">
-        <aside class="sidebar">
+                <nav class="sidebar" id="sidebar">
+            <div class="nav-header">
+                <a href="../index.html" style="text-decoration: none; color: inherit;">
+                    <h2>📚 Trading Guide</h2>
+                </a>
+            </div>
             <div class="search-box">
                 <input type="text" id="searchInput" placeholder="Search guide..." />
             </div>
-            
-            <h3>📚 Navigation (Top-Down)</h3>
-            <ul class="nav-menu">
-                <li><a href="../index.html" class="nav-link">🏠 Home</a></li>
-                <li style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color);"><a href="core-philosophy.html" class="nav-link">🎯 Core Philosophy</a></li>
-                <li><a href="weekly-schedule.html" class="nav-link">📅 Weekly Structure</a></li>
-                <li><a href="btmm-cycle.html" class="nav-link">🔄 BTMM 3-Day Cycle</a></li>
-                <li><a href="daily-sessions.html" class="nav-link">🕐 Daily Sessions</a></li>
-                <li><a href="micro-quarters.html" class="nav-link">⏱️ Micro Quarters</a></li>
-                <li style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color);"><a href="technical-setup.html" class="nav-link">🔧 Technical Setup</a></li>
-                <li><a href="patterns.html" class="nav-link active">📊 Patterns</a></li>
-                <li><a href="entry-rules.html" class="nav-link">📈 Entry Rules</a></li>
-                <li><a href="risk-management.html" class="nav-link">🛡️ Risk Management</a></li>
-                <li><a href="checklist.html" class="nav-link">✅ Trading Checklist</a></li>
-                <li><a href="examples.html" class="nav-link">💡 Trade Examples</a></li>
-                <li style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color);"><a href="live-session-guide.html" class="nav-link">📡 Live Session Guide</a></li>
-                <li><a href="quick-reference.html" class="nav-link">⚡ Quick Reference</a></li>
-            </ul>
-        </aside>
+            <div class="nav-links" id="navLinks">
+                <!-- Navigation will be loaded by main.js -->
+            </div>
+        </nav>
 
         <main class="content" id="mainContent">
             <section class="section">
@@ -60,9 +50,18 @@
 
                 <h3 style="margin-top: 2rem;">Choose a Pattern to Study:</h3>
                 
+                <div class="alert alert-warning" style="margin-bottom: 1.5rem; background: rgba(255, 193, 7, 0.15); border: 2px solid var(--accent-yellow);">
+                    <h4 style="color: var(--accent-yellow); margin-bottom: 0.5rem;">🎯 NEW: Type 1-4 Trade Setups Now Have Dedicated Tabs!</h4>
+                    <p style="margin: 0;">For easy access, Type 1, 2, 3, and 4 setups now have their own tabs below. These are the comprehensive BTMM trade setups from Steve Mauro!</p>
+                </div>
+
                 <div class="tabs" style="flex-wrap: wrap; gap: 0.5rem;">
                     <button class="tab-button active" data-tab="m-pattern">🔴 M-Top (Bearish)</button>
                     <button class="tab-button" data-tab="w-pattern">🟢 W-Bottom (Bullish)</button>
+                    <button class="tab-button" data-tab="type1-setup">📈 TYPE 1: Safety Trade</button>
+                    <button class="tab-button" data-tab="type2-setup">🔄 TYPE 2: Asian 00 Bounce</button>
+                    <button class="tab-button" data-tab="type3-setup">⚖️ TYPE 3: Asian 50 Bounce</button>
+                    <button class="tab-button" data-tab="type4-setup">💥 TYPE 4: Breakout Continuation</button>
                     <button class="tab-button" data-tab="london-ny">⚡ London → NY</button>
                     <button class="tab-button" data-tab="batman">🦇 Half Batman</button>
                     <button class="tab-button" data-tab="shark">🦈 Shark Fin</button>
@@ -826,6 +825,370 @@
                             <li><strong>📏 Risk Management:</strong> Stop Loss above/below apex, Take Profit 2:1 RR</li>
                             <li><strong>⏰ Timing:</strong> London Session (3:30-5:30 AM), NY Session (9:30-11:00 AM), Brinks (9:45 PM, 3:45 AM, 9:45 AM)</li>
                         </ol>
+                    </div>
+                </div>
+
+                <!-- TYPE 1 SETUP TAB -->
+                <div id="type1-setup" class="tab-content" style="margin-top: 1.5rem;">
+                    <div class="pattern-card" style="border: 3px solid var(--accent-green); background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 255, 136, 0.05));">
+                        <div class="pattern-title" style="color: var(--accent-green); font-size: 1.4rem;">📈 TYPE 1: M/W PATTERNS ABOVE/BELOW ASIAN SESSION (Safety Trade)</div>
+                        
+                        <div class="alert alert-success" style="margin: 1.5rem 0;">
+                            <h4 style="margin-bottom: 0.5rem;">🎯 Core Concept:</h4>
+                            <p>M or W pattern forms ABOVE Asian High (for sells) or BELOW Asian Low (for buys). This is called the "Safety Trade" because price has already established a clear high/low before the pattern forms!</p>
+                        </div>
+
+                        <h3 style="color: var(--accent-red); margin-top: 2rem;">Type 1a: Full 13 EMA Rules (Strictest) 📊</h3>
+                        <div class="card">
+                            <h4 style="color: var(--accent-blue);">📝 Rules:</h4>
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li>Both legs <strong>STRICTLY respect 13 EMA</strong> - no break or violation allowed</li>
+                                <li>Apex forms with clean rejection candlestick pattern</li>
+                                <li>Pattern must be ABOVE Asian High (M-Top sell) or BELOW Asian Low (W-Bottom buy)</li>
+                                <li>Close below/above 13 EMA confirms entry</li>
+                            </ul>
+                            <h4 style="color: var(--accent-green); margin-top: 1rem;">📍 Optimal Location:</h4>
+                            <ul style="padding-left: 1.5rem;">
+                                <li>Session HOD/LOD (High/Low of Day)</li>
+                                <li>PSH/PSL, PDH/PDL, PWH/PWL levels</li>
+                                <li>5-day averaged ADR levels</li>
+                            </ul>
+                            <h4 style="color: var(--accent-yellow); margin-top: 1rem;">🎯 Use Case:</h4>
+                            <p>Ideal in trending markets where clear structure is maintained. Highest probability variant!</p>
+                        </div>
+
+                        <h3 style="color: var(--accent-yellow); margin-top: 2rem;">Type 1b: 13 EMA Tap (Moderate) 🔄</h3>
+                        <div class="card">
+                            <h4 style="color: var(--accent-blue);">📝 Rules:</h4>
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li>First leg TAPS 13 EMA but does not break it</li>
+                                <li>Second leg forms rejection candlestick (Morning Star, Railroad Tracks, etc.)</li>
+                                <li>Pattern above Asian High (sell) or below Asian Low (buy)</li>
+                                <li>Close below/above 13 EMA for confirmation</li>
+                            </ul>
+                            <h4 style="color: var(--accent-green); margin-top: 1rem;">📍 Optimal Location:</h4>
+                            <ul style="padding-left: 1.5rem;">
+                                <li><strong>Brinks Trade Timing:</strong> 9:45 PM, 3:45 AM, 9:45 AM EST</li>
+                                <li>London/NY session extremes</li>
+                                <li>PSH/PSL, PDH/PDL, PWH/PWL, PYH/PYL levels</li>
+                            </ul>
+                            <h4 style="color: var(--accent-yellow); margin-top: 1rem;">🎯 Use Case:</h4>
+                            <p>During consolidation or when liquidity sweeps align with key EMAs. Common at Brinks times!</p>
+                        </div>
+
+                        <h3 style="color: var(--accent-blue); margin-top: 2rem;">Type 1c: Leg Doesn't Touch 13 EMA (Momentum) 📊</h3>
+                        <div class="card">
+                            <h4 style="color: var(--accent-blue);">📝 Rules:</h4>
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li>First leg remains ENTIRELY above (buy) or below (sell) 13 EMA</li>
+                                <li>Second leg closes back INSIDE 13 EMA</li>
+                                <li>Confirms with candlestick rejection (Railroad Tracks, COW)</li>
+                                <li>Shows momentum exhaustion</li>
+                            </ul>
+                            <h4 style="color: var(--accent-green); margin-top: 1rem;">📍 Optimal Location:</h4>
+                            <ul style="padding-left: 1.5rem;">
+                                <li>Near session HOD/LOD</li>
+                                <li>Targeting liquidity sweeps before reversal</li>
+                            </ul>
+                            <h4 style="color: var(--accent-yellow); margin-top: 1rem;">🎯 Use Case:</h4>
+                            <p>Trending markets where 13 EMA acts as dynamic resistance/support. Momentum exhaustion signal!</p>
+                        </div>
+
+                        <div class="alert alert-info" style="margin-top: 2rem;">
+                            <h4 style="margin-bottom: 0.5rem;">🌟 Key Features Across All Type 1 Variants:</h4>
+                            <ul style="padding-left: 1.5rem; margin-top: 0.5rem; line-height: 1.8;">
+                                <li>✅ Dynamic EMA interaction (13 EMA is critical reference)</li>
+                                <li>✅ Rejection candlestick patterns confirm apex</li>
+                                <li>✅ Session timing alignment (London 3:30-5:30 AM, NY 9:30-11:00 AM, Brinks times)</li>
+                                <li>✅ Liquidity targeting at key levels (PSH/PSL, PDH/PDL, etc.)</li>
+                            </ul>
+                        </div>
+
+                        <h3 style="color: var(--accent-green); margin-top: 2rem;">🎯 Entry Requirements (ALL Types):</h3>
+                        <div class="card" style="border: 2px solid var(--accent-green);">
+                            <ol style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li>✅ Pattern ABOVE Asian High (M-Top sell) or BELOW Asian Low (W-Bottom buy)</li>
+                                <li>✅ Second leg forms rejection candlestick at apex</li>
+                                <li>✅ Close below/above 13 EMA confirms</li>
+                                <li>✅ At key confluence level (HOD/LOD, PDH/PDL, session extremes)</li>
+                                <li>✅ During optimal session timing (London/NY)</li>
+                            </ol>
+                        </div>
+
+                        <h3 style="color: var(--accent-red); margin-top: 2rem;">💡 Type 1 Trading Summary:</h3>
+                        <div class="alert alert-success">
+                            <p><strong>Safety Trade = M-Top Above Asian High OR W-Bottom Below Asian Low</strong></p>
+                            <ul style="padding-left: 1.5rem; margin-top: 0.5rem;">
+                                <li><strong>Type 1a:</strong> Both legs respect 13 EMA (strictest, highest probability)</li>
+                                <li><strong>Type 1b:</strong> First leg taps 13 EMA (moderate, good for Brinks timing)</li>
+                                <li><strong>Type 1c:</strong> First leg stays away from 13 EMA (momentum exhaustion signal)</li>
+                            </ul>
+                            <p style="margin-top: 1rem;"><strong>All require:</strong> Pattern above/below Asian session + Key level confluence + Rejection candlestick + Close through 13 EMA</p>
+                            <p style="margin-top: 0.5rem; font-style: italic;">📖 For complete detailed breakdown including visuals, see M-Top and W-Bottom tabs!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TYPE 2 SETUP TAB -->
+                <div id="type2-setup" class="tab-content" style="margin-top: 1.5rem;">
+                    <div class="pattern-card" style="border: 3px solid var(--accent-yellow); background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(255, 193, 7, 0.05));">
+                        <div class="pattern-title" style="color: var(--accent-yellow); font-size: 1.4rem;">🔄 TYPE 2: ASIAN 00 BOUNCE AND REVERSE TRADES</div>
+                        
+                        <div class="alert alert-info" style="margin: 1.5rem 0;">
+                            <h4 style="margin-bottom: 0.5rem;">🎯 Core Concept:</h4>
+                            <p>M or W pattern forms AT the Asian Range boundary (Asian High = AR 00 for sells, Asian Low = AR 00 for buys). Price "bounces" off this level and reverses!</p>
+                        </div>
+
+                        <h3 style="color: var(--accent-blue); margin-top: 2rem;">Type 2a: Symmetrical Legs ↔️</h3>
+                        <div class="card">
+                            <h4 style="color: var(--accent-blue);">📝 Rules:</h4>
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li>Both legs of M or W are <strong>symmetrical in length and structure</strong></li>
+                                <li>Apex forms with clear rejection candlestick</li>
+                                <li>Pattern at Asian High (AR 00) or Asian Low (AR 00)</li>
+                            </ul>
+                            <h4 style="color: var(--accent-green); margin-top: 1rem;">📍 Optimal Location:</h4>
+                            <ul style="padding-left: 1.5rem;">
+                                <li>Session HOD/LOD</li>
+                                <li>Often forms after liquidity sweep during session extremes</li>
+                            </ul>
+                            <h4 style="color: var(--accent-yellow); margin-top: 1rem;">🎯 Use Case:</h4>
+                            <p>Ideal for reversals when price forms clear double top/bottom at Asian boundary!</p>
+                        </div>
+
+                        <h3 style="color: var(--accent-green); margin-top: 2rem;">Type 2b: Extended Second Leg 📏</h3>
+                        <div class="card">
+                            <h4 style="color: var(--accent-blue);">📝 Rules:</h4>
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li>Second leg is <strong>extended further</strong> than first leg</li>
+                                <li>Apex forms with candlestick rejection (Railroad Tracks, Morning/Evening Star)</li>
+                                <li>Pattern at Asian boundary levels</li>
+                            </ul>
+                            <h4 style="color: var(--accent-green); margin-top: 1rem;">📍 Optimal Location:</h4>
+                            <ul style="padding-left: 1.5rem;">
+                                <li>Near HOD/LOD, HOW/LOW</li>
+                                <li>5-day averaged ADR levels</li>
+                            </ul>
+                            <h4 style="color: var(--accent-yellow); margin-top: 1rem;">🎯 Use Case:</h4>
+                            <p>Effective during Brinks Timing or after large liquidity sweep!</p>
+                        </div>
+
+                        <h3 style="color: var(--accent-red); margin-top: 2rem;">Type 2c: Pattern at Key EMA Levels 📊</h3>
+                        <div class="card">
+                            <h4 style="color: var(--accent-blue);">📝 Rules:</h4>
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li>Pattern forms AT significant EMA levels (13, 50, or 200 EMA)</li>
+                                <li>Both legs interact with EMA</li>
+                                <li>Second leg closes above/below EMA for confirmation</li>
+                            </ul>
+                            <h4 style="color: var(--accent-green); margin-top: 1rem;">📍 Optimal Location:</h4>
+                            <ul style="padding-left: 1.5rem;">
+                                <li>Session highs/lows</li>
+                                <li>During pullbacks to EMAs after trend</li>
+                            </ul>
+                            <h4 style="color: var(--accent-yellow); margin-top: 1rem;">🎯 Use Case:</h4>
+                            <p>Trend continuation or reversal setups during volatile sessions with EMA confluence!</p>
+                        </div>
+
+                        <div class="alert alert-info" style="margin-top: 2rem;">
+                            <h4 style="margin-bottom: 0.5rem;">🌟 Key Features:</h4>
+                            <ul style="padding-left: 1.5rem; margin-top: 0.5rem; line-height: 1.8;">
+                                <li>✅ Apex formation where legs meet (rejection candlestick confirms)</li>
+                                <li>✅ Dynamic EMA interaction adds confluence</li>
+                                <li>✅ Session timing: London 3:30-5:30 AM, NY 9:30-11:00 AM, Brinks 9:45 PM/3:45 AM/9:45 AM</li>
+                                <li>✅ Liquidity targeting at HOD/LOD, HOW/LOW, PWH/PWL</li>
+                            </ul>
+                        </div>
+
+                        <h3 style="color: var(--accent-green); margin-top: 2rem;">💡 Type 2 Trading Summary:</h3>
+                        <div class="alert alert-success">
+                            <p><strong>Asian 00 Bounce = Pattern AT Asian Range Boundary</strong></p>
+                            <ul style="padding-left: 1.5rem; margin-top: 0.5rem;">
+                                <li><strong>Type 2a:</strong> Symmetrical legs (clean double top/bottom structure)</li>
+                                <li><strong>Type 2b:</strong> Extended second leg (after large liquidity sweep)</li>
+                                <li><strong>Type 2c:</strong> At key EMA levels (trend continuation/reversal with EMA confluence)</li>
+                            </ul>
+                            <p style="margin-top: 1rem;"><strong>All require:</strong> Pattern AT Asian boundary + Apex rejection + EMA/session timing confluence</p>
+                            <p style="margin-top: 0.5rem; font-style: italic;">📖 For complete detailed breakdown, see M-Top and W-Bottom tabs!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TYPE 3 SETUP TAB -->
+                <div id="type3-setup" class="tab-content" style="margin-top: 1.5rem;">
+                    <div class="pattern-card" style="border: 3px solid var(--accent-blue); background: linear-gradient(135deg, rgba(74, 158, 255, 0.1), rgba(74, 158, 255, 0.05));">
+                        <div class="pattern-title" style="color: var(--accent-blue); font-size: 1.4rem;">⚖️ TYPE 3: ASIAN 50 BOUNCE AND REVERSE TRADES</div>
+                        
+                        <div class="alert alert-info" style="margin: 1.5rem 0;">
+                            <h4 style="margin-bottom: 0.5rem;">🎯 Core Concept:</h4>
+                            <p>Price bounces off 50% level (midpoint) of Asian session range OR 50 EMA, then reverses/continues! Powerful continuation or reversal setup at equilibrium.</p>
+                        </div>
+
+                        <h3 style="color: var(--accent-green); margin-top: 2rem;">Type 3a: 50 EMA Bounce 📈</h3>
+                        <div class="card">
+                            <h4 style="color: var(--accent-blue);">📝 Rules:</h4>
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li>Price pulls back to 50 EMA after clear trend/breakout</li>
+                                <li>Entry confirmed with candlestick rejection (Railroad Tracks, Pin Bar)</li>
+                                <li>50 EMA acts as dynamic support/resistance</li>
+                            </ul>
+                            <h4 style="color: var(--accent-green); margin-top: 1rem;">📍 Optimal Location:</h4>
+                            <ul style="padding-left: 1.5rem;">
+                                <li>Pullback in trending market</li>
+                                <li>Around session highs/lows or continuation points</li>
+                            </ul>
+                            <h4 style="color: var(--accent-yellow); margin-top: 1rem;">🎯 Use Case:</h4>
+                            <p>Trend continuation after significant breakout!</p>
+                        </div>
+
+                        <h3 style="color: var(--accent-yellow); margin-top: 2rem;">Type 3b: Asian Range 50% Bounce 🌍</h3>
+                        <div class="card">
+                            <h4 style="color: var(--accent-blue);">📝 Rules:</h4>
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li>Price respects <strong>50% level (AR 50)</strong> of Asian session range</li>
+                                <li>Bounces off range high/low or mid-level</li>
+                                <li>Entry confirmed with candlestick patterns</li>
+                            </ul>
+                            <h4 style="color: var(--accent-green); margin-top: 1rem;">📍 Optimal Location:</h4>
+                            <ul style="padding-left: 1.5rem;">
+                                <li>Asian high/low or 50% midpoint</li>
+                            </ul>
+                            <h4 style="color: var(--accent-yellow); margin-top: 1rem;">🎯 Use Case:</h4>
+                            <p>Works well during London/NY when price retraces to Asian range boundary!</p>
+                        </div>
+
+                        <h3 style="color: var(--accent-red); margin-top: 2rem;">Type 3c: ADR/Key Level Rejection 📏</h3>
+                        <div class="card">
+                            <h4 style="color: var(--accent-blue);">📝 Rules:</h4>
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li>Price rejects significant levels (ADR, PDH/PDL, YH/YL)</li>
+                                <li>Entry after candlestick rejection (Morning/Evening Star)</li>
+                                <li>Institutional level confluence</li>
+                            </ul>
+                            <h4 style="color: var(--accent-green); margin-top: 1rem;">📍 Optimal Location:</h4>
+                            <ul style="padding-left: 1.5rem;">
+                                <li>ADR high/low, PDH/PDL</li>
+                            </ul>
+                            <h4 style="color: var(--accent-yellow); margin-top: 1rem;">🎯 Use Case:</h4>
+                            <p>Continuation trades where price aligns with trend after rejecting key level!</p>
+                        </div>
+
+                        <div class="alert alert-info" style="margin-top: 2rem;">
+                            <h4 style="margin-bottom: 0.5rem;">🌟 Key Features:</h4>
+                            <ul style="padding-left: 1.5rem; margin-top: 0.5rem; line-height: 1.8;">
+                                <li>✅ Bounce points (50 EMA, Asian 50%, ADR) serve as dynamic support/resistance</li>
+                                <li>✅ 50 EMA pivotal for trend direction confirmation</li>
+                                <li>✅ Session timing: London 3:30-5:30 AM, NY 9:30-11:00 AM, Brinks times</li>
+                                <li>✅ Focuses on session highs/lows or rejection within ADR boundary</li>
+                            </ul>
+                        </div>
+
+                        <h3 style="color: var(--accent-green); margin-top: 2rem;">💡 Type 3 Trading Summary:</h3>
+                        <div class="alert alert-success">
+                            <p><strong>Asian 50 / 50 EMA Bounce = Continuation Setups</strong></p>
+                            <ul style="padding-left: 1.5rem; margin-top: 0.5rem;">
+                                <li><strong>Type 3a:</strong> 50 EMA bounce (trend continuation after breakout)</li>
+                                <li><strong>Type 3b:</strong> Asian 50% bounce (midpoint or boundary retest)</li>
+                                <li><strong>Type 3c:</strong> ADR/Key level rejection (institutional level confluence)</li>
+                            </ul>
+                            <p style="margin-top: 1rem;"><strong>All require:</strong> Established trend + Key level bounce + Rejection candlestick + Session timing</p>
+                            <p style="margin-top: 0.5rem; font-style: italic;">📖 For complete detailed breakdown, see M-Top and W-Bottom tabs!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TYPE 4 SETUP TAB -->
+                <div id="type4-setup" class="tab-content" style="margin-top: 1.5rem;">
+                    <div class="pattern-card" style="border: 3px solid #8b2be2; background: linear-gradient(135deg, rgba(138, 43, 226, 0.1), rgba(138, 43, 226, 0.05));">
+                        <div class="pattern-title" style="color: #8b2be2; font-size: 1.4rem;">💥 TYPE 4: BREAKOUT, BOUNCE OFF ASIAN 00, THEN CONTINUATION</div>
+                        
+                        <div class="alert alert-info" style="margin: 1.5rem 0;">
+                            <h4 style="margin-bottom: 0.5rem;">🎯 Core Concept:</h4>
+                            <p>Price BREAKS OUT strongly from consolidation/range, then RETRACES to test breakout level (or EMA), and CONTINUES in breakout direction! High-probability continuation setup.</p>
+                        </div>
+
+                        <h3 style="color: var(--accent-green); margin-top: 2rem;">Type 4a: 50 EMA Continuation 📈</h3>
+                        <div class="card">
+                            <h4 style="color: var(--accent-blue);">📝 Rules:</h4>
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li>Price breaks out strongly from consolidation/range</li>
+                                <li>Retraces to 50 EMA (dynamic support/resistance)</li>
+                                <li>Rejection candlestick at EMA confirms continuation</li>
+                            </ul>
+                            <h4 style="color: var(--accent-green); margin-top: 1rem;">📍 Optimal Location:</h4>
+                            <ul style="padding-left: 1.5rem;">
+                                <li>Mid-session retracements during London/NY</li>
+                                <li>After initial session breakout</li>
+                            </ul>
+                            <h4 style="color: var(--accent-yellow); margin-top: 1rem;">🎯 Use Case:</h4>
+                            <p>Trend continuation where 50 EMA aligns with session momentum!</p>
+                        </div>
+
+                        <h3 style="color: var(--accent-yellow); margin-top: 2rem;">Type 4b: Breakout Pullback 💥</h3>
+                        <div class="card">
+                            <h4 style="color: var(--accent-blue);">📝 Rules:</h4>
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li>Price breaks out of significant level (PDH/PDL, Asian high/low, ADR)</li>
+                                <li>Retraces to TEST breakout level</li>
+                                <li>Forms rejection candlestick confirming continuation</li>
+                            </ul>
+                            <h4 style="color: var(--accent-green); margin-top: 1rem;">📍 Optimal Location:</h4>
+                            <ul style="padding-left: 1.5rem;">
+                                <li>Breakouts from PDH/PDL, ADR, YH/YL, or session extremes</li>
+                            </ul>
+                            <h4 style="color: var(--accent-yellow); margin-top: 1rem;">🎯 Use Case:</h4>
+                            <p>Effective during Brinks Timing or after London Open breakout!</p>
+                        </div>
+
+                        <h3 style="color: var(--accent-blue); margin-top: 2rem;">Type 4c: Trend Continuation with 200 EMA 🔄</h3>
+                        <div class="card">
+                            <h4 style="color: var(--accent-blue);">📝 Rules:</h4>
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li>Price trends strongly above/below 200 EMA (long-term momentum)</li>
+                                <li>Retraces to EMA or consolidates before continuing</li>
+                                <li>Confirmation: Candlestick pattern at 200 EMA</li>
+                            </ul>
+                            <h4 style="color: var(--accent-green); margin-top: 1rem;">📍 Optimal Location:</h4>
+                            <ul style="padding-left: 1.5rem;">
+                                <li>During trending markets at mid-session</li>
+                                <li>After key breakout</li>
+                            </ul>
+                            <h4 style="color: var(--accent-yellow); margin-top: 1rem;">🎯 Use Case:</h4>
+                            <p>Higher timeframe confluence for major trend continuation!</p>
+                        </div>
+
+                        <div class="alert alert-info" style="margin-top: 2rem;">
+                            <h4 style="margin-bottom: 0.5rem;">🌟 Key Features:</h4>
+                            <ul style="padding-left: 1.5rem; margin-top: 0.5rem; line-height: 1.8;">
+                                <li>✅ Breakout and retracement capitalizes on breakouts followed by confirmation</li>
+                                <li>✅ Dynamic EMA levels (50 and 200) critical for trend direction</li>
+                                <li>✅ Session breakout times: London 3:30-5:30 AM, NY 9:30-11:00 AM, Brinks 9:45 PM/3:45 AM/9:45 AM</li>
+                                <li>✅ Targets liquidity above/below key levels (HOD/LOD, ADR boundaries)</li>
+                            </ul>
+                        </div>
+
+                        <h3 style="color: var(--accent-green); margin-top: 2rem;">💡 Type 4 Trading Summary:</h3>
+                        <div class="alert alert-success">
+                            <p><strong>Breakout → Retest → Continuation</strong></p>
+                            <ul style="padding-left: 1.5rem; margin-top: 0.5rem;">
+                                <li><strong>Type 4a:</strong> 50 EMA continuation (retracement to 50 EMA after breakout)</li>
+                                <li><strong>Type 4b:</strong> Breakout pullback (retest of breakout level = confirmation)</li>
+                                <li><strong>Type 4c:</strong> 200 EMA continuation (higher timeframe trend continuation)</li>
+                            </ul>
+                            <p style="margin-top: 1rem;"><strong>All require:</strong> Strong breakout + Retracement to key level + Rejection candlestick + Continuation in breakout direction</p>
+                            <p style="margin-top: 0.5rem; font-style: italic;">📖 For complete detailed breakdown, see M-Top and W-Bottom tabs!</p>
+                        </div>
+
+                        <div class="alert alert-warning" style="margin-top: 1.5rem;">
+                            <h4 style="margin-bottom: 0.5rem;">⚠️ Critical Type 4 Rules:</h4>
+                            <ol style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li><strong>Clear Breakout First:</strong> Must have strong, decisive breakout - no choppy price action</li>
+                                <li><strong>Retest is KEY:</strong> Pullback to breakout level or EMA confirms strength</li>
+                                <li><strong>Candlestick Confirmation:</strong> Wait for rejection pattern (don't chase the breakout!)</li>
+                                <li><strong>Session Timing:</strong> Best during London/NY major breakout windows</li>
+                                <li><strong>Risk Management:</strong> Stop 10-15 pips below retest level, target 2:1 minimum</li>
+                            </ol>
+                        </div>
                     </div>
                 </div>
 
@@ -2200,45 +2563,46 @@
 
                 <!-- AR LEVEL SETUPS TAB -->
                 <div id="ar-setups" class="tab-content" style="margin-top: 1.5rem;">
-                    <h3 style="color: var(--accent-yellow); margin-bottom: 1.5rem;">📏 AR Level Setups (Average Range)</h3>
+                    <h3 style="color: var(--accent-yellow); margin-bottom: 1.5rem;">📏 AR Level Setups (Asian Range)</h3>
                     
                     <div class="pattern-card" style="border-left: 4px solid var(--accent-yellow);">
-                        <div class="pattern-title">AR 00 / AR 50 - Average Range Level Setups</div>
+                        <div class="pattern-title">AR 00 / AR 50 - Asian Range Level Setups</div>
                         
                         <h4 style="color: var(--accent-blue);">Concept:</h4>
                         <div class="card">
-                            <p><strong>AR 00:</strong> Full round numbers (1.3000, 1.3100, 1.3200, etc.) within ADR</p>
-                            <p><strong>AR 50:</strong> Half levels (1.3050, 1.3150, 1.3250, etc.) within ADR</p>
-                            <p style="margin-top: 1rem;"><strong>Why They Work:</strong> Market makers often target these psychological levels as profit targets or reversal points.</p>
+                            <p><strong>AR = Asian Range:</strong> The high-to-low range established during Asian session (5:00 PM - 2:00 AM EST)</p>
+                            <p style="margin-top: 1rem;"><strong>AR 00 (Asian Range 00):</strong> The TOP (Asian High) and BOTTOM (Asian Low) of the Asian session</p>
+                            <p style="margin-top: 0.5rem;"><strong>AR 50 (Asian Range 50):</strong> The MIDPOINT (50%) of the Asian session range</p>
+                            <p style="margin-top: 1rem;"><strong>Why They Work:</strong> Asian range creates the first accumulation phase of the day. London/NY sessions use AR 00 (high/low) as liquidity sweep zones, then reverse. AR 50 acts as a pivot - price often returns to midpoint before continuing direction.</p>
                         </div>
 
                         <h4 style="color: var(--accent-yellow); margin-top: 1.5rem;">Setup Process:</h4>
                         <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 1rem;">
                             <div class="card" style="border-left: 4px solid var(--accent-blue);">
-                                <h4 style="color: var(--accent-blue);">Identify:</h4>
+                                <h4 style="color: var(--accent-blue);">Step 1: Mark Asian Range</h4>
                                 <ol style="padding-left: 1.5rem; line-height: 1.8;">
-                                    <li>Calculate today's ADR high and low</li>
-                                    <li>Mark major round numbers (00 levels)</li>
-                                    <li>Mark half levels (50 levels)</li>
-                                    <li>Watch for price approach</li>
+                                    <li><strong>Asian Session:</strong> 5:00 PM - 2:00 AM EST</li>
+                                    <li><strong>Mark AR 00:</strong> Asian High (top) + Asian Low (bottom)</li>
+                                    <li><strong>Calculate AR 50:</strong> (Asian High + Asian Low) ÷ 2 = Midpoint</li>
+                                    <li><strong>Draw Lines:</strong> Horizontal lines at AR 00 high, AR 50, AR 00 low</li>
                                 </ol>
                             </div>
 
                             <div class="card" style="border-left: 4px solid var(--accent-green);">
-                                <h4 style="color: var(--accent-green);">Entry Types:</h4>
-                                <p><strong>Bounce Play:</strong></p>
+                                <h4 style="color: var(--accent-green);">Step 2: Watch For Setups</h4>
+                                <p><strong>AR 00 Liquidity Sweep (Reversal):</strong></p>
                                 <ul style="padding-left: 1.5rem;">
-                                    <li>Price approaches AR level</li>
-                                    <li>Rejection candle forms</li>
-                                    <li>Enter in direction of rejection</li>
-                                    <li>Stop beyond level + 20 pips</li>
+                                    <li>London/NY sweeps Asian High or Low</li>
+                                    <li>M/W pattern forms at AR 00</li>
+                                    <li>Enter on reversal back through AR 50</li>
+                                    <li>Stop 20-30 pips beyond Asian extreme</li>
                                 </ul>
-                                <p style="margin-top: 1rem;"><strong>Break & Retest:</strong></p>
+                                <p style="margin-top: 1rem;"><strong>AR 50 Bounce (Continuation):</strong></p>
                                 <ul style="padding-left: 1.5rem;">
-                                    <li>Price breaks through AR level</li>
-                                    <li>Pulls back to retest</li>
-                                    <li>Rejection on retest</li>
-                                    <li>Enter in break direction</li>
+                                    <li>Price returns to AR 50 midpoint</li>
+                                    <li>Rejection candle at AR 50</li>
+                                    <li>Enter in direction of prior trend</li>
+                                    <li>Target opposite AR 00 level</li>
                                 </ul>
                             </div>
                         </div>
@@ -2246,50 +2610,59 @@
                         <h4 style="color: var(--accent-yellow); margin-top: 1.5rem;">Best Combined With:</h4>
                         <div class="alert alert-success">
                             <ul style="padding-left: 1.5rem; margin: 0;">
-                                <li>✅ M/W patterns at these levels (double confluence!)</li>
-                                <li>✅ Level 2 or 3 of 3-Day Cycle</li>
-                                <li>✅ Session opens (London 1:30 AM, NY 7:30 AM EST)</li>
-                                <li>✅ Major EMA confluence (50, 200, 800)</li>
+                                <li>✅ <strong>2nd Leg Out of Asia pattern</strong> (1st leg in Asian → 2nd leg sweeps AR 00 in London)</li>
+                                <li>✅ M/W patterns at AR 00 high/low (double confluence!)</li>
+                                <li>✅ London Open (2-4 AM) or NY Open (9:30-10:30 AM)</li>
+                                <li>✅ Brinks Trade timing (3:45 AM or 9:45 AM)</li>
+                                <li>✅ Major EMA confluence (13, 50, or 200 EMA at AR levels)</li>
                             </ul>
                         </div>
 
-                        <h4 style="color: var(--accent-red); margin-top: 1.5rem;">Risk Management:</h4>
+                        <h4 style="color: var(--accent-red); margin-top: 1.5rem;">⚠️ Critical Rules:</h4>
                         <div class="alert alert-warning">
-                            <p><strong>⚠️ Important:</strong> AR levels act as magnets - don't fight the pull to these levels!</p>
-                            <p style="margin-top: 0.5rem;"><strong>Once ADR met:</strong> Expect reversal or consolidation. Avoid new entries when ADR 90%+ complete.</p>
+                            <p><strong>⚠️ Asian Range = Daily Q1:</strong> AR is the first accumulation phase. London/NY sessions WILL sweep AR 00 for liquidity!</p>
+                            <p style="margin-top: 0.5rem;"><strong>If London sweeps Asian High:</strong> Expect reversal DOWN through AR 50 to Asian Low</p>
+                            <p style="margin-top: 0.5rem;"><strong>If London sweeps Asian Low:</strong> Expect reversal UP through AR 50 to Asian High</p>
+                            <p style="margin-top: 0.5rem;"><strong>AR 50 is the pivot:</strong> Above = bullish, Below = bearish. Price gravitates to 50% often!</p>
                         </div>
 
                         <h4 style="color: var(--accent-blue); margin-top: 1.5rem;">Trading Parameters:</h4>
                         <table style="margin-top: 1rem;">
                             <tr>
                                 <th>Parameter</th>
-                                <th>AR 00 (Round Number)</th>
-                                <th>AR 50 (Half Level)</th>
+                                <th>AR 00 (Asian High/Low)</th>
+                                <th>AR 50 (Asian Midpoint)</th>
                             </tr>
                             <tr>
                                 <td><strong>Significance</strong></td>
-                                <td>High - Major psychological</td>
-                                <td>Medium - Secondary level</td>
+                                <td>VERY High - Q2 Manipulation Zone</td>
+                                <td>High - Pivot & Balance Point</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Setup Type</strong></td>
+                                <td>Reversal (after liquidity sweep)</td>
+                                <td>Continuation (bounce/rejection)</td>
                             </tr>
                             <tr>
                                 <td><strong>Stop Loss</strong></td>
-                                <td>25-30 pips beyond level</td>
-                                <td>20-25 pips beyond level</td>
+                                <td>20-30 pips beyond Asian extreme</td>
+                                <td>Back to opposite AR 00</td>
                             </tr>
                             <tr style="background: rgba(0, 255, 136, 0.05);">
                                 <td><strong>Target</strong></td>
-                                <td>Next AR 00 or ADR extreme</td>
-                                <td>Next AR 00 level</td>
+                                <td>AR 50 (1:1) → Opposite AR 00 (1:2+)</td>
+                                <td>Nearest AR 00 (high or low)</td>
                             </tr>
                             <tr>
                                 <td><strong>Best Time</strong></td>
-                                <td>London/NY sessions</td>
-                                <td>Any session</td>
+                                <td>London Open (2-4 AM), NY Open (9:30 AM)</td>
+                                <td>Mid-London (6-8 AM), Mid-NY (11 AM-1 PM)</td>
                             </tr>
                         </table>
 
                         <div class="alert alert-info" style="margin-top: 1.5rem;">
-                            <p><strong>💡 Pro Tip:</strong> Watch how price reacts at AR 00 levels first. If it bounces strongly, consider AR 50 as next entry opportunity in same direction!</p>
+                            <p><strong>💡 Pro Tip:</strong> AR levels + "2nd Leg Out of Asia" pattern = 85%+ win rate! If first leg forms IN Asian session and second leg sweeps AR 00 during London → that's your setup!</p>
+                            <p style="margin-top: 0.5rem;"><strong>🎯 Best Setup:</strong> Asian range established → London sweeps AR 00 (high or low) → M/W pattern forms → Price fails back through AR 50 → ENTRY!</p>
                         </div>
                     </div>
                 </div>
@@ -2680,6 +3053,9 @@
         </main>
     </div>
 
+    <script src="../js/navigation.js"></script>
     <script src="../js/main.js"></script>
+    <script src="../js/export-print.js"></script>
+    <script src="../js/alerts.js"></script>
 </body>
 </html>

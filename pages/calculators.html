@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trading Calculators - Essential Tools</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="header-content">
+            <div>
+                <h1>🧮 Trading Calculators</h1>
+                <div class="header-subtitle">Eliminate Errors, Trade with Precision</div>
+            </div>
+            <div class="current-time">
+                <div class="time-display" id="currentTime">--:--:-- EST</div>
+                <div class="session-indicator" id="sessionIndicator">Loading...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Navigation -->
+        <nav class="sidebar" id="sidebar">
+            <div class="nav-header">
+                <a href="../index.html" style="text-decoration: none; color: inherit;">
+                    <h2>📚 Trading Guide</h2>
+                </a>
+            </div>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search guide..." />
+            </div>
+            <div class="nav-links" id="navLinks">
+                <!-- Navigation will be loaded by main.js -->
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="content">
+            <section class="section">
+                <div class="hero-card" style="text-align: center;">
+                    <h3 style="color: var(--accent-blue); margin-bottom: 0.5rem;">Professional Trading Tools</h3>
+                    <p>Calculate position sizes, risk/reward, pips, ADR, and more - all in one place!</p>
+                </div>
+
+                <div class="alert alert-success" style="margin: 1.5rem 0;">
+                    <strong>💡 Pro Tip:</strong> Use these calculators BEFORE every trade to ensure proper risk management and eliminate costly calculation errors!
+                </div>
+
+                <!-- Calculator Grid -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                    
+                    <!-- Position Size Calculator -->
+                    <div class="card" style="border: 2px solid var(--accent-green);">
+                        <div class="card-title" style="color: var(--accent-green);">📊 Position Size Calculator</div>
+                        <p style="color: var(--text-tertiary); font-size: 0.9rem; margin-bottom: 1rem;">Calculate exact lot size based on your risk tolerance</p>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                            <div>
+                                <label style="display: block; margin-bottom: 0.25rem; font-size: 0.9rem;">Account Balance ($)</label>
+                                <input type="number" id="psAccountBalance" placeholder="10000" step="0.01" style="width: 100%; padding: 0.5rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;">
+                            </div>
+                            
+                            <div>
+                                <label style="display: block; margin-bottom: 0.25rem; font-size: 0.9rem;">Risk per Trade (%)</label>
+                                <input type="number" id="psRiskPercent" placeholder="1" step="0.1" min="0.1" max="5" style="width: 100%; padding: 0.5rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;">
+                            </div>
+                            
+                            <div>
+                                <label style="display: block; margin-bottom: 0.25rem; font-size: 0.9rem;">Stop Loss Distance (pips)</label>
+                                <input type="number" id="psStopPips" placeholder="20" step="1" style="width: 100%; padding: 0.5rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;">
+                            </div>
+                            
+                            <button onclick="calculatePositionSize()" style="padding: 0.75rem; background: var(--accent-green); color: var(--bg-primary); border: none; border-radius: 6px; cursor: pointer; font-weight: bold; margin-top: 0.5rem;">
+                                Calculate
+                            </button>
+                        </div>
+                        
+                        <div id="psResult" style="margin-top: 1rem; padding: 1rem; background: rgba(0, 255, 136, 0.1); border-left: 4px solid var(--accent-green); border-radius: 4px; display: none;">
+                            <!-- Result will be displayed here -->
+                        </div>
+                    </div>
+
+                    <!-- Risk/Reward Calculator -->
+                    <div class="card" style="border: 2px solid var(--accent-blue);">
+                        <div class="card-title" style="color: var(--accent-blue);">🎯 Risk/Reward Calculator</div>
+                        <p style="color: var(--text-tertiary); font-size: 0.9rem; margin-bottom: 1rem;">Calculate R:R ratio and potential profit/loss</p>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                            <div>
+                                <label style="display: block; margin-bottom: 0.25rem; font-size: 0.9rem;">Entry Price</label>
+                                <input type="number" id="rrEntry" placeholder="1.08500" step="0.00001" style="width: 100%; padding: 0.5rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;">
+                            </div>
+                            
+                            <div>
+                                <label style="display: block; margin-bottom: 0.25rem; font-size: 0.9rem;">Stop Loss</label>
+                                <input type="number" id="rrStop" placeholder="1.08300" step="0.00001" style="width: 100%; padding: 0.5rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;">
+                            </div>
+                            
+                            <div>
+                                <label style="display: block; margin-bottom: 0.25rem; font-size: 0.9rem;">Take Profit</label>
+                                <input type="number" id="rrTarget" placeholder="1.09100" step="0.00001" style="width: 100%; padding: 0.5rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;">
+                            </div>
+                            
+                            <div>
+                                <label style="display: block; margin-bottom: 0.25rem; font-size: 0.9rem;">Position Size (lots) [Optional]</label>
+                                <input type="number" id="rrLots" placeholder="0.5" step="0.01" style="width: 100%; padding: 0.5rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;">
+                            </div>
+                            
+                            <button onclick="calculateRR()" style="padding: 0.75rem; background: var(--accent-blue); color: var(--bg-primary); border: none; border-radius: 6px; cursor: pointer; font-weight: bold; margin-top: 0.5rem;">
+                                Calculate
+                            </button>
+                        </div>
+                        
+                        <div id="rrResult" style="margin-top: 1rem; padding: 1rem; background: rgba(74, 158, 255, 0.1); border-left: 4px solid var(--accent-blue); border-radius: 4px; display: none;">
+                            <!-- Result will be displayed here -->
+                        </div>
+                    </div>
+
+                    <!-- Pip Calculator -->
+                    <div class="card" style="border: 2px solid var(--accent-yellow);">
+                        <div class="card-title" style="color: var(--accent-yellow);">📏 Pip Calculator</div>
+                        <p style="color: var(--text-tertiary); font-size: 0.9rem; margin-bottom: 1rem;">Calculate pip distance between two prices</p>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                            <div>
+                                <label style="display: block; margin-bottom: 0.25rem; font-size: 0.9rem;">Price 1</label>
+                                <input type="number" id="pipPrice1" placeholder="1.08500" step="0.00001" style="width: 100%; padding: 0.5rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;">
+                            </div>
+                            
+                            <div>
+                                <label style="display: block; margin-bottom: 0.25rem; font-size: 0.9rem;">Price 2</label>
+                                <input type="number" id="pipPrice2" placeholder="1.08700" step="0.00001" style="width: 100%; padding: 0.5rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;">
+                            </div>
+                            
+                            <div>
+                                <label style="display: block; margin-bottom: 0.25rem; font-size: 0.9rem;">Pair Type</label>
+                                <select id="pipPairType" style="width: 100%; padding: 0.5rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;">
+                                    <option value="4">4-decimal (EUR/USD, GBP/USD, etc.)</option>
+                                    <option value="2">2-decimal (USD/JPY, etc.)</option>
+                                </select>
+                            </div>
+                            
+                            <button onclick="calculatePips()" style="padding: 0.75rem; background: var(--accent-yellow); color: var(--bg-primary); border: none; border-radius: 6px; cursor: pointer; font-weight: bold; margin-top: 0.5rem;">
+                                Calculate
+                            </button>
+                        </div>
+                        
+                        <div id="pipResult" style="margin-top: 1rem; padding: 1rem; background: rgba(255, 193, 7, 0.1); border-left: 4px solid var(--accent-yellow); border-radius: 4px; display: none;">
+                            <!-- Result will be displayed here -->
+                        </div>
+                    </div>
+
+                    <!-- ADR Calculator -->
+                    <div class="card" style="border: 2px solid #8b2be2;">
+                        <div class="card-title" style="color: #8b2be2;">📊 ADR Calculator</div>
+                        <p style="color: var(--text-tertiary); font-size: 0.9rem; margin-bottom: 1rem;">Calculate Average Daily Range</p>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                            <p style="font-size: 0.9rem; color: var(--text-secondary);">Enter high and low for the last 5 trading days:</p>
+                            
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+                                <div>
+                                    <label style="display: block; margin-bottom: 0.25rem; font-size: 0.85rem;">Day 1 High</label>
+                                    <input type="number" id="adrD1High" placeholder="1.0900" step="0.00001" style="width: 100%; padding: 0.4rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; font-size: 0.9rem;">
+                                </div>
+                                <div>
+                                    <label style="display: block; margin-bottom: 0.25rem; font-size: 0.85rem;">Day 1 Low</label>
+                                    <input type="number" id="adrD1Low" placeholder="1.0850" step="0.00001" style="width: 100%; padding: 0.4rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; font-size: 0.9rem;">
+                                </div>
+                            </div>
+                            
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+                                <div>
+                                    <label style="display: block; margin-bottom: 0.25rem; font-size: 0.85rem;">Day 2 High</label>
+                                    <input type="number" id="adrD2High" placeholder="1.0920" step="0.00001" style="width: 100%; padding: 0.4rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; font-size: 0.9rem;">
+                                </div>
+                                <div>
+                                    <label style="display: block; margin-bottom: 0.25rem; font-size: 0.85rem;">Day 2 Low</label>
+                                    <input type="number" id="adrD2Low" placeholder="1.0870" step="0.00001" style="width: 100%; padding: 0.4rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; font-size: 0.9rem;">
+                                </div>
+                            </div>
+                            
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+                                <div>
+                                    <label style="display: block; margin-bottom: 0.25rem; font-size: 0.85rem;">Day 3 High</label>
+                                    <input type="number" id="adrD3High" placeholder="1.0915" step="0.00001" style="width: 100%; padding: 0.4rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; font-size: 0.9rem;">
+                                </div>
+                                <div>
+                                    <label style="display: block; margin-bottom: 0.25rem; font-size: 0.85rem;">Day 3 Low</label>
+                                    <input type="number" id="adrD3Low" placeholder="1.0865" step="0.00001" style="width: 100%; padding: 0.4rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; font-size: 0.9rem;">
+                                </div>
+                            </div>
+                            
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+                                <div>
+                                    <label style="display: block; margin-bottom: 0.25rem; font-size: 0.85rem;">Day 4 High</label>
+                                    <input type="number" id="adrD4High" placeholder="1.0930" step="0.00001" style="width: 100%; padding: 0.4rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; font-size: 0.9rem;">
+                                </div>
+                                <div>
+                                    <label style="display: block; margin-bottom: 0.25rem; font-size: 0.85rem;">Day 4 Low</label>
+                                    <input type="number" id="adrD4Low" placeholder="1.0880" step="0.00001" style="width: 100%; padding: 0.4rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; font-size: 0.9rem;">
+                                </div>
+                            </div>
+                            
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+                                <div>
+                                    <label style="display: block; margin-bottom: 0.25rem; font-size: 0.85rem;">Day 5 High</label>
+                                    <input type="number" id="adrD5High" placeholder="1.0925" step="0.00001" style="width: 100%; padding: 0.4rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; font-size: 0.9rem;">
+                                </div>
+                                <div>
+                                    <label style="display: block; margin-bottom: 0.25rem; font-size: 0.85rem;">Day 5 Low</label>
+                                    <input type="number" id="adrD5Low" placeholder="1.0875" step="0.00001" style="width: 100%; padding: 0.4rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; font-size: 0.9rem;">
+                                </div>
+                            </div>
+                            
+                            <button onclick="calculateADR()" style="padding: 0.75rem; background: #8b2be2; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; margin-top: 0.5rem;">
+                                Calculate
+                            </button>
+                        </div>
+                        
+                        <div id="adrResult" style="margin-top: 1rem; padding: 1rem; background: rgba(138, 43, 226, 0.1); border-left: 4px solid #8b2be2; border-radius: 4px; display: none;">
+                            <!-- Result will be displayed here -->
+                        </div>
+                    </div>
+
+                    <!-- Session Time Converter -->
+                    <div class="card" style="border: 2px solid var(--accent-green);">
+                        <div class="card-title" style="color: var(--accent-green);">🌍 Session Time Converter</div>
+                        <p style="color: var(--text-tertiary); font-size: 0.9rem; margin-bottom: 1rem;">Convert EST trading times to your local timezone</p>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                            <div>
+                                <label style="display: block; margin-bottom: 0.25rem; font-size: 0.9rem;">Your Timezone</label>
+                                <select id="userTimezone" style="width: 100%; padding: 0.5rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;">
+                                    <option value="auto">Auto-detect</option>
+                                    <option value="America/New_York">EST (New York)</option>
+                                    <option value="America/Los_Angeles">PST (Los Angeles)</option>
+                                    <option value="America/Chicago">CST (Chicago)</option>
+                                    <option value="Europe/London">GMT (London)</option>
+                                    <option value="Europe/Paris">CET (Paris)</option>
+                                    <option value="Asia/Tokyo">JST (Tokyo)</option>
+                                    <option value="Asia/Singapore">SGT (Singapore)</option>
+                                    <option value="Australia/Sydney">AEDT (Sydney)</option>
+                                </select>
+                            </div>
+                            
+                            <button onclick="convertSessionTimes()" style="padding: 0.75rem; background: var(--accent-green); color: var(--bg-primary); border: none; border-radius: 6px; cursor: pointer; font-weight: bold; margin-top: 0.5rem;">
+                                Convert Times
+                            </button>
+                        </div>
+                        
+                        <div id="timeResult" style="margin-top: 1rem; padding: 1rem; background: rgba(0, 255, 136, 0.1); border-left: 4px solid var(--accent-green); border-radius: 4px; display: none;">
+                            <!-- Result will be displayed here -->
+                        </div>
+                    </div>
+
+                    <!-- Profit/Loss Calculator -->
+                    <div class="card" style="border: 2px solid var(--accent-blue);">
+                        <div class="card-title" style="color: var(--accent-blue);">💰 P/L Calculator</div>
+                        <p style="color: var(--text-tertiary); font-size: 0.9rem; margin-bottom: 1rem;">Calculate profit/loss for a trade</p>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                            <div>
+                                <label style="display: block; margin-bottom: 0.25rem; font-size: 0.9rem;">Entry Price</label>
+                                <input type="number" id="plEntry" placeholder="1.08500" step="0.00001" style="width: 100%; padding: 0.5rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;">
+                            </div>
+                            
+                            <div>
+                                <label style="display: block; margin-bottom: 0.25rem; font-size: 0.9rem;">Exit Price</label>
+                                <input type="number" id="plExit" placeholder="1.08700" step="0.00001" style="width: 100%; padding: 0.5rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;">
+                            </div>
+                            
+                            <div>
+                                <label style="display: block; margin-bottom: 0.25rem; font-size: 0.9rem;">Position Size (lots)</label>
+                                <input type="number" id="plLots" placeholder="0.5" step="0.01" style="width: 100%; padding: 0.5rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;">
+                            </div>
+                            
+                            <div>
+                                <label style="display: block; margin-bottom: 0.25rem; font-size: 0.9rem;">Direction</label>
+                                <select id="plDirection" style="width: 100%; padding: 0.5rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;">
+                                    <option value="long">Long (Buy)</option>
+                                    <option value="short">Short (Sell)</option>
+                                </select>
+                            </div>
+                            
+                            <button onclick="calculatePL()" style="padding: 0.75rem; background: var(--accent-blue); color: var(--bg-primary); border: none; border-radius: 6px; cursor: pointer; font-weight: bold; margin-top: 0.5rem;">
+                                Calculate
+                            </button>
+                        </div>
+                        
+                        <div id="plResult" style="margin-top: 1rem; padding: 1rem; background: rgba(74, 158, 255, 0.1); border-left: 4px solid var(--accent-blue); border-radius: 4px; display: none;">
+                            <!-- Result will be displayed here -->
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Footer -->
+            <div class="footer">
+                <p><strong>🧮 Calculator Pro Tip:</strong> Bookmark this page and use it before EVERY trade to ensure perfect risk management!</p>
+                <p style="margin-top: 0.5rem; color: var(--accent-blue);">Precision = Profitability</p>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/navigation.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/export-print.js"></script>
+    <script src="../js/alerts.js"></script>
+    <script src="../js/calculators.js"></script>
+</body>
+</html>
+

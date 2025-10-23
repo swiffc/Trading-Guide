@@ -1,0 +1,39 @@
+{
+  "name": "Quarterly Theory & BTMM Trading Guide",
+  "short_name": "Trading Guide",
+  "description": "Complete trading education app combining Quarterly Theory and Steve Mauro's BTMM methodology with professional tools",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#0a0e1a",
+  "theme_color": "#4a9eff",
+  "orientation": "any",
+  "icons": [],
+  "categories": ["finance", "education", "productivity"],
+  "shortcuts": [
+    {
+      "name": "Trading Journal",
+      "short_name": "Journal",
+      "description": "Log and track your trades",
+      "url": "/pages/trading-journal.html"
+    },
+    {
+      "name": "Calculators",
+      "short_name": "Calc",
+      "description": "Trading calculators",
+      "url": "/pages/calculators.html"
+    },
+    {
+      "name": "Live Session Guide",
+      "short_name": "Live",
+      "description": "Real-time trading guidance",
+      "url": "/pages/live-session-guide.html"
+    },
+    {
+      "name": "Patterns",
+      "short_name": "Patterns",
+      "description": "Trading patterns reference",
+      "url": "/pages/patterns.html"
+    }
+  ],
+  "prefer_related_applications": false
+}

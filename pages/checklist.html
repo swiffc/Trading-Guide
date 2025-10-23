@@ -24,29 +24,19 @@
     <!-- Main Container -->
     <div class="main-container">
         <!-- Sidebar -->
-        <aside class="sidebar">
+                <nav class="sidebar" id="sidebar">
+            <div class="nav-header">
+                <a href="../index.html" style="text-decoration: none; color: inherit;">
+                    <h2>📚 Trading Guide</h2>
+                </a>
+            </div>
             <div class="search-box">
                 <input type="text" id="searchInput" placeholder="Search guide..." />
             </div>
-            
-            <h3>📚 Navigation (Top-Down)</h3>
-            <ul class="nav-menu">
-                <li><a href="../index.html" class="nav-link">🏠 Home</a></li>
-                <li style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color);"><a href="core-philosophy.html" class="nav-link">🎯 Core Philosophy</a></li>
-                <li><a href="weekly-schedule.html" class="nav-link">📅 Weekly Structure</a></li>
-                <li><a href="btmm-cycle.html" class="nav-link">🔄 BTMM 3-Day Cycle</a></li>
-                <li><a href="daily-sessions.html" class="nav-link">🕐 Daily Sessions</a></li>
-                <li><a href="micro-quarters.html" class="nav-link">⏱️ Micro Quarters</a></li>
-                <li style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color);"><a href="technical-setup.html" class="nav-link">🔧 Technical Setup</a></li>
-                <li><a href="patterns.html" class="nav-link">📊 Patterns</a></li>
-                <li><a href="entry-rules.html" class="nav-link">📈 Entry Rules</a></li>
-                <li><a href="risk-management.html" class="nav-link">🛡️ Risk Management</a></li>
-                <li><a href="checklist.html" class="nav-link active">✅ Trading Checklist</a></li>
-                <li><a href="examples.html" class="nav-link">💡 Trade Examples</a></li>
-                <li style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color);"><a href="live-session-guide.html" class="nav-link">📡 Live Session Guide</a></li>
-                <li><a href="quick-reference.html" class="nav-link">⚡ Quick Reference</a></li>
-            </ul>
-        </aside>
+            <div class="nav-links" id="navLinks">
+                <!-- Navigation will be loaded by main.js -->
+            </div>
+        </nav>
 
         <!-- Content -->
         <main class="content" id="mainContent">
@@ -151,6 +141,7 @@
                     <li><input type="checkbox"> Mark True Day Open (midnight price)</li>
                     <li><input type="checkbox"> Mark True Week Open (Tuesday midnight)</li>
                     <li><input type="checkbox"> Mark True Month Open (if applicable)</li>
+                    <li><input type="checkbox"> <strong>Mark Weekly PSR Zone</strong> (first 8 H1 candles - Sunday 5PM to Monday 1AM EST)</li>
                     <li><input type="checkbox"> Note previous day HOD/LOD on chart</li>
                     <li><input type="checkbox"> Identify Asian range (8pm-12am) - tight or extended?</li>
                     <li><input type="checkbox"> Determine 3-day BTMM cycle position (Day 1, 2, or 3?)</li>
@@ -208,10 +199,14 @@
                     <li><input type="checkbox"> Reviewed all sections of the Trading Guide</li>
                     <li><input type="checkbox"> Understand A-M-D-X cycle on all timeframes</li>
                     <li><input type="checkbox"> Can identify True Opens accurately</li>
+                    <li><input type="checkbox"> Understand Weekly PSR Zone (first 8 H1 candles)</li>
                     <li><input type="checkbox"> Can recognize M and W patterns</li>
+                    <li><input type="checkbox"> Can identify M-A1-A2-W (bearish) and W-V1-V2-M (bullish) structures</li>
                     <li><input type="checkbox"> Understand BTMM 3-day cycle</li>
+                    <li><input type="checkbox"> Know accumulation phases (A1/A2 or V1/V2) = DO NOT TRADE</li>
                     <li><input type="checkbox"> Know best days to trade (Wednesday = best)</li>
                     <li><input type="checkbox"> Know best times to trade (NY Q3 = 9:00-10:30 AM)</li>
+                    <li><input type="checkbox"> Understand multi-timeframe alignment ("Perfect Storm")</li>
                     <li><input type="checkbox"> Practiced on demo account (50+ trades)</li>
                     <li><input type="checkbox"> Maintained 60%+ win rate on demo</li>
                     <li><input type="checkbox"> Consistently achieving 1:3+ RR</li>
@@ -251,7 +246,10 @@
         </main>
     </div>
 
+    <script src="../js/navigation.js"></script>
     <script src="../js/main.js"></script>
+    <script src="../js/export-print.js"></script>
+    <script src="../js/alerts.js"></script>
 </body>
 </html>
 

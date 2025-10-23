@@ -3,12 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Complete trading education combining Quarterly Theory and BTMM methodology with professional tools">
+    <meta name="theme-color" content="#4a9eff">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Trading Guide">
     <title>Trading Guide Hub - Quarterly Theory & BTMM</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="print.css" media="print">
+    <link rel="manifest" href="manifest.json">
 </head>
 <body>
+    <!-- Skip to main content link for accessibility -->
+    <a href="#mainContent" class="skip-link">Skip to main content</a>
+    
     <!-- Header -->
-    <div class="header">
+    <div class="header" role="banner">
         <div class="header-content">
             <div>
                 <h1>Quarterly Theory & BTMM Trading Guide</h1>
@@ -24,41 +34,23 @@
     <!-- Main Container -->
     <div class="main-container">
         <!-- Sidebar -->
-        <aside class="sidebar">
+        <nav class="sidebar" id="sidebar" aria-label="Main navigation">
+            <div class="nav-header">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <h2>📚 Trading Guide</h2>
+                </a>
+            </div>
             <div class="search-box">
-                <input type="text" id="searchInput" placeholder="Search guide..." />
+                <label for="searchInput" class="visually-hidden">Search guide</label>
+                <input type="text" id="searchInput" placeholder="Search guide..." aria-label="Search the trading guide" />
             </div>
-            
-            <h3>📚 Navigation (Top-Down)</h3>
-            <ul class="nav-menu">
-                <li><a href="index.html" class="nav-link active">🏠 Home</a></li>
-                <li style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color);"><a href="pages/core-philosophy.html" class="nav-link">🎯 Core Philosophy</a></li>
-                <li><a href="pages/weekly-schedule.html" class="nav-link">📅 Weekly Structure</a></li>
-                <li><a href="pages/btmm-cycle.html" class="nav-link">🔄 BTMM 3-Day Cycle</a></li>
-                <li><a href="pages/daily-sessions.html" class="nav-link">🕐 Daily Sessions</a></li>
-                <li><a href="pages/micro-quarters.html" class="nav-link">⏱️ Micro Quarters</a></li>
-                <li style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color);"><a href="pages/technical-setup.html" class="nav-link">🔧 Technical Setup</a></li>
-                <li><a href="pages/patterns.html" class="nav-link">📊 Patterns</a></li>
-                <li><a href="pages/entry-rules.html" class="nav-link">📈 Entry Rules</a></li>
-                <li><a href="pages/risk-management.html" class="nav-link">🛡️ Risk Management</a></li>
-                <li><a href="pages/checklist.html" class="nav-link">✅ Trading Checklist</a></li>
-                <li><a href="pages/examples.html" class="nav-link">💡 Trade Examples</a></li>
-                <li style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color);"><a href="pages/live-session-guide.html" class="nav-link">📡 Live Session Guide</a></li>
-                <li><a href="pages/quick-reference.html" class="nav-link">⚡ Quick Reference</a></li>
-            </ul>
-
-            <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
-                <h3>📄 Resources</h3>
-                <ul class="nav-menu">
-                    <li><a href="Complete_Top_Down_Trading_Guide.md" class="nav-link" target="_blank">📖 Full Guide (MD)</a></li>
-                    <li><a href="Quick_Reference_Cheat_Sheet.md" class="nav-link" target="_blank">📋 Cheat Sheet (MD)</a></li>
-                    <li><a href="Micro_Quarter_Timing_Reference.md" class="nav-link" target="_blank">⏰ Micro Timing (MD)</a></li>
-                </ul>
+            <div class="nav-links" id="navLinks">
+                <!-- Navigation will be loaded by navigation.js -->
             </div>
-        </aside>
+        </nav>
 
         <!-- Content -->
-        <main class="content" id="mainContent">
+        <main class="content" id="mainContent" role="main">
             <!-- Home Section -->
             <section class="section">
                 <!-- Hero Welcome Section -->
@@ -76,6 +68,9 @@
                         <a href="pages/core-philosophy.html" style="padding: 1rem 2rem; background: var(--accent-green); color: var(--bg-primary); border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 1.1rem; box-shadow: 0 4px 12px rgba(0, 255, 136, 0.3); transition: transform 0.2s;">
                             🚀 Start Learning
                         </a>
+                    <a href="pages/market-visuals.html" style="padding: 1rem 2rem; background: var(--accent-blue); color: var(--bg-primary); border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 1.1rem; box-shadow: 0 4px 12px rgba(74, 158, 255, 0.3); transition: transform 0.2s;">
+                        📈 Visual Market
+                    </a>
                         <a href="pages/quick-reference.html" style="padding: 1rem 2rem; background: rgba(74, 158, 255, 0.2); color: var(--accent-blue); border: 2px solid var(--accent-blue); border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 1.1rem; transition: transform 0.2s;">
                             ⚡ Quick Reference
                         </a>
@@ -118,6 +113,140 @@
                         <div style="font-size: 2.5rem; font-weight: bold; color: #8b2be2; margin-bottom: 0.5rem;">14</div>
                         <div style="color: var(--text-secondary);">Key Levels Tracked</div>
                         <div style="font-size: 0.85rem; margin-top: 0.5rem; color: var(--text-tertiary);">PDH, PWH, HOD, etc.</div>
+                    </div>
+                </div>
+
+                <!-- Quarterly Theory Visual Overview -->
+                <div style="background: linear-gradient(135deg, rgba(74, 158, 255, 0.08), rgba(138, 43, 226, 0.08)); padding: 3rem 2rem; border-radius: 15px; margin-bottom: 3rem; border: 2px solid rgba(74, 158, 255, 0.3);">
+                    <h2 style="text-align: center; color: var(--accent-blue); margin-bottom: 0.5rem; font-size: 2rem;">📊 QUARTERLY THEORY</h2>
+                    <p style="text-align: center; color: var(--text-secondary); margin-bottom: 3rem;">Complete Fractal Framework - All Timeframes</p>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 2fr 1fr; gap: 2rem; max-width: 1400px; margin: 0 auto;">
+                        
+                        <!-- LEFT: Cheat Sheet -->
+                        <div style="background: var(--card-bg); padding: 1.5rem; border-radius: 12px; border-left: 4px solid var(--accent-yellow);">
+                            <h3 style="color: var(--accent-yellow); margin-bottom: 1rem; font-size: 1.1rem;">📋 CHEAT SHEET</h3>
+                            
+                            <div style="margin-bottom: 1.5rem;">
+                                <h4 style="color: var(--accent-green); font-size: 0.95rem; margin-bottom: 0.5rem;">AMDX (Standard)</h4>
+                                <div style="font-size: 0.85rem; line-height: 1.8; color: var(--text-secondary);">
+                                    <div>Q1 = Accumulation</div>
+                                    <div>Q2 = Manipulation (Judas)</div>
+                                    <div style="color: var(--accent-green); font-weight: bold;">Q3 = Distribution ⭐</div>
+                                    <div>Q4 = Reversal</div>
+                                </div>
+                            </div>
+                            
+                            <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem; margin-top: 1rem;">
+                                <h4 style="color: var(--accent-blue); font-size: 0.95rem; margin-bottom: 0.5rem;">XAMD (Alternative)</h4>
+                                <div style="font-size: 0.85rem; line-height: 1.8; color: var(--text-secondary);">
+                                    <div>Q1 = Reversal (HTF PD)</div>
+                                    <div>Q2 = Accumulation</div>
+                                    <div>Q3 = Manipulation</div>
+                                    <div>Q4 = Distribution</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- CENTER: Schematic -->
+                        <div style="background: var(--card-bg); padding: 2rem; border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 2px solid rgba(74, 158, 255, 0.3);">
+                            <div style="font-size: 1rem; color: var(--text-tertiary); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 2px;">Schematic</div>
+                            
+                            <div style="width: 100%; height: 250px; border: 2px solid rgba(74, 158, 255, 0.3); border-radius: 8px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(0,0,0,0.3), rgba(74, 158, 255, 0.05)); position: relative; overflow: hidden;">
+                                <!-- Simplified chart visualization -->
+                                <svg viewBox="0 0 400 200" style="width: 100%; height: 100%;">
+                                    <!-- Grid lines -->
+                                    <line x1="0" y1="100" x2="400" y2="100" stroke="rgba(74, 158, 255, 0.2)" stroke-width="1" stroke-dasharray="5,5"/>
+                                    
+                                    <!-- Price action path -->
+                                    <path d="M 20,160 L 60,150 L 100,120 L 140,110 L 180,40 L 220,50 L 260,100 L 300,60 L 340,150 L 380,140" 
+                                          fill="none" stroke="var(--accent-blue)" stroke-width="2"/>
+                                    
+                                    <!-- Labels -->
+                                    <text x="50" y="190" fill="var(--text-tertiary)" font-size="10">Q1</text>
+                                    <text x="140" y="30" fill="var(--accent-yellow)" font-size="10">Q2 Judas</text>
+                                    <text x="270" y="50" fill="var(--accent-green)" font-size="10" font-weight="bold">Q3</text>
+                                    <text x="350" y="190" fill="var(--text-tertiary)" font-size="10">Q4</text>
+                                    
+                                    <!-- HTF PD Array line -->
+                                    <rect x="150" y="90" width="180" height="30" fill="rgba(74, 158, 255, 0.2)"/>
+                                    <text x="200" y="108" fill="var(--accent-blue)" font-size="9">HTF PD Array</text>
+                                </svg>
+                            </div>
+                            
+                            <div style="margin-top: 2rem; padding: 1rem; background: rgba(74, 158, 255, 0.1); border-radius: 8px; width: 100%;">
+                                <h4 style="color: var(--accent-yellow); font-size: 0.9rem; margin-bottom: 0.5rem; text-align: center;">🎯 True Opens</h4>
+                                <div style="font-size: 0.8rem; color: var(--text-secondary); text-align: center; line-height: 1.6;">
+                                    Price revisits these before the real move<br>
+                                    <span style="color: var(--accent-green);">Yearly = 1st Mon April • Monthly = 2nd Mon</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- RIGHT: Timeframes -->
+                        <div style="background: var(--card-bg); padding: 1.5rem; border-radius: 12px; border-left: 4px solid var(--accent-green);">
+                            <h3 style="color: var(--accent-green); margin-bottom: 1rem; font-size: 1.1rem;">⏰ TIMEFRAMES</h3>
+                            
+                            <!-- Yearly -->
+                            <div style="margin-bottom: 1rem; padding: 0.75rem; background: rgba(74, 158, 255, 0.05); border-radius: 6px;">
+                                <div style="font-weight: bold; color: var(--accent-blue); font-size: 0.85rem; margin-bottom: 0.3rem;">YEARLY</div>
+                                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.3rem; font-size: 0.7rem;">
+                                    <div style="padding: 0.3rem; background: rgba(255,255,255,0.05); border-radius: 3px; text-align: center;">Q1<br>JAN-MAR</div>
+                                    <div style="padding: 0.3rem; background: rgba(255,255,255,0.05); border-radius: 3px; text-align: center;">Q2<br>APR-JUN</div>
+                                    <div style="padding: 0.3rem; background: rgba(0,255,136,0.1); border-radius: 3px; text-align: center; font-weight: bold;">Q3<br>JUL-SEP</div>
+                                    <div style="padding: 0.3rem; background: rgba(255,255,255,0.05); border-radius: 3px; text-align: center;">Q4<br>OCT-DEC</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Monthly -->
+                            <div style="margin-bottom: 1rem; padding: 0.75rem; background: rgba(255, 215, 0, 0.05); border-radius: 6px;">
+                                <div style="font-weight: bold; color: var(--accent-yellow); font-size: 0.85rem; margin-bottom: 0.3rem;">MONTHLY</div>
+                                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.3rem; font-size: 0.7rem;">
+                                    <div style="padding: 0.3rem; background: rgba(255,255,255,0.05); border-radius: 3px; text-align: center;">Q1<br>WK1</div>
+                                    <div style="padding: 0.3rem; background: rgba(255,255,255,0.05); border-radius: 3px; text-align: center;">Q2<br>WK2</div>
+                                    <div style="padding: 0.3rem; background: rgba(0,255,136,0.1); border-radius: 3px; text-align: center; font-weight: bold;">Q3<br>WK3</div>
+                                    <div style="padding: 0.3rem; background: rgba(255,255,255,0.05); border-radius: 3px; text-align: center;">Q4<br>WK4</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Weekly -->
+                            <div style="margin-bottom: 1rem; padding: 0.75rem; background: rgba(0, 255, 136, 0.05); border-radius: 6px;">
+                                <div style="font-weight: bold; color: var(--accent-green); font-size: 0.85rem; margin-bottom: 0.3rem;">WEEKLY</div>
+                                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.3rem; font-size: 0.7rem;">
+                                    <div style="padding: 0.3rem; background: rgba(255,255,255,0.05); border-radius: 3px; text-align: center;">Q1<br>MON</div>
+                                    <div style="padding: 0.3rem; background: rgba(255,255,255,0.05); border-radius: 3px; text-align: center;">Q2<br>TUE</div>
+                                    <div style="padding: 0.3rem; background: rgba(0,255,136,0.1); border-radius: 3px; text-align: center; font-weight: bold;">Q3<br>WED</div>
+                                    <div style="padding: 0.3rem; background: rgba(255,255,255,0.05); border-radius: 3px; text-align: center;">Q4<br>THU</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Daily -->
+                            <div style="margin-bottom: 1rem; padding: 0.75rem; background: rgba(138, 43, 226, 0.05); border-radius: 6px;">
+                                <div style="font-weight: bold; color: #8b2be2; font-size: 0.85rem; margin-bottom: 0.3rem;">DAILY</div>
+                                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.3rem; font-size: 0.65rem;">
+                                    <div style="padding: 0.3rem; background: rgba(255,255,255,0.05); border-radius: 3px; text-align: center;">Q1 ASIA<br>6P-12A</div>
+                                    <div style="padding: 0.3rem; background: rgba(255,255,255,0.05); border-radius: 3px; text-align: center;">Q2 LON<br>12A-6A</div>
+                                    <div style="padding: 0.3rem; background: rgba(0,255,136,0.1); border-radius: 3px; text-align: center; font-weight: bold;">Q3 NY<br>6A-12P</div>
+                                    <div style="padding: 0.3rem; background: rgba(255,255,255,0.05); border-radius: 3px; text-align: center;">Q4 PM<br>12P-6P</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Sessions -->
+                            <div style="padding: 0.75rem; background: rgba(255, 87, 34, 0.05); border-radius: 6px;">
+                                <div style="font-weight: bold; color: var(--accent-red); font-size: 0.85rem; margin-bottom: 0.3rem;">SESSIONS</div>
+                                <div style="font-size: 0.7rem; color: var(--text-tertiary); text-align: center;">
+                                    Each session = 4x 90-min cycles<br>
+                                    Each 90-min = 4x 22-min quarters
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Mobile Note -->
+                    <div style="text-align: center; margin-top: 2rem; padding: 1rem; background: rgba(0,0,0,0.3); border-radius: 8px;">
+                        <p style="color: var(--text-tertiary); font-size: 0.9rem;">
+                            💡 <strong>The Pattern:</strong> Q3 (Distribution) is ALWAYS the best trading period at every timeframe!
+                        </p>
                     </div>
                 </div>
 
@@ -184,28 +313,44 @@
 
                 <!-- Recently Added Section -->
                 <div style="background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 255, 136, 0.05)); padding: 2rem; border-radius: 12px; margin-bottom: 3rem; border-left: 4px solid var(--accent-green);">
-                    <h3 style="color: var(--accent-green); margin-bottom: 1.5rem; text-align: center;">🆕 Recently Added: Complete BTMM Integration</h3>
-                    <div style="max-width: 900px; margin: 0 auto;">
+                    <h3 style="color: var(--accent-green); margin-bottom: 1.5rem; text-align: center;">🆕 Latest Enhancements: Complete Methodology Integration</h3>
+                    <div style="max-width: 1000px; margin: 0 auto;">
                         <p style="text-align: center; margin-bottom: 1.5rem; font-size: 1.1rem; color: var(--text-secondary);">
-                            <strong style="color: var(--accent-green);">31+ Total Patterns</strong> now fully integrated with Quarterly Theory!
+                            <strong style="color: var(--accent-green);">100% Coverage</strong> of Quarterly Theory + Steve Mauro's BTMM Official Terminology!
                         </p>
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
-                            <div style="background: var(--card-bg); padding: 1rem; border-radius: 8px;">
-                                <div style="font-weight: bold; color: var(--accent-blue); margin-bottom: 0.5rem;">📈 Type 1-4 Variations</div>
-                                <div style="font-size: 0.9rem; color: var(--text-tertiary);">12 M/W pattern sub-types</div>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+                            <div style="background: var(--card-bg); padding: 1rem; border-radius: 8px; border: 1px solid rgba(255, 193, 7, 0.3);">
+                                <div style="font-weight: bold; color: var(--accent-yellow); margin-bottom: 0.5rem;">📊 PSR Zone</div>
+                                <div style="font-size: 0.9rem; color: var(--text-tertiary);">First 8 H1 candles - Weekly structure reference</div>
                             </div>
-                            <div style="background: var(--card-bg); padding: 1rem; border-radius: 8px;">
-                                <div style="font-weight: bold; color: var(--accent-yellow); margin-bottom: 0.5rem;">🦇 Half Batman 1&2</div>
-                                <div style="font-size: 0.9rem; color: var(--text-tertiary);">Advanced Level 3 setups</div>
+                            <div style="background: var(--card-bg); padding: 1rem; border-radius: 8px; border: 1px solid rgba(255, 74, 74, 0.3);">
+                                <div style="font-weight: bold; color: var(--accent-red); margin-bottom: 0.5rem;">🔻 M-A1-A2-W</div>
+                                <div style="font-size: 0.9rem; color: var(--text-tertiary);">Official bearish 3-day structure pattern</div>
                             </div>
-                            <div style="background: var(--card-bg); padding: 1rem; border-radius: 8px;">
-                                <div style="font-weight: bold; color: var(--accent-green); margin-bottom: 0.5rem;">🌅 2nd Leg Asia</div>
-                                <div style="font-size: 0.9rem; color: var(--text-tertiary);">London session entries</div>
+                            <div style="background: var(--card-bg); padding: 1rem; border-radius: 8px; border: 1px solid rgba(0, 255, 136, 0.3);">
+                                <div style="font-weight: bold; color: var(--accent-green); margin-bottom: 0.5rem;">🔺 W-V1-V2-M</div>
+                                <div style="font-size: 0.9rem; color: var(--text-tertiary);">Official bullish 3-day structure pattern</div>
                             </div>
-                            <div style="background: var(--card-bg); padding: 1rem; border-radius: 8px;">
-                                <div style="font-weight: bold; color: #8b2be2; margin-bottom: 0.5rem;">📍 Key Level Tracking</div>
-                                <div style="font-size: 0.9rem; color: var(--text-tertiary);">14 institutional levels</div>
+                            <div style="background: var(--card-bg); padding: 1rem; border-radius: 8px; border: 1px solid rgba(74, 158, 255, 0.3);">
+                                <div style="font-weight: bold; color: var(--accent-blue); margin-bottom: 0.5rem;">🎯 Multi-TF Alignment</div>
+                                <div style="font-size: 0.9rem; color: var(--text-tertiary);">"Perfect Storm" setup identification</div>
                             </div>
+                            <div style="background: var(--card-bg); padding: 1rem; border-radius: 8px; border: 1px solid rgba(138, 43, 226, 0.3);">
+                                <div style="font-weight: bold; color: #8a2be2; margin-bottom: 0.5rem;">📅 Yearly/Monthly Cycles</div>
+                                <div style="font-size: 0.9rem; color: var(--text-tertiary);">Complete fractal time structure</div>
+                            </div>
+                            <div style="background: var(--card-bg); padding: 1rem; border-radius: 8px; border: 1px solid rgba(255, 193, 7, 0.3);">
+                                <div style="font-weight: bold; color: var(--accent-yellow); margin-bottom: 0.5rem;">📈 31+ Patterns</div>
+                                <div style="font-size: 0.9rem; color: var(--text-tertiary);">All Type 1-4, Half Batman, advanced setups</div>
+                            </div>
+                        </div>
+                        <div style="text-align: center; padding: 1rem; background: rgba(74, 158, 255, 0.1); border-radius: 8px; border: 1px solid rgba(74, 158, 255, 0.3);">
+                            <p style="margin: 0; color: var(--accent-blue); font-weight: bold;">
+                                ⭐ App now features Steve Mauro's official BTMM terminology + Complete Quarterly Theory from yearly to micro timeframes!
+                            </p>
+                            <p style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-secondary);">
+                                🎯 <strong>NEW:</strong> Dedicated tabs for Type 1-4 trade setups in Patterns page for instant access!
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -385,7 +530,102 @@
         </main>
     </div>
 
+    <script src="js/error-handler.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/mobile-menu.js"></script>
+    <script src="js/keyboard-shortcuts.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/alerts.js"></script>
+    <script src="js/export-print.js"></script>
+    
+    <!-- PWA Service Worker Registration (Disabled for development - uncomment when deploying) -->
+    <script>
+        // Service worker disabled during development to prevent caching issues
+        // Uncomment the code below when ready to deploy as PWA
+        
+        // if ('serviceWorker' in navigator) {
+        //     window.addEventListener('load', function() {
+        //         navigator.serviceWorker.register('./service-worker.js')
+        //             .then(function(registration) {
+        //                 console.log('✅ Service Worker registered successfully:', registration.scope);
+        //             })
+        //             .catch(function(error) {
+        //                 console.log('❌ Service Worker registration failed:', error);
+        //             });
+        //     });
+        // }
+        
+        console.log('🔧 Development Mode: Service Worker disabled');
+    </script>
+    
+    <script>
+            // Show install prompt (for PWA)
+            let deferredPrompt;
+            window.addEventListener('beforeinstallprompt', (e) => {
+                e.preventDefault();
+                deferredPrompt = e;
+                
+                // Show custom install button
+                showInstallPrompt();
+            });
+            
+            function showInstallPrompt() {
+                const installBanner = document.createElement('div');
+                installBanner.style.cssText = `
+                    position: fixed;
+                    bottom: 20px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
+                    color: white;
+                    padding: 1rem 1.5rem;
+                    border-radius: 50px;
+                    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+                    z-index: 10000;
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+                    animation: slideUp 0.3s ease;
+                    font-weight: bold;
+                `;
+                
+                installBanner.innerHTML = `
+                    <span>📱 Install Trading Guide App</span>
+                    <button onclick="installPWA()" style="background: white; color: var(--accent-blue); border: none; padding: 0.5rem 1rem; border-radius: 20px; cursor: pointer; font-weight: bold;">
+                        Install
+                    </button>
+                    <button onclick="this.parentElement.remove()" style="background: rgba(255,255,255,0.2); color: white; border: none; padding: 0.5rem 0.75rem; border-radius: 20px; cursor: pointer;">
+                        ✕
+                    </button>
+                `;
+                
+                document.body.appendChild(installBanner);
+                
+                // Add slideUp animation
+                const style = document.createElement('style');
+                style.textContent = `
+                    @keyframes slideUp {
+                        from { transform: translateX(-50%) translateY(100px); opacity: 0; }
+                        to { transform: translateX(-50%) translateY(0); opacity: 1; }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+            
+            window.installPWA = async function() {
+                if (deferredPrompt) {
+                    deferredPrompt.prompt();
+                    const { outcome } = await deferredPrompt.userChoice;
+                    
+                    if (outcome === 'accepted') {
+                        console.log('✅ PWA installed');
+                    }
+                    
+                    deferredPrompt = null;
+                    document.querySelector('[onclick="installPWA()"]').parentElement.remove();
+                }
+            };
+    </script>
 </body>
 </html>
 

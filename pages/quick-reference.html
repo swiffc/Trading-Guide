@@ -24,29 +24,19 @@
     <!-- Main Container -->
     <div class="main-container">
         <!-- Sidebar -->
-        <aside class="sidebar">
+                <nav class="sidebar" id="sidebar">
+            <div class="nav-header">
+                <a href="../index.html" style="text-decoration: none; color: inherit;">
+                    <h2>📚 Trading Guide</h2>
+                </a>
+            </div>
             <div class="search-box">
                 <input type="text" id="searchInput" placeholder="Search guide..." />
             </div>
-            
-            <h3>📚 Navigation (Top-Down)</h3>
-            <ul class="nav-menu">
-                <li><a href="../index.html" class="nav-link">🏠 Home</a></li>
-                <li style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color);"><a href="core-philosophy.html" class="nav-link">🎯 Core Philosophy</a></li>
-                <li><a href="weekly-schedule.html" class="nav-link">📅 Weekly Structure</a></li>
-                <li><a href="btmm-cycle.html" class="nav-link">🔄 BTMM 3-Day Cycle</a></li>
-                <li><a href="daily-sessions.html" class="nav-link">🕐 Daily Sessions</a></li>
-                <li><a href="micro-quarters.html" class="nav-link">⏱️ Micro Quarters</a></li>
-                <li style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color);"><a href="technical-setup.html" class="nav-link">🔧 Technical Setup</a></li>
-                <li><a href="patterns.html" class="nav-link">📊 Patterns</a></li>
-                <li><a href="entry-rules.html" class="nav-link">📈 Entry Rules</a></li>
-                <li><a href="risk-management.html" class="nav-link">🛡️ Risk Management</a></li>
-                <li><a href="checklist.html" class="nav-link">✅ Trading Checklist</a></li>
-                <li><a href="examples.html" class="nav-link">💡 Trade Examples</a></li>
-                <li style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color);"><a href="live-session-guide.html" class="nav-link">📡 Live Session Guide</a></li>
-                <li><a href="quick-reference.html" class="nav-link active">⚡ Quick Reference</a></li>
-            </ul>
-        </aside>
+            <div class="nav-links" id="navLinks">
+                <!-- Navigation will be loaded by main.js -->
+            </div>
+        </nav>
 
         <!-- Content -->
         <main class="content" id="mainContent">
@@ -550,6 +540,64 @@
                     <p style="margin-top: 1rem;"><strong>Consistency beats home runs!</strong></p>
                 </div>
 
+                <h3 style="margin-top: 3rem;">🎯 Multi-Timeframe Alignment</h3>
+                
+                <div class="pattern-card" style="border-left: 4px solid var(--accent-green);">
+                    <div class="pattern-title" style="color: var(--accent-green);">The "Perfect Storm" Setup</div>
+                    
+                    <h4 style="margin-top: 1rem;">Alignment Checklist (Check Top-Down):</h4>
+                    <ul class="checklist" style="padding-left: 0; list-style: none;">
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border-color);">
+                            <input type="checkbox" style="margin-right: 0.5rem;"> <strong>Weekly Quarter:</strong> Is it Q3 (Wednesday)? 
+                            <span style="color: var(--accent-green);">(+++ conviction)</span>
+                        </li>
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border-color);">
+                            <input type="checkbox" style="margin-right: 0.5rem;"> <strong>Daily Quarter:</strong> Is it Q3 (6am-12pm NY)? 
+                            <span style="color: var(--accent-green);">(++ conviction)</span>
+                        </li>
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border-color);">
+                            <input type="checkbox" style="margin-right: 0.5rem;"> <strong>Session Quarter:</strong> Is it Q3 (9:00-10:30am)? 
+                            <span style="color: var(--accent-green);">(+ conviction)</span>
+                        </li>
+                        <li style="padding: 0.5rem 0;">
+                            <input type="checkbox" style="margin-right: 0.5rem;"> <strong>90-Min Quarter:</strong> Is it Q3? 
+                            <span style="color: var(--accent-green);">(+ conviction)</span>
+                        </li>
+                    </ul>
+                    
+                    <div class="alert alert-success" style="margin-top: 1rem;">
+                        <strong>🌟 Perfect Storm Setup:</strong> When 3 or more timeframes are ALL in Q3 distribution = MAXIMUM confidence!
+                    </div>
+                    
+                    <div class="alert alert-warning" style="margin-top: 0.5rem;">
+                        <strong>⚠️ Conflicting Quarters:</strong> If higher TF is Q1 but lower TF is Q3 = Reduce size or wait for alignment.
+                    </div>
+                    
+                    <h4 style="margin-top: 1.5rem;">Quick Conviction Formula:</h4>
+                    <div style="background: var(--bg-tertiary); padding: 1rem; border-radius: 6px; margin-top: 0.5rem;">
+                        <strong>Position Sizing Based on Alignment:</strong><br>
+                        <div style="margin-top: 0.5rem; line-height: 1.8;">
+                            • <strong style="color: var(--accent-green);">4 timeframes align</strong> = ⭐⭐⭐⭐⭐ (Maximum size - up to 2%)<br>
+                            • <strong style="color: var(--accent-green);">3 timeframes align</strong> = ⭐⭐⭐⭐ (Normal size - 1.5%)<br>
+                            • <strong style="color: var(--accent-yellow);">2 timeframes align</strong> = ⭐⭐⭐ (Reduced size - 1%)<br>
+                            • <strong style="color: var(--accent-red);">1 or fewer align</strong> = ⚠️ (Avoid or 0.5% only)
+                        </div>
+                    </div>
+                    
+                    <div style="background: rgba(0, 255, 136, 0.05); padding: 1rem; border-radius: 6px; margin-top: 1rem; border: 1px solid var(--accent-green);">
+                        <strong>🔥 Best Case Example - Wednesday 9:15 AM EST:</strong><br>
+                        <div style="margin-top: 0.5rem; padding-left: 1rem; line-height: 1.8;">
+                            ✅ Weekly: Q3 (Wednesday)<br>
+                            ✅ Daily: Q3 (6am-12pm NY AM)<br>
+                            ✅ Session: Q3 (9:00-10:30am)<br>
+                            ✅ 90-Min: Q3 (9:00-10:30am)<br>
+                            <strong style="color: var(--accent-green); margin-top: 0.5rem; display: block;">
+                                = PERFECT STORM! Trade with full conviction! 🎯
+                            </strong>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="alert alert-info" style="margin-top: 2rem;">
                     <h4 style="margin-bottom: 0.5rem;">🚀 Next Steps</h4>
                     <p>Explore detailed sections:</p>
@@ -569,7 +617,10 @@
         </main>
     </div>
 
+    <script src="../js/navigation.js"></script>
     <script src="../js/main.js"></script>
+    <script src="../js/export-print.js"></script>
+    <script src="../js/alerts.js"></script>
 </body>
 </html>
 

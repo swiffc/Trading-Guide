@@ -21,29 +21,19 @@
     </div>
 
     <div class="main-container">
-        <aside class="sidebar">
+                <nav class="sidebar" id="sidebar">
+            <div class="nav-header">
+                <a href="../index.html" style="text-decoration: none; color: inherit;">
+                    <h2>📚 Trading Guide</h2>
+                </a>
+            </div>
             <div class="search-box">
                 <input type="text" id="searchInput" placeholder="Search guide..." />
             </div>
-            
-            <h3>📚 Navigation (Top-Down)</h3>
-            <ul class="nav-menu">
-                <li><a href="../index.html" class="nav-link">🏠 Home</a></li>
-                <li style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color);"><a href="core-philosophy.html" class="nav-link">🎯 Core Philosophy</a></li>
-                <li><a href="weekly-schedule.html" class="nav-link">📅 Weekly Structure</a></li>
-                <li><a href="btmm-cycle.html" class="nav-link">🔄 BTMM 3-Day Cycle</a></li>
-                <li><a href="daily-sessions.html" class="nav-link">🕐 Daily Sessions</a></li>
-                <li><a href="micro-quarters.html" class="nav-link">⏱️ Micro Quarters</a></li>
-                <li style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color);"><a href="technical-setup.html" class="nav-link active">🔧 Technical Setup</a></li>
-                <li><a href="patterns.html" class="nav-link">📊 Patterns</a></li>
-                <li><a href="entry-rules.html" class="nav-link">📈 Entry Rules</a></li>
-                <li><a href="risk-management.html" class="nav-link">🛡️ Risk Management</a></li>
-                <li><a href="checklist.html" class="nav-link">✅ Trading Checklist</a></li>
-                <li><a href="examples.html" class="nav-link">💡 Trade Examples</a></li>
-                <li style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color);"><a href="live-session-guide.html" class="nav-link">📡 Live Session Guide</a></li>
-                <li><a href="quick-reference.html" class="nav-link">⚡ Quick Reference</a></li>
-            </ul>
-        </aside>
+            <div class="nav-links" id="navLinks">
+                <!-- Navigation will be loaded by main.js -->
+            </div>
+        </nav>
 
         <main class="content" id="mainContent">
             <section class="section">
@@ -616,6 +606,7 @@
                     <h4 style="color: var(--accent-green); margin-top: 2rem;">✅ Daily Marking Checklist:</h4>
                     <div class="card">
                         <ul class="checklist">
+                            <li><input type="checkbox"> <strong>Mark Weekly PSR Zone</strong> (first 8 H1 candles - Sunday 5PM to Monday 1AM EST)</li>
                             <li><input type="checkbox"> Mark PDH and PDL (previous day high/low)</li>
                             <li><input type="checkbox"> Mark PWH and PWL (previous week high/low)</li>
                             <li><input type="checkbox"> Mark PMH and PML (previous month high/low)</li>
@@ -626,6 +617,9 @@
                             <li><input type="checkbox"> Update HOD/LOD as day progresses</li>
                             <li><input type="checkbox"> Note session highs/lows (PSH/PSL)</li>
                         </ul>
+                        <div class="alert alert-info" style="margin-top: 1rem; font-size: 0.9rem;">
+                            <strong>📊 PSR Zone:</strong> The first 8 hourly candles (Sunday 5PM-Monday 1AM EST) create the weekly Psychological Support/Resistance zone. Draw a box around the high/low of these candles - price will respect this zone all week! See <a href="btmm-cycle.html" style="color: var(--accent-blue); text-decoration: underline;">BTMM Cycle page</a> for complete PSR details.
+                        </div>
                     </div>
 
                     <div class="alert alert-success" style="margin-top: 1.5rem;">
@@ -676,10 +670,10 @@
                         </div>
 
                         <div class="card">
-                            <h4 style="color: var(--accent-yellow);">AR Level Setups</h4>
+                            <h4 style="color: var(--accent-yellow);">AR Level Setups (Asian Range)</h4>
                             <ul style="padding-left: 1.5rem;">
-                                <li>AR 00 (Round Numbers)</li>
-                                <li>AR 50 (Half Levels)</li>
+                                <li>AR 00 (Asian High & Low)</li>
+                                <li>AR 50 (Asian Midpoint)</li>
                             </ul>
                         </div>
 
@@ -852,13 +846,14 @@
                 <h3 style="margin-top: 3rem;">📏 ADR-BASED SETUPS</h3>
 
                 <div class="pattern-card" style="border-left: 4px solid var(--accent-yellow);">
-                    <div class="pattern-title">AR 00 / AR 50 - Average Range Level Setups</div>
+                    <div class="pattern-title">AR 00 / AR 50 - Asian Range Level Setups</div>
                     
                     <h4 style="color: var(--accent-blue);">Concept:</h4>
                     <div class="card">
-                        <p><strong>AR 00:</strong> Full round numbers (1.3000, 1.3100, 1.3200, etc.) within ADR</p>
-                        <p><strong>AR 50:</strong> Half levels (1.3050, 1.3150, 1.3250, etc.) within ADR</p>
-                        <p style="margin-top: 1rem;"><strong>Why They Work:</strong> Market makers often target these psychological levels as profit targets or reversal points.</p>
+                        <p><strong>AR = Asian Range:</strong> The high-to-low range established during Asian session (5:00 PM - 2:00 AM EST)</p>
+                        <p style="margin-top: 1rem;"><strong>AR 00 (Asian Range 00):</strong> The TOP (Asian High) and BOTTOM (Asian Low) of the Asian session range</p>
+                        <p style="margin-top: 0.5rem;"><strong>AR 50 (Asian Range 50):</strong> The MIDPOINT (50%) of the Asian session range</p>
+                        <p style="margin-top: 1rem;"><strong>Why They Work:</strong> Asian range boundaries act as key liquidity zones. London/NY sessions often sweep AR 00 (high/low) then reverse, or bounce off AR 50 (midpoint) for continuation.</p>
                     </div>
 
                     <h4 style="color: var(--accent-yellow); margin-top: 1.5rem;">Setup Process:</h4>
@@ -951,7 +946,10 @@
         </main>
     </div>
 
+    <script src="../js/navigation.js"></script>
     <script src="../js/main.js"></script>
+    <script src="../js/export-print.js"></script>
+    <script src="../js/alerts.js"></script>
 </body>
 </html>
 

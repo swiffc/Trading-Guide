@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session Cycle + Micro Quarters - Trading Guide</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <div>
+                <h1>Quarterly Theory & BTMM Trading Guide</h1>
+                <div class="header-subtitle">Session Cycles + Micro Quarters</div>
+            </div>
+            <div class="current-time">
+                <div class="time-display" id="currentTime">--:--:-- EST</div>
+                <div class="session-indicator" id="sessionIndicator">Loading...</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <nav class="sidebar" id="sidebar">
+            <div class="nav-header">
+                <a href="../index.html" style="text-decoration: none; color: inherit;">
+                    <h2>📚 Trading Guide</h2>
+                </a>
+            </div>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search guide..." />
+            </div>
+            <div class="nav-links" id="navLinks"></div>
+        </nav>
+
+        <main class="content" id="mainContent">
+            <section class="section">
+                <h2>🕐 Session Cycles + Micro Quarters</h2>
+                
+                <div class="alert alert-info">
+                    <strong>💡 Core Concept:</strong> Each daily session divides into 90-minute cycles. Each 90-minute cycle divides into 22.5-minute micro quarters. This is the most granular fractal level for intraday trading.
+                </div>
+
+                <div class="alert alert-success" style="margin-top: 1rem;">
+                    <strong>🎯 THE PRECISION WINDOW:</strong> NY Session 9:45-10:07 AM = Micro Q3 within 90-min Q2 = Brinks Time + Maximum precision entry!
+                </div>
+
+                <h3 style="margin-top: 2rem;">📊 Complete Session Structure</h3>
+                <p>Each 24-hour day contains 4 main sessions, each with multiple 90-minute cycles:</p>
+                <table>
+                    <tr>
+                        <th>Session</th>
+                        <th>Time</th>
+                        <th>Daily Q</th>
+                        <th>90-Min Cycles</th>
+                        <th>Total Micro Quarters</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Asian</strong></td>
+                        <td>7 PM - 2 AM</td>
+                        <td>Q1</td>
+                        <td>4 cycles</td>
+                        <td>16 quarters (4x4)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>London</strong></td>
+                        <td>2 AM - 11 AM</td>
+                        <td>Q2</td>
+                        <td>4 cycles</td>
+                        <td>16 quarters (4x4)</td>
+                    </tr>
+                    <tr style="background: rgba(0, 255, 136, 0.1); border: 2px solid var(--accent-green);">
+                        <td><strong>NY</strong></td>
+                        <td>7:30 AM - 5 PM</td>
+                        <td><strong>Q3 ⭐</strong></td>
+                        <td>4 cycles</td>
+                        <td>16 quarters (4x4)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>PM</strong></td>
+                        <td>12 PM - 6 PM</td>
+                        <td>Q4</td>
+                        <td>3 cycles</td>
+                        <td>12 quarters (3x4)</td>
+                    </tr>
+                </table>
+
+                <h3 style="margin-top: 2.5rem;">🌙 Asian Session - 90-Minute Breakdown</h3>
+                <div class="card" style="border-left: 4px solid var(--accent-blue);">
+                    <h4>7:00 PM - 2:00 AM (Daily Q1 Accumulation)</h4>
+                    <table style="margin-top: 1rem;">
+                        <tr>
+                            <th>90-Min Cycle</th>
+                            <th>Time</th>
+                            <th>Session Q</th>
+                            <th>Micro Quarters (22.5-min each)</th>
+                        </tr>
+                        <tr>
+                            <td>Cycle 1</td>
+                            <td>7:00-8:30 PM</td>
+                            <td>Q1</td>
+                            <td>7:00-7:22, 7:22-7:45, 7:45-8:07, 8:07-8:30</td>
+                        </tr>
+                        <tr>
+                            <td>Cycle 2</td>
+                            <td>8:30-10:00 PM</td>
+                            <td>Q2</td>
+                            <td>8:30-8:52, 8:52-9:15, 9:15-9:37, 9:37-10:00</td>
+                        </tr>
+                        <tr>
+                            <td>Cycle 3</td>
+                            <td>10:00-11:30 PM</td>
+                            <td>Q3</td>
+                            <td>10:00-10:22, 10:22-10:45, 10:45-11:07, 11:07-11:30</td>
+                        </tr>
+                        <tr>
+                            <td>Cycle 4</td>
+                            <td>11:30 PM-1:00 AM</td>
+                            <td>Q4</td>
+                            <td>11:30-11:52, 11:52-12:15, 12:15-12:37, 12:37-1:00</td>
+                        </tr>
+                    </table>
+                    <p style="margin-top: 1rem;"><strong>Strategy:</strong> Observe only. Even Session Q3 (10-11:30 PM) has lower probability because Daily Cycle is Q1.</p>
+                </div>
+
+                <h3 style="margin-top: 2.5rem;">🌍 London Session - 90-Minute Breakdown</h3>
+                <div class="card" style="border-left: 4px solid var(--accent-yellow);">
+                    <h4>2:00 AM - 11:00 AM (Daily Q2 Manipulation)</h4>
+                    <table style="margin-top: 1rem;">
+                        <tr>
+                            <th>90-Min Cycle</th>
+                            <th>Time</th>
+                            <th>Session Q</th>
+                            <th>Key Notes</th>
+                        </tr>
+                        <tr>
+                            <td>Cycle 1</td>
+                            <td>1:30-3:00 AM</td>
+                            <td>Q1</td>
+                            <td>True Open, initial move</td>
+                        </tr>
+                        <tr style="background: rgba(255, 215, 0, 0.1); border: 2px solid var(--accent-yellow);">
+                            <td><strong>Cycle 2</strong></td>
+                            <td><strong>3:00-4:30 AM</strong></td>
+                            <td><strong>Q2 ⭐</strong></td>
+                            <td><strong>DOUBLE MANIPULATION - PF Window! 3:45 AM Brinks Time</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Cycle 3</td>
+                            <td>4:30-6:00 AM</td>
+                            <td>Q3</td>
+                            <td>Extension, pre-NY positioning</td>
+                        </tr>
+                        <tr>
+                            <td>Cycle 4</td>
+                            <td>6:00-7:30 AM</td>
+                            <td>Q4</td>
+                            <td>Overlap with NY open</td>
+                        </tr>
+                    </table>
+                    
+                    <h4 style="margin-top: 1.5rem; color: var(--accent-yellow);">🔥 London PF Window: 3:00-4:30 AM (Micro Breakdown)</h4>
+                    <table style="margin-top: 1rem; font-size: 0.9rem;">
+                        <tr>
+                            <th>Micro Quarter</th>
+                            <th>Time</th>
+                            <th>Phase</th>
+                            <th>What Happens</th>
+                        </tr>
+                        <tr>
+                            <td>Q1</td>
+                            <td>3:00-3:22 AM</td>
+                            <td>Accumulation</td>
+                            <td>Setup for PF</td>
+                        </tr>
+                        <tr style="background: rgba(255, 215, 0, 0.1);">
+                            <td><strong>Q2</strong></td>
+                            <td><strong>3:22-3:45 AM</strong></td>
+                            <td><strong>Manipulation</strong></td>
+                            <td><strong>Peak Formation forms! 3:45 Brinks ⭐</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Q3</td>
+                            <td>3:45-4:07 AM</td>
+                            <td>Distribution</td>
+                            <td>First rejection from PF</td>
+                        </tr>
+                        <tr>
+                            <td>Q4</td>
+                            <td>4:07-4:30 AM</td>
+                            <td>Continuation</td>
+                            <td>Confirm PF for NY reversal</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <h3 style="margin-top: 2.5rem;">🗽 NY Session - 90-Minute Breakdown (MOST IMPORTANT)</h3>
+                <div class="card" style="border: 3px solid var(--accent-green); background: rgba(0, 255, 136, 0.05);">
+                    <h4 style="color: var(--accent-green);">7:30 AM - 5:00 PM (Daily Q3 Distribution ⭐⭐⭐)</h4>
+                    <table style="margin-top: 1rem;">
+                        <tr>
+                            <th>90-Min Cycle</th>
+                            <th>Time</th>
+                            <th>Session Q</th>
+                            <th>Alignment</th>
+                            <th>Probability</th>
+                        </tr>
+                        <tr>
+                            <td>Cycle 1</td>
+                            <td>7:30-9:00 AM</td>
+                            <td>Q1</td>
+                            <td>Daily Q3 + Session Q1</td>
+                            <td>Medium-High</td>
+                        </tr>
+                        <tr style="background: rgba(255, 215, 0, 0.05);">
+                            <td><strong>Cycle 2</strong></td>
+                            <td><strong>9:00-10:30 AM</strong></td>
+                            <td><strong>Q2</strong></td>
+                            <td><strong>Daily Q3 + Session Q2</strong></td>
+                            <td><strong>HIGH (9:45 Brinks!) ⭐</strong></td>
+                        </tr>
+                        <tr style="background: rgba(0, 255, 136, 0.12); border: 3px solid var(--accent-green);">
+                            <td><strong>Cycle 3</strong></td>
+                            <td><strong>10:30 AM-12:00 PM</strong></td>
+                            <td><strong>Q3 ⭐⭐⭐</strong></td>
+                            <td><strong>Daily Q3 + Session Q3</strong></td>
+                            <td><strong>MAXIMUM (70-80%)</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Cycle 4</td>
+                            <td>12:00-1:30 PM</td>
+                            <td>Q4</td>
+                            <td>Daily Q3 + Session Q4</td>
+                            <td>Medium</td>
+                        </tr>
+                    </table>
+                    
+                    <h4 style="margin-top: 1.5rem; color: var(--accent-green);">🔥 NY PRIME WINDOW: 9:00-10:30 AM (Complete Micro Breakdown)</h4>
+                    <table style="margin-top: 1rem;">
+                        <tr style="background: rgba(0, 255, 136, 0.1);">
+                            <th>Micro Quarter</th>
+                            <th>Time</th>
+                            <th>Phase</th>
+                            <th>Key Events</th>
+                            <th>Action</th>
+                        </tr>
+                        <tr>
+                            <td>Q1</td>
+                            <td>9:00-9:22 AM</td>
+                            <td>Accumulation</td>
+                            <td>915 Rule alignment (9:15 AM)</td>
+                            <td>WATCH - Setup forming</td>
+                        </tr>
+                        <tr style="background: rgba(255, 215, 0, 0.1); border: 2px solid var(--accent-yellow);">
+                            <td><strong>Q2</strong></td>
+                            <td><strong>9:22-9:45 AM</strong></td>
+                            <td><strong>Manipulation</strong></td>
+                            <td><strong>9:30 NYSE Open + 9:45 Brinks Time! ⭐⭐⭐</strong></td>
+                            <td><strong>ENTER HERE!</strong></td>
+                        </tr>
+                        <tr style="background: rgba(0, 255, 136, 0.12); border: 3px solid var(--accent-green); box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);">
+                            <td><strong>Q3</strong></td>
+                            <td><strong>9:45-10:07 AM</strong></td>
+                            <td><strong>Distribution</strong></td>
+                            <td><strong>REAL MOVE BEGINS! Perfect Storm ⭐⭐⭐⭐</strong></td>
+                            <td><strong>TP1 HITS</strong></td>
+                        </tr>
+                        <tr style="background: rgba(0, 255, 136, 0.05);">
+                            <td>Q4</td>
+                            <td>10:07-10:30 AM</td>
+                            <td>Continuation</td>
+                            <td>Trend extension</td>
+                            <td>Trail stops to BE</td>
+                        </tr>
+                    </table>
+
+                    <div class="alert alert-success" style="margin-top: 1.5rem;">
+                        <strong>💎 THE PERFECT STORM: 9:45-10:07 AM</strong><br>
+                        Daily Q3 + 90-Min Q2 + Micro Q3 + Brinks Time = This 22-minute window has the highest probability of ANY time in the 24-hour cycle!
+                    </div>
+
+                    <h4 style="margin-top: 1.5rem; color: var(--accent-green);">🎯 NY SESSION Q3: 10:30 AM-12:00 PM (Micro Breakdown)</h4>
+                    <table style="margin-top: 1rem; font-size: 0.9rem;">
+                        <tr>
+                            <th>Micro Quarter</th>
+                            <th>Time</th>
+                            <th>Phase</th>
+                            <th>Action</th>
+                        </tr>
+                        <tr style="background: rgba(0, 255, 136, 0.05);">
+                            <td>Q1</td>
+                            <td>10:30-10:52 AM</td>
+                            <td>Accumulation</td>
+                            <td>Pullback entries still valid</td>
+                        </tr>
+                        <tr style="background: rgba(0, 255, 136, 0.05);">
+                            <td>Q2</td>
+                            <td>10:52-11:15 AM</td>
+                            <td>Manipulation</td>
+                            <td>Minor retracement, add positions</td>
+                        </tr>
+                        <tr style="background: rgba(0, 255, 136, 0.1);">
+                            <td>Q3</td>
+                            <td>11:15-11:37 AM</td>
+                            <td>Distribution</td>
+                            <td>Major push, TP2 targets</td>
+                        </tr>
+                        <tr style="background: rgba(0, 255, 136, 0.05);">
+                            <td>Q4</td>
+                            <td>11:37 AM-12:00 PM</td>
+                            <td>Continuation</td>
+                            <td>Final push before lunch, TP3</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <h3 style="margin-top: 2.5rem;">🌆 PM Session - 90-Minute Breakdown</h3>
+                <div class="card" style="border-left: 4px solid var(--accent-red);">
+                    <h4>12:00 PM - 6:00 PM (Daily Q4 Reversal)</h4>
+                    <table style="margin-top: 1rem;">
+                        <tr>
+                            <th>90-Min Cycle</th>
+                            <th>Time</th>
+                            <th>Session Q</th>
+                            <th>Alignment</th>
+                            <th>Probability</th>
+                        </tr>
+                        <tr>
+                            <td>Lunch Hour</td>
+                            <td>12:00-1:30 PM</td>
+                            <td>N/A</td>
+                            <td>Daily Q4 (Lunch)</td>
+                            <td>Low - Avoid</td>
+                        </tr>
+                        <tr>
+                            <td>Cycle 1</td>
+                            <td>1:30-3:00 PM</td>
+                            <td>Q1</td>
+                            <td>Daily Q4 + Session Q1</td>
+                            <td>Low-Medium</td>
+                        </tr>
+                        <tr>
+                            <td>Cycle 2</td>
+                            <td>3:00-4:30 PM</td>
+                            <td>Q2</td>
+                            <td>Daily Q4 + Session Q2</td>
+                            <td>Medium (3:45 PM Brinks)</td>
+                        </tr>
+                        <tr>
+                            <td>Cycle 3</td>
+                            <td>4:30-6:00 PM</td>
+                            <td>Q3/Q4</td>
+                            <td>Daily Q4 + Session Q3/Q4</td>
+                            <td>Low - Close positions</td>
+                        </tr>
+                    </table>
+                    <p style="margin-top: 1rem;"><strong>Strategy:</strong> Trail stops on AM trades. Avoid new entries. Even PM Session Q3 has lower probability because Daily Cycle is Q4.</p>
+                </div>
+
+                <div class="alert alert-warning" style="margin-top: 2rem;">
+                    <h4>⚠️ Session & Micro Quarter Trading Rules</h4>
+                    <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                        <li><strong>9:45-10:07 AM</strong> = Absolute best 22-minute window (Micro Q3 + Brinks)</li>
+                        <li><strong>10:30 AM-12 PM</strong> = Best 90-minute window (Session Q3 + Daily Q3)</li>
+                        <li><strong>3:00-4:30 AM</strong> = London PF window (if trading overnight)</li>
+                        <li><strong>Avoid lunch</strong> (12-1:30 PM) = Choppy, low volume</li>
+                        <li><strong>Avoid PM</strong> unless clear Level 3 setup</li>
+                        <li><strong>Use micro quarters</strong> for precise entries, not for scalping</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(74, 158, 255, 0.1); border-radius: 8px;">
+                    <h4>💡 How to Use Micro Quarters</h4>
+                    <p style="line-height: 1.8;">
+                        <strong>Micro quarters are NOT for scalping!</strong> They're for precision timing within larger cycles. Use them to:
+                    </p>
+                    <ul style="padding-left: 1.5rem; line-height: 1.8; margin-top: 0.5rem;">
+                        <li>Enter at Micro Q3 (distribution) for best fill</li>
+                        <li>Understand when minor retracements occur (Micro Q2)</li>
+                        <li>Know when to expect continuation (Micro Q4)</li>
+                        <li>Time entries around Brinks Times (9:45 AM, 3:45 AM)</li>
+                    </ul>
+                    <p style="margin-top: 1rem; line-height: 1.8;">
+                        <strong>Example:</strong> If you're trading NY Session (Daily Q3), wait for the 90-min Q2 cycle (9-10:30 AM), 
+                        then enter at Micro Q3 within that cycle (9:45-10:07 AM) = Perfect timing across all fractal levels!
+                    </p>
+                </div>
+
+                <div class="alert alert-success" style="margin-top: 2rem; background: rgba(0, 255, 136, 0.15); border: 3px solid var(--accent-green);">
+                    <h4 style="color: var(--accent-green);">🎯 Session & Micro Game Plan</h4>
+                    <p style="font-size: 1.1rem; line-height: 1.9;">
+                        <strong>Daily Focus:</strong> NY Session 9:00-10:30 AM<br>
+                        <strong>Best 90-Min Cycle:</strong> 9:00-10:30 AM (Session Q2)<br>
+                        <strong>Best Micro Quarter:</strong> 9:45-10:07 AM (Micro Q3) ⭐<br>
+                        <strong>Alternative:</strong> 10:30 AM-12 PM (Session Q3)<br>
+                        <strong>Overnight Traders:</strong> London 3-4:30 AM (Session Q2)<br><br>
+                        <strong>Result:</strong> Precise entries, maximum edge, professional timing!
+                    </p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../js/navigation.js"></script>
+    <script src="../js/clock.js"></script>
+    <script>
+        // LIVE: Highlight current session
+        function highlightCurrentSession() {
+            const now = new Date();
+            // Get hour in EST - FIXED
+            const estTimeString = now.toLocaleString('en-US', { 
+                timeZone: 'America/New_York',
+                hour12: false,
+                hour: '2-digit'
+            });
+            const hours = parseInt(estTimeString.split(':')[0]);
+            let currentSession = '';
+            
+            if (hours >= 19 || hours < 2) {
+                currentSession = 'asian';
+            } else if (hours >= 2 && hours < 9) {
+                currentSession = 'london';
+            } else if (hours >= 9 && hours < 17) {
+                currentSession = 'ny';
+            } else {
+                currentSession = 'pm';
+            }
+            
+            // Find overview tab (default shown)
+            const overviewTab = document.querySelector('[data-tab="overview"]');
+            
+            // Find and highlight current session tab
+            const sessionTab = document.querySelector(`[data-tab="${currentSession}"]`);
+            if (sessionTab && !sessionTab.textContent.includes('🔴')) {
+                sessionTab.style.background = 'linear-gradient(135deg, rgba(255, 0, 0, 0.2), rgba(255, 87, 34, 0.2))';
+                sessionTab.style.border = '2px solid #ff0000';
+                sessionTab.style.fontWeight = 'bold';
+                const liveDot = document.createElement('span');
+                liveDot.textContent = ' 🔴 LIVE';
+                liveDot.style.animation = 'pulse 2s infinite';
+                sessionTab.appendChild(liveDot);
+            }
+        }
+        
+        highlightCurrentSession();
+        setInterval(highlightCurrentSession, 60000); // Update every minute
+    </script>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pattern Trainer - Master Your Recognition Skills</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="header-content">
+            <div>
+                <h1>🎓 Pattern Trainer</h1>
+                <div class="header-subtitle">Master Pattern Recognition Through Practice</div>
+            </div>
+            <div class="current-time">
+                <div class="time-display" id="currentTime">--:--:-- EST</div>
+                <div class="session-indicator" id="sessionIndicator">Loading...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Navigation -->
+        <nav class="sidebar" id="sidebar">
+            <div class="nav-header">
+                <a href="../index.html" style="text-decoration: none; color: inherit;">
+                    <h2>📚 Trading Guide</h2>
+                </a>
+            </div>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search guide..." />
+            </div>
+            <div class="nav-links" id="navLinks">
+                <!-- Navigation will be loaded by main.js -->
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="content">
+            <section class="section">
+                <div class="hero-card" style="background: linear-gradient(135deg, rgba(138, 43, 226, 0.15), rgba(74, 158, 255, 0.15)); text-align: center;">
+                    <h3 style="color: #8a2be2; margin-bottom: 1rem;">🧠 Train Your Trading Brain</h3>
+                    <p style="font-size: 1.1rem;">Practice identifying M-Tops, W-Bottoms, Type 1-4 setups, and more!</p>
+                    <p style="margin-top: 0.5rem; color: var(--text-tertiary);">The more you practice, the faster you'll spot opportunities in real-time!</p>
+                </div>
+
+                <!-- Stats Dashboard -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin: 2rem 0;">
+                    <div class="card" style="text-align: center; border: 2px solid var(--accent-green);">
+                        <div style="font-size: 2rem; color: var(--accent-green); margin-bottom: 0.5rem;" id="totalAnswered">0</div>
+                        <div style="color: var(--text-tertiary); font-size: 0.9rem;">Questions Answered</div>
+                    </div>
+                    <div class="card" style="text-align: center; border: 2px solid var(--accent-blue);">
+                        <div style="font-size: 2rem; color: var(--accent-blue); margin-bottom: 0.5rem;" id="accuracyRate">0%</div>
+                        <div style="color: var(--text-tertiary); font-size: 0.9rem;">Accuracy</div>
+                    </div>
+                    <div class="card" style="text-align: center; border: 2px solid var(--accent-yellow);">
+                        <div style="font-size: 2rem; color: var(--accent-yellow); margin-bottom: 0.5rem;" id="currentStreak">0</div>
+                        <div style="color: var(--text-tertiary); font-size: 0.9rem;">Current Streak</div>
+                    </div>
+                    <div class="card" style="text-align: center; border: 2px solid #8a2be2;">
+                        <div style="font-size: 2rem; color: #8a2be2; margin-bottom: 0.5rem;" id="bestStreak">0</div>
+                        <div style="color: var(--text-tertiary); font-size: 0.9rem;">Best Streak</div>
+                    </div>
+                </div>
+
+                <!-- Mode Selection Tabs -->
+                <div class="tabs" style="margin-bottom: 2rem;">
+                    <button class="tab-button active" data-tab="quiz">📝 Quiz Mode</button>
+                    <button class="tab-button" data-tab="flashcards">🗂️ Flashcards</button>
+                    <button class="tab-button" data-tab="stats">📊 My Progress</button>
+                </div>
+
+                <!-- Quiz Mode -->
+                <div id="quiz" class="tab-content active">
+                    <div class="pattern-card">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                            <div class="pattern-title" style="color: var(--accent-green);">🎯 Pattern Recognition Quiz</div>
+                            <button onclick="resetStats()" style="padding: 0.5rem 1rem; background: var(--accent-red); color: #fff; border: none; border-radius: 6px; cursor: pointer;">
+                                🔄 Reset Stats
+                            </button>
+                        </div>
+
+                        <!-- Difficulty Selection -->
+                        <div style="margin-bottom: 1.5rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: bold;">Difficulty Level:</label>
+                            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                                <button onclick="setDifficulty('easy')" id="diffEasy" class="difficulty-btn" style="padding: 0.75rem 1.5rem; background: var(--accent-green); color: var(--bg-primary); border: none; border-radius: 6px; cursor: pointer; font-weight: bold;">
+                                    😊 Easy
+                                </button>
+                                <button onclick="setDifficulty('medium')" id="diffMedium" class="difficulty-btn" style="padding: 0.75rem 1.5rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 6px; cursor: pointer;">
+                                    🤔 Medium
+                                </button>
+                                <button onclick="setDifficulty('hard')" id="diffHard" class="difficulty-btn" style="padding: 0.75rem 1.5rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 6px; cursor: pointer;">
+                                    🔥 Hard (All Patterns)
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Question Card -->
+                        <div id="questionCard" style="background: var(--bg-tertiary); padding: 2rem; border-radius: 12px; margin-bottom: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                <div style="font-size: 0.9rem; color: var(--text-tertiary);">Question <span id="questionNumber">1</span></div>
+                                <div id="timer" style="font-size: 1.2rem; color: var(--accent-yellow); font-weight: bold;">⏱️ 30s</div>
+                            </div>
+                            
+                            <h3 id="questionText" style="margin-bottom: 1.5rem; color: var(--accent-blue); font-size: 1.2rem;">
+                                Loading question...
+                            </h3>
+
+                            <!-- Answer Options -->
+                            <div id="answerOptions" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                                <!-- Options will be populated by JavaScript -->
+                            </div>
+                        </div>
+
+                        <!-- Feedback Panel -->
+                        <div id="feedbackPanel" style="display: none; padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem;">
+                            <h4 id="feedbackTitle" style="margin-bottom: 0.75rem;"></h4>
+                            <p id="feedbackText" style="margin: 0; line-height: 1.6;"></p>
+                            <button onclick="nextQuestion()" style="margin-top: 1rem; padding: 0.75rem 1.5rem; background: var(--accent-green); color: var(--bg-primary); border: none; border-radius: 6px; cursor: pointer; font-weight: bold;">
+                                Next Question →
+                            </button>
+                        </div>
+
+                        <!-- Start Button -->
+                        <div id="startPanel" style="text-align: center; padding: 2rem;">
+                            <button onclick="startQuiz()" style="padding: 1rem 2rem; background: var(--accent-green); color: var(--bg-primary); border: none; border-radius: 8px; cursor: pointer; font-size: 1.1rem; font-weight: bold;">
+                                🚀 Start Quiz
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Flashcards Mode -->
+                <div id="flashcards" class="tab-content">
+                    <div class="pattern-card">
+                        <div class="pattern-title" style="color: var(--accent-blue);">🗂️ Pattern Flashcards</div>
+                        
+                        <!-- Flashcard Display -->
+                        <div style="margin-top: 2rem;">
+                            <div id="flashcard" class="flashcard" onclick="flipCard()" style="min-height: 300px; background: var(--bg-tertiary); border-radius: 12px; padding: 2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; text-align: center; position: relative; transform-style: preserve-3d; transition: transform 0.6s;">
+                                <div class="flashcard-front" style="backface-visibility: hidden;">
+                                    <h2 style="color: var(--accent-green); margin-bottom: 1rem;">Click to Start</h2>
+                                    <p style="color: var(--text-tertiary);">Tap the card to flip</p>
+                                </div>
+                            </div>
+
+                            <!-- Flashcard Controls -->
+                            <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 2rem;">
+                                <button onclick="previousFlashcard()" style="padding: 0.75rem 1.5rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 6px; cursor: pointer; font-weight: bold;">
+                                    ← Previous
+                                </button>
+                                <button onclick="shuffleFlashcards()" style="padding: 0.75rem 1.5rem; background: var(--accent-yellow); color: var(--bg-primary); border: none; border-radius: 6px; cursor: pointer; font-weight: bold;">
+                                    🔀 Shuffle
+                                </button>
+                                <button onclick="nextFlashcard()" style="padding: 0.75rem 1.5rem; background: var(--accent-green); color: var(--bg-primary); border: none; border-radius: 6px; cursor: pointer; font-weight: bold;">
+                                    Next →
+                                </button>
+                            </div>
+
+                            <div style="text-align: center; margin-top: 1rem; color: var(--text-tertiary);">
+                                Card <span id="flashcardNumber">1</span> of <span id="flashcardTotal">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Progress/Stats Tab -->
+                <div id="stats" class="tab-content">
+                    <div class="pattern-card">
+                        <div class="pattern-title" style="color: #8a2be2);">📊 Your Learning Progress</div>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+                            <!-- Overall Performance -->
+                            <div class="card">
+                                <h4 style="color: var(--accent-green); margin-bottom: 1rem;">🎯 Overall Performance</h4>
+                                <div id="overallStats" style="line-height: 1.8;">
+                                    <!-- Populated by JavaScript -->
+                                </div>
+                            </div>
+
+                            <!-- Pattern-Specific Stats -->
+                            <div class="card">
+                                <h4 style="color: var(--accent-blue); margin-bottom: 1rem;">📊 Pattern Accuracy</h4>
+                                <div id="patternStats" style="line-height: 1.8; font-size: 0.9rem;">
+                                    <!-- Populated by JavaScript -->
+                                </div>
+                            </div>
+
+                            <!-- Recent Activity -->
+                            <div class="card">
+                                <h4 style="color: var(--accent-yellow); margin-bottom: 1rem;">📅 Recent Activity</h4>
+                                <div id="recentActivity" style="line-height: 1.8; font-size: 0.9rem;">
+                                    <!-- Populated by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Achievement Badges -->
+                        <div class="card" style="margin-top: 2rem;">
+                            <h4 style="color: #8a2be2; margin-bottom: 1rem;">🏆 Achievements</h4>
+                            <div id="achievements" style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                                <!-- Populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Footer -->
+            <div class="footer">
+                <p><strong>🎓 Learning Tip:</strong> Practice 10 minutes daily to master pattern recognition!</p>
+                <p style="margin-top: 0.5rem; color: var(--accent-blue);">Repetition builds expertise. Keep training!</p>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/navigation.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/export-print.js"></script>
+    <script src="../js/alerts.js"></script>
+    <script src="../js/pattern-trainer.js"></script>
+</body>
+</html>
+
+
+

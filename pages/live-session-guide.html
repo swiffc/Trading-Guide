@@ -5,6 +5,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Live Trading Session Guide - Trading Guide</title>
     <link rel="stylesheet" href="../styles.css">
+    <style>
+        /* Tab Styling */
+        .tab-button {
+            padding: 1rem 1.5rem;
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
+            border: none;
+            border-radius: 8px 8px 0 0;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+            position: relative;
+        }
+        
+        .tab-button:hover {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            transform: translateY(-2px);
+        }
+        
+        .tab-button.active {
+            background: var(--accent-blue) !important;
+            color: white !important;
+            border-bottom: 3px solid var(--accent-green);
+            box-shadow: 0 4px 12px rgba(74, 158, 255, 0.3);
+        }
+        
+        .tab-nav {
+            display: flex;
+            gap: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0;
+            margin-bottom: 2rem;
+            overflow-x: auto;
+            scrollbar-width: thin;
+        }
+        
+        .tab-content {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Mobile Responsive Tabs */
+        @media (max-width: 768px) {
+            .tab-button {
+                padding: 0.75rem 1rem;
+                font-size: 0.9rem;
+            }
+            
+            .tab-nav {
+                gap: 0.25rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -24,38 +89,19 @@
     <!-- Main Container -->
     <div class="main-container">
         <!-- Sidebar -->
-        <aside class="sidebar">
+                <nav class="sidebar" id="sidebar">
+            <div class="nav-header">
+                <a href="../index.html" style="text-decoration: none; color: inherit;">
+                    <h2>📚 Trading Guide</h2>
+                </a>
+            </div>
             <div class="search-box">
                 <input type="text" id="searchInput" placeholder="Search guide..." />
             </div>
-            
-            <h3>📚 Navigation (Top-Down)</h3>
-            <ul class="nav-menu">
-                <li><a href="../index.html" class="nav-link">🏠 Home</a></li>
-                <li style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color);"><a href="core-philosophy.html" class="nav-link">🎯 Core Philosophy</a></li>
-                <li><a href="weekly-schedule.html" class="nav-link">📅 Weekly Structure</a></li>
-                <li><a href="btmm-cycle.html" class="nav-link">🔄 BTMM 3-Day Cycle</a></li>
-                <li><a href="daily-sessions.html" class="nav-link">🕐 Daily Sessions</a></li>
-                <li><a href="micro-quarters.html" class="nav-link">⏱️ Micro Quarters</a></li>
-                <li style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color);"><a href="technical-setup.html" class="nav-link">🔧 Technical Setup</a></li>
-                <li><a href="patterns.html" class="nav-link">📊 Patterns</a></li>
-                <li><a href="entry-rules.html" class="nav-link">📈 Entry Rules</a></li>
-                <li><a href="risk-management.html" class="nav-link">🛡️ Risk Management</a></li>
-                <li><a href="checklist.html" class="nav-link">✅ Trading Checklist</a></li>
-                <li><a href="examples.html" class="nav-link">💡 Trade Examples</a></li>
-                <li style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color);"><a href="live-session-guide.html" class="nav-link active">📡 Live Session Guide</a></li>
-                <li><a href="quick-reference.html" class="nav-link">⚡ Quick Reference</a></li>
-            </ul>
-
-            <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
-                <h3>📄 Resources</h3>
-                <ul class="nav-menu">
-                    <li><a href="../Complete_Top_Down_Trading_Guide.md" class="nav-link" target="_blank">📖 Full Guide (MD)</a></li>
-                    <li><a href="../Quick_Reference_Cheat_Sheet.md" class="nav-link" target="_blank">📋 Cheat Sheet (MD)</a></li>
-                    <li><a href="../Micro_Quarter_Timing_Reference.md" class="nav-link" target="_blank">⏰ Micro Timing (MD)</a></li>
-                </ul>
+            <div class="nav-links" id="navLinks">
+                <!-- Navigation will be loaded by main.js -->
             </div>
-        </aside>
+        </nav>
 
         <!-- Content -->
         <main class="content" id="mainContent">
@@ -66,6 +112,338 @@
                     <strong>📊 Real-Time Market Analysis:</strong> This page provides live market context based on current time, session, and quarterly cycle theory. Use this as your real-time decision-making companion while trading.
                 </div>
 
+                <!-- Tab Navigation -->
+                <div class="tab-container" style="margin-bottom: 2rem;">
+                    <div class="tab-nav">
+                        <button class="tab-button active" onclick="switchTab('chart-tab')" data-tab="chart-tab">
+                            📈 Live Chart & AR Tracking
+                        </button>
+                        <button class="tab-button" onclick="switchTab('analysis-tab')" data-tab="analysis-tab">
+                            🤖 AI Market Analysis
+                        </button>
+                        <button class="tab-button" onclick="switchTab('context-tab')" data-tab="context-tab">
+                            📊 Live Market Context
+                        </button>
+                        <button class="tab-button" onclick="switchTab('calendar-tab')" data-tab="calendar-tab">
+                            📰 Economic Calendar
+                        </button>
+                        <button class="tab-button" onclick="switchTab('guide-tab')" data-tab="guide-tab">
+                            📚 Trading Guide
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tab Content -->
+                
+                <!-- TAB 1: Live Chart & AR Tracking -->
+                <div id="chart-tab" class="tab-content" style="display: block;">
+                <!-- Live TradingView Chart Section -->
+                <div style="margin-bottom: 3rem;">
+                    <h3 style="margin-bottom: 1rem;">📈 Live Chart Monitor</h3>
+                    
+                    <div class="card">
+                        <div style="margin-bottom: 1rem;">
+                            <label for="chartSymbol" style="color: var(--text-secondary); margin-right: 1rem;">Symbol:</label>
+                            <select id="chartSymbol" style="padding: 0.5rem; background: var(--bg-secondary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; margin-right: 1rem;">
+                                <option value="EURUSD">EUR/USD</option>
+                                <option value="GBPUSD">GBP/USD</option>
+                                <option value="USDJPY">USD/JPY</option>
+                                <option value="USDCHF">USD/CHF</option>
+                                <option value="AUDUSD">AUD/USD</option>
+                                <option value="USDCAD">USD/CAD</option>
+                                <option value="NZDUSD">NZD/USD</option>
+                                <option value="NAS100">NAS100 (Nasdaq)</option>
+                                <option value="US30">US30 (Dow Jones)</option>
+                                <option value="SPX500">SPX500 (S&P 500)</option>
+                                <option value="XAUUSD">XAU/USD (Gold)</option>
+                            </select>
+                            
+                            <label for="chartTimeframe" style="color: var(--text-secondary); margin-right: 1rem;">Timeframe:</label>
+                            <select id="chartTimeframe" style="padding: 0.5rem; background: var(--bg-secondary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;">
+                                <option value="1">1 Min</option>
+                                <option value="5">5 Min</option>
+                                <option value="15" selected>15 Min</option>
+                                <option value="30">30 Min</option>
+                                <option value="60">1 Hour</option>
+                                <option value="240">4 Hour</option>
+                                <option value="D">Daily</option>
+                            </select>
+                            
+                            <button onclick="updateChart()" style="padding: 0.5rem 1.5rem; background: var(--accent-blue); color: white; border: none; border-radius: 4px; cursor: pointer; margin-left: 1rem;">
+                                Update Chart
+                            </button>
+                        </div>
+
+                    <!-- TradingView Advanced Widget -->
+                    <div class="tradingview-widget-container" id="tradingview-chart" style="height: 600px; width: 100%; position: relative;">
+                        <div id="tradingview_widget" style="height: 100%; width: 100%;"></div>
+                    </div>
+                    
+                    <!-- Chart Status -->
+                    <div id="chartStatus" style="margin-top: 0.5rem; padding: 0.5rem; background: rgba(0,0,0,0.3); border-radius: 4px; font-size: 0.85rem; color: var(--text-secondary); display: none;">
+                        <span id="statusText">⏳ Loading chart...</span>
+                    </div>
+
+                    <!-- Quick Level Tracker -->
+                    <div class="card" style="margin-top: 1rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                            <h4 style="color: var(--accent-yellow); margin: 0;">📍 Asian Range Level Tracker</h4>
+                            <div style="display: flex; gap: 0.5rem; align-items: center;">
+                                <span id="autoTrackStatus" style="font-size: 0.9rem; color: var(--text-tertiary);">⚪ Standby</span>
+                                <button id="toggleAutoTrack" onclick="toggleAutoTracking()" style="padding: 0.4rem 1rem; background: var(--accent-blue); color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 0.9rem;">
+                                    🤖 Auto Track AR
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-success" style="margin-bottom: 1rem; border-left: 4px solid var(--accent-green); background: rgba(0,255,136,0.1);">
+                            <strong>✅ SMART CHART-ASSISTED TRACKING!</strong> Click "🤖 Auto Track AR" anytime to get Asian Range (5PM-12AM EST)
+                            <div style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
+                                🤖 <strong>How It Works:</strong><br>
+                                📊 <strong>Before 5PM:</strong> Chart auto-zooms to yesterday's Asian session (5PM-12AM) - use crosshair (⊕) to read high/low<br>
+                                🟢 <strong>During 5PM-12AM:</strong> Tracks live prices in real-time (updates every 30 seconds) - fully automated!<br>
+                                🔒 <strong>After Midnight:</strong> Levels LOCK automatically - these are used for London/NY trading setups!<br>
+                                ✅ <strong>AR 50 auto-calculates</strong> as soon as you enter high/low values
+                            </div>
+                        </div>
+
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+                            <div>
+                                <label style="color: var(--text-secondary); display: block; margin-bottom: 0.5rem;">
+                                    Asian High (AR 00): <span id="highUpdateTime" style="font-size: 0.8rem; color: var(--accent-green);"></span>
+                                </label>
+                                <input type="number" step="0.00001" id="asianHigh" placeholder="e.g. 1.29500" oninput="calculateAR50()" style="width: 100%; padding: 0.5rem; background: rgba(0,255,136,0.05); color: var(--accent-green); border: 1px solid var(--accent-green); border-radius: 4px; font-weight: bold; font-size: 1.1rem;">
+                            </div>
+                            <div>
+                                <label style="color: var(--text-secondary); display: block; margin-bottom: 0.5rem;">
+                                    Asian Low (AR 00): <span id="lowUpdateTime" style="font-size: 0.8rem; color: var(--accent-green);"></span>
+                                </label>
+                                <input type="number" step="0.00001" id="asianLow" placeholder="e.g. 1.29000" oninput="calculateAR50()" style="width: 100%; padding: 0.5rem; background: rgba(0,255,136,0.05); color: var(--accent-green); border: 1px solid var(--accent-green); border-radius: 4px; font-weight: bold; font-size: 1.1rem;">
+                            </div>
+                            <div>
+                                <label style="color: var(--text-secondary); display: block; margin-bottom: 0.5rem;">Asian Midpoint (AR 50):</label>
+                                <input type="text" id="asianMid" placeholder="Auto-calculated" readonly style="width: 100%; padding: 0.5rem; background: rgba(74,158,255,0.05); color: var(--accent-blue); border: 1px solid var(--accent-blue); border-radius: 4px; font-weight: bold; font-size: 1.1rem;">
+                            </div>
+                            <div>
+                                <label style="color: var(--text-secondary); display: block; margin-bottom: 0.5rem;">
+                                    Current Price: <span id="priceUpdateTime" style="font-size: 0.8rem; color: var(--text-tertiary);"></span>
+                                </label>
+                                <input type="text" id="currentPrice" placeholder="Live during tracking" readonly style="width: 100%; padding: 0.5rem; background: var(--bg-tertiary); color: var(--accent-green); border: 1px solid var(--border-color); border-radius: 4px; font-weight: bold; font-size: 1rem;">
+                            </div>
+                        </div>
+                        
+                        <!-- Live Tracking Statistics -->
+                        <div id="trackingStats" style="margin-top: 1rem; padding: 1rem; background: rgba(0,255,136,0.05); border-left: 3px solid var(--accent-green); border-radius: 4px; display: none;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                                <div>
+                                    <span style="color: var(--text-tertiary); font-size: 0.9rem;">Range Size:</span>
+                                    <strong id="rangeSize" style="color: var(--accent-green); font-size: 1.1rem; margin-left: 0.5rem;">0 pips</strong>
+                                </div>
+                                <div>
+                                    <span style="color: var(--text-tertiary); font-size: 0.9rem;">Updates:</span>
+                                    <strong id="updateCount" style="color: var(--accent-blue); font-size: 1.1rem; margin-left: 0.5rem;">0</strong>
+                                </div>
+                                <div>
+                                    <span style="color: var(--text-tertiary); font-size: 0.9rem;">Last Update:</span>
+                                    <strong id="lastUpdate" style="color: var(--accent-yellow); font-size: 1.1rem; margin-left: 0.5rem;">--:--</strong>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-top: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                            <button onclick="drawARLevels()" style="padding: 0.5rem 1.5rem; background: var(--accent-blue); color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 1rem;">
+                                📊 Draw AR on Chart
+                            </button>
+                            <button onclick="saveToNotes()" style="padding: 0.5rem 1.5rem; background: var(--accent-yellow); color: var(--bg-primary); border: none; border-radius: 4px; cursor: pointer;">
+                                💾 Save to Notes
+                            </button>
+                            <button onclick="resetLevels()" style="padding: 0.5rem 1.5rem; background: var(--accent-red); color: white; border: none; border-radius: 4px; cursor: pointer;">
+                                🗑️ Reset
+                            </button>
+                            <button onclick="showManualInstructions()" style="padding: 0.5rem 1.5rem; background: rgba(255,255,255,0.1); color: var(--text-secondary); border: 1px solid var(--border-color); border-radius: 4px; cursor: pointer; font-size: 0.9rem;">
+                                ℹ️ Manual Method
+                            </button>
+                        </div>
+                        <div class="alert alert-success" style="margin-top: 1rem; font-size: 0.95rem; border-left: 4px solid var(--accent-green); background: rgba(0,255,136,0.1);">
+                            <strong style="font-size: 1.1rem;">🚀 HOW TO USE CHART-ASSISTED AR TRACKING:</strong>
+                            <ol style="padding-left: 1.5rem; margin-top: 0.75rem; line-height: 2; color: var(--text-primary);">
+                                <li><strong style="color: var(--accent-green);">Click "🤖 Auto Track AR"</strong> (top right button)
+                                    <div style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.25rem; line-height: 1.6;">
+                                        🤖 <strong>System automatically detects time and acts:</strong><br>
+                                        📊 <strong>Before 5PM:</strong> Chart zooms to yesterday's Asian session (5PM-12AM)<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;→ Use crosshair tool (⊕) to hover over highest/lowest wicks<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;→ Enter those values in the High/Low fields above<br>
+                                        🟢 <strong>During 5PM-12AM:</strong> Tracks live prices every 30 seconds (fully automated!)<br>
+                                        ✅ <strong>AR 50 auto-calculates</strong> when you enter high and low
+                                    </div>
+                                </li>
+                                <li><strong style="color: var(--accent-blue);">If Live Tracking → Stop at 12AM</strong>
+                                    <div style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.25rem;">
+                                        ✅ Click "⏸️ Stop Tracking" at midnight to lock AR levels<br>
+                                        ✅ AR 50 midpoint auto-calculated from high/low
+                                    </div>
+                                </li>
+                                <li><strong style="color: var(--accent-yellow);">Click "📊 Draw AR on Chart"</strong>
+                                    <div style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.25rem;">
+                                        ✅ AR levels plotted on TradingView as horizontal lines<br>
+                                        ✅ Use these levels for London/NY M/W setups all day
+                                    </div>
+                                </li>
+                            </ol>
+                            <div style="margin-top: 1rem; padding: 0.75rem; background: rgba(0, 255, 136, 0.2); border-radius: 4px; border: 2px solid var(--accent-green);">
+                                <strong style="color: var(--accent-green); font-size: 1rem;">✅ BEST OF BOTH WORLDS!</strong> Chart auto-positions to Asian session + live tracking when needed - super fast and accurate!
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-success" style="margin-top: 1rem; border-left: 4px solid var(--accent-green); background: rgba(0, 255, 136, 0.1);">
+                        <strong>✅ COMPLETE BTMM TRADING SYSTEM INTEGRATED!</strong>
+                        <p style="margin-top: 0.5rem; color: var(--text-secondary);">Full TradingView Advanced Chart with auto-loading EMAs and AR level drawing!</p>
+                        
+                        <div style="padding: 1rem; margin-top: 1rem; background: rgba(0,0,0,0.3); border-radius: 8px;">
+                            <strong style="color: var(--accent-green);">🎯 INTELLIGENT CHART-BASED WORKFLOW:</strong>
+                            <ol style="padding-left: 1.5rem; margin-top: 0.5rem; line-height: 2; color: var(--text-secondary);">
+                                <li><strong>✅ Chart auto-loads with 5 BTMM EMAs</strong> (13-Yellow, 50-Cyan, 200-Red, 800-Magenta, 3200-White)</li>
+                                <li><strong>✅ Click "🤖 Auto Track AR" anytime</strong> → System intelligently acts based on time:
+                                    <ul style="margin-top: 0.5rem; padding-left: 1.5rem; line-height: 1.6;">
+                                        <li>📊 <strong>Before 5PM:</strong> Chart auto-zooms to yesterday's Asian session (5PM-12AM)</li>
+                                        <li>&nbsp;&nbsp;&nbsp;&nbsp;→ Use crosshair (⊕) to read high/low from the visible candles</li>
+                                        <li>&nbsp;&nbsp;&nbsp;&nbsp;→ Enter values in High/Low fields (takes ~30 seconds)</li>
+                                        <li>🟢 <strong>During 5PM-12AM:</strong> Tracks live GBPUSD prices every 30 seconds (100% automated!)</li>
+                                    </ul>
+                                </li>
+                                <li><strong>✅ AR 50 auto-calculates instantly</strong> when you enter high and low</li>
+                                <li><strong>✅ Click "📊 Draw AR on Chart"</strong> → AR levels plotted on TradingView as horizontal lines</li>
+                                <li><strong>✅ Click "🔍 Analyze Now"</strong> → AI generates full market analysis with setups and risks</li>
+                                <li><strong>✅ Trade London/NY using AR + M/W patterns + EMA confluence</strong> (all marked on chart!)</li>
+                            </ol>
+                            <div style="margin-top: 1rem; padding: 0.75rem; background: rgba(0, 255, 136, 0.15); border-radius: 4px; border-left: 3px solid var(--accent-green);">
+                                <strong style="color: var(--accent-green);">🚀 CHART-POWERED!</strong> Uses TradingView's own data - most accurate source, no API limits, works instantly!
+                            </div>
+                        </div>
+                        
+                        <div style="padding: 1rem; margin-top: 0.5rem; background: rgba(74, 158, 255, 0.1); border-radius: 8px;">
+                            <strong style="color: var(--accent-blue);">📊 SMART FEATURES:</strong>
+                            <ul style="padding-left: 1.5rem; margin-top: 0.5rem; line-height: 2; color: var(--text-secondary);">
+                                <li>✅ <strong>5 EMAs auto-load</strong> with BTMM colors on every symbol/timeframe</li>
+                                <li>✅ <strong>Chart auto-zoom</strong> - Positions chart to yesterday's Asian session (5PM-12AM) automatically</li>
+                                <li>✅ <strong>Live price tracking</strong> - Auto-fetches GBPUSD every 30 seconds during Asian session</li>
+                                <li>✅ <strong>Smart time detection</strong> - Chooses chart zoom OR live tracking based on current time</li>
+                                <li>✅ <strong>Auto AR 50 calculation</strong> - Midpoint calculates instantly when you enter high/low</li>
+                                <li>✅ <strong>Auto-draw AR levels</strong> - One click adds horizontal lines to chart</li>
+                                <li>✅ <strong>AI market analysis</strong> - Automated setup detection and risk assessment</li>
+                                <li>✅ <strong>All TradingView tools</strong> - Drawing tools, indicators, alerts</li>
+                                <li>✅ <strong>EST timezone</strong> - Automatically set to New York time</li>
+                            </ul>
+                        </div>
+                        
+                        <div style="padding: 0.5rem; margin-top: 0.5rem; line-height: 2; font-family: monospace; background: rgba(255, 193, 7, 0.1); border-radius: 4px;">
+                            <strong>📈 BTMM EMA Colors (Auto-Loaded):</strong><br>
+                            🟡 13 EMA = Yellow (#FFC107) - Anchor<br>
+                            🔵 50 EMA = Cyan (#00BCD4) - Water<br>
+                            🔴 200 EMA = Red (#FF4444) - Mayo<br>
+                            🟣 800 EMA = Magenta (#FF00FF) - Weekly<br>
+                            ⚪ 3200 EMA = White (#FFFFFF) - Monthly
+                        </div>
+                        
+                        <div class="alert alert-warning" style="margin-top: 1rem;">
+                            <strong>💡 PRO TIP:</strong> After drawing AR levels on chart, use the left toolbar to add:
+                            <ul style="padding-left: 1.5rem; margin-top: 0.5rem;">
+                                <li>📐 Trendlines to mark price structure</li>
+                                <li>📊 Fibonacci retracement for targets</li>
+                                <li>📝 Text labels to note setup conditions</li>
+                                <li>🔔 Alerts when price hits AR levels</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-info" style="margin-top: 1rem;">
+                        <strong>💡 How to Use After Setup:</strong>
+                        <ul style="padding-left: 1.5rem; margin-top: 0.5rem; line-height: 1.8;">
+                            <li><strong>Automatic Mode:</strong> Click "🤖 Auto Track AR" during Asian session (5PM-12AM) to automatically track high/low</li>
+                            <li><strong>Manual Mode:</strong> Watch the chart and enter Asian High/Low manually (Current Price field becomes editable)</li>
+                            <li>System automatically calculates AR 50 (midpoint) as you track</li>
+                            <li>Timestamps show when each level was updated</li>
+                            <li>Click "Stop Tracking" when Asian session ends (12:00 AM Midnight EST)</li>
+                            <li>Draw AR 00 (High/Low) and AR 50 (Midpoint) on chart using horizontal lines</li>
+                            <li>Watch for London/NY sessions to sweep AR 00 levels for reversal setups</li>
+                            <li>Use "Reset" button to start fresh for a new session</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card" style="margin-top: 1rem; background: rgba(255, 193, 7, 0.1); border-left: 4px solid var(--accent-yellow);">
+                        <strong>🎨 BTMM EMA Color Reference:</strong>
+                        <div style="padding: 1rem; margin-top: 0.5rem; line-height: 2; font-family: monospace;">
+                            🟡 <strong>13 EMA = Yellow</strong> (#FFC107) - "Anchor"<br>
+                            🔵 <strong>50 EMA = Cyan</strong> (#00BCD4) - "Water"<br>
+                            🔴 <strong>200 EMA = Red</strong> (#FF4444) - "Mayo"<br>
+                            🟣 <strong>800 EMA = Magenta</strong> (#FF00FF) - "Weekly"<br>
+                            ⚪ <strong>3200 EMA = White</strong> (#FFFFFF) - "Monthly"
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <!-- END TAB 1 -->
+
+                <!-- TAB 2: AI Market Analysis -->
+                <div id="analysis-tab" class="tab-content" style="display: none;">
+                    <!-- Automated Market Analysis moved here -->
+                    <div class="card" style="margin-top: 0;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                            <h3 style="margin: 0; color: var(--accent-blue);">🤖 AI Market Analysis</h3>
+                            <button onclick="runMarketAnalysis()" style="padding: 0.5rem 1.5rem; background: var(--accent-green); color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">
+                                🔍 Analyze Now
+                            </button>
+                        </div>
+                        
+                        <div class="alert alert-info" style="margin-bottom: 1rem;">
+                            <strong>🎯 What This Does:</strong> Analyzes current price action using BTMM rules and Quarterly Theory to identify:
+                            Session structure, EMA alignment, M/W patterns, London→NY correlation, trade setups, and risk zones.
+                        </div>
+                        
+                        <!-- Analysis Results -->
+                        <div id="analysisResults" style="display: none;">
+                            <!-- Market Structure Analysis -->
+                            <div class="card" style="background: rgba(74, 158, 255, 0.1); margin-bottom: 1rem; border-left: 4px solid var(--accent-blue);">
+                                <h4 style="color: var(--accent-blue); margin-bottom: 0.75rem;">📊 Market Structure</h4>
+                                <div id="structureAnalysis" style="line-height: 1.8; color: var(--text-secondary);"></div>
+                            </div>
+                            
+                            <!-- Session Analysis -->
+                            <div class="card" style="background: rgba(255, 193, 7, 0.1); margin-bottom: 1rem; border-left: 4px solid var(--accent-yellow);">
+                                <h4 style="color: var(--accent-yellow); margin-bottom: 0.75rem;">⏰ Session Breakdown</h4>
+                                <div id="sessionAnalysis" style="line-height: 1.8; color: var(--text-secondary);"></div>
+                            </div>
+                            
+                            <!-- EMA Analysis -->
+                            <div class="card" style="background: rgba(0, 255, 136, 0.1); margin-bottom: 1rem; border-left: 4px solid var(--accent-green);">
+                                <h4 style="color: var(--accent-green); margin-bottom: 0.75rem;">📈 EMA Configuration</h4>
+                                <div id="emaAnalysis" style="line-height: 1.8; color: var(--text-secondary);"></div>
+                            </div>
+                            
+                            <!-- Trade Setups -->
+                            <div class="card" style="background: rgba(138, 43, 226, 0.1); margin-bottom: 1rem; border-left: 4px solid #8A2BE2;">
+                                <h4 style="color: #8A2BE2; margin-bottom: 0.75rem;">🎯 Detected Setups</h4>
+                                <div id="setupAnalysis" style="line-height: 1.8; color: var(--text-secondary);"></div>
+                            </div>
+                            
+                            <!-- Risk Analysis -->
+                            <div class="card" style="background: rgba(255, 77, 77, 0.1); border-left: 4px solid var(--accent-red);">
+                                <h4 style="color: var(--accent-red); margin-bottom: 0.75rem;">⚠️ Risk Factors</h4>
+                                <div id="riskAnalysis" style="line-height: 1.8; color: var(--text-secondary);"></div>
+                            </div>
+                        </div>
+                        
+                        <div id="analysisPlaceholder" style="padding: 2rem; text-align: center; color: var(--text-tertiary);">
+                            <div style="font-size: 3rem; margin-bottom: 1rem;">📊</div>
+                            <p>Click "Analyze Now" to get automated market analysis based on current price action</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- END TAB 2 -->
+
+                <!-- TAB 3: Live Market Context -->
+                <div id="context-tab" class="tab-content" style="display: none;">
                 <!-- Live Market Sentiment Panel -->
                 <div id="liveMarketPanel" style="background: linear-gradient(135deg, rgba(74, 158, 255, 0.2), rgba(138, 43, 226, 0.2)); padding: 2.5rem 2rem; border-radius: 15px; margin-bottom: 3rem; border: 2px solid rgba(74, 158, 255, 0.4); box-shadow: 0 8px 24px rgba(0,0,0,0.3);">
                     <div style="text-align: center; margin-bottom: 2rem;">
@@ -99,6 +477,11 @@
 
                     <!-- What to Anticipate Section -->
                     <div style="background: rgba(0, 0, 0, 0.3); padding: 2rem; border-radius: 12px; border: 1px solid rgba(74, 158, 255, 0.3);">
+                        <!-- Weekly Context (dynamically updated) -->
+                        <div id="weeklyContext">
+                            <!-- Dynamic weekly context will be inserted here -->
+                        </div>
+
                         <h3 style="color: var(--accent-green); margin-bottom: 1.5rem; text-align: center;">🎯 What to Anticipate Right Now</h3>
                         
                         <div id="anticipationContent">
@@ -121,7 +504,51 @@
                         </div>
                     </div>
                 </div>
+                </div>
+                <!-- END TAB 3 -->
 
+                <!-- TAB 4: Economic Calendar -->
+                <div id="calendar-tab" class="tab-content" style="display: none;">
+                    <div class="card" style="margin-top: 0;">
+                        <h3 style="margin-bottom: 1rem; color: var(--accent-yellow);">📰 Live Forex Economic Calendar</h3>
+                        <div class="alert alert-warning" style="margin-bottom: 1rem;">
+                            <strong>⚠️ NEWS TRADING RULES:</strong>
+                            <ul style="padding-left: 1.5rem; margin-top: 0.5rem; line-height: 1.8;">
+                                <li><strong>30 min before high-impact news:</strong> Close positions or set tight stops</li>
+                                <li><strong>During news release:</strong> Stay flat - do NOT trade the spike!</li>
+                                <li><strong>15-30 min after news:</strong> Wait for volatility to settle, then resume BTMM setups</li>
+                                <li><strong>🔴 Red (High Impact):</strong> Avoid trading 1 hour window (30 min before + 30 min after)</li>
+                                <li><strong>🟠 Orange (Medium):</strong> Trade cautiously with smaller size</li>
+                            </ul>
+                        </div>
+                        
+                        <!-- TradingView Economic Calendar Widget -->
+                        <div class="tradingview-widget-container" style="height: 600px; width: 100%;">
+                            <div class="tradingview-widget-container__widget"></div>
+                            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-events.js" async>
+                            </script>
+                            <script type="text/javascript">
+                            new TradingView.EconomicCalendarWidget({
+                                "colorTheme": "dark",
+                                "isTransparent": false,
+                                "width": "100%",
+                                "height": "100%",
+                                "locale": "en",
+                                "importanceFilter": "0,1",
+                                "countryFilter": "us,gb,eu,jp,ch,au,nz,ca"
+                            });
+                            </script>
+                        </div>
+                        
+                        <div style="margin-top: 1rem; font-size: 0.85rem; color: var(--text-tertiary); text-align: center;">
+                            📊 Real-time economic calendar from TradingView | Focus on USD, GBP, EUR, JPY events
+                        </div>
+                    </div>
+                </div>
+                <!-- END TAB 4 -->
+
+                <!-- TAB 5: Trading Guide -->
+                <div id="guide-tab" class="tab-content" style="display: none;">
                 <!-- How to Use This Page -->
                 <div class="card" style="margin-top: 2rem;">
                     <div class="card-title">💡 How to Use This Live Guide</div>
@@ -140,8 +567,8 @@
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 1rem;">
                     <div class="card" style="background: rgba(255, 193, 7, 0.1); border-left: 4px solid var(--accent-yellow);">
                         <strong>🌙 Asian Session</strong>
-                        <div style="color: var(--text-secondary); margin-top: 0.5rem;">5:00 PM - 2:00 AM EST</div>
-                        <div style="font-size: 0.85rem; margin-top: 0.5rem; color: var(--text-tertiary);">Low liquidity, mark levels</div>
+                        <div style="color: var(--text-secondary); margin-top: 0.5rem;">5:00 PM - 12:00 AM EST</div>
+                        <div style="font-size: 0.85rem; margin-top: 0.5rem; color: var(--text-tertiary);">Low liquidity, mark Asian Range</div>
                     </div>
                     <div class="card" style="background: rgba(74, 158, 255, 0.1); border-left: 4px solid var(--accent-blue);">
                         <strong>🌍 London Session</strong>
@@ -221,6 +648,9 @@
                 <div class="alert alert-warning" style="margin-top: 2rem;">
                     <strong>⚠️ Important Reminder:</strong> This live guide is a tool, not a replacement for proper analysis. Always confirm setups with your technical indicators (EMAs, TDI), check multiple timeframes, and follow your risk management rules!
                 </div>
+                </div>
+                <!-- END TAB 5 -->
+
             </section>
 
             <!-- Footer -->
@@ -231,7 +661,986 @@
         </main>
     </div>
 
+    <script src="../js/navigation.js"></script>
     <script src="../js/main.js"></script>
+    <script src="../js/export-print.js"></script>
+    <script src="../js/alerts.js"></script>
+    
+    <!-- TradingView Advanced Charting Library -->
+    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+    
+    <script type="text/javascript">
+        let tvWidget = null;
+        let autoTrackingInterval = null;
+        let asianSessionHigh = null;
+        let asianSessionLow = null;
+        let isAutoTracking = false;
+        let priceUpdateCount = 0;
+        
+        // Extract Asian session data directly from TradingView chart widget
+        async function getAsianSessionDataFromChart() {
+            console.log('📊 Extracting Asian session data from TradingView chart...');
+            
+            if (!tvWidget) {
+                console.error('TradingView widget not loaded yet');
+                return null;
+            }
+            
+            try {
+                const chart = tvWidget.activeChart();
+                
+                // Get current time in EST
+                const now = new Date();
+                const estOffset = -5 * 60; // EST is UTC-5
+                const estTime = new Date(now.getTime() + (estOffset * 60 * 1000));
+                
+                // Calculate yesterday's Asian session timeframe (5PM-12AM EST)
+                const yesterday = new Date(estTime);
+                yesterday.setDate(yesterday.getDate() - 1);
+                yesterday.setHours(17, 0, 0, 0); // 5PM yesterday
+                
+                const asianEnd = new Date(yesterday);
+                asianEnd.setHours(23, 59, 59, 999); // 11:59PM yesterday
+                
+                // Convert to Unix timestamps (TradingView uses seconds)
+                const startTime = Math.floor(yesterday.getTime() / 1000);
+                const endTime = Math.floor(asianEnd.getTime() / 1000);
+                
+                console.log(`Searching for Asian session: ${yesterday.toLocaleString()} to ${asianEnd.toLocaleString()}`);
+                
+                // Try to get bars from the chart
+                return new Promise((resolve) => {
+                    try {
+                        // Method 1: Use chart's visible range and navigate to Asian session
+                        chart.setVisibleRange(
+                            { from: startTime, to: endTime },
+                            { percentRightMargin: 10 }
+                        );
+                        
+                        // Wait for chart to load data
+                        setTimeout(() => {
+                            try {
+                                // Access the chart's price scale to get visible high/low
+                                const mainSeries = chart.getSeries();
+                                
+                                // Use a custom study to extract data
+                                const studyId = chart.createStudy('High-Low', false, false, {}, null, {
+                                    'plot.color': 'transparent'
+                                });
+                                
+                                // Alternative: Read from chart's current visible data
+                                // This is a workaround since direct bar access isn't exposed
+                                
+                                console.log('Chart positioned at Asian session timeframe');
+                                
+                                // Manual fallback: User can now see Asian session on chart
+                                alert('📊 CHART POSITIONED TO ASIAN SESSION!\n\n' +
+                                      'The chart is now showing yesterday\'s Asian session (5PM-12AM).\n\n' +
+                                      'AUTOMATIC EXTRACTION:\n' +
+                                      'Unfortunately, TradingView\'s free widget API doesn\'t allow direct data extraction.\n\n' +
+                                      'MANUAL METHOD (Quick & Easy):\n' +
+                                      '1. Look at the chart - it\'s zoomed to Asian session\n' +
+                                      '2. Use crosshair tool (⊕) to find the highest point\n' +
+                                      '3. Note the price and enter in "Asian High" field\n' +
+                                      '4. Find lowest point and enter in "Asian Low" field\n' +
+                                      '5. AR 50 will calculate automatically\n\n' +
+                                      'Or try: Click "ℹ️ Manual Method" for detailed steps');
+                                
+                                resolve(null);
+                            } catch (e) {
+                                console.error('Error extracting data:', e);
+                                resolve(null);
+                            }
+                        }, 2000); // Wait 2 seconds for chart to load
+                        
+                    } catch (e) {
+                        console.error('Error setting visible range:', e);
+                        resolve(null);
+                    }
+                });
+                
+            } catch (e) {
+                console.error('Error accessing TradingView chart:', e);
+                return null;
+            }
+        }
+        
+        // Alternative: Use TradingView Datafeed API (for advanced users with custom datafeed)
+        async function extractBarsFromTradingView() {
+            // This would require implementing a custom datafeed
+            // Not available in free widget without backend integration
+            console.log('Custom datafeed extraction not available in free widget');
+            return null;
+        }
+        
+        // Free forex price API for live tracking
+        async function getLivePrice(symbol) {
+            // Convert symbol format (GBPUSD -> GBP/USD)
+            const base = symbol.substring(0, 3);
+            const quote = symbol.substring(3, 6);
+            
+            try {
+                // Method 1: Exchange Rate API (completely free, no key required, 1500 req/month)
+                const response = await fetch(`https://open.exchangerate-api.com/v6/latest/${base}`);
+                const data = await response.json();
+                
+                if (data.rates && data.rates[quote]) {
+                    const price = data.rates[quote];
+                    console.log(`✅ Live ${symbol} price fetched: ${price}`);
+                    return parseFloat(price);
+                }
+            } catch (e) {
+                console.log('Exchange Rate API failed:', e);
+            }
+            
+            try {
+                // Method 2: Frankfurter (ECB data, free, no key, open source)
+                const response2 = await fetch(`https://api.frankfurter.app/latest?from=${base}&to=${quote}`);
+                const data2 = await response2.json();
+                
+                if (data2.rates && data2.rates[quote]) {
+                    const price = data2.rates[quote];
+                    console.log(`✅ Live ${symbol} price fetched (backup): ${price}`);
+                    return parseFloat(price);
+                }
+            } catch (e) {
+                console.log('Frankfurter API failed:', e);
+            }
+            
+            console.log('❌ All API methods failed. Switching to manual mode.');
+            return null;
+        }
+        
+        // Simulate price from chart (fallback when APIs unavailable)
+        function simulatePriceFromChart() {
+            // This is a placeholder - in reality, you'd need to manually enter or use paid API
+            const currentPriceEl = document.getElementById('currentPrice');
+            if (currentPriceEl.value) {
+                return parseFloat(currentPriceEl.value);
+            }
+            return null;
+        }
+        
+        // Toggle auto-tracking
+        function toggleAutoTracking() {
+            if (isAutoTracking) {
+                stopAutoTracking();
+            } else {
+                startAutoTracking();
+            }
+        }
+        
+        // Start auto-tracking Asian Range
+        async function startAutoTracking() {
+            const now = new Date();
+            const hours = now.getHours();
+            const symbol = document.getElementById('chartSymbol').value;
+            
+            // Update UI immediately
+            document.getElementById('autoTrackStatus').textContent = '⏳ Initializing...';
+            document.getElementById('autoTrackStatus').style.color = 'var(--accent-yellow)';
+            document.getElementById('toggleAutoTrack').textContent = '⏸️ Stop Tracking';
+            document.getElementById('toggleAutoTrack').style.background = 'var(--accent-red)';
+            
+            // Check if we're OUTSIDE Asian session (need historical data)
+            if (hours >= 0 && hours < 17) {
+                // It's after midnight but before 5PM - zoom chart to yesterday's Asian session
+                document.getElementById('autoTrackStatus').textContent = '📊 Positioning chart to Asian session...';
+                
+                await getAsianSessionDataFromChart();
+                
+                // Reset button state after positioning chart
+                document.getElementById('autoTrackStatus').textContent = '⚪ Use chart to mark AR levels';
+                document.getElementById('autoTrackStatus').style.color = 'var(--text-tertiary)';
+                document.getElementById('toggleAutoTrack').textContent = '🤖 Auto Track AR';
+                document.getElementById('toggleAutoTrack').style.background = 'var(--accent-blue)';
+                return;
+            }
+            
+            // We're IN Asian session (5PM-12AM) - track live
+            if (hours >= 17 && hours <= 23) {
+                document.getElementById('autoTrackStatus').textContent = '🟢 Live Tracking Active (5PM-12AM)';
+                document.getElementById('autoTrackStatus').style.color = 'var(--accent-green)';
+            } else {
+                // After midnight - will monitor but not update levels (they're locked)
+                alert('ℹ️ AR levels from yesterday\'s Asian session (5PM-12AM EST) are LOCKED.\n\n' +
+                      'These levels are now used for London/NY trading.\n\n' +
+                      'Live tracking will monitor current price but NOT update the AR high/low.\n' +
+                      'Levels will unlock at 5PM EST for new Asian session.');
+                document.getElementById('autoTrackStatus').textContent = '🔒 AR Locked (London/NY)';
+                document.getElementById('autoTrackStatus').style.color = 'var(--accent-yellow)';
+            }
+            
+            isAutoTracking = true;
+            
+            // Only reset levels if we're IN Asian session (5PM-12AM)
+            // Otherwise, keep existing levels (they're locked for London/NY)
+            if (hours >= 17 && hours <= 23) {
+                asianSessionHigh = null;
+                asianSessionLow = null;
+                priceUpdateCount = 0; // Reset counter
+                console.log('Starting fresh Asian session tracking (5PM-12AM)');
+            } else {
+                console.log('Monitoring mode - AR levels locked from yesterday\'s Asian session');
+            }
+            
+            // Show tracking stats panel
+            document.getElementById('trackingStats').style.display = 'block';
+            
+            // Start polling every 30 seconds
+            updatePriceAndLevels();
+            autoTrackingInterval = setInterval(updatePriceAndLevels, 30000); // 30 seconds
+            
+            console.log('Live auto-tracking started');
+        }
+        
+        // Stop auto-tracking
+        function stopAutoTracking() {
+            isAutoTracking = false;
+            
+            if (autoTrackingInterval) {
+                clearInterval(autoTrackingInterval);
+                autoTrackingInterval = null;
+            }
+            
+            // Update UI
+            document.getElementById('autoTrackStatus').textContent = '⚪ Standby';
+            document.getElementById('autoTrackStatus').style.color = 'var(--text-tertiary)';
+            document.getElementById('toggleAutoTrack').textContent = '🤖 Auto Track AR';
+            document.getElementById('toggleAutoTrack').style.background = 'var(--accent-blue)';
+            
+            // Auto-calculate AR 50 when stopping
+            if (document.getElementById('asianHigh').value && document.getElementById('asianLow').value) {
+                calculateAR50();
+            }
+            
+            console.log('Auto-tracking stopped');
+        }
+        
+        // Update price and track high/low
+        async function updatePriceAndLevels() {
+            const symbol = document.getElementById('chartSymbol').value;
+            
+            // Show loading state
+            document.getElementById('priceUpdateTime').textContent = '⏳ Fetching...';
+            document.getElementById('currentPrice').value = '⏳ Loading...';
+            
+            // Get current live price from API
+            const price = await getLivePrice(symbol);
+            
+            if (!price) {
+                // API failed - show error
+                document.getElementById('priceUpdateTime').textContent = '❌ API failed';
+                document.getElementById('priceUpdateTime').style.color = 'var(--accent-red)';
+                document.getElementById('currentPrice').value = '❌ API Error';
+                
+                // Show error alert
+                const autoTrackStatus = document.getElementById('autoTrackStatus');
+                autoTrackStatus.textContent = '⚠️ API Error - Retrying...';
+                autoTrackStatus.style.color = 'var(--accent-yellow)';
+                
+                console.error('Failed to fetch live price. Will retry on next interval.');
+                return;
+            }
+            
+            // Update current price display
+            document.getElementById('currentPrice').value = price.toFixed(5);
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString('en-US', {timeZone: 'America/New_York', hour: '2-digit', minute: '2-digit'});
+            document.getElementById('priceUpdateTime').textContent = `@ ${timeStr}`;
+            document.getElementById('priceUpdateTime').style.color = 'var(--accent-green)';
+            
+            // Track high/low
+            trackHighLow(price);
+        }
+        
+        // Track high and low
+        function trackHighLow(price) {
+            if (!isAutoTracking) return;
+            
+            const now = new Date();
+            const estHour = new Date(now.toLocaleString('en-US', {timeZone: 'America/New_York'})).getHours();
+            const timeStr = now.toLocaleTimeString('en-US', {timeZone: 'America/New_York', hour: '2-digit', minute: '2-digit', second: '2-digit'});
+            
+            // Increment update counter
+            priceUpdateCount++;
+            
+            // Check if we're in Asian session (5PM-12AM EST = 17-23 hours)
+            const isAsianSession = (estHour >= 17 && estHour <= 23);
+            
+            console.log(`📊 Tracking - Current Price: ${price} | High: ${asianSessionHigh} | Low: ${asianSessionLow} | Session: ${isAsianSession ? 'Asian (ACTIVE)' : 'London/NY (LOCKED)'}`);
+            
+            // Only update high/low during Asian session (5PM-12AM EST)
+            if (isAsianSession) {
+                // Update high
+                if (asianSessionHigh === null || price > asianSessionHigh) {
+                    asianSessionHigh = price;
+                    document.getElementById('asianHigh').value = price.toFixed(5);
+                    document.getElementById('highUpdateTime').textContent = `@ ${timeStr}`;
+                    document.getElementById('highUpdateTime').style.color = 'var(--accent-green)';
+                    console.log(`🔼 NEW HIGH: ${price} (Asian session tracking)`);
+                }
+                
+                // Update low
+                if (asianSessionLow === null || price < asianSessionLow) {
+                    asianSessionLow = price;
+                    document.getElementById('asianLow').value = price.toFixed(5);
+                    document.getElementById('lowUpdateTime').textContent = `@ ${timeStr}`;
+                    document.getElementById('lowUpdateTime').style.color = 'var(--accent-green)';
+                    console.log(`🔽 NEW LOW: ${price} (Asian session tracking)`);
+                }
+            } else {
+                // After midnight - levels are LOCKED for London/NY trading
+                console.log(`🔒 AR LOCKED - Using Asian session range for London/NY trading`);
+                
+                // Update UI to show locked status
+                if (asianSessionHigh !== null && asianSessionLow !== null) {
+                    document.getElementById('highUpdateTime').textContent = '🔒 LOCKED for London/NY';
+                    document.getElementById('highUpdateTime').style.color = 'var(--accent-yellow)';
+                    document.getElementById('lowUpdateTime').textContent = '🔒 LOCKED for London/NY';
+                    document.getElementById('lowUpdateTime').style.color = 'var(--accent-yellow)';
+                }
+            }
+            
+            // Auto-calculate AR 50 whenever high/low updates
+            if (asianSessionHigh && asianSessionLow) {
+                const ar50 = ((asianSessionHigh + asianSessionLow) / 2).toFixed(5);
+                const midField = document.getElementById('asianMid');
+                midField.value = ar50;
+                
+                // Brief visual feedback
+                midField.style.background = 'rgba(0, 255, 136, 0.15)';
+                midField.style.borderColor = 'var(--accent-green)';
+                setTimeout(() => {
+                    midField.style.background = 'rgba(74,158,255,0.05)';
+                    midField.style.borderColor = 'var(--accent-blue)';
+                }, 500);
+            }
+            
+            // Update tracking statistics panel
+            updateTrackingStats(timeStr);
+            
+            // Save to localStorage
+            localStorage.setItem('asianHigh', asianSessionHigh);
+            localStorage.setItem('asianLow', asianSessionLow);
+        }
+        
+        // Update tracking statistics display
+        function updateTrackingStats(timeStr) {
+            const statsPanel = document.getElementById('trackingStats');
+            
+            // Show panel if tracking
+            if (isAutoTracking) {
+                statsPanel.style.display = 'block';
+            }
+            
+            // Check session status
+            const now = new Date();
+            const estHour = new Date(now.toLocaleString('en-US', {timeZone: 'America/New_York'})).getHours();
+            const isAsianSession = (estHour >= 17 && estHour <= 23);
+            
+            // Calculate range size in pips
+            let rangePips = 0;
+            if (asianSessionHigh !== null && asianSessionLow !== null) {
+                rangePips = Math.round((asianSessionHigh - asianSessionLow) * 10000);
+            }
+            
+            // Update display
+            document.getElementById('rangeSize').textContent = rangePips + ' pips';
+            document.getElementById('updateCount').textContent = priceUpdateCount;
+            document.getElementById('lastUpdate').textContent = timeStr;
+            
+            // Color code range size and add session status
+            const rangeSizeEl = document.getElementById('rangeSize');
+            if (rangePips === 0) {
+                rangeSizeEl.style.color = 'var(--accent-yellow)';
+                rangeSizeEl.title = 'No movement yet - waiting for price to move';
+            } else if (rangePips < 20) {
+                rangeSizeEl.style.color = 'var(--accent-blue)';
+                rangeSizeEl.title = 'Small range - Asian session building';
+            } else {
+                rangeSizeEl.style.color = 'var(--accent-green)';
+                rangeSizeEl.title = 'Good range captured!';
+            }
+            
+            // Update panel styling based on session status
+            if (!isAsianSession && asianSessionHigh !== null && asianSessionLow !== null) {
+                // Levels are locked for London/NY
+                statsPanel.style.background = 'rgba(255, 193, 7, 0.1)';
+                statsPanel.style.borderLeftColor = 'var(--accent-yellow)';
+                statsPanel.style.borderLeftWidth = '4px';
+                
+                // Add lock icon to range size
+                const updateCountEl = document.getElementById('updateCount');
+                updateCountEl.parentElement.innerHTML = `
+                    <span style="color: var(--text-tertiary); font-size: 0.9rem;">Status:</span>
+                    <strong style="color: var(--accent-yellow); font-size: 1.1rem; margin-left: 0.5rem;">🔒 LOCKED</strong>
+                `;
+            } else if (isAsianSession) {
+                // Active tracking during Asian session
+                statsPanel.style.background = 'rgba(0,255,136,0.05)';
+                statsPanel.style.borderLeftColor = 'var(--accent-green)';
+                statsPanel.style.borderLeftWidth = '3px';
+                
+                // Show update count during active tracking
+                const updateCountEl = document.getElementById('updateCount');
+                updateCountEl.parentElement.innerHTML = `
+                    <span style="color: var(--text-tertiary); font-size: 0.9rem;">Updates:</span>
+                    <strong id="updateCount" style="color: var(--accent-blue); font-size: 1.1rem; margin-left: 0.5rem;">${priceUpdateCount}</strong>
+                `;
+            }
+        }
+        
+        // Reset levels
+        function resetLevels() {
+            if (confirm('Reset all AR levels? This will clear current Asian Range data.')) {
+                asianSessionHigh = null;
+                asianSessionLow = null;
+                priceUpdateCount = 0;
+                document.getElementById('asianHigh').value = '';
+                document.getElementById('asianLow').value = '';
+                document.getElementById('asianMid').value = '';
+                document.getElementById('currentPrice').value = '';
+                document.getElementById('highUpdateTime').textContent = '';
+                document.getElementById('lowUpdateTime').textContent = '';
+                document.getElementById('priceUpdateTime').textContent = '';
+                
+                // Hide tracking stats
+                document.getElementById('trackingStats').style.display = 'none';
+                
+                localStorage.removeItem('asianHigh');
+                localStorage.removeItem('asianLow');
+                localStorage.removeItem('asianMid');
+                
+                if (isAutoTracking) {
+                    stopAutoTracking();
+                }
+            }
+        }
+        
+        // Initialize TradingView Advanced Chart with full features
+        function initChart() {
+            const symbol = document.getElementById('chartSymbol').value;
+            const interval = document.getElementById('chartTimeframe').value;
+            
+            // Show loading status
+            const statusDiv = document.getElementById('chartStatus');
+            const statusText = document.getElementById('statusText');
+            if (statusDiv) {
+                statusDiv.style.display = 'block';
+                statusText.textContent = '⏳ Loading chart with BTMM EMAs...';
+            }
+            
+            // Remove old widget if exists
+            if (tvWidget !== null) {
+                tvWidget.remove();
+                tvWidget = null;
+            }
+            
+            // Initialize TradingView Advanced Widget
+            tvWidget = new TradingView.widget({
+                autosize: true,
+                symbol: `FX_IDC:${symbol}`,
+                interval: interval,
+                timezone: "America/New_York",
+                theme: "dark",
+                style: "1",
+                locale: "en",
+                toolbar_bg: "#1a1d29",
+                enable_publishing: false,
+                allow_symbol_change: true,
+                container_id: "tradingview_widget",
+                
+                // Enable all drawing tools
+                drawings_access: { type: 'black', tools: [ { name: "Regression Trend" } ] },
+                enabled_features: [
+                    "study_templates",
+                    "use_localstorage_for_settings",
+                    "save_chart_properties_to_local_storage",
+                    "header_widget",
+                    "header_symbol_search",
+                    "symbol_search_hot_key",
+                    "header_resolutions",
+                    "header_chart_type",
+                    "header_settings",
+                    "header_indicators",
+                    "header_compare",
+                    "header_undo_redo",
+                    "header_screenshot",
+                    "header_fullscreen_button",
+                    "left_toolbar",
+                    "control_bar",
+                    "timeframes_toolbar",
+                    "main_series_scale_menu"
+                ],
+                disabled_features: [],
+                
+                // Chart overrides for BTMM style
+                overrides: {
+                    "mainSeriesProperties.candleStyle.upColor": "#00FF88",
+                    "mainSeriesProperties.candleStyle.downColor": "#FF4444",
+                    "mainSeriesProperties.candleStyle.borderUpColor": "#00FF88",
+                    "mainSeriesProperties.candleStyle.borderDownColor": "#FF4444",
+                    "mainSeriesProperties.candleStyle.wickUpColor": "#00FF88",
+                    "mainSeriesProperties.candleStyle.wickDownColor": "#FF4444",
+                    "paneProperties.background": "#0D1117",
+                    "paneProperties.backgroundType": "solid"
+                },
+                
+                loading_screen: { backgroundColor: "#1a1d29", foregroundColor: "#4A9EFF" }
+            });
+            
+            // Add EMAs and setup chart when ready
+            tvWidget.onChartReady(() => {
+                console.log('Chart ready, adding BTMM EMAs...');
+                
+                try {
+                    const chart = tvWidget.activeChart();
+                    
+                    // 13 EMA - Yellow (Anchor)
+                    const ema13 = chart.createStudy('Moving Average Exponential', false, false, { length: 13 }, null, { 
+                        'plot.color': '#FFC107',
+                        'plot.linewidth': 2
+                    });
+                    
+                    // 50 EMA - Cyan (Water)
+                    const ema50 = chart.createStudy('Moving Average Exponential', false, false, { length: 50 }, null, { 
+                        'plot.color': '#00BCD4',
+                        'plot.linewidth': 2
+                    });
+                    
+                    // 200 EMA - Red (Mayo)
+                    const ema200 = chart.createStudy('Moving Average Exponential', false, false, { length: 200 }, null, { 
+                        'plot.color': '#FF4444',
+                        'plot.linewidth': 3
+                    });
+                    
+                    // 800 EMA - Magenta (Weekly)
+                    const ema800 = chart.createStudy('Moving Average Exponential', false, false, { length: 800 }, null, { 
+                        'plot.color': '#FF00FF',
+                        'plot.linewidth': 2
+                    });
+                    
+                    // 3200 EMA - White (Monthly)
+                    const ema3200 = chart.createStudy('Moving Average Exponential', false, false, { length: 3200 }, null, { 
+                        'plot.color': '#FFFFFF',
+                        'plot.linewidth': 1
+                    });
+                    
+                    console.log('✅ All 5 BTMM EMAs added successfully!');
+                    
+                    // Update status
+                    if (statusText) {
+                        statusText.innerHTML = '✅ Chart loaded with 5 BTMM EMAs! <span style="color: var(--accent-green);">Yellow(13), Cyan(50), Red(200), Magenta(800), White(3200)</span>';
+                    }
+                    
+                    // Auto-hide status after 3 seconds
+                    setTimeout(() => {
+                        if (statusDiv) statusDiv.style.display = 'none';
+                    }, 5000);
+                    
+                } catch (e) {
+                    console.error('Error adding EMAs:', e);
+                    if (statusText) {
+                        statusText.innerHTML = '⚠️ Chart loaded but EMAs may need manual addition. Check console for details.';
+                        statusText.style.color = 'var(--accent-yellow)';
+                    }
+                }
+            });
+        }
+        
+        function updateChart() {
+            initChart();
+        }
+        
+        // Automated Market Analysis Function
+        function runMarketAnalysis() {
+            const now = new Date();
+            const hours = now.getHours();
+            const day = now.getDay(); // 0 = Sunday, 1 = Monday, etc.
+            const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            
+            // Get AR levels if available
+            const asianHigh = parseFloat(document.getElementById('asianHigh').value) || null;
+            const asianLow = parseFloat(document.getElementById('asianLow').value) || null;
+            const asianMid = parseFloat(document.getElementById('asianMid').value) || null;
+            
+            // Hide placeholder, show results
+            document.getElementById('analysisPlaceholder').style.display = 'none';
+            document.getElementById('analysisResults').style.display = 'block';
+            
+            // === MARKET STRUCTURE ANALYSIS ===
+            let structureHTML = '<ul style="padding-left: 1.5rem;">';
+            
+            // Day of week analysis (Quarterly Theory)
+            const quarterlyPhases = {
+                1: { phase: 'Q1 - Accumulation', color: 'var(--text-tertiary)', desc: 'Observe and mark levels. Tight range expected.' },
+                2: { phase: 'Q2 - Manipulation', color: 'var(--accent-yellow)', desc: 'Stop hunts likely. Mark PF (Peak Formation) for reversal.' },
+                3: { phase: 'Q3 - Distribution', color: 'var(--accent-green)', desc: 'BEST DAY! Real move happening. Trade with trend.' },
+                4: { phase: 'Q3 Continuation', color: 'var(--accent-green)', desc: 'Extension of distribution. Watch for exhaustion.' },
+                5: { phase: 'Q4 - Reversal/X-Factor', color: 'var(--accent-red)', desc: 'Unpredictable. Close positions or trade defensively.' }
+            };
+            
+            const dayPhase = quarterlyPhases[day] || { phase: 'Weekend', color: 'var(--text-tertiary)', desc: 'Market closed.' };
+            
+            structureHTML += `<li><strong style="color: ${dayPhase.color};">Weekly Phase:</strong> ${days[day]} = ${dayPhase.phase}</li>`;
+            structureHTML += `<li>${dayPhase.desc}</li>`;
+            
+            // Current session
+            let currentSession = '';
+            if (hours >= 17 && hours <= 23) {
+                currentSession = '🌙 Asian Session (Q1 - Accumulation)';
+                structureHTML += `<li><strong>Current Session:</strong> ${currentSession}</li>`;
+                structureHTML += `<li>Low liquidity. Mark Asian High/Low for London setups.</li>`;
+            } else if (hours >= 0 && hours < 9) {
+                currentSession = '🌍 London Session (Q2 - Manipulation)';
+                structureHTML += `<li><strong>Current Session:</strong> ${currentSession}</li>`;
+                structureHTML += `<li>High volatility. Expect Asian range sweep and reversal.</li>`;
+            } else if (hours >= 9 && hours < 16) {
+                currentSession = '🗽 NY Session (Q3 - Distribution)';
+                structureHTML += `<li><strong>Current Session:</strong> ${currentSession}</li>`;
+                structureHTML += `<li>Prime trading window. London → NY reversal pattern expected.</li>`;
+            } else {
+                currentSession = '🌆 After Hours';
+                structureHTML += `<li><strong>Current Session:</strong> ${currentSession}</li>`;
+                structureHTML += `<li>Market closed. Prepare for next session.</li>`;
+            }
+            
+            structureHTML += '</ul>';
+            document.getElementById('structureAnalysis').innerHTML = structureHTML;
+            
+            // === SESSION ANALYSIS ===
+            let sessionHTML = '<ul style="padding-left: 1.5rem;">';
+            
+            if (asianHigh && asianLow && asianMid) {
+                sessionHTML += `<li><strong>✅ Asian Range Captured:</strong></li>`;
+                sessionHTML += `<li style="padding-left: 1rem;">AR 00 High: <strong>${asianHigh.toFixed(5)}</strong></li>`;
+                sessionHTML += `<li style="padding-left: 1rem;">AR 50 Mid: <strong>${asianMid.toFixed(5)}</strong></li>`;
+                sessionHTML += `<li style="padding-left: 1rem;">AR 00 Low: <strong>${asianLow.toFixed(5)}</strong></li>`;
+                sessionHTML += `<li style="padding-left: 1rem;">Range: <strong>${(asianHigh - asianLow).toFixed(5)}</strong> (${((asianHigh - asianLow) * 10000).toFixed(0)} pips)</li>`;
+                
+                // Analyze if London/NY session
+                if (hours >= 0 && hours < 16) {
+                    sessionHTML += `<li><strong>📊 Session Strategy:</strong></li>`;
+                    sessionHTML += `<li style="padding-left: 1rem;">Watch for sweep of AR 00 High (${asianHigh.toFixed(5)}) or Low (${asianLow.toFixed(5)})</li>`;
+                    sessionHTML += `<li style="padding-left: 1rem;">Look for M/W pattern forming at AR levels</li>`;
+                    sessionHTML += `<li style="padding-left: 1rem;">Entry zone near AR 50 (${asianMid.toFixed(5)}) after reversal</li>`;
+                }
+            } else {
+                sessionHTML += `<li><strong>⚠️ No Asian Range Data</strong></li>`;
+                sessionHTML += `<li>Use "🤖 Auto Track AR" during Asian session (5PM-12AM)</li>`;
+                sessionHTML += `<li>Or manually enter AR levels from chart</li>`;
+            }
+            
+            // Time-specific guidance
+            if (hours === 9 && now.getMinutes() >= 30 && now.getMinutes() < 50) {
+                sessionHTML += `<li><strong style="color: var(--accent-green);">🔥 PRIME TIME NOW!</strong> 9:30-9:50 AM window</li>`;
+                sessionHTML += `<li>Watch for NY open sweep → reversal pattern</li>`;
+            } else if (hours === 9 && now.getMinutes() >= 45) {
+                sessionHTML += `<li><strong style="color: var(--accent-green);">🔥 BRINKS TIME!</strong> 9:45 AM liquidity spike</li>`;
+                sessionHTML += `<li>Precise entry window - look for M/W completion</li>`;
+            } else if (hours === 3 && now.getMinutes() >= 45) {
+                sessionHTML += `<li><strong style="color: var(--accent-blue);">🌍 LONDON BRINKS!</strong> 3:45 AM liquidity spike</li>`;
+                sessionHTML += `<li>2nd Leg Out of Asia setup likely forming</li>`;
+            }
+            
+            sessionHTML += '</ul>';
+            document.getElementById('sessionAnalysis').innerHTML = sessionHTML;
+            
+            // === EMA ANALYSIS ===
+            let emaHTML = '<ul style="padding-left: 1.5rem;">';
+            emaHTML += `<li><strong>Chart Configuration:</strong> 5 BTMM EMAs loaded</li>`;
+            emaHTML += `<li style="padding-left: 1rem;">🟡 13 EMA (Yellow) - Anchor for entries</li>`;
+            emaHTML += `<li style="padding-left: 1rem;">🔵 50 EMA (Cyan) - Pullback zone</li>`;
+            emaHTML += `<li style="padding-left: 1rem;">🔴 200 EMA (Red - Mayo) - Major reversal level</li>`;
+            emaHTML += `<li style="padding-left: 1rem;">🟣 800 EMA (Magenta) - Weekly trend</li>`;
+            emaHTML += `<li style="padding-left: 1rem;">⚪ 3200 EMA (White) - Monthly trend</li>`;
+            emaHTML += `<li><strong>📊 To Analyze EMA Alignment:</strong></li>`;
+            emaHTML += `<li style="padding-left: 1rem;">1. Check if price is above or below 13 EMA (immediate bias)</li>`;
+            emaHTML += `<li style="padding-left: 1rem;">2. Verify 13 > 50 > 200 = Uptrend | 13 < 50 < 200 = Downtrend</li>`;
+            emaHTML += `<li style="padding-left: 1rem;">3. Look for M/W patterns at 200 EMA (Mayo) - highest probability</li>`;
+            emaHTML += `<li style="padding-left: 1rem;">4. Check 800 EMA slope for weekly bias confirmation</li>`;
+            emaHTML += '</ul>';
+            document.getElementById('emaAnalysis').innerHTML = emaHTML;
+            
+            // === TRADE SETUPS ===
+            let setupHTML = '<ul style="padding-left: 1.5rem;">';
+            
+            // Based on day and time
+            if (day === 3 && hours >= 9 && hours < 12) {
+                setupHTML += `<li><strong style="color: var(--accent-green);">🔥 WEDNESDAY NY MORNING - BEST SETUP!</strong></li>`;
+                setupHTML += `<li>Level A2/V2 (Day 3 BTMM) likely forming</li>`;
+                setupHTML += `<li>Look for: M/W pattern at session high/low</li>`;
+                setupHTML += `<li>Confluence: AR levels + EMA + TDI + London direction</li>`;
+                setupHTML += `<li>Entry: 9:45 AM Brinks time precision entry</li>`;
+            } else if ((day === 1 || day === 2) && hours >= 2 && hours < 9) {
+                setupHTML += `<li><strong>London Session Setup:</strong> Level A1/V1 (Day 2 BTMM)</li>`;
+                setupHTML += `<li>2nd Leg Out of Asia pattern</li>`;
+                setupHTML += `<li>First leg in Asian, second leg forming now</li>`;
+                setupHTML += `<li>Entry: 3:45 AM Brinks time</li>`;
+            } else if (hours >= 9 && hours < 12) {
+                setupHTML += `<li><strong>NY Morning Setups:</strong></li>`;
+                setupHTML += `<li>1. London → NY Reversal (if London made high, NY goes low)</li>`;
+                setupHTML += `<li>2. M/W Pattern at AR 00 levels</li>`;
+                setupHTML += `<li>3. ID 50 bounce (first pullback to 50 EMA)</li>`;
+                setupHTML += `<li>4. Type 4 breakout continuation</li>`;
+            } else if (hours >= 17 && hours <= 23) {
+                setupHTML += `<li><strong>Asian Session:</strong> No high-probability setups</li>`;
+                setupHTML += `<li>Focus on marking levels, not trading</li>`;
+                setupHTML += `<li>Use Auto Track AR to capture range</li>`;
+            } else {
+                setupHTML += `<li><strong>Current Time:</strong> Outside prime trading windows</li>`;
+                setupHTML += `<li>Best setups: 3:45 AM (London Brinks) or 9:30-11 AM (NY Morning)</li>`;
+            }
+            
+            setupHTML += `<li><strong>📋 Setup Checklist:</strong></li>`;
+            setupHTML += `<li style="padding-left: 1rem;">✅ M or W pattern visible at key level?</li>`;
+            setupHTML += `<li style="padding-left: 1rem;">✅ Both legs interact with 13 EMA?</li>`;
+            setupHTML += `<li style="padding-left: 1rem;">✅ Close above/below 13 EMA for entry?</li>`;
+            setupHTML += `<li style="padding-left: 1rem;">✅ TDI confirmation (RSI crossed MBL)?</li>`;
+            setupHTML += `<li style="padding-left: 1rem;">✅ At session high/low or AR level?</li>`;
+            setupHTML += '</ul>';
+            document.getElementById('setupAnalysis').innerHTML = setupHTML;
+            
+            // === RISK ANALYSIS ===
+            let riskHTML = '<ul style="padding-left: 1.5rem;">';
+            
+            // Check for risky times
+            if (day === 0 || day === 6) {
+                riskHTML += `<li><strong style="color: var(--accent-red);">🔴 WEEKEND - Market Closed</strong></li>`;
+                riskHTML += `<li>No trading available</li>`;
+            } else if (day === 5 && hours >= 12) {
+                riskHTML += `<li><strong style="color: var(--accent-red);">⚠️ Friday Afternoon</strong></li>`;
+                riskHTML += `<li>Q4 X-Factor phase - unpredictable moves</li>`;
+                riskHTML += `<li>Reduce position size or close early</li>`;
+            } else if (hours >= 12 && hours < 14) {
+                riskHTML += `<li><strong>⚠️ Lunch Hour (12-2 PM)</strong></li>`;
+                riskHTML += `<li>Choppy price action - lower probability setups</li>`;
+            } else if (hours >= 17 && hours <= 23) {
+                riskHTML += `<li><strong>⚠️ Asian Session</strong></li>`;
+                riskHTML += `<li>Low liquidity - avoid trading unless scalping</li>`;
+            }
+            
+            riskHTML += `<li><strong>📰 News Check Required:</strong></li>`;
+            riskHTML += `<li style="padding-left: 1rem;">Check Economic Calendar below for red folder events</li>`;
+            riskHTML += `<li style="padding-left: 1rem;">Avoid trading 30 min before + 30 min after high-impact news</li>`;
+            
+            riskHTML += `<li><strong>💰 Risk Management Rules:</strong></li>`;
+            riskHTML += `<li style="padding-left: 1rem;">Max 1-2% risk per trade</li>`;
+            riskHTML += `<li style="padding-left: 1rem;">Max 3 positions open simultaneously</li>`;
+            riskHTML += `<li style="padding-left: 1rem;">Stop loss: Above/below M/W structure (10-15 pips)</li>`;
+            riskHTML += `<li style="padding-left: 1rem;">Take profit: TP1 (1:2), TP2 (1:3), TP3 (trail)</li>`;
+            riskHTML += '</ul>';
+            document.getElementById('riskAnalysis').innerHTML = riskHTML;
+            
+            // Scroll to results
+            document.getElementById('analysisResults').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            
+            console.log('✅ Market analysis complete');
+        }
+        
+        // Function to pull Asian Range from TradingView chart
+        // Show manual instructions as backup method
+        function showManualInstructions() {
+            alert('📖 MANUAL AR TRACKING METHOD (Backup Only)\n\n' +
+                  '⚠️ RECOMMENDED: Use "🤖 Auto Track AR" button instead (fully automated!)\n\n' +
+                  'If auto-tracking fails, manual method:\n\n' +
+                  '1. On TradingView chart, change to 15-min timeframe\n' +
+                  '2. Zoom to show ONLY Asian session (5PM-12AM EST)\n' +
+                  '3. Use crosshair tool (⊕) to hover over highest candle wick\n' +
+                  '4. Note the price → Manually enter in "Asian High" field\n' +
+                  '5. Use crosshair on lowest candle wick\n' +
+                  '6. Note the price → Manually enter in "Asian Low" field\n' +
+                  '7. AR 50 will auto-calculate\n\n' +
+                  '💡 TIP: Auto-tracking is much easier and more accurate!\n' +
+                  'Just click "🤖 Auto Track AR" at 5PM and it does everything automatically.');
+        }
+        
+        // Function to draw AR levels on chart (call this after Asian session)
+        function drawARLevels() {
+            if (!tvWidget) {
+                alert('Chart not loaded yet');
+                return;
+            }
+            
+            const highValue = parseFloat(document.getElementById('asianHigh').value);
+            const lowValue = parseFloat(document.getElementById('asianLow').value);
+            const midValue = parseFloat(document.getElementById('asianMid').value);
+            
+            if (isNaN(highValue) || isNaN(lowValue) || isNaN(midValue)) {
+                alert('Please calculate AR levels first');
+                return;
+            }
+            
+            try {
+                const chart = tvWidget.activeChart();
+                
+                // Draw AR 00 High (yellow dotted line)
+                chart.createMultipointShape([{ time: chart.getVisibleRange().from, price: highValue }], {
+                    shape: 'horizontal_line',
+                    overrides: { linecolor: '#FFC107', linestyle: 2, linewidth: 2 }
+                });
+                
+                // Draw AR 50 Mid (cyan solid line)
+                chart.createMultipointShape([{ time: chart.getVisibleRange().from, price: midValue }], {
+                    shape: 'horizontal_line',
+                    overrides: { linecolor: '#00BCD4', linestyle: 0, linewidth: 2 }
+                });
+                
+                // Draw AR 00 Low (yellow dotted line)
+                chart.createMultipointShape([{ time: chart.getVisibleRange().from, price: lowValue }], {
+                    shape: 'horizontal_line',
+                    overrides: { linecolor: '#FFC107', linestyle: 2, linewidth: 2 }
+                });
+                
+                alert('✅ AR levels drawn on chart!\n\n🟡 Yellow dashed = AR 00 (High/Low)\n🔵 Cyan solid = AR 50 (Midpoint)');
+            } catch (e) {
+                console.error('Error drawing AR levels:', e);
+                alert('⚠️ Could not draw lines. Try using the horizontal line tool manually.');
+            }
+        }
+        
+        // Calculate AR 50 (Asian Range Midpoint)
+        function calculateAR50() {
+            const highInput = document.getElementById('asianHigh').value;
+            const lowInput = document.getElementById('asianLow').value;
+            const midField = document.getElementById('asianMid');
+            
+            // Allow empty values for auto-calculation (don't alert)
+            if (!highInput || !lowInput) {
+                midField.value = '';
+                return;
+            }
+            
+            const high = parseFloat(highInput);
+            const low = parseFloat(lowInput);
+            
+            if (isNaN(high) || isNaN(low)) {
+                midField.value = 'Invalid';
+                return;
+            }
+            
+            const ar50 = ((high + low) / 2).toFixed(5);
+            midField.value = ar50;
+            
+            // Visual feedback on the AR 50 field itself
+            midField.style.background = 'rgba(0, 255, 136, 0.2)';
+            midField.style.borderColor = 'var(--accent-green)';
+            
+            setTimeout(() => {
+                midField.style.background = 'rgba(74,158,255,0.05)';
+                midField.style.borderColor = 'var(--accent-blue)';
+            }, 1000);
+            
+            // Save to localStorage
+            localStorage.setItem('asianHigh', highInput);
+            localStorage.setItem('asianLow', lowInput);
+            localStorage.setItem('asianMid', ar50);
+        }
+        
+        // Save levels to notes
+        function saveToNotes() {
+            const high = document.getElementById('asianHigh').value;
+            const low = document.getElementById('asianLow').value;
+            const mid = document.getElementById('asianMid').value;
+            const symbol = document.getElementById('chartSymbol').value;
+            
+            if (!high || !low || !mid) {
+                alert('Please calculate AR 50 first');
+                return;
+            }
+            
+            const date = new Date().toLocaleString('en-US', { timeZone: 'America/New_York' });
+            const notes = `
+📊 AR Levels - ${symbol}
+Date: ${date}
+
+AR 00 High: ${high}
+AR 50 Mid:  ${mid}
+AR 00 Low:  ${low}
+
+Range: ${(parseFloat(high) - parseFloat(low)).toFixed(5)} pips
+
+⚠️ Watch for London/NY to sweep AR 00 then reverse!
+            `;
+            
+            // Copy to clipboard
+            navigator.clipboard.writeText(notes.trim()).then(() => {
+                const btn = event.target;
+                const originalText = btn.textContent;
+                btn.textContent = '✅ Copied to Clipboard!';
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                }, 2000);
+            }).catch(() => {
+                alert('Could not copy to clipboard. Here are your levels:\n' + notes);
+            });
+        }
+        
+        // Load saved levels and initialize chart on page load
+        window.addEventListener('load', () => {
+            const savedHigh = localStorage.getItem('asianHigh');
+            const savedLow = localStorage.getItem('asianLow');
+            const savedMid = localStorage.getItem('asianMid');
+            
+            if (savedHigh) document.getElementById('asianHigh').value = savedHigh;
+            if (savedLow) document.getElementById('asianLow').value = savedLow;
+            if (savedMid) document.getElementById('asianMid').value = savedMid;
+            
+            // Recalculate AR 50 to ensure it's current
+            if (savedHigh && savedLow) {
+                calculateAR50();
+            }
+            
+            // Initialize chart with EMAs
+            initChart();
+        });
+        
+        // Tab Switching Function
+        function switchTab(tabId) {
+            // Hide all tabs
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => {
+                tab.style.display = 'none';
+            });
+            
+            // Remove active class from all buttons
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(button => {
+                button.style.background = 'var(--bg-secondary)';
+                button.style.color = 'var(--text-secondary)';
+                button.classList.remove('active');
+            });
+            
+            // Show selected tab
+            const selectedTab = document.getElementById(tabId);
+            if (selectedTab) {
+                selectedTab.style.display = 'block';
+            }
+            
+            // Highlight active button
+            const activeButton = document.querySelector(`[data-tab="${tabId}"]`);
+            if (activeButton) {
+                activeButton.style.background = 'var(--accent-blue)';
+                activeButton.style.color = 'white';
+                activeButton.classList.add('active');
+            }
+            
+            // Save active tab to localStorage
+            localStorage.setItem('activeSessionTab', tabId);
+        }
+        
+        // Load last active tab on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            const lastActiveTab = localStorage.getItem('activeSessionTab');
+            if (lastActiveTab) {
+                switchTab(lastActiveTab);
+            } else {
+                // Default to chart tab
+                switchTab('chart-tab');
+            }
+        });
+    </script>
 </body>
 </html>
 

@@ -21,29 +21,19 @@
     </div>
 
     <div class="main-container">
-        <aside class="sidebar">
+                <nav class="sidebar" id="sidebar">
+            <div class="nav-header">
+                <a href="../index.html" style="text-decoration: none; color: inherit;">
+                    <h2>📚 Trading Guide</h2>
+                </a>
+            </div>
             <div class="search-box">
                 <input type="text" id="searchInput" placeholder="Search guide..." />
             </div>
-            
-            <h3>📚 Navigation (Top-Down)</h3>
-            <ul class="nav-menu">
-                <li><a href="../index.html" class="nav-link">🏠 Home</a></li>
-                <li style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color);"><a href="core-philosophy.html" class="nav-link">🎯 Core Philosophy</a></li>
-                <li><a href="weekly-schedule.html" class="nav-link">📅 Weekly Structure</a></li>
-                <li><a href="btmm-cycle.html" class="nav-link active">🔄 BTMM 3-Day Cycle</a></li>
-                <li><a href="daily-sessions.html" class="nav-link">🕐 Daily Sessions</a></li>
-                <li><a href="micro-quarters.html" class="nav-link">⏱️ Micro Quarters</a></li>
-                <li style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color);"><a href="technical-setup.html" class="nav-link">🔧 Technical Setup</a></li>
-                <li><a href="patterns.html" class="nav-link">📊 Patterns</a></li>
-                <li><a href="entry-rules.html" class="nav-link">📈 Entry Rules</a></li>
-                <li><a href="risk-management.html" class="nav-link">🛡️ Risk Management</a></li>
-                <li><a href="checklist.html" class="nav-link">✅ Trading Checklist</a></li>
-                <li><a href="examples.html" class="nav-link">💡 Trade Examples</a></li>
-                <li style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color);"><a href="live-session-guide.html" class="nav-link">📡 Live Session Guide</a></li>
-                <li><a href="quick-reference.html" class="nav-link">⚡ Quick Reference</a></li>
-            </ul>
-        </aside>
+            <div class="nav-links" id="navLinks">
+                <!-- Navigation will be loaded by main.js -->
+            </div>
+        </nav>
 
         <main class="content" id="mainContent">
             <section class="section">
@@ -733,6 +723,215 @@
                     </div>
                 </div>
 
+                <h3 style="margin-top: 3rem;">📊 Weekly PSR (Psychological Support/Resistance)</h3>
+
+                <div class="card" style="border: 3px solid var(--accent-yellow); background: rgba(255, 193, 7, 0.05);">
+                    <div class="card-title" style="color: var(--accent-yellow);">The First 8 H1 Candles = PSR Zone</div>
+                    
+                    <p><strong>What is PSR?</strong></p>
+                    <p>The Psychological Support/Resistance zone is created by the <strong>first 8 hourly (H1) candles</strong> of the trading week. This is a critical reference zone that market makers use for weekly positioning.</p>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem;">
+                        <div>
+                            <h4 style="color: var(--accent-blue);">📍 When PSR Forms:</h4>
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li><strong>Start:</strong> Sunday 5:00 PM EST (Market open)</li>
+                                <li><strong>End:</strong> Monday 1:00 AM EST (8 hours later)</li>
+                                <li><strong>Timeframe:</strong> H1 (1-hour) candles</li>
+                                <li><strong>Count:</strong> Exactly 8 consecutive candles</li>
+                                <li><strong>Visual:</strong> Draw box around high/low of these 8 candles</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--accent-green);">📈 What PSR Represents:</h4>
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li>Initial accumulation/trap zone</li>
+                                <li>Market maker positioning area</li>
+                                <li>Weekly structure reference point</li>
+                                <li>Support/resistance for entire week</li>
+                                <li>Where retail traders get trapped first</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <h4 style="margin-top: 1.5rem; color: var(--accent-yellow);">🎯 How to Use PSR:</h4>
+                    <table style="margin-top: 0.5rem;">
+                        <tr>
+                            <th>Scenario</th>
+                            <th>PSR Function</th>
+                            <th>Weekly Bias</th>
+                            <th>Trading Action</th>
+                        </tr>
+                        <tr style="background: rgba(0, 255, 136, 0.05);">
+                            <td><strong>Price Above PSR</strong></td>
+                            <td>PSR becomes support</td>
+                            <td>Bullish week expected</td>
+                            <td>Look for longs on pullbacks to PSR high</td>
+                        </tr>
+                        <tr style="background: rgba(255, 74, 74, 0.05);">
+                            <td><strong>Price Below PSR</strong></td>
+                            <td>PSR becomes resistance</td>
+                            <td>Bearish week expected</td>
+                            <td>Look for shorts on rallies to PSR low</td>
+                        </tr>
+                        <tr style="background: rgba(255, 193, 7, 0.05);">
+                            <td><strong>Price Within PSR</strong></td>
+                            <td>Inside the zone</td>
+                            <td>Consolidation/accumulation</td>
+                            <td>Wait for breakout direction confirmation</td>
+                        </tr>
+                    </table>
+                    
+                    <div class="alert alert-info" style="margin-top: 1rem;">
+                        <strong>💡 Pro Tip:</strong> Draw a horizontal box on your chart from the high to low of candles 1-8 on Monday morning. Label it "PSR Zone". Price will often respect these levels throughout the week! This is your weekly accumulation area.
+                    </div>
+                    
+                    <h4 style="margin-top: 1.5rem;">📊 PSR Example:</h4>
+                    <div style="background: var(--bg-tertiary); padding: 1rem; border-radius: 6px; font-family: monospace; line-height: 1.8;">
+                        <strong style="color: var(--accent-yellow);">Monday Setup (First 8 H1 Candles):</strong><br>
+                        PSR High: 1.0920<br>
+                        PSR Low: 1.0850<br>
+                        <span style="color: var(--accent-yellow);">PSR ZONE = 1.0850 - 1.0920 (70 pips)</span><br>
+                        <br>
+                        <strong style="color: var(--accent-green);">Tuesday Breakout:</strong><br>
+                        Price rallies to 1.0950 (above PSR) → <span style="color: var(--accent-green);">✅ Bullish bias confirmed</span><br>
+                        <br>
+                        <strong style="color: var(--accent-blue);">Wednesday Pullback:</strong><br>
+                        Price pulls back to 1.0920 (PSR high) → <span style="color: var(--accent-green);">🎯 LONG ENTRY!</span><br>
+                        PSR acts as support → Price bounces up 80+ pips
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 3rem;">🔄 Multi-Day Pattern Structures (Steve Mauro's Named Patterns)</h3>
+
+                <div class="alert alert-success" style="margin-bottom: 1.5rem;">
+                    <h4 style="margin-bottom: 0.5rem;">📚 Official BTMM Terminology</h4>
+                    <p>Steve Mauro uses these explicit names for the complete 3-day cycle structures. Understanding these names helps you identify exactly where you are in the weekly manipulation cycle:</p>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1.5rem;">
+                    <!-- BEARISH PATTERN -->
+                    <div class="card" style="border: 3px solid var(--accent-red); background: rgba(255, 74, 74, 0.03);">
+                        <div class="card-title" style="color: var(--accent-red); font-size: 1.3rem;">M-A1-A2-W (Bearish Structure)</div>
+                        
+                        <h4 style="margin-top: 1rem; color: var(--accent-yellow);">🔻 Structure Breakdown:</h4>
+                        <table style="font-size: 0.9rem; margin-top: 0.5rem;">
+                            <tr>
+                                <th style="width: 15%;">Part</th>
+                                <th style="width: 35%;">Meaning</th>
+                                <th style="width: 50%;">What Happens</th>
+                            </tr>
+                            <tr>
+                                <td><strong style="color: var(--accent-red);">M</strong></td>
+                                <td>M-Top (PF High)</td>
+                                <td>Day 1-2: Monday/Tuesday push price to weekly high</td>
+                            </tr>
+                            <tr style="background: rgba(255, 193, 7, 0.1);">
+                                <td><strong style="color: var(--accent-yellow);">A1</strong></td>
+                                <td>Accumulation 1</td>
+                                <td>Day 2: First accumulation phase at high - retail trapped long</td>
+                            </tr>
+                            <tr style="background: rgba(255, 193, 7, 0.15);">
+                                <td><strong style="color: var(--accent-yellow);">A2</strong></td>
+                                <td>Accumulation 2</td>
+                                <td>Day 2: Continued accumulation - MORE retail trapped long</td>
+                            </tr>
+                            <tr style="background: rgba(0, 255, 136, 0.1);">
+                                <td><strong style="color: var(--accent-green);">W</strong></td>
+                                <td>W-Bottom (Reversal)</td>
+                                <td>Day 3: Wednesday reversal DOWN - shorts profit!</td>
+                            </tr>
+                        </table>
+                        
+                        <h4 style="margin-top: 1rem;">📉 Visual Pattern:</h4>
+                        <div style="background: var(--bg-tertiary); padding: 1rem; border-radius: 6px; font-family: monospace; text-align: center; line-height: 2; font-size: 0.95rem;">
+                            <span style="color: var(--accent-red);">    M   </span> ← PF High (Day 1-2) - Retail LONG<br>
+                            <span style="color: var(--accent-yellow);">   / \  </span> ← A1 (Accumulation begins)<br>
+                            <span style="color: var(--accent-yellow);">  /   \ </span> ← A2 (MORE accumulation)<br>
+                            <span style="color: var(--text-tertiary);">  ↓   ↓ </span> ← Distribution (Day 3)<br>
+                            <span style="color: var(--accent-green);">  W   W </span> ← Reversal bottom - TRADE SHORT!
+                        </div>
+                        
+                        <h4 style="margin-top: 1rem;">📅 Trade Timeline:</h4>
+                        <ul style="padding-left: 1.5rem; font-size: 0.9rem; line-height: 1.8;">
+                            <li><strong>Mon (Day 1):</strong> PF High at 150.50 - <span style="color: var(--accent-yellow);">OBSERVE only</span></li>
+                            <li><strong>Tue (Day 2):</strong> Extends to 150.65 (A1, A2 accumulation) - <span style="color: var(--accent-blue);">PREPARE short</span></li>
+                            <li><strong>Wed (Day 3):</strong> Reversal down from high - <span style="color: var(--accent-red);"><strong>SHORT! 🎯</strong></span></li>
+                        </ul>
+                        
+                        <div class="alert alert-warning" style="margin-top: 1rem; font-size: 0.85rem;">
+                            <strong>⚠️ Key Insight:</strong> The "A1-A2" days represent the accumulation period where market makers build SHORT positions while retail traders are trapped long at the M top. This is why Tuesday (Day 2) is a "DO NOT TRADE" day - you're in the accumulation phase!
+                        </div>
+                    </div>
+                    
+                    <!-- BULLISH PATTERN -->
+                    <div class="card" style="border: 3px solid var(--accent-green); background: rgba(0, 255, 136, 0.03);">
+                        <div class="card-title" style="color: var(--accent-green); font-size: 1.3rem;">W-V1-V2-M (Bullish Structure)</div>
+                        
+                        <h4 style="margin-top: 1rem; color: var(--accent-yellow);">🔺 Structure Breakdown:</h4>
+                        <table style="font-size: 0.9rem; margin-top: 0.5rem;">
+                            <tr>
+                                <th style="width: 15%;">Part</th>
+                                <th style="width: 35%;">Meaning</th>
+                                <th style="width: 50%;">What Happens</th>
+                            </tr>
+                            <tr>
+                                <td><strong style="color: var(--accent-green);">W</strong></td>
+                                <td>W-Bottom (PF Low)</td>
+                                <td>Day 1-2: Monday/Tuesday push price to weekly low</td>
+                            </tr>
+                            <tr style="background: rgba(255, 193, 7, 0.1);">
+                                <td><strong style="color: var(--accent-yellow);">V1</strong></td>
+                                <td>V-Accumulation 1</td>
+                                <td>Day 2: First V-shaped accumulation at low - retail trapped short</td>
+                            </tr>
+                            <tr style="background: rgba(255, 193, 7, 0.15);">
+                                <td><strong style="color: var(--accent-yellow);">V2</strong></td>
+                                <td>V-Accumulation 2</td>
+                                <td>Day 2: Continued accumulation - MORE retail trapped short</td>
+                            </tr>
+                            <tr style="background: rgba(255, 74, 74, 0.1);">
+                                <td><strong style="color: var(--accent-red);">M</strong></td>
+                                <td>M-Top (Reversal)</td>
+                                <td>Day 3: Wednesday reversal UP - longs profit!</td>
+                            </tr>
+                        </table>
+                        
+                        <h4 style="margin-top: 1rem;">📈 Visual Pattern:</h4>
+                        <div style="background: var(--bg-tertiary); padding: 1rem; border-radius: 6px; font-family: monospace; text-align: center; line-height: 2; font-size: 0.95rem;">
+                            <span style="color: var(--accent-red);">  M   M </span> ← Reversal top - TRADE LONG!<br>
+                            <span style="color: var(--text-tertiary);">  ↑   ↑ </span> ← Distribution (Day 3)<br>
+                            <span style="color: var(--accent-yellow);">  \   / </span> ← V2 (MORE accumulation)<br>
+                            <span style="color: var(--accent-yellow);">   \ /  </span> ← V1 (Accumulation begins)<br>
+                            <span style="color: var(--accent-green);">    W   </span> ← PF Low (Day 1-2) - Retail SHORT
+                        </div>
+                        
+                        <h4 style="margin-top: 1rem;">📅 Trade Timeline:</h4>
+                        <ul style="padding-left: 1.5rem; font-size: 0.9rem; line-height: 1.8;">
+                            <li><strong>Mon (Day 1):</strong> PF Low at 1.2800 - <span style="color: var(--accent-yellow);">OBSERVE only</span></li>
+                            <li><strong>Tue (Day 2):</strong> Extends to 1.2785 (V1, V2 accumulation) - <span style="color: var(--accent-blue);">PREPARE long</span></li>
+                            <li><strong>Wed (Day 3):</strong> Reversal up from low - <span style="color: var(--accent-green);"><strong>LONG! 🎯</strong></span></li>
+                        </ul>
+                        
+                        <div class="alert alert-warning" style="margin-top: 1rem; font-size: 0.85rem;">
+                            <strong>⚠️ Key Insight:</strong> The "V1-V2" days represent the V-shaped accumulation period where market makers build LONG positions while retail traders are trapped short at the W bottom. This is why Tuesday (Day 2) is a "DO NOT TRADE" day - you're in the accumulation phase!
+                        </div>
+                    </div>
+                </div>
+
+                <div class="alert alert-success" style="margin-top: 1.5rem;">
+                    <h4 style="margin-bottom: 0.5rem;">🎯 Why These Pattern Names Matter</h4>
+                    <p><strong>Steve Mauro's explicit BTMM terminology provides clarity:</strong></p>
+                    <ul style="padding-left: 1.5rem; margin-top: 0.5rem; line-height: 1.8;">
+                        <li><strong>M-A1-A2-W:</strong> Shows the complete bearish trap structure over 3 days (Monday M-top → Tuesday A1/A2 accumulation → Wednesday W-bottom reversal)</li>
+                        <li><strong>W-V1-V2-M:</strong> Shows the complete bullish trap structure over 3 days (Monday W-bottom → Tuesday V1/V2 accumulation → Wednesday M-top reversal)</li>
+                        <li><strong>Identifying Your Position:</strong> Knowing if you're in A1/A2 or V1/V2 helps you AVOID trading during accumulation</li>
+                        <li><strong>Trading Rule:</strong> NEVER trade on A1/A2 or V1/V2 days (Tuesday) - let accumulation complete!</li>
+                        <li><strong>Final Reversal:</strong> The W (bearish) or M (bullish) on Day 3 (Wednesday) = THIS IS WHERE YOU TRADE!</li>
+                        <li><strong>Pattern Recognition:</strong> When you see Monday making a high and Tuesday extending it, you're in M-A1-A2 structure → Prepare SHORT for Wednesday!</li>
+                    </ul>
+                </div>
+
                 <h3 style="margin-top: 3rem;">⚡ Intraday BTMM Cycle</h3>
 
                 <div class="pattern-card">
@@ -1044,7 +1243,10 @@
         </main>
     </div>
 
+    <script src="../js/navigation.js"></script>
     <script src="../js/main.js"></script>
+    <script src="../js/export-print.js"></script>
+    <script src="../js/alerts.js"></script>
 </body>
 </html>
 

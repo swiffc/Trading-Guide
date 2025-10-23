@@ -1,0 +1,192 @@
+/* Trading Guide - Print Stylesheet */
+/* Optimized for printing pages */
+
+@media print {
+    /* Hide non-essential elements */
+    .header,
+    .sidebar,
+    .mobile-menu-toggle,
+    .theme-toggle,
+    .nav-back-btn,
+    .breadcrumb,
+    button,
+    .error-toast,
+    .success-toast,
+    #keyboardShortcutsModal,
+    .skip-link {
+        display: none !important;
+    }
+    
+    /* Reset layout */
+    body {
+        background: white;
+        color: black;
+        font-size: 12pt;
+        line-height: 1.5;
+    }
+    
+    .main-container {
+        margin: 0;
+        padding: 0;
+        display: block;
+    }
+    
+    .content {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        border: none;
+        background: white;
+    }
+    
+    /* Typography */
+    h1 {
+        font-size: 24pt;
+        margin-bottom: 12pt;
+        page-break-after: avoid;
+    }
+    
+    h2 {
+        font-size: 18pt;
+        margin-top: 18pt;
+        margin-bottom: 12pt;
+        page-break-after: avoid;
+    }
+    
+    h3 {
+        font-size: 14pt;
+        margin-top: 12pt;
+        margin-bottom: 8pt;
+        page-break-after: avoid;
+    }
+    
+    p, li {
+        font-size: 11pt;
+        line-height: 1.6;
+        orphans: 3;
+        widows: 3;
+    }
+    
+    /* Tables */
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin: 12pt 0;
+        page-break-inside: avoid;
+    }
+    
+    th, td {
+        border: 1px solid #000;
+        padding: 6pt;
+        text-align: left;
+    }
+    
+    th {
+        background: #f0f0f0;
+        font-weight: bold;
+    }
+    
+    /* Cards and sections */
+    .card,
+    .pattern-card,
+    .quarter-card,
+    .section {
+        border: 1px solid #ccc;
+        padding: 12pt;
+        margin: 12pt 0;
+        page-break-inside: avoid;
+    }
+    
+    /* Links */
+    a {
+        color: black;
+        text-decoration: underline;
+    }
+    
+    a[href^="http"]:after {
+        content: " (" attr(href) ")";
+        font-size: 9pt;
+        color: #666;
+    }
+    
+    /* Page breaks */
+    .page-break-before {
+        page-break-before: always;
+    }
+    
+    .page-break-after {
+        page-break-after: always;
+    }
+    
+    .no-break {
+        page-break-inside: avoid;
+    }
+    
+    /* Headers and footers for printing */
+    @page {
+        margin: 2cm;
+        
+        @top-center {
+            content: "Trading Guide - Quarterly Theory & BTMM";
+            font-size: 10pt;
+            color: #666;
+        }
+        
+        @bottom-center {
+            content: "Page " counter(page) " of " counter(pages);
+            font-size: 9pt;
+            color: #666;
+        }
+    }
+    
+    /* First page - no header */
+    @page :first {
+        @top-center {
+            content: none;
+        }
+    }
+    
+    /* Specific elements */
+    .alert {
+        border: 2px solid #000;
+        padding: 8pt;
+        margin: 8pt 0;
+        background: #f9f9f9;
+    }
+    
+    code {
+        background: #f0f0f0;
+        padding: 2pt 4pt;
+        border: 1px solid #ccc;
+        font-family: 'Courier New', monospace;
+    }
+    
+    pre {
+        background: #f5f5f5;
+        border: 1px solid #ccc;
+        padding: 8pt;
+        overflow: visible;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+    }
+    
+    /* Images */
+    img {
+        max-width: 100%;
+        page-break-inside: avoid;
+    }
+    
+    /* Grids - convert to linear for print */
+    .quarters-grid,
+    .quick-access-grid {
+        display: block;
+    }
+    
+    .quarter-card,
+    .quick-card {
+        display: block;
+        margin-bottom: 12pt;
+        border: 1px solid #ccc;
+        padding: 8pt;
+    }
+}
