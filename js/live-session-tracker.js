@@ -324,16 +324,33 @@ class LiveSessionTracker {
 
             case 'london':
                 info.sessionName = 'London Session Active';
-                info.dailyCycle = 'Q2 - Manipulation';
+                info.dailyCycle = 'Q2';
+                info.dailyCycleName = 'London Session';
+                info.dailyPhase = 'Manipulation - Watch for PF';
                 
-                // Calculate 90-min cycle (starting from 1:30 AM = 90 min)
-                let londonStart = 1.5 * 60; // 1:30 AM = 90 minutes
-                let london90 = this.get90MinCycle(londonStart, currentTotalMinutes);
+                // Calculate session progress (2 AM - 9 AM = 7 hours)
+                let londonStart = 2 * 60; // 2 AM = 120 minutes
+                let minutesSinceLondonStart = currentTotalMinutes >= londonStart 
+                    ? currentTotalMinutes - londonStart 
+                    : (24 * 60 - londonStart) + currentTotalMinutes;
+                let londonDuration = 7 * 60; // 7 hours
+                info.dailyProgress = Math.min((minutesSinceLondonStart / londonDuration) * 100, 100);
+                
+                // Calculate 90-min cycle (starting from 2 AM)
+                let london90 = this.get90MinCycle(0, minutesSinceLondonStart);
                 
                 if (london90) {
                     info.cycle90 = `London ${london90.quarter}`;
+                    info.ninetyMinCycle = london90.quarter;
+                    info.ninetyMinName = `Cycle ${london90.cycleNumber + 1} of 4`;
+                    info.ninetyMinPhase = london90.quarter === 'Q2' ? 'Peak Formation Window' : 'Manipulation phase';
+                    info.ninetyMinProgress = ((london90.cycleNumber * 90 + london90.minuteInQuarter) / (4 * 90)) * 100;
+                    
                     let micro = this.getMicroCycle(london90.minuteInQuarter);
-                    info.microCycle = `${micro.quarter} - ${micro.phase}`;
+                    info.microCycle = micro.quarter;
+                    info.microName = `${micro.phase} Quarter`;
+                    info.microPhase = micro.phase;
+                    info.microProgress = micro.progress;
                     info.progress = micro.progress;
                     
                     // Special actions based on cycle
@@ -355,16 +372,33 @@ class LiveSessionTracker {
 
             case 'ny':
                 info.sessionName = 'NY Session Active';
-                info.dailyCycle = 'Q3 - Distribution ⭐⭐⭐';
+                info.dailyCycle = 'Q3';
+                info.dailyCycleName = 'NY AM Session ⭐⭐⭐';
+                info.dailyPhase = 'Distribution - TRADE NOW';
                 
-                // Calculate 90-min cycle (starting from 7:30 AM = 450 min)
-                let nyStart = 7.5 * 60; // 7:30 AM = 450 minutes
-                let ny90 = this.get90MinCycle(nyStart, currentTotalMinutes);
+                // Calculate session progress (9 AM - 12 PM = 3 hours)
+                let nyStart = 9 * 60; // 9 AM = 540 minutes
+                let minutesSinceNYStart = currentTotalMinutes >= nyStart 
+                    ? currentTotalMinutes - nyStart 
+                    : 0;
+                let nyDuration = 3 * 60; // 3 hours (prime trading window)
+                info.dailyProgress = Math.min((minutesSinceNYStart / nyDuration) * 100, 100);
+                
+                // Calculate 90-min cycle (starting from 9 AM)
+                let ny90 = this.get90MinCycle(0, minutesSinceNYStart);
                 
                 if (ny90) {
                     info.cycle90 = `NY ${ny90.quarter}`;
+                    info.ninetyMinCycle = ny90.quarter;
+                    info.ninetyMinName = `Cycle ${ny90.cycleNumber + 1} of 2`;
+                    info.ninetyMinPhase = ny90.quarter === 'Q3' ? 'Distribution - Prime time!' : 'Accumulation phase';
+                    info.ninetyMinProgress = ((ny90.cycleNumber * 90 + ny90.minuteInQuarter) / (2 * 90)) * 100;
+                    
                     let micro = this.getMicroCycle(ny90.minuteInQuarter);
-                    info.microCycle = `${micro.quarter} - ${micro.phase}`;
+                    info.microCycle = micro.quarter;
+                    info.microName = `${micro.phase} Quarter`;
+                    info.microPhase = micro.phase;
+                    info.microProgress = micro.progress;
                     info.progress = micro.progress;
                     
                     // Critical trading windows
@@ -398,16 +432,33 @@ class LiveSessionTracker {
 
             case 'pm':
                 info.sessionName = 'PM Session Active';
-                info.dailyCycle = 'Q4 - Reversal/Continuation';
+                info.dailyCycle = 'Q4';
+                info.dailyCycleName = 'NY PM Session';
+                info.dailyPhase = 'Reversal - Close positions';
                 
-                // Calculate 90-min cycle (starting from 1:30 PM = 810 min)
-                let pmStart = 13.5 * 60; // 1:30 PM = 810 minutes
-                let pm90 = this.get90MinCycle(pmStart, currentTotalMinutes);
+                // Calculate session progress (12 PM - 7 PM = 7 hours)
+                let pmStart = 12 * 60; // 12 PM = 720 minutes
+                let minutesSincePMStart = currentTotalMinutes >= pmStart 
+                    ? currentTotalMinutes - pmStart 
+                    : 0;
+                let pmDuration = 7 * 60; // 7 hours
+                info.dailyProgress = Math.min((minutesSincePMStart / pmDuration) * 100, 100);
+                
+                // Calculate 90-min cycle (starting from 12 PM)
+                let pm90 = this.get90MinCycle(0, minutesSincePMStart);
                 
                 if (pm90) {
                     info.cycle90 = `PM ${pm90.quarter}`;
+                    info.ninetyMinCycle = pm90.quarter;
+                    info.ninetyMinName = `PM Cycle ${pm90.cycleNumber + 1}`;
+                    info.ninetyMinPhase = 'Reversal - Consolidation';
+                    info.ninetyMinProgress = ((pm90.cycleNumber * 90 + pm90.minuteInQuarter) / (4 * 90)) * 100;
+                    
                     let micro = this.getMicroCycle(pm90.minuteInQuarter);
-                    info.microCycle = `${micro.quarter} - ${micro.phase}`;
+                    info.microCycle = micro.quarter;
+                    info.microName = `${micro.phase} Quarter`;
+                    info.microPhase = micro.phase;
+                    info.microProgress = micro.progress;
                     info.progress = micro.progress;
                 }
                 
