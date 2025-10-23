@@ -1082,6 +1082,172 @@ function calculateCompound() {
 }
 
 // ==========================================
+// QUARTER POINT CALCULATOR
+// ==========================================
+
+// Asset-class specific ADR values (in PIPs)
+const QUARTER_POINT_ADR = {
+    'EURUSD': 80,   // Major - High Liquidity
+    'GBPUSD': 100,  // Major - High Liquidity
+    'USDJPY': 70,   // Major - High Liquidity
+    'AUDUSD': 60,   // Major - Medium Liquidity
+    'GBPJPY': 150,  // Cross - High Volatility
+    'EURJPY': 120,  // Cross - High Volatility
+    'EURGBP': 50    // Cross - Low Volatility
+};
+
+// Update ADR field based on selected pair
+function updateQuarterPointADR() {
+    const pairSelect = document.getElementById('qpPair');
+    const adrInput = document.getElementById('qpADR');
+    const selectedPair = pairSelect.value;
+    
+    if (selectedPair !== 'CUSTOM' && QUARTER_POINT_ADR[selectedPair]) {
+        adrInput.value = QUARTER_POINT_ADR[selectedPair];
+        adrInput.disabled = true;
+        adrInput.style.opacity = '0.7';
+    } else {
+        adrInput.disabled = false;
+        adrInput.style.opacity = '1';
+        if (selectedPair === 'CUSTOM') {
+            adrInput.value = '';
+            adrInput.placeholder = 'Enter custom ADR in PIPs';
+        }
+    }
+}
+
+// Calculate Quarter Points based on ADR
+function calculateQuarterPoints() {
+    const pairSelect = document.getElementById('qpPair');
+    const adrInput = document.getElementById('qpADR');
+    const currentPriceInput = document.getElementById('qpCurrentPrice');
+    const resultDiv = document.getElementById('qpResult');
+    
+    const selectedPair = pairSelect.options[pairSelect.selectedIndex].text;
+    const adr = parseFloat(adrInput.value);
+    const currentPrice = parseFloat(currentPriceInput.value);
+    
+    // Validate ADR
+    if (!adr || adr <= 0) {
+        showError('Please enter a valid ADR value', 'qpResult');
+        return;
+    }
+    
+    // Calculate Quarter Points using the formula from QUARTER_POINTS_BY_ASSET_CLASS.md
+    const largeQuarter = Math.round(adr * 0.75); // 75% of ADR
+    const smallQuarter = Math.round(largeQuarter / 5); // 1/5 of Large Quarter
+    const hesitationZone = Math.round(smallQuarter / 2); // 1/2 of Small Quarter
+    
+    // Build result HTML
+    let resultHTML = `
+        <div style="margin-bottom: 1rem;">
+            <strong style="color: #ff6b35; font-size: 1.1rem;">📊 ${selectedPair}</strong>
+            <div style="font-size: 0.9rem; color: var(--text-tertiary); margin-top: 0.25rem;">
+                ADR: ${adr} PIPs
+            </div>
+        </div>
+        
+        <div style="display: grid; gap: 1rem; margin-bottom: 1.5rem;">
+            <div style="padding: 0.75rem; background: rgba(255, 107, 53, 0.15); border-radius: 6px; border-left: 4px solid #ff6b35;">
+                <div style="font-size: 0.85rem; color: var(--text-tertiary); margin-bottom: 0.25rem;">🎯 Large Quarter (LQ)</div>
+                <div style="font-size: 1.3rem; font-weight: bold; color: #ff6b35;">${largeQuarter} PIPs</div>
+                <div style="font-size: 0.8rem; color: var(--text-tertiary); margin-top: 0.25rem;">Primary target for swing trades</div>
+            </div>
+            
+            <div style="padding: 0.75rem; background: rgba(74, 158, 255, 0.15); border-radius: 6px; border-left: 4px solid var(--accent-blue);">
+                <div style="font-size: 0.85rem; color: var(--text-tertiary); margin-bottom: 0.25rem;">📍 Small Quarter (SQ)</div>
+                <div style="font-size: 1.3rem; font-weight: bold; color: var(--accent-blue);">${smallQuarter} PIPs</div>
+                <div style="font-size: 0.8rem; color: var(--text-tertiary); margin-top: 0.25rem;">Intraday target zones</div>
+            </div>
+            
+            <div style="padding: 0.75rem; background: rgba(255, 193, 7, 0.15); border-radius: 6px; border-left: 4px solid var(--accent-yellow);">
+                <div style="font-size: 0.85rem; color: var(--text-tertiary); margin-bottom: 0.25rem;">⚠️ Hesitation Zone (HZ)</div>
+                <div style="font-size: 1.3rem; font-weight: bold; color: var(--accent-yellow);">${hesitationZone} PIPs</div>
+                <div style="font-size: 0.8rem; color: var(--text-tertiary); margin-top: 0.25rem;">Consolidation/reversal zone</div>
+            </div>
+        </div>
+    `;
+    
+    // If current price provided, calculate nearest quarter points
+    if (currentPrice && currentPrice > 0) {
+        const pipValue = selectedPair.includes('JPY') ? 0.01 : 0.0001;
+        const largeQuarterPrice = largeQuarter * pipValue;
+        const smallQuarterPrice = smallQuarter * pipValue;
+        
+        // Find nearest .00, .25, .50, .75 levels
+        const wholePart = Math.floor(currentPrice);
+        const decimalPart = currentPrice - wholePart;
+        
+        const quarterLevels = [0.00, 0.0025, 0.0050, 0.0075];
+        let nearestQuarters = quarterLevels.map(q => wholePart + q);
+        
+        // Add next whole number quarters
+        nearestQuarters.push(wholePart + 1.0000);
+        nearestQuarters.push(wholePart + 1.0025);
+        
+        // Sort by distance from current price
+        nearestQuarters.sort((a, b) => Math.abs(a - currentPrice) - Math.abs(b - currentPrice));
+        
+        // Get closest 5 levels
+        const closestLevels = nearestQuarters.slice(0, 5);
+        
+        resultHTML += `
+            <div style="padding: 1rem; background: rgba(0, 255, 136, 0.1); border-radius: 6px; margin-top: 1rem;">
+                <strong style="color: var(--accent-green);">📍 Nearest Quarter Points from ${currentPrice.toFixed(5)}:</strong>
+                <div style="margin-top: 0.75rem; display: grid; gap: 0.5rem;">
+        `;
+        
+        closestLevels.forEach((level, index) => {
+            const distance = Math.abs(level - currentPrice);
+            const distancePips = Math.round(distance / pipValue);
+            const direction = level > currentPrice ? '↑' : level < currentPrice ? '↓' : '●';
+            const color = level > currentPrice ? 'var(--accent-green)' : level < currentPrice ? 'var(--accent-red)' : 'var(--accent-yellow)';
+            
+            resultHTML += `
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.5rem; background: var(--bg-tertiary); border-radius: 4px;">
+                    <span style="color: ${color}; font-weight: bold;">${direction} ${level.toFixed(5)}</span>
+                    <span style="font-size: 0.85rem; color: var(--text-tertiary);">${distancePips} PIPs ${level > currentPrice ? 'above' : level < currentPrice ? 'below' : 'current'}</span>
+                </div>
+            `;
+        });
+        
+        resultHTML += `
+                </div>
+            </div>
+        `;
+    }
+    
+    // Add trading strategy tips
+    resultHTML += `
+        <div style="margin-top: 1rem; padding: 0.75rem; background: rgba(74, 158, 255, 0.1); border-radius: 4px;">
+            <strong style="color: var(--accent-blue);">💡 Trading Strategy:</strong>
+            <div style="font-size: 0.85rem; margin-top: 0.5rem; line-height: 1.6;">
+                <div style="margin-bottom: 0.5rem;">
+                    <strong>Large Quarter (${largeQuarter} PIPs):</strong> Use for swing trade targets and major S/R levels
+                </div>
+                <div style="margin-bottom: 0.5rem;">
+                    <strong>Small Quarter (${smallQuarter} PIPs):</strong> Intraday targets, partial profit zones
+                </div>
+                <div>
+                    <strong>Hesitation Zone (${hesitationZone} PIPs):</strong> Watch for consolidation, reversals, or breakouts
+                </div>
+            </div>
+        </div>
+        
+        <div style="margin-top: 1rem; padding: 0.75rem; background: rgba(255, 193, 7, 0.1); border-radius: 4px;">
+            <strong style="color: var(--accent-yellow);">⚠️ Three-Day Rule:</strong>
+            <div style="font-size: 0.85rem; margin-top: 0.5rem; line-height: 1.6;">
+                If price stays within a ${hesitationZone} PIP range for 3+ days, expect a breakout move of ${largeQuarter}+ PIPs!
+            </div>
+        </div>
+    `;
+    
+    // Display result
+    resultDiv.style.display = 'block';
+    resultDiv.innerHTML = resultHTML;
+}
+
+// ==========================================
 // INITIALIZATION
 // ==========================================
 
@@ -1096,7 +1262,8 @@ document.addEventListener('DOMContentLoaded', function() {
         { inputs: ['psrWeekHigh', 'psrWeekLow'], func: calculatePSRLevels },
         { inputs: ['levAccountBalance', 'levPositionSize', 'levLeverage'], func: calculateLeverage },
         { inputs: ['beWinRate', 'beAvgWin', 'beAvgLoss'], func: calculateBreakeven },
-        { inputs: ['compPrincipal', 'compReturn', 'compMonths', 'compDeposit'], func: calculateCompound }
+        { inputs: ['compPrincipal', 'compReturn', 'compMonths', 'compDeposit'], func: calculateCompound },
+        { inputs: ['qpADR', 'qpCurrentPrice'], func: calculateQuarterPoints }
     ];
     
     calculators.forEach(calc => {
@@ -1105,6 +1272,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
+    // Initialize Quarter Point Calculator with default ADR
+    const qpPair = document.getElementById('qpPair');
+    if (qpPair) {
+        updateQuarterPointADR();
+    }
+    
     console.log('✅ Trading Calculators initialized - All systems ready!');
     console.log('📊 PSR Zone Calculator: Weekly ends Friday Midnight EST');
+    console.log('🎯 Quarter Point Calculator: ADR-based targets loaded');
 });

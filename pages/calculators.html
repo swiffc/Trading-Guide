@@ -296,6 +296,48 @@
                             <!-- Result will be displayed here -->
                         </div>
                     </div>
+
+                    <!-- Quarter Point Calculator -->
+                    <div class="card" style="border: 2px solid #ff6b35;">
+                        <div class="card-title" style="color: #ff6b35;">🎯 Quarter Point Calculator</div>
+                        <p style="color: var(--text-tertiary); font-size: 0.9rem; margin-bottom: 1rem;">Calculate Quarter Points based on ADR and asset class</p>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                            <div>
+                                <label style="display: block; margin-bottom: 0.25rem; font-size: 0.9rem;">Currency Pair</label>
+                                <select id="qpPair" onchange="updateQuarterPointADR()" style="width: 100%; padding: 0.5rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;">
+                                    <option value="EURUSD">EUR/USD (Major)</option>
+                                    <option value="GBPUSD">GBP/USD (Major)</option>
+                                    <option value="USDJPY">USD/JPY (Major)</option>
+                                    <option value="AUDUSD">AUD/USD (Major)</option>
+                                    <option value="GBPJPY">GBP/JPY (Cross - High Volatility)</option>
+                                    <option value="EURJPY">EUR/JPY (Cross - High Volatility)</option>
+                                    <option value="EURGBP">EUR/GBP (Cross - Low Volatility)</option>
+                                    <option value="CUSTOM">Custom ADR</option>
+                                </select>
+                            </div>
+                            
+                            <div id="qpADRContainer">
+                                <label style="display: block; margin-bottom: 0.25rem; font-size: 0.9rem;">Average Daily Range (ADR in PIPs)</label>
+                                <input type="number" id="qpADR" placeholder="80" step="1" style="width: 100%; padding: 0.5rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;">
+                                <div style="font-size: 0.8rem; color: var(--text-tertiary); margin-top: 0.25rem;">💡 Typical: EUR/USD ~80, GBP/USD ~100, GBP/JPY ~150</div>
+                            </div>
+                            
+                            <div>
+                                <label style="display: block; margin-bottom: 0.25rem; font-size: 0.9rem;">Current Price (Optional)</label>
+                                <input type="number" id="qpCurrentPrice" placeholder="1.08500" step="0.00001" style="width: 100%; padding: 0.5rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;">
+                                <div style="font-size: 0.8rem; color: var(--text-tertiary); margin-top: 0.25rem;">Shows nearest quarter points from current price</div>
+                            </div>
+                            
+                            <button onclick="calculateQuarterPoints()" style="padding: 0.75rem; background: #ff6b35; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; margin-top: 0.5rem;">
+                                Calculate Quarter Points
+                            </button>
+                        </div>
+                        
+                        <div id="qpResult" style="margin-top: 1rem; padding: 1rem; background: rgba(255, 107, 53, 0.1); border-left: 4px solid #ff6b35; border-radius: 4px; display: none;">
+                            <!-- Result will be displayed here -->
+                        </div>
+                    </div>
                 </div>
 
             </section>
