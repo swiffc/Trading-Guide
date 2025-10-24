@@ -1,7 +1,7 @@
 // Trading Guide - Service Worker
 // Enables offline functionality and caching for PWA
 
-const CACHE_NAME = 'trading-guide-v2.7';
+const CACHE_NAME = 'trading-guide-v2.8';
 const urlsToCache = [
   '/',
   '/index.html',
