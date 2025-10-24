@@ -40,12 +40,12 @@
 
         /* Tab content - CRITICAL: Hide inactive tabs */
         .tab-content {
-            display: none;
+            display: none !important;
             animation: fadeIn 0.3s ease;
         }
 
         .tab-content.active {
-            display: block;
+            display: block !important;
         }
 
         @keyframes fadeIn {
@@ -728,10 +728,21 @@
         document.querySelectorAll('.tab-button').forEach(button => {
             button.addEventListener('click', () => {
                 const tab = button.dataset.tab;
+                console.log('Tab clicked:', tab);
+                
+                // Remove active from all buttons and content
                 document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
                 document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                
+                // Add active to clicked button and content
                 button.classList.add('active');
-                document.getElementById(tab)?.classList.add('active');
+                const targetTab = document.getElementById(tab);
+                if (targetTab) {
+                    targetTab.classList.add('active');
+                    console.log('Activated tab:', tab);
+                } else {
+                    console.error('Tab not found:', tab);
+                }
             });
         });
 
