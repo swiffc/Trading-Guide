@@ -41,6 +41,7 @@ const NAVIGATION_STRUCTURE = [
         category: 'TRADE EXECUTION',
         items: [
             { icon: '🎯', label: 'Trade Execution Guide', file: 'trade-execution.html' },
+            { icon: '📊', label: 'Intra-Day Bias (M15)', file: 'intraday-bias.html' },
             { icon: '🔧', label: 'Technical Setup', file: 'technical-setup.html' },
             { icon: '📐', label: 'Patterns (31+)', file: 'patterns.html' },
             { icon: '🎯', label: 'Entry & Exit Rules', file: 'entry-rules.html' },
