@@ -1,0 +1,1351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trade Execution Guide - Quarter Theory + Gann</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .execution-guide {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .strategy-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            color: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .strategy-card h2 {
+            margin-top: 0;
+            font-size: 2em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .step-by-step {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 20px 0;
+            color: #333;
+            border-left: 5px solid #667eea;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            margin: 20px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .step:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2em;
+            flex-shrink: 0;
+            margin-right: 15px;
+            box-shadow: 0 4px 10px rgba(102, 126, 234, 0.3);
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-content h4 {
+            margin: 0 0 10px 0;
+            color: #667eea;
+            font-size: 1.2em;
+        }
+
+        .step-content p {
+            margin: 5px 0;
+            line-height: 1.6;
+        }
+
+        .step-content ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        .step-content li {
+            margin: 5px 0;
+        }
+
+        .checklist {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .checklist h4 {
+            margin-top: 0;
+            color: #856404;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            margin: 8px 0;
+        }
+
+        .checklist-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .example-box {
+            background: #d4edda;
+            border-left: 5px solid #28a745;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .example-box h4 {
+            margin-top: 0;
+            color: #155724;
+        }
+
+        .warning-box {
+            background: #f8d7da;
+            border-left: 5px solid #dc3545;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .warning-box h4 {
+            margin-top: 0;
+            color: #721c24;
+        }
+
+        .info-box {
+            background: #d1ecf1;
+            border-left: 5px solid #17a2b8;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .info-box h4 {
+            margin-top: 0;
+            color: #0c5460;
+        }
+
+        .tabs-execution {
+            display: flex;
+            border-bottom: 2px solid #667eea;
+            margin: 30px 0 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .tab-execution {
+            padding: 15px 25px;
+            cursor: pointer;
+            background: #f8f9fa;
+            border: none;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+            font-size: 1em;
+            font-weight: 500;
+        }
+
+        .tab-execution:hover {
+            background: #e9ecef;
+        }
+
+        .tab-execution.active {
+            background: white;
+            border-bottom: 3px solid #667eea;
+            color: #667eea;
+        }
+
+        .tab-content-execution {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .tab-content-execution.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .quick-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .stat-card .number {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .stat-card .label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .calculation-box {
+            background: #f8f9fa;
+            border: 2px dashed #667eea;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .calculation-box .formula {
+            font-size: 1.1em;
+            color: #667eea;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .highlight-success {
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .highlight-danger {
+            color: #dc3545;
+            font-weight: bold;
+        }
+
+        .highlight-warning {
+            color: #ffc107;
+            font-weight: bold;
+        }
+
+        .highlight-info {
+            color: #17a2b8;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .strategy-card {
+                padding: 20px;
+            }
+
+            .step {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .step-number {
+                margin-bottom: 10px;
+            }
+
+            .tabs-execution {
+                overflow-x: auto;
+            }
+
+            .tab-execution {
+                padding: 10px 15px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar" id="sidebar">
+            <!-- Navigation will be loaded here -->
+        </aside>
+
+        <main class="main-content">
+            <div class="execution-guide">
+                <header style="text-align: center; margin-bottom: 40px;">
+                    <h1>🎯 Trade Execution Guide</h1>
+                    <p style="font-size: 1.2em; color: #666;">
+                        Step-by-Step Instructions for Trading with Quarter Theory + Gann
+                    </p>
+                </header>
+
+                <!-- Quick Stats -->
+                <div class="quick-stats">
+                    <div class="stat-card">
+                        <div class="number">5</div>
+                        <div class="label">Entry Strategies</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="number">4</div>
+                        <div class="label">Stop Methods</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="number">3</div>
+                        <div class="label">Profit Targets</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="number">11</div>
+                        <div class="label">Confluence Points</div>
+                    </div>
+                </div>
+
+                <!-- Strategy Tabs -->
+                <div class="tabs-execution">
+                    <button class="tab-execution active" onclick="switchTab(event, 'strategy1')">
+                        📈 LQ Transition
+                    </button>
+                    <button class="tab-execution" onclick="switchTab(event, 'strategy2')">
+                        💥 Hesitation Breakout
+                    </button>
+                    <button class="tab-execution" onclick="switchTab(event, 'strategy3')">
+                        🎯 Half Point Bounce
+                    </button>
+                    <button class="tab-execution" onclick="switchTab(event, 'strategy4')">
+                        🔥 High Confluence
+                    </button>
+                    <button class="tab-execution" onclick="switchTab(event, 'strategy5')">
+                        ↩️ Overshoot Fade
+                    </button>
+                </div>
+
+                <!-- Strategy 1: LQ Transition -->
+                <div id="strategy1" class="tab-content-execution active">
+                    <div class="strategy-card">
+                        <h2>📈 Strategy 1: Large Quarter Transition Trade</h2>
+                        <p><strong>Best For:</strong> Trending markets, high momentum moves</p>
+                        <p><strong>Win Rate:</strong> 60-65% (basic) | 70-75% (with confluence)</p>
+                        <p><strong>Risk/Reward:</strong> 2:1 to 3:1</p>
+                    </div>
+
+                    <div class="step-by-step">
+                        <h3>📋 Step-by-Step Execution</h3>
+
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>🔍 Identify Large Quarter Point</h4>
+                                <p>Look for price approaching a <strong>.00, .25, .50, or .75</strong> level</p>
+                                <ul>
+                                    <li>Open TradingView with your pair (e.g., EUR/USD)</li>
+                                    <li>The indicator will show <span class="highlight-info">blue dashed lines</span> at LQ Points</li>
+                                    <li>Example: 1.0750, 1.1000, 1.1250, etc.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>📊 Check Info Table - BEFORE Price Crosses</h4>
+                                <p>Top-right corner of chart - verify current status:</p>
+                                <div class="checklist">
+                                    <h4>Pre-Entry Checklist:</h4>
+                                    <div class="checklist-item">
+                                        <input type="checkbox" id="lq-check1">
+                                        <label for="lq-check1"><strong>LQ Progress:</strong> Should be 90-100% (near completion of current LQ)</label>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <input type="checkbox" id="lq-check2">
+                                        <label for="lq-check2"><strong>SQ Completed:</strong> Should be 9/10 or 10/10</label>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <input type="checkbox" id="lq-check3">
+                                        <label for="lq-check3"><strong>Position:</strong> Shows "In Quarter" (approaching LQ Point)</label>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <input type="checkbox" id="lq-check4">
+                                        <label for="lq-check4"><strong>3-Day Rule:</strong> Preferably "Day 2/3" or "Day 3/3" for current LQ</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>⚡ Wait for DECISIVE Break</h4>
+                                <p>Price must cross LQ Point by <strong>>25 PIPs</strong> (1 Small Quarter)</p>
+                                <div class="example-box">
+                                    <h4>✅ Good Example:</h4>
+                                    <p>LQ Point: <strong>1.0750</strong></p>
+                                    <p>Price moves to: <strong>1.0782</strong> (32 PIPs above) ✅</p>
+                                    <p>This is DECISIVE - shows commitment!</p>
+                                </div>
+                                <div class="warning-box">
+                                    <h4>❌ Bad Example:</h4>
+                                    <p>LQ Point: <strong>1.0750</strong></p>
+                                    <p>Price moves to: <strong>1.0762</strong> (only 12 PIPs above) ❌</p>
+                                    <p>This is NOT decisive - likely a fake breakout!</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h4>📈 Verify Info Table UPDATED</h4>
+                                <p>After the break, Info Table should show:</p>
+                                <ul>
+                                    <li><strong>Current LQ:</strong> NEW range (e.g., 1.0750 → 1.1000)</li>
+                                    <li><strong>LQ Progress:</strong> Low % (10-20%)</li>
+                                    <li><strong>SQ Completed:</strong> 1/10 or 2/10</li>
+                                    <li><strong>Position:</strong> "Hesitation Zone" (yellow box appears)</li>
+                                    <li><strong>3-Day Rule:</strong> <span class="highlight-success">"Day 1/3"</span> ✅ (BEST!)</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">5</div>
+                            <div class="step-content">
+                                <h4>⏳ Wait for Pullback</h4>
+                                <p>Don't chase! Wait for price to pull back to:</p>
+                                <ul>
+                                    <li><strong>LQ Point itself</strong> (e.g., back to 1.0750)</li>
+                                    <li><strong>Within Hesitation Zone</strong> (1.0750-1.0775)</li>
+                                    <li>Look for <strong>bullish rejection candle</strong> or <strong>support confirmation</strong></li>
+                                </ul>
+                                <div class="info-box">
+                                    <h4>💡 Pro Tip:</h4>
+                                    <p>Pullbacks happen <strong>70% of the time</strong> after LQ breaks. Be patient!</p>
+                                    <p>If no pullback happens and price runs, wait for next setup.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">6</div>
+                            <div class="step-content">
+                                <h4>🎯 ENTER TRADE</h4>
+                                <p><strong>Entry Price:</strong> At pullback level (e.g., 1.0755)</p>
+                                <p><strong>Order Type:</strong> Market order or limit order at pullback zone</p>
+                                <div class="calculation-box">
+                                    <div class="formula">Entry Example:</div>
+                                    <p>Pair: EUR/USD</p>
+                                    <p>Direction: LONG</p>
+                                    <p>Entry: 1.0755 (pullback to LQ area)</p>
+                                    <p>Reason: LQ Transition + Pullback Hold</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">7</div>
+                            <div class="step-content">
+                                <h4>🛑 Set Stop Loss</h4>
+                                <p>Choose one method:</p>
+                                <div class="calculation-box">
+                                    <div class="formula">Conservative Method (Recommended):</div>
+                                    <p>Stop = LQ Point - 40 PIPs</p>
+                                    <p>Example: 1.0750 - 40 = <strong>1.0710</strong></p>
+                                    <p>Risk: 45 PIPs (1.0755 - 1.0710)</p>
+                                </div>
+                                <div class="calculation-box">
+                                    <div class="formula">Aggressive Method:</div>
+                                    <p>Stop = Below Hesitation Zone - 10 PIPs</p>
+                                    <p>Example: 1.0750 - 25 - 10 = <strong>1.0715</strong></p>
+                                    <p>Risk: 40 PIPs (1.0755 - 1.0715)</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">8</div>
+                            <div class="step-content">
+                                <h4>🎯 Set Profit Targets</h4>
+                                <p>Always use <strong>3 targets</strong> for scaling out:</p>
+                                <div class="calculation-box">
+                                    <div class="formula">Target 1: Half Point (125 PIPs)</div>
+                                    <p>T1 = Entry + 125 PIPs</p>
+                                    <p>Example: 1.0755 + 125 = <strong>1.0880</strong></p>
+                                    <p>Action: Close <strong>30-50%</strong> of position</p>
+                                </div>
+                                <div class="calculation-box">
+                                    <div class="formula">Target 2: Next LQ Point (250 PIPs)</div>
+                                    <p>T2 = Next LQ Point</p>
+                                    <p>Example: <strong>1.1000</strong></p>
+                                    <p>Action: Close <strong>40-60%</strong> of remaining</p>
+                                </div>
+                                <div class="calculation-box">
+                                    <div class="formula">Target 3: Overshoot (275 PIPs)</div>
+                                    <p>T3 = LQ Point + 25 PIPs</p>
+                                    <p>Example: 1.1000 + 25 = <strong>1.1025</strong></p>
+                                    <p>Action: Close <strong>final position</strong></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">9</div>
+                            <div class="step-content">
+                                <h4>💰 Calculate Position Size</h4>
+                                <div class="calculation-box">
+                                    <div class="formula">Formula:</div>
+                                    <p>Position Size = (Account × Risk%) / (Stop PIPs × PIP Value)</p>
+                                    <br>
+                                    <div class="formula">Example:</div>
+                                    <p>Account: $50,000</p>
+                                    <p>Risk: 1% = $500</p>
+                                    <p>Stop: 45 PIPs</p>
+                                    <p>PIP Value: $10/PIP/lot (standard lot)</p>
+                                    <br>
+                                    <p>Position = $500 / (45 × $10) = <strong>1.11 lots</strong></p>
+                                    <p>Round to: <strong>1.0 lot</strong> (conservative)</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">10</div>
+                            <div class="step-content">
+                                <h4>📊 Monitor Trade (3-Day Rule)</h4>
+                                <p>Check Info Table daily:</p>
+                                <ul>
+                                    <li><strong>Day 1:</strong> Price should reach Hesitation Zone end (LQ + 25 PIPs)</li>
+                                    <li><strong>Day 2:</strong> Price should reach Half Point - Move stop to breakeven!</li>
+                                    <li><strong>Day 3:</strong> Price MUST complete LQ (reach 1.1000) or EXIT</li>
+                                </ul>
+                                <div class="warning-box">
+                                    <h4>⚠️ Day 3 Warning:</h4>
+                                    <p>If Info Table shows <strong>"Day 3/3"</strong> in RED and alert <strong>"⚠️ 3-DAY RULE"</strong> appears:</p>
+                                    <p>→ Take partial profits immediately</p>
+                                    <p>→ Tighten stop to recent swing low</p>
+                                    <p>→ If not complete by end of day: <span class="highlight-danger">EXIT TRADE</span></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">11</div>
+                            <div class="step-content">
+                                <h4>🎉 Take Profits & Close</h4>
+                                <p>Execute your scaling plan:</p>
+                                <ul>
+                                    <li><strong>At 1.0880 (Half Point):</strong> Close 0.3-0.5 lots (30-50%)</li>
+                                    <li><strong>Move stop to 1.0755</strong> (breakeven)</li>
+                                    <li><strong>At 1.1000 (LQ Point):</strong> Close 0.3-0.4 lots more</li>
+                                    <li><strong>Move stop to 1.0950</strong> (lock in profits)</li>
+                                    <li><strong>At 1.1025 (Overshoot):</strong> Close remaining 0.1-0.2 lots</li>
+                                </ul>
+                                <div class="example-box">
+                                    <h4>✅ Final Result Example:</h4>
+                                    <p>Entry: 1.0755 (1.0 lot)</p>
+                                    <p>T1: 1.0880 → Close 0.4 lots = +50 PIPs × 0.4 = <strong>+$200</strong></p>
+                                    <p>T2: 1.1000 → Close 0.4 lots = +245 PIPs × 0.4 = <strong>+$980</strong></p>
+                                    <p>T3: 1.1020 → Close 0.2 lots = +265 PIPs × 0.2 = <strong>+$530</strong></p>
+                                    <p><strong>Total Profit: $1,710</strong></p>
+                                    <p><strong>Risk: $450</strong></p>
+                                    <p><strong>R/R: 3.8:1</strong> ✅</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Strategy 2: Hesitation Breakout -->
+                <div id="strategy2" class="tab-content-execution">
+                    <div class="strategy-card">
+                        <h2>💥 Strategy 2: Hesitation Zone Breakout</h2>
+                        <p><strong>Best For:</strong> Continuation moves, after consolidation</p>
+                        <p><strong>Win Rate:</strong> 60-65%</p>
+                        <p><strong>Risk/Reward:</strong> 2:1</p>
+                    </div>
+
+                    <div class="step-by-step">
+                        <h3>📋 Step-by-Step Execution</h3>
+
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>👀 Watch for Hesitation Zone Entry</h4>
+                                <p>Price enters new Large Quarter and <span class="highlight-warning">yellow box</span> appears on chart</p>
+                                <ul>
+                                    <li>This is the first 25 PIPs after LQ Point</li>
+                                    <li>Example: LQ Point 1.0750 → HZ is 1.0750-1.0775</li>
+                                    <li>Info Table shows: <strong>Position: "Hesitation Zone"</strong></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>⏳ Wait for Consolidation</h4>
+                                <p>Price should consolidate <strong>2-8 hours</strong> (on 1H chart) or <strong>1-2 days</strong> (on 4H chart)</p>
+                                <div class="info-box">
+                                    <h4>💡 What to Look For:</h4>
+                                    <ul>
+                                        <li>Price bouncing within yellow box</li>
+                                        <li>Decreasing volatility</li>
+                                        <li>Smaller candle bodies</li>
+                                        <li>Multiple tests of HZ boundaries</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>⚡ Wait for DECISIVE Breakout</h4>
+                                <p>Price must break out of HZ by <strong>>25 PIPs</strong></p>
+                                <div class="example-box">
+                                    <h4>✅ Bullish Breakout Example:</h4>
+                                    <p>HZ Range: 1.0750-1.0775</p>
+                                    <p>Breakout: Price moves to <strong>1.0805</strong> (30 PIPs above HZ)</p>
+                                    <p>Info Table updates: <strong>LQ Progress: 22%</strong>, <strong>SQ: 2/10</strong></p>
+                                    <p>This confirms breakout! ✅</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h4>🎯 ENTER on Breakout or Retest</h4>
+                                <p>Two entry options:</p>
+                                <div class="calculation-box">
+                                    <div class="formula">Option A: Immediate Entry (Aggressive)</div>
+                                    <p>Enter as soon as price breaks 25 PIPs past HZ</p>
+                                    <p>Example: Enter at <strong>1.0801</strong></p>
+                                    <p>Pro: Don't miss the move</p>
+                                    <p>Con: Wider stop required</p>
+                                </div>
+                                <div class="calculation-box">
+                                    <div class="formula">Option B: Retest Entry (Conservative)</div>
+                                    <p>Wait for price to retest HZ top as support</p>
+                                    <p>Example: Enter at <strong>1.0778</strong> (pullback to HZ)</p>
+                                    <p>Pro: Tighter stop</p>
+                                    <p>Con: May miss move if no retest</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">5</div>
+                            <div class="step-content">
+                                <h4>🛑 Set Stop Loss</h4>
+                                <div class="calculation-box">
+                                    <div class="formula">Stop Placement:</div>
+                                    <p>Stop = <strong>Below HZ start - 10 PIPs</strong></p>
+                                    <p>Example: 1.0750 - 10 = <strong>1.0740</strong></p>
+                                    <p>If entry at 1.0778: Risk = 38 PIPs</p>
+                                    <p>If entry at 1.0801: Risk = 61 PIPs</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">6</div>
+                            <div class="step-content">
+                                <h4>🎯 Set Targets</h4>
+                                <ul>
+                                    <li><strong>Target 1:</strong> Half Point (1.0875) - Close 50%</li>
+                                    <li><strong>Target 2:</strong> Next LQ Point (1.1000) - Close remaining</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">7</div>
+                            <div class="step-content">
+                                <h4>📊 Monitor & Manage</h4>
+                                <ul>
+                                    <li>Check <strong>3-Day Rule status</strong> daily</li>
+                                    <li>Move stop to breakeven when price reaches <strong>+50 PIPs</strong></li>
+                                    <li>Trail stop below each <strong>Small Quarter Point</strong> (25 PIP intervals)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Strategy 3: Half Point Bounce -->
+                <div id="strategy3" class="tab-content-execution">
+                    <div class="strategy-card">
+                        <h2>🎯 Strategy 3: Half Point Bounce</h2>
+                        <p><strong>Best For:</strong> Range-bound markets, reversals</p>
+                        <p><strong>Win Rate:</strong> 65-70% (with confluence)</p>
+                        <p><strong>Risk/Reward:</strong> 2:1</p>
+                    </div>
+
+                    <div class="step-by-step">
+                        <h3>📋 Step-by-Step Execution</h3>
+
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>🔍 Identify Half Point</h4>
+                                <p>Look for <span class="highlight-info">purple solid line</span> on chart</p>
+                                <ul>
+                                    <li>Half Point = LQ Point + 125 PIPs</li>
+                                    <li>Example: If LQ is 1.0750-1.1000, Half Point = <strong>1.0875</strong></li>
+                                    <li>Info Table shows: <strong>Position: "Half Point"</strong> when nearby</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>👀 Watch for Price Approach</h4>
+                                <p>Monitor as price approaches Half Point:</p>
+                                <ul>
+                                    <li>Check <strong>LQ Progress</strong> in Info Table: Should be 45-55%</li>
+                                    <li>Check <strong>SQ Completed:</strong> Should be 4/10 to 6/10</li>
+                                    <li>Look for <strong>momentum slowing</strong> (smaller candles)</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>📊 Look for Rejection Candle</h4>
+                                <p>Watch for strong rejection at Half Point:</p>
+                                <div class="info-box">
+                                    <h4>💡 Rejection Signals:</h4>
+                                    <ul>
+                                        <li><strong>Long Wick:</strong> At least 15-20 PIPs above/below Half Point</li>
+                                        <li><strong>Strong Close:</strong> Body closes near opposite end of candle</li>
+                                        <li><strong>High Volume:</strong> If available (stocks/crypto)</li>
+                                        <li><strong>Confirmation:</strong> Next candle continues in rejection direction</li>
+                                    </ul>
+                                </div>
+                                <div class="example-box">
+                                    <h4>✅ Bearish Rejection Example:</h4>
+                                    <p>Half Point: <strong>1.0875</strong></p>
+                                    <p>Candle: Open 1.0872, High 1.0884, Low 1.0865, Close 1.0867</p>
+                                    <p>Analysis: 9 PIP wick above Half Point, closed near low</p>
+                                    <p>Next candle: Closes at 1.0858 (confirms rejection)</p>
+                                    <p>Action: <span class="highlight-danger">ENTER SHORT</span> at 1.0858 ✅</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h4>🔥 Check Confluence (Important!)</h4>
+                                <p>Half Point bounces work BEST with high confluence:</p>
+                                <div class="checklist">
+                                    <h4>Confluence Checklist:</h4>
+                                    <div class="checklist-item">
+                                        <input type="checkbox" id="hp-conf1">
+                                        <label for="hp-conf1">At Half Point (1 pt) ✅</label>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <input type="checkbox" id="hp-conf2">
+                                        <label for="hp-conf2">144-Day Reversal Zone (2 pts)?</label>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <input type="checkbox" id="hp-conf3">
+                                        <label for="hp-conf3">Time=Price Balanced (2 pts)?</label>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <input type="checkbox" id="hp-conf4">
+                                        <label for="hp-conf4">Wednesday (1 pt)?</label>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <input type="checkbox" id="hp-conf5">
+                                        <label for="hp-conf5">Total ≥4 points?</label>
+                                    </div>
+                                </div>
+                                <div class="warning-box">
+                                    <h4>⚠️ Low Confluence Warning:</h4>
+                                    <p>If confluence <3 points: <strong>SKIP THIS TRADE</strong></p>
+                                    <p>Half Point bounces without confluence have only ~50% win rate (coin flip)</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">5</div>
+                            <div class="step-content">
+                                <h4>🎯 ENTER on Confirmation Candle</h4>
+                                <div class="calculation-box">
+                                    <div class="formula">Entry Rules:</div>
+                                    <p>Wait for confirmation candle to close</p>
+                                    <p>Enter at close of confirmation candle</p>
+                                    <p>Or enter on next candle open</p>
+                                    <br>
+                                    <div class="formula">Example:</div>
+                                    <p>Rejection candle closes: 1.0867</p>
+                                    <p>Confirmation candle closes: 1.0858 ✅</p>
+                                    <p><strong>ENTER SHORT at 1.0858</strong></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">6</div>
+                            <div class="step-content">
+                                <h4>🛑 Set Stop Loss</h4>
+                                <div class="calculation-box">
+                                    <div class="formula">Stop Placement:</div>
+                                    <p>For SHORT: Stop = Half Point + 20 PIPs</p>
+                                    <p>Example: 1.0875 + 20 = <strong>1.0895</strong></p>
+                                    <p>Risk: 37 PIPs (1.0895 - 1.0858)</p>
+                                    <br>
+                                    <p>For LONG: Stop = Half Point - 20 PIPs</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">7</div>
+                            <div class="step-content">
+                                <h4>🎯 Set Targets</h4>
+                                <div class="calculation-box">
+                                    <div class="formula">For Bounces BACK to LQ Point:</div>
+                                    <p><strong>Target 1:</strong> 50% retracement</p>
+                                    <p>Example: (1.0875 - 1.0750) / 2 = 1.0812</p>
+                                    <p>Close 50% of position</p>
+                                    <br>
+                                    <p><strong>Target 2:</strong> Return to LQ Point</p>
+                                    <p>Example: 1.0750</p>
+                                    <p>Close remaining 50%</p>
+                                    <br>
+                                    <p><strong>Total Potential:</strong> 125 PIPs (full retracement)</p>
+                                    <p><strong>Risk/Reward:</strong> 125/37 = 3.4:1 ✅</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Strategy 4: High Confluence -->
+                <div id="strategy4" class="tab-content-execution">
+                    <div class="strategy-card">
+                        <h2>🔥 Strategy 4: High Confluence Setup</h2>
+                        <p><strong>Best For:</strong> Maximum edge trades, rare setups</p>
+                        <p><strong>Win Rate:</strong> 75-85% (7+ points)</p>
+                        <p><strong>Risk/Reward:</strong> 3:1+</p>
+                    </div>
+
+                    <div class="step-by-step">
+                        <h3>📋 Step-by-Step Execution</h3>
+
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>🔔 Wait for Confluence Alert</h4>
+                                <p>Watch for <span class="highlight-danger">🔥 CONFLUENCE (X)</span> label on chart</p>
+                                <ul>
+                                    <li>Alert appears when confluence score ≥ Min Score (default: 4)</li>
+                                    <li>Number in parentheses = total points</li>
+                                    <li>Only trade if score ≥5 points for this strategy</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>📊 Check Info Table Confluence Score</h4>
+                                <p>Bottom row shows: <strong>Confluence: X/11 pts</strong></p>
+                                <div class="info-box">
+                                    <h4>💡 Confluence Levels:</h4>
+                                    <ul>
+                                        <li><strong>5-6 pts:</strong> HIGH CONFIDENCE 🔥</li>
+                                        <li><strong>7-9 pts:</strong> MAXIMUM EDGE 🔥🔥🔥</li>
+                                        <li><strong>10+ pts:</strong> ONCE A YEAR 🔥🔥🔥🔥</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>🔍 Identify Active Factors</h4>
+                                <p>Look at which labels are showing on chart:</p>
+                                <div class="checklist">
+                                    <h4>Possible Active Factors:</h4>
+                                    <div class="checklist-item">
+                                        <input type="checkbox" id="conf-lq">
+                                        <label for="conf-lq"><strong>At LQ Point</strong> (2 pts) - Price at .00/.25/.50/.75</label>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <input type="checkbox" id="conf-hz">
+                                        <label for="conf-hz"><strong>In Hesitation Zone</strong> (1 pt) - Yellow box visible</label>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <input type="checkbox" id="conf-hp">
+                                        <label for="conf-hp"><strong>At Half Point</strong> (1 pt) - Purple line</label>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <input type="checkbox" id="conf-3day">
+                                        <label for="conf-3day"><strong>3-Day Rule Warning</strong> (2 pts) - ⚠️ 3-DAY RULE label</label>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <input type="checkbox" id="conf-144">
+                                        <label for="conf-144"><strong>144-Day Zone</strong> (2 pts) - 🔮 144-Day label</label>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <input type="checkbox" id="conf-tp">
+                                        <label for="conf-tp"><strong>Time=Price</strong> (2 pts) - ⚖️ Balanced label</label>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <input type="checkbox" id="conf-anniv">
+                                        <label for="conf-anniv"><strong>Anniversary</strong> (1 pt) - 📅 90/180/1-Year label</label>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <input type="checkbox" id="conf-wed">
+                                        <label for="conf-wed"><strong>Wednesday</strong> (1 pt) - Check calendar</label>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <input type="checkbox" id="conf-q3">
+                                        <label for="conf-q3"><strong>Jul-Sep (Q3)</strong> (1 pt) - Check calendar</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h4>🎯 Determine Trade Direction</h4>
+                                <div class="info-box">
+                                    <h4>💡 Direction Rules:</h4>
+                                    <p><strong>At LQ Point + High Confluence =</strong></p>
+                                    <ul>
+                                        <li>If 144-Day Zone or Anniversary: <span class="highlight-danger">REVERSAL likely</span></li>
+                                        <li>If 3-Day Rule warning: <span class="highlight-warning">COMPLETION or REVERSAL</span></li>
+                                        <li>If Hesitation Zone + Day 1/3: <span class="highlight-success">CONTINUATION likely</span></li>
+                                    </ul>
+                                </div>
+                                <div class="example-box">
+                                    <h4>✅ Example Analysis:</h4>
+                                    <p>Price: <strong>1.1000</strong> (LQ Point)</p>
+                                    <p>Active Factors:</p>
+                                    <ul>
+                                        <li>At LQ Point (2 pts) ✅</li>
+                                        <li>144-Day Reversal Zone (2 pts) ✅</li>
+                                        <li>Time=Price Balanced (2 pts) ✅</li>
+                                        <li>Wednesday (1 pt) ✅</li>
+                                        <li>Anniversary (1 pt) ✅</li>
+                                    </ul>
+                                    <p><strong>Total: 8 points</strong> 🔥🔥🔥</p>
+                                    <p><strong>Direction: SHORT</strong> (multiple reversal factors)</p>
+                                    <p><strong>This is a MAXIMUM EDGE setup!</strong></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">5</div>
+                            <div class="step-content">
+                                <h4>💰 Adjust Position Size for Confluence</h4>
+                                <div class="calculation-box">
+                                    <div class="formula">Risk Adjustment by Confluence:</div>
+                                    <p>5-6 points: Risk <strong>1.0-1.5%</strong></p>
+                                    <p>7-9 points: Risk <strong>1.5-2.0%</strong></p>
+                                    <p>10+ points: Risk <strong>2.0-2.5%</strong> (MAX)</p>
+                                    <br>
+                                    <div class="formula">Example (8 points):</div>
+                                    <p>Account: $50,000</p>
+                                    <p>Risk: 2.0% = $1,000</p>
+                                    <p>Stop: 40 PIPs</p>
+                                    <p>Position = $1,000 / (40 × $10) = <strong>2.5 lots</strong></p>
+                                </div>
+                                <div class="warning-box">
+                                    <h4>⚠️ Never Exceed 2.5% Risk:</h4>
+                                    <p>Even on 10+ point setups, max risk is 2.5% per trade!</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">6</div>
+                            <div class="step-content">
+                                <h4>🎯 Entry, Stop, Targets</h4>
+                                <p>Combine high confluence with one of the other strategies:</p>
+                                <ul>
+                                    <li>If at LQ Point: Use <strong>LQ Transition</strong> entry rules</li>
+                                    <li>If at Half Point: Use <strong>Half Point Bounce</strong> entry rules</li>
+                                    <li>If in Hesitation Zone: Use <strong>HZ Breakout</strong> entry rules</li>
+                                </ul>
+                                <p><strong>The confluence gives you confidence to trade aggressively!</strong></p>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">7</div>
+                            <div class="step-content">
+                                <h4>📊 Monitor Closely</h4>
+                                <p>High confluence trades move FAST:</p>
+                                <ul>
+                                    <li>Often hit Target 1 (Half Point) same day</li>
+                                    <li>May complete full Large Quarter in 1-2 days</li>
+                                    <li>Take profits aggressively - don't get greedy!</li>
+                                    <li>Move stop to breakeven quickly (+30 PIPs)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Strategy 5: Overshoot Fade -->
+                <div id="strategy5" class="tab-content-execution">
+                    <div class="strategy-card">
+                        <h2>↩️ Strategy 5: Overshoot/Undershoot Fade</h2>
+                        <p><strong>Best For:</strong> Reversal trades, exhaustion moves</p>
+                        <p><strong>Win Rate:</strong> 65-70%</p>
+                        <p><strong>Risk/Reward:</strong> 1.5:1 to 2:1</p>
+                    </div>
+
+                    <div class="step-by-step">
+                        <h3>📋 Step-by-Step Execution</h3>
+
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>🔔 Wait for Overshoot/Undershoot Alert</h4>
+                                <p>Watch for alert: <span class="highlight-danger">🎯 OVERSHOOT</span> or <span class="highlight-warning">🎯 UNDERSHOOT</span></p>
+                                <ul>
+                                    <li>Appears when price is within ±25 PIPs of LQ Point</li>
+                                    <li><strong>OVERSHOOT:</strong> Price exceeds LQ Point by <25 PIPs</li>
+                                    <li><strong>UNDERSHOOT:</strong> Price falls short of LQ Point by <25 PIPs</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>📊 Verify in Info Table</h4>
+                                <p>Check <strong>Position</strong> row - should show <strong>"LQ Point"</strong></p>
+                                <div class="info-box">
+                                    <h4>💡 Overshoot/Undershoot Meaning:</h4>
+                                    <p><strong>OVERSHOOT (Bearish Signal):</strong></p>
+                                    <ul>
+                                        <li>Price tried to break above LQ Point</li>
+                                        <li>Failed to move >25 PIPs</li>
+                                        <li>Shows exhaustion/weakness</li>
+                                        <li>Likely to reverse back down</li>
+                                    </ul>
+                                    <br>
+                                    <p><strong>UNDERSHOOT (Bullish Signal):</strong></p>
+                                    <ul>
+                                        <li>Price tried to reach LQ Point</li>
+                                        <li>Came within 25 PIPs but failed</li>
+                                        <li>Shows support holding</li>
+                                        <li>Likely to reverse back up</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>👀 Wait for Rejection Confirmation</h4>
+                                <p>Don't enter immediately - wait for confirmation:</p>
+                                <div class="checklist">
+                                    <h4>Confirmation Signals:</h4>
+                                    <div class="checklist-item">
+                                        <input type="checkbox" id="os-check1">
+                                        <label for="os-check1">Rejection candle forms (long wick)</label>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <input type="checkbox" id="os-check2">
+                                        <label for="os-check2">Next candle closes AWAY from LQ Point</label>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <input type="checkbox" id="os-check3">
+                                        <label for="os-check3">Price moves >10 PIPs from LQ Point</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h4>🎯 ENTER AGAINST the Overshoot</h4>
+                                <p><strong>Key Rule: FADE the move (trade opposite direction)</strong></p>
+                                <div class="example-box">
+                                    <h4>✅ Overshoot Fade Example:</h4>
+                                    <p>Target LQ Point: <strong>1.1000</strong></p>
+                                    <p>Price spikes to: <strong>1.1018</strong> (18 PIPs overshoot)</p>
+                                    <p>Alert: <strong>🎯 OVERSHOOT (LQ Point)</strong></p>
+                                    <p>Rejection candle: High 1.1018, Close 1.1008</p>
+                                    <p>Confirmation: Next candle closes 1.0998</p>
+                                    <p><strong>ENTER SHORT at 1.0998</strong> ✅</p>
+                                    <p>Reason: Overshoot + Rejection = Reversal</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">5</div>
+                            <div class="step-content">
+                                <h4>🛑 Set Stop Loss (TIGHT)</h4>
+                                <div class="calculation-box">
+                                    <div class="formula">For Overshoot Fade (SHORT):</div>
+                                    <p>Stop = Overshoot High + 10 PIPs</p>
+                                    <p>Example: 1.1018 + 10 = <strong>1.1028</strong></p>
+                                    <p>Risk: 30 PIPs (1.1028 - 1.0998)</p>
+                                    <br>
+                                    <div class="formula">For Undershoot Fade (LONG):</div>
+                                    <p>Stop = Undershoot Low - 10 PIPs</p>
+                                </div>
+                                <div class="warning-box">
+                                    <h4>⚠️ Tight Stop = Higher Risk:</h4>
+                                    <p>Overshoot fades use tight stops (15-30 PIPs)</p>
+                                    <p>This means slightly higher risk of stop-out</p>
+                                    <p>But it also means better R/R ratio!</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">6</div>
+                            <div class="step-content">
+                                <h4>🎯 Set Targets (Conservative)</h4>
+                                <div class="calculation-box">
+                                    <div class="formula">Target Strategy:</div>
+                                    <p><strong>Target 1:</strong> Return to LQ Point</p>
+                                    <p>Example: 1.1000 (from 1.0998 = 2 PIPs... too close!)</p>
+                                    <p>Better Target 1: LQ Point - 25 PIPs = 1.0975</p>
+                                    <p>Close 50% of position (23 PIPs profit)</p>
+                                    <br>
+                                    <p><strong>Target 2:</strong> Half Point</p>
+                                    <p>Example: 1.0875 (125 PIPs from 1.0998)</p>
+                                    <p>Close remaining 50% (102 PIPs profit)</p>
+                                    <br>
+                                    <p><strong>Average Profit:</strong> ~60 PIPs</p>
+                                    <p><strong>Risk:</strong> 30 PIPs</p>
+                                    <p><strong>R/R:</strong> 2:1 ✅</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">7</div>
+                            <div class="step-content">
+                                <h4>⚡ Quick Exit Rules</h4>
+                                <div class="warning-box">
+                                    <h4>⚠️ Don't Overstay:</h4>
+                                    <ul>
+                                        <li>Overshoot fades are <strong>quick trades</strong></li>
+                                        <li>Usually complete in <strong>4-12 hours</strong></li>
+                                        <li>If not profitable by end of day: <strong>EXIT</strong></li>
+                                        <li>Don't hold overnight unless +20 PIPs</li>
+                                        <li>Move stop to breakeven at +15 PIPs</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Risk Management Section -->
+                <div style="margin-top: 50px;">
+                    <div class="strategy-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        <h2>💰 Universal Risk Management Rules</h2>
+                        <p>Apply these rules to ALL strategies</p>
+                    </div>
+
+                    <div class="step-by-step">
+                        <div class="step">
+                            <div class="step-number">💡</div>
+                            <div class="step-content">
+                                <h4>Position Sizing Formula</h4>
+                                <div class="calculation-box">
+                                    <div class="formula">Universal Formula:</div>
+                                    <p>Position Size = (Account × Risk%) / (Stop PIPs × PIP Value)</p>
+                                    <br>
+                                    <p><strong>Max Risk Per Trade:</strong></p>
+                                    <ul>
+                                        <li>3-4 Confluence Points: 0.5-1.0%</li>
+                                        <li>5-6 Confluence Points: 1.0-1.5%</li>
+                                        <li>7+ Confluence Points: 1.5-2.5%</li>
+                                    </ul>
+                                    <br>
+                                    <p><strong>Never exceed 2.5% per trade!</strong></p>
+                                    <p><strong>Never exceed 5% total open risk!</strong></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">⏰</div>
+                            <div class="step-content">
+                                <h4>Three-Day Rule (ALWAYS Monitor)</h4>
+                                <ul>
+                                    <li><strong>Day 1:</strong> Best entry time - high probability</li>
+                                    <li><strong>Day 2:</strong> Move stop to breakeven if in profit</li>
+                                    <li><strong>Day 3:</strong> Take partial profits, tighten stops</li>
+                                    <li><strong>Day 4:</strong> If LQ not complete - EXIT TRADE</li>
+                                </ul>
+                                <div class="warning-box">
+                                    <h4>⚠️ 3-Day Rule Violation = HIGH REVERSAL RISK</h4>
+                                    <p>Historically, 70%+ of failed LQ completions reverse back to preceding LQ Point</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">📊</div>
+                            <div class="step-content">
+                                <h4>Always Use Profit Scaling</h4>
+                                <p><strong>Never go "all-in" or "all-out"</strong></p>
+                                <div class="calculation-box">
+                                    <div class="formula">Standard Scaling Plan:</div>
+                                    <p>Entry: 1.0 lot (100%)</p>
+                                    <p>Target 1: Close 0.3-0.5 lots (30-50%)</p>
+                                    <p>Target 2: Close 0.3-0.5 lots (30-50%)</p>
+                                    <p>Target 3: Close 0.1-0.2 lots (10-20%)</p>
+                                    <br>
+                                    <p><strong>Why?</strong> Locks in gains while keeping upside potential</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">🛑</div>
+                            <div class="step-content">
+                                <h4>Daily & Weekly Loss Limits</h4>
+                                <div class="warning-box">
+                                    <h4>⚠️ STOP TRADING IF:</h4>
+                                    <ul>
+                                        <li><strong>Daily Loss:</strong> -3% of account in one day → STOP for the day</li>
+                                        <li><strong>Weekly Loss:</strong> -6% of account in one week → STOP for the week</li>
+                                        <li><strong>3 Losses in a Row:</strong> Take a break, review trades</li>
+                                    </ul>
+                                    <p><strong>Emotional trading leads to bigger losses!</strong></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">✅</div>
+                            <div class="step-content">
+                                <h4>Pre-Trade Checklist (Use EVERY Time)</h4>
+                                <div class="checklist">
+                                    <h4>Before Clicking "BUY" or "SELL":</h4>
+                                    <div class="checklist-item">
+                                        <input type="checkbox" id="final-check1">
+                                        <label for="final-check1">Info Table Position is clear (LQ/Half/HZ)</label>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <input type="checkbox" id="final-check2">
+                                        <label for="final-check2">Confluence ≥3 points (preferably ≥4)</label>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <input type="checkbox" id="final-check3">
+                                        <label for="final-check3">3-Day Rule shows Day 1/3 or Day 2/3</label>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <input type="checkbox" id="final-check4">
+                                        <label for="final-check4">Entry matches one of the 5 strategies</label>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <input type="checkbox" id="final-check5">
+                                        <label for="final-check5">Stop loss calculated (30-50 PIPs)</label>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <input type="checkbox" id="final-check6">
+                                        <label for="final-check6">Targets defined (Half Point & LQ Point)</label>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <input type="checkbox" id="final-check7">
+                                        <label for="final-check7">Position size calculated (≤2% risk)</label>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <input type="checkbox" id="final-check8">
+                                        <label for="final-check8">No major news in next 2 hours</label>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <input type="checkbox" id="final-check9">
+                                        <label for="final-check9">Emotional state is neutral</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                <div style="text-align: center; margin-top: 50px; padding: 30px; background: #f8f9fa; border-radius: 10px;">
+                    <h3>🎯 Ready to Execute?</h3>
+                    <p style="font-size: 1.1em; margin: 20px 0;">
+                        Start with <strong>paper trading</strong> for 4-6 weeks<br>
+                        Track your results by strategy and confluence level<br>
+                        Only go live when consistently profitable
+                    </p>
+                    <p style="font-size: 1.3em; color: #667eea; font-weight: bold;">
+                        📚 Read Full Guide → <a href="../QUARTER_THEORY_TRADING_GUIDE.md" style="color: #667eea;">Trading Guide</a><br>
+                        📋 Print Checklist → <a href="../TRADING_QUICK_REFERENCE.md" style="color: #667eea;">Quick Reference</a>
+                    </p>
+                    <p style="margin-top: 30px; font-style: italic; color: #666;">
+                        "Trade the completion, not the noise." — Ilian Yotov
+                    </p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script>
+        // Tab switching function
+        function switchTab(event, tabId) {
+            // Hide all tab contents
+            const tabContents = document.querySelectorAll('.tab-content-execution');
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.tab-execution');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // Show selected tab content
+            document.getElementById(tabId).classList.add('active');
+
+            // Add active class to clicked tab
+            event.currentTarget.classList.add('active');
+
+            // Scroll to top of strategy section
+            window.scrollTo({ top: 400, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
+

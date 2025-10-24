@@ -1,0 +1,7 @@
+Fix cycle progress percentages - accurate tracking for all sessions
+
+- London session now calculates dailyProgress, ninetyMinProgress, microProgress
+- NY session fixed with proper 3-hour prime window tracking
+- PM session updated with complete progress tracking
+- All sessions now show accurate percentage completion
+- Progress bars will display correctly on refresh

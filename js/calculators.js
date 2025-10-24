@@ -1248,6 +1248,220 @@ function calculateQuarterPoints() {
 }
 
 // ==========================================
+// 144-DAY CYCLE CALCULATOR (GANN TIMING)
+// ==========================================
+
+// Calculate 144-day cycle from major swing
+function calculate144Cycle() {
+    const swingDateInput = document.getElementById('gann144SwingDate');
+    const swingTypeSelect = document.getElementById('gann144SwingType');
+    const priceInput = document.getElementById('gann144Price');
+    const resultDiv = document.getElementById('gann144Result');
+    
+    const swingDate = swingDateInput.value;
+    const swingType = swingTypeSelect.value;
+    const price = priceInput.value;
+    
+    // Validate swing date
+    if (!swingDate) {
+        showError('Please select a major swing date', 'gann144Result');
+        return;
+    }
+    
+    // Calculate cycle
+    const cycleData = calculate144DayCycle(new Date(swingDate));
+    
+    // Build result HTML
+    let resultHTML = `
+        <div style="margin-bottom: 1rem;">
+            <strong style="color: #8b2be2; font-size: 1.1rem;">🔮 144-Day Cycle Analysis</strong>
+            <div style="font-size: 0.9rem; color: var(--text-tertiary); margin-top: 0.25rem;">
+                From ${swingType} on ${formatGannDate(new Date(swingDate))}
+                ${price ? ` at ${parseFloat(price).toFixed(5)}` : ''}
+            </div>
+        </div>
+        
+        <div style="padding: 1rem; background: ${cycleData.inReversalZone ? 'rgba(0, 255, 136, 0.2)' : 'rgba(138, 43, 226, 0.1)'}; border-radius: 6px; margin-bottom: 1rem; border: 2px solid ${cycleData.inReversalZone ? 'var(--accent-green)' : '#8b2be2'};">
+            <div style="font-size: 0.85rem; color: var(--text-tertiary); margin-bottom: 0.25rem;">Current Status</div>
+            <div style="font-size: 1.3rem; font-weight: bold; color: ${cycleData.inReversalZone ? 'var(--accent-green)' : '#8b2be2'};">
+                ${cycleData.inReversalZone ? '🔥 ' : ''}${cycleData.status}
+            </div>
+            <div style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.25rem;">
+                Day ${cycleData.daysSinceSwing} of 144 (${cycleData.progress.toFixed(0)}% complete)
+            </div>
+        </div>
+        
+        <div style="display: grid; gap: 1rem; margin-bottom: 1.5rem;">
+            <div style="padding: 0.75rem; background: rgba(255, 193, 7, 0.15); border-radius: 6px; border-left: 4px solid var(--accent-yellow);">
+                <div style="font-size: 0.85rem; color: var(--text-tertiary); margin-bottom: 0.25rem;">📅 Half Cycle (72 days)</div>
+                <div style="font-size: 1.1rem; font-weight: bold; color: var(--accent-yellow);">${formatGannDate(cycleData.halfCycleDate)}</div>
+                <div style="font-size: 0.8rem; color: var(--text-tertiary); margin-top: 0.25rem;">
+                    ${cycleData.daysToHalf > 0 ? `${formatDaysRemaining(cycleData.daysToHalf)} remaining` : 'Passed'}
+                </div>
+            </div>
+            
+            <div style="padding: 0.75rem; background: rgba(138, 43, 226, 0.15); border-radius: 6px; border-left: 4px solid #8b2be2;">
+                <div style="font-size: 0.85rem; color: var(--text-tertiary); margin-bottom: 0.25rem;">🎯 Full Cycle (144 days) ⭐</div>
+                <div style="font-size: 1.1rem; font-weight: bold; color: #8b2be2;">${formatGannDate(cycleData.fullCycleDate)}</div>
+                <div style="font-size: 0.8rem; color: var(--text-tertiary); margin-top: 0.25rem;">
+                    ${cycleData.daysToFull > 0 ? `${formatDaysRemaining(cycleData.daysToFull)} remaining` : 'Passed'}
+                </div>
+            </div>
+            
+            <div style="padding: 0.75rem; background: rgba(74, 158, 255, 0.15); border-radius: 6px; border-left: 4px solid var(--accent-blue);">
+                <div style="font-size: 0.85rem; color: var(--text-tertiary); margin-bottom: 0.25rem;">🔄 Double Cycle (288 days)</div>
+                <div style="font-size: 1.1rem; font-weight: bold; color: var(--accent-blue);">${formatGannDate(cycleData.doubleCycleDate)}</div>
+                <div style="font-size: 0.8rem; color: var(--text-tertiary); margin-top: 0.25rem;">
+                    ${cycleData.daysToDouble > 0 ? `${formatDaysRemaining(cycleData.daysToDouble)} remaining` : 'Passed'}
+                </div>
+            </div>
+        </div>
+    `;
+    
+    // Add trading strategy tips
+    if (cycleData.inReversalZone) {
+        resultHTML += `
+            <div style="margin-top: 1rem; padding: 0.75rem; background: rgba(0, 255, 136, 0.2); border-radius: 4px; border: 2px solid var(--accent-green);">
+                <strong style="color: var(--accent-green);">🔥 HIGH PROBABILITY REVERSAL ZONE!</strong>
+                <div style="font-size: 0.85rem; margin-top: 0.5rem; line-height: 1.6;">
+                    <div style="margin-bottom: 0.5rem;">
+                        ✅ Watch for reversal patterns (engulfing, pin bars)
+                    </div>
+                    <div style="margin-bottom: 0.5rem;">
+                        ✅ Look for divergence on indicators
+                    </div>
+                    <div style="margin-bottom: 0.5rem;">
+                        ✅ Check Weekly Q3 confluence (Wednesday)
+                    </div>
+                    <div>
+                        ✅ Tighten stops and prepare for trend change
+                    </div>
+                </div>
+            </div>
+        `;
+    } else if (cycleData.daysToFull <= 7 && cycleData.daysToFull > 0) {
+        resultHTML += `
+            <div style="margin-top: 1rem; padding: 0.75rem; background: rgba(255, 193, 7, 0.15); border-radius: 4px;">
+                <strong style="color: var(--accent-yellow);">⚠️ Approaching Reversal Zone</strong>
+                <div style="font-size: 0.85rem; margin-top: 0.5rem; line-height: 1.6;">
+                    Reversal zone begins in ${formatDaysRemaining(cycleData.daysToFull)}. Start monitoring for reversal signals!
+                </div>
+            </div>
+        `;
+    } else {
+        resultHTML += `
+            <div style="margin-top: 1rem; padding: 0.75rem; background: rgba(74, 158, 255, 0.1); border-radius: 4px;">
+                <strong style="color: var(--accent-blue);">💡 Trading Strategy:</strong>
+                <div style="font-size: 0.85rem; margin-top: 0.5rem; line-height: 1.6;">
+                    <div style="margin-bottom: 0.5rem;">
+                        <strong>72-Day Target:</strong> First potential reversal zone
+                    </div>
+                    <div style="margin-bottom: 0.5rem;">
+                        <strong>144-Day Target:</strong> Primary high-probability reversal (±4 days)
+                    </div>
+                    <div>
+                        <strong>288-Day Target:</strong> Extended cycle reversal
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+    
+    // Display result
+    resultDiv.style.display = 'block';
+    resultDiv.innerHTML = resultHTML;
+}
+
+// Save 144-day swing to localStorage
+function save144Swing() {
+    const swingDateInput = document.getElementById('gann144SwingDate');
+    const swingTypeSelect = document.getElementById('gann144SwingType');
+    const priceInput = document.getElementById('gann144Price');
+    
+    const swingDate = swingDateInput.value;
+    const swingType = swingTypeSelect.value;
+    const price = priceInput.value;
+    
+    if (!swingDate) {
+        alert('Please select a swing date first');
+        return;
+    }
+    
+    // Save using gann-timing.js function
+    saveMajorSwing(
+        new Date(swingDate),
+        swingType,
+        price ? parseFloat(price) : 0,
+        'EURUSD' // Default pair
+    );
+    
+    // Show success message
+    alert('✅ Swing saved successfully!');
+    
+    // Refresh saved swings display
+    displaySaved144Swings();
+}
+
+// Display saved 144-day swings
+function displaySaved144Swings() {
+    const savedSwingsDiv = document.getElementById('saved144Swings');
+    const savedSwingsList = document.getElementById('saved144SwingsList');
+    
+    if (!savedSwingsDiv || !savedSwingsList) return;
+    
+    const swings = getMajorSwings();
+    
+    if (swings.length === 0) {
+        savedSwingsDiv.style.display = 'none';
+        return;
+    }
+    
+    savedSwingsDiv.style.display = 'block';
+    
+    let swingsHTML = '';
+    swings.forEach((swing, index) => {
+        const swingDate = new Date(swing.date);
+        const cycleData = calculate144DayCycle(swingDate);
+        
+        swingsHTML += `
+            <div style="padding: 0.75rem; background: var(--bg-tertiary); border-radius: 4px; border-left: 3px solid ${cycleData.inReversalZone ? 'var(--accent-green)' : '#8b2be2'};">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <strong style="color: ${cycleData.inReversalZone ? 'var(--accent-green)' : 'var(--text-primary)'};">
+                            ${swing.type === 'high' ? '📈' : '📉'} ${swing.type.toUpperCase()} - ${formatGannDate(swingDate)}
+                        </strong>
+                        <div style="font-size: 0.8rem; color: var(--text-tertiary); margin-top: 0.25rem;">
+                            Day ${cycleData.daysSinceSwing}/144 • ${cycleData.status}
+                            ${cycleData.daysToFull > 0 ? ` • ${formatDaysRemaining(cycleData.daysToFull)} to reversal` : ''}
+                        </div>
+                    </div>
+                    <button onclick="loadSaved144Swing(${index})" style="padding: 0.25rem 0.5rem; background: rgba(138, 43, 226, 0.2); color: #8b2be2; border: 1px solid #8b2be2; border-radius: 4px; cursor: pointer; font-size: 0.8rem;">
+                        Load
+                    </button>
+                </div>
+            </div>
+        `;
+    });
+    
+    savedSwingsList.innerHTML = swingsHTML;
+}
+
+// Load a saved swing into the calculator
+function loadSaved144Swing(index) {
+    const swings = getMajorSwings();
+    const swing = swings[index];
+    
+    if (!swing) return;
+    
+    document.getElementById('gann144SwingDate').value = swing.date.split('T')[0];
+    document.getElementById('gann144SwingType').value = swing.type;
+    document.getElementById('gann144Price').value = swing.price || '';
+    
+    // Auto-calculate
+    calculate144Cycle();
+}
+
+// ==========================================
 // INITIALIZATION
 // ==========================================
 
@@ -1263,7 +1477,9 @@ document.addEventListener('DOMContentLoaded', function() {
         { inputs: ['levAccountBalance', 'levPositionSize', 'levLeverage'], func: calculateLeverage },
         { inputs: ['beWinRate', 'beAvgWin', 'beAvgLoss'], func: calculateBreakeven },
         { inputs: ['compPrincipal', 'compReturn', 'compMonths', 'compDeposit'], func: calculateCompound },
-        { inputs: ['qpADR', 'qpCurrentPrice'], func: calculateQuarterPoints }
+        { inputs: ['qpADR', 'qpCurrentPrice'], func: calculateQuarterPoints },
+        { inputs: ['tpPips', 'tpTime'], func: calculateTimePrice },
+        { inputs: ['annivDate'], func: calculateAnniversary }
     ];
     
     calculators.forEach(calc => {
@@ -1278,7 +1494,345 @@ document.addEventListener('DOMContentLoaded', function() {
         updateQuarterPointADR();
     }
     
+    // Initialize 144-Day Calculator with saved swings
+    const saved144Swings = document.getElementById('saved144Swings');
+    if (saved144Swings) {
+        displaySaved144Swings();
+    }
+    
+    // Initialize Anniversary saved events
+    const savedAnniv = document.getElementById('savedAnniversaries');
+    if (savedAnniv) {
+        displaySavedAnniversaries();
+    }
+    
     console.log('✅ Trading Calculators initialized - All systems ready!');
     console.log('📊 PSR Zone Calculator: Weekly ends Friday Midnight EST');
     console.log('🎯 Quarter Point Calculator: ADR-based targets loaded');
+    console.log('🔮 144-Day Cycle Calculator: Gann timing ready');
 });
+
+// ==========================================
+// TIME = PRICE CALCULATOR
+// ==========================================
+
+function calculateTimePrice() {
+    const pipsInput = document.getElementById('tpPips');
+    const timeInput = document.getElementById('tpTime');
+    const timeframeSelect = document.getElementById('tpTimeframe');
+    const resultDiv = document.getElementById('timePriceResult');
+    
+    const pips = parseFloat(pipsInput.value);
+    const time = parseFloat(timeInput.value);
+    const timeframe = timeframeSelect.value;
+    
+    // Validate inputs
+    if (isNaN(pips) || pips <= 0) {
+        showError('Please enter valid PIPs moved', 'timePriceResult');
+        return;
+    }
+    
+    if (isNaN(time) || time <= 0) {
+        showError('Please enter valid time elapsed', 'timePriceResult');
+        return;
+    }
+    
+    // Calculate balance
+    const balanceData = calculateTimePriceBalance(pips, time, timeframe);
+    
+    // Build result HTML
+    let resultHTML = `
+        <div style="margin-bottom: 1rem;">
+            <strong style="color: #ff6b35; font-size: 1.1rem;">⚖️ Time = Price Balance Analysis</strong>
+            <div style="font-size: 0.9rem; color: var(--text-tertiary); margin-top: 0.25rem;">
+                ${pips} PIPs in ${time} ${timeframe}
+            </div>
+        </div>
+        
+        <div style="padding: 1rem; background: ${balanceData.isBalanced ? 'rgba(0, 255, 136, 0.2)' : 'rgba(255, 107, 53, 0.1)'}; border-radius: 6px; margin-bottom: 1rem; border: 2px solid ${balanceData.isBalanced ? 'var(--accent-green)' : '#ff6b35'};">
+            <div style="font-size: 0.85rem; color: var(--text-tertiary); margin-bottom: 0.25rem;">Current Status</div>
+            <div style="font-size: 1.3rem; font-weight: bold; color: ${balanceData.isBalanced ? 'var(--accent-green)' : '#ff6b35'};">
+                ${balanceData.isBalanced ? '✅ ' : ''}${balanceData.status}
+            </div>
+            <div style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.25rem;">
+                Balance Ratio: ${balanceData.balanceRatio} (Target: 1.00)
+            </div>
+        </div>
+        
+        <div style="display: grid; gap: 1rem; margin-bottom: 1.5rem;">
+            <div style="padding: 0.75rem; background: rgba(74, 158, 255, 0.15); border-radius: 6px; border-left: 4px solid var(--accent-blue);">
+                <div style="font-size: 0.85rem; color: var(--text-tertiary); margin-bottom: 0.25rem;">🎯 Time Equals PIPs</div>
+                <div style="font-size: 1.1rem; font-weight: bold; color: var(--accent-blue);">${balanceData.timeEqualsPips} ${timeframe}</div>
+                <div style="font-size: 0.8rem; color: var(--text-tertiary); margin-top: 0.25rem;">
+                    When time reaches ${balanceData.timeEqualsPips} ${timeframe} (reversal zone)
+                </div>
+            </div>
+            
+            <div style="padding: 0.75rem; background: rgba(255, 193, 7, 0.15); border-radius: 6px; border-left: 4px solid var(--accent-yellow);">
+                <div style="font-size: 0.85rem; color: var(--text-tertiary); margin-bottom: 0.25rem;">📏 PIPs Equal Time</div>
+                <div style="font-size: 1.1rem; font-weight: bold; color: var(--accent-yellow);">${balanceData.pipsEqualTime} PIPs</div>
+                <div style="font-size: 0.8rem; color: var(--text-tertiary); margin-top: 0.25rem;">
+                    When PIPs reach ${balanceData.pipsEqualTime} (reversal zone)
+                </div>
+            </div>
+        </div>
+    `;
+    
+    // Add balance meter
+    const percentToBalance = Math.min(Math.abs(parseFloat(balanceData.percentToBalance)), 100);
+    const direction = balanceData.balanceRatio > 1 ? 'Time ahead' : 'Price ahead';
+    resultHTML += `
+        <div style="padding: 1rem; background: rgba(255, 107, 53, 0.1); border-radius: 6px; margin-bottom: 1rem;">
+            <div style="text-align: center; margin-bottom: 0.5rem;">
+                <strong>Balance Meter</strong>
+            </div>
+            <div style="background: rgba(255, 255, 255, 0.1); height: 8px; border-radius: 4px; overflow: hidden;">
+                <div style="background: linear-gradient(to right, #ff6b35, var(--accent-green)); height: 100%; width: ${percentToBalance}%"></div>
+            </div>
+            <div style="font-size: 0.8rem; color: var(--text-tertiary); text-align: center; margin-top: 0.25rem;">
+                ${percentToBalance}% to perfect balance (${direction})
+            </div>
+        </div>
+    `;
+    
+    // Add trading tips
+    if (balanceData.isBalanced) {
+        resultHTML += `
+            <div style="margin-top: 1rem; padding: 0.75rem; background: rgba(0, 255, 136, 0.2); border-radius: 4px; border: 2px solid var(--accent-green);">
+                <strong style="color: var(--accent-green);">🔥 BALANCE REACHED - REVERSAL ZONE!</strong>
+                <div style="font-size: 0.85rem; margin-top: 0.5rem; line-height: 1.6;">
+                    <div style="margin-bottom: 0.5rem;">
+                        ✅ Expect potential reversal or acceleration
+                    </div>
+                    <div style="margin-bottom: 0.5rem;">
+                        ✅ Watch for rejection at key levels
+                    </div>
+                    <div style="margin-bottom: 0.5rem;">
+                        ✅ Check 144-day cycle confluence
+                    </div>
+                    <div>
+                        ✅ Tighten stops - momentum may change
+                    </div>
+                </div>
+            </div>
+        `;
+    } else {
+        resultHTML += `
+            <div style="margin-top: 1rem; padding: 0.75rem; background: rgba(74, 158, 255, 0.1); border-radius: 4px;">
+                <strong style="color: var(--accent-blue);">💡 Gann Trading Insight:</strong>
+                <div style="font-size: 0.85rem; margin-top: 0.5rem; line-height: 1.6;">
+                    <div style="margin-bottom: 0.5rem;">
+                        <strong>Balance Rule:</strong> When time = PIPs, markets often reverse or accelerate
+                    </div>
+                    <div style="margin-bottom: 0.5rem;">
+                        <strong>Example:</strong> 50 PIPs in 10 hours → Watch hour 50 or 10 PIPs in hour 10
+                    </div>
+                    <div>
+                        <strong>Strategy:</strong> Use with 144-day cycle for maximum confluence
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+    
+    // Display result
+    resultDiv.style.display = 'block';
+    resultDiv.innerHTML = resultHTML;
+}
+
+// ==========================================
+// ANNIVERSARY DATE TRACKER
+// ==========================================
+
+function calculateAnniversary() {
+    const dateInput = document.getElementById('annivDate');
+    const typeSelect = document.getElementById('annivType');
+    const resultDiv = document.getElementById('anniversaryResult');
+    
+    const eventDate = dateInput.value;
+    const eventType = typeSelect.value;
+    
+    if (!eventDate) {
+        showError('Please select an event date', 'anniversaryResult');
+        return;
+    }
+    
+    const annivData = calculateAnniversaries(new Date(eventDate));
+    
+    // Check if today is anniversary
+    const todayStatus = isAnniversaryDate(new Date(eventDate));
+    
+    let resultHTML = `
+        <div style="margin-bottom: 1rem;">
+            <strong style="color: #00ff88; font-size: 1.1rem;">📅 Anniversary Analysis</strong>
+            <div style="font-size: 0.9rem; color: var(--text-tertiary); margin-top: 0.25rem;">
+                ${eventType} on ${formatGannDate(new Date(eventDate))}
+            </div>
+        </div>
+    `;
+    
+    if (todayStatus.isAnniversary) {
+        resultHTML += `
+            <div style="padding: 1rem; background: rgba(0, 255, 136, 0.2); border-radius: 6px; margin-bottom: 1rem; border: 2px solid var(--accent-green);">
+                <div style="font-size: 1.3rem; font-weight: bold; color: var(--accent-green); margin-bottom: 0.25rem;">
+                    🎉 TODAY IS AN ANNIVERSARY! ${todayStatus.type}
+                </div>
+                <div style="font-size: 0.9rem; color: var(--text-secondary);">
+                    Markets often repeat behavior on anniversary dates. Watch for reversal or continuation!
+                </div>
+            </div>
+        `;
+    }
+    
+    resultHTML += `
+        <div style="display: grid; gap: 1rem; margin-bottom: 1.5rem;">
+            <div style="padding: 0.75rem; background: rgba(255, 193, 7, 0.15); border-radius: 6px; border-left: 4px solid var(--accent-yellow);">
+                <div style="font-size: 0.85rem; color: var(--text-tertiary); margin-bottom: 0.25rem;">📅 1-Month Anniversary</div>
+                <div style="font-size: 1.1rem; font-weight: bold; color: var(--accent-yellow);">${formatGannDate(annivData.oneMonth)}</div>
+                <div style="font-size: 0.8rem; color: var(--text-tertiary); margin-top: 0.25rem;">
+                    ${annivData.daysToOneMonth > 0 ? `${formatDaysRemaining(annivData.daysToOneMonth)} remaining` : 'Today!'}
+                </div>
+            </div>
+            
+            <div style="padding: 0.75rem; background: rgba(74, 158, 255, 0.15); border-radius: 6px; border-left: 4px solid var(--accent-blue);">
+                <div style="font-size: 0.85rem; color: var(--text-tertiary); margin-bottom: 0.25rem;">🔄 1-Quarter (90 days)</div>
+                <div style="font-size: 1.1rem; font-weight: bold; color: var(--accent-blue);">${formatGannDate(annivData.oneQuarter)}</div>
+                <div style="font-size: 0.8rem; color: var(--text-tertiary); margin-top: 0.25rem;">
+                    ${annivData.daysToOneQuarter > 0 ? `${formatDaysRemaining(annivData.daysToOneQuarter)} remaining` : 'Today!'}
+                </div>
+            </div>
+            
+            <div style="padding: 0.75rem; background: rgba(255, 107, 53, 0.15); border-radius: 6px; border-left: 4px solid #ff6b35;">
+                <div style="font-size: 0.85rem; color: var(--text-tertiary); margin-bottom: 0.25rem;">⚠️ 2-Quarters (180 days)</div>
+                <div style="font-size: 1.1rem; font-weight: bold; color: #ff6b35;">${formatGannDate(annivData.twoQuarters)}</div>
+                <div style="font-size: 0.8rem; color: var(--text-tertiary); margin-top: 0.25rem;">
+                    ${annivData.daysToTwoQuarters > 0 ? `${formatDaysRemaining(annivData.daysToTwoQuarters)} remaining` : 'Today!'}
+                </div>
+            </div>
+            
+            <div style="padding: 0.75rem; background: rgba(0, 255, 136, 0.15); border-radius: 6px; border-left: 4px solid var(--accent-green);">
+                <div style="font-size: 0.85rem; color: var(--text-tertiary); margin-bottom: 0.25rem;">🎯 1-Year Anniversary</div>
+                <div style="font-size: 1.1rem; font-weight: bold; color: var(--accent-green);">${formatGannDate(annivData.oneYear)}</div>
+                <div style="font-size: 0.8rem; color: var(--text-tertiary); margin-top: 0.25rem;">
+                    ${annivData.daysToOneYear > 0 ? `${formatDaysRemaining(annivData.daysToOneYear)} remaining` : 'Today!'}
+                </div>
+            </div>
+        </div>
+    `;
+    
+    if (annivData.nextAnniversary) {
+        resultHTML += `
+            <div style="padding: 1rem; background: rgba(74, 158, 255, 0.1); border-radius: 6px; margin-bottom: 1rem;">
+                <strong style="color: var(--accent-blue);">📅 Next Anniversary:</strong>
+                <div style="font-size: 1rem; font-weight: bold; margin-top: 0.25rem;">
+                    ${annivData.nextAnniversary.type} - ${formatGannDate(annivData.nextAnniversary.date)}
+                </div>
+                <div style="font-size: 0.9rem; color: var(--text-secondary);">
+                    ${formatDaysRemaining(annivData.nextAnniversary.daysAway)} remaining
+                </div>
+            </div>
+        `;
+    }
+    
+    // Add strategy tips
+    resultHTML += `
+        <div style="margin-top: 1rem; padding: 0.75rem; background: rgba(0, 255, 136, 0.1); border-radius: 4px;">
+            <strong style="color: var(--accent-green);">💡 Gann Anniversary Strategy:</strong>
+            <div style="font-size: 0.85rem; margin-top: 0.5rem; line-height: 1.6;">
+                <div style="margin-bottom: 0.5rem;">
+                    <strong>Rule:</strong> Markets repeat behavior on anniversary dates (1-month, 90-days, 180-days, 1-year)
+                </div>
+                <div style="margin-bottom: 0.5rem;">
+                    <strong>Action:</strong> Watch for reversal or continuation at these dates
+                </div>
+                <div>
+                    <strong>Confluence:</strong> Combine with 144-day cycle and Weekly Q3 for maximum edge
+                </div>
+            </div>
+        </div>
+    `;
+    
+    resultDiv.style.display = 'block';
+    resultDiv.innerHTML = resultHTML;
+}
+
+function saveAnniversaryEvent() {
+    const dateInput = document.getElementById('annivDate');
+    const typeSelect = document.getElementById('annivType');
+    
+    const eventDate = dateInput.value;
+    const eventType = typeSelect.value;
+    
+    if (!eventDate) {
+        alert('Please select an event date first');
+        return;
+    }
+    
+    saveAnniversary(
+        new Date(eventDate),
+        eventType,
+        `${eventType} event on ${formatGannDate(new Date(eventDate))}`
+    );
+    
+    alert('✅ Event saved successfully!');
+    displaySavedAnniversaries();
+}
+
+function displaySavedAnniversaries() {
+    const savedDiv = document.getElementById('savedAnniversaries');
+    const listDiv = document.getElementById('savedAnnivList');
+    
+    if (!savedDiv || !listDiv) return;
+    
+    const events = getAnniversaries();
+    
+    if (events.length === 0) {
+        savedDiv.style.display = 'none';
+        return;
+    }
+    
+    savedDiv.style.display = 'block';
+    
+    let html = '';
+    events.forEach((event, index) => {
+        const eventDate = new Date(event.date);
+        const annivData = calculateAnniversaries(eventDate);
+        const status = isAnniversaryDate(eventDate);
+        
+        const color = status.isAnniversary ? 'var(--accent-green)' : '#00ff88';
+        const icon = status.isAnniversary ? '🎉' : '📅';
+        
+        html += `
+            <div style="padding: 0.75rem; background: var(--bg-tertiary); border-radius: 4px; border-left: 3px solid ${color};">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <strong style="color: ${color};">
+                            ${icon} ${event.type.toUpperCase()} - ${formatGannDate(eventDate)}
+                        </strong>
+                        <div style="font-size: 0.8rem; color: var(--text-tertiary); margin-top: 0.25rem;">
+                            Next: ${annivData.nextAnniversary ? annivData.nextAnniversary.type : 'Passed'}
+                            ${annivData.nextAnniversary ? formatDaysRemaining(annivData.nextAnniversary.daysAway) : ''}
+                        </div>
+                    </div>
+                    <button onclick="loadSavedAnniv(${index})" style="padding: 0.25rem 0.5rem; background: rgba(0, 255, 136, 0.2); color: #00ff88; border: 1px solid #00ff88; border-radius: 4px; cursor: pointer; font-size: 0.8rem;">
+                        Load
+                    </button>
+                </div>
+            </div>
+        `;
+    });
+    
+    listDiv.innerHTML = html;
+}
+
+function loadSavedAnniv(index) {
+    const events = getAnniversaries();
+    const event = events[index];
+    
+    if (!event) return;
+    
+    document.getElementById('annivDate').value = event.date.split('T')[0];
+    document.getElementById('annivType').value = event.type;
+    
+    calculateAnniversary();
+}

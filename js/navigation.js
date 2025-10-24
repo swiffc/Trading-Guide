@@ -24,6 +24,7 @@ const NAVIGATION_STRUCTURE = [
         items: [
             { icon: '🏠', label: 'Home', file: 'index.html', isHome: true },
             { icon: '🧠', label: 'Core Philosophy', file: 'core-philosophy.html' },
+            { icon: '💭', label: 'Trading Psychology', file: 'trading-psychology.html' },
             { icon: '⚡', label: 'Quick Reference', file: 'quick-reference.html' }
         ]
     },
@@ -39,6 +40,7 @@ const NAVIGATION_STRUCTURE = [
     {
         category: 'TRADE EXECUTION',
         items: [
+            { icon: '🎯', label: 'Trade Execution Guide', file: 'trade-execution.html' },
             { icon: '🔧', label: 'Technical Setup', file: 'technical-setup.html' },
             { icon: '📐', label: 'Patterns (31+)', file: 'patterns.html' },
             { icon: '🎯', label: 'Entry & Exit Rules', file: 'entry-rules.html' },

@@ -1,0 +1,452 @@
+// This source code is subject to the terms of the Mozilla Public License 2.0
+// D.X.C. QUARTER THEORY + GANN TIMING - COMPLETE ILIAN YOTOV INTEGRATION
+// Version 3.0 FINAL - PINE SCRIPT v5 ✅
+// Created: October 2025
+// Based on Ilian Yotov's "The Quarters Theory" Book + ICT + W.D. Gann
+//
+// 🎯 AUTHENTIC ILIAN YOTOV QUARTER THEORY FEATURES:
+// - 1000 PIP Ranges: Between Major Whole Numbers (e.g., 1.3000-1.4000)
+// - Large Quarters (LQ): 250 PIPs each (4 per 1000 PIP Range)
+// - Small Quarters (SQ): 25 PIPs each (10 per Large Quarter, 40 per 1000 PIP Range)
+// - Quarter Points: .00, .25, .50, .75 (Small Quarter Points)
+// - Large Quarter Points: .00, .25, .50, .75 at 250 PIP intervals
+// - Half Points: Midpoint of each Large Quarter
+// - Hesitation Zones: First 25 PIPs (1 Small Quarter) after LQ Point
+// - Overshoot/Undershoot Areas: ±25 PIPs from any Quarter Point
+// - Three-Day Rule: LQ must complete within 3 trading days or reversal
+// - Asset-Class Calibrated: 9 asset types
+// - Gann Timing: 144-Day cycles, Time=Price, Anniversaries
+// - Confluence Scoring: Up to 11 points for maximum edge
+
+//@version=5
+indicator("D.X.C. Quarter Theory + Gann v3.0 FINAL", overlay=true, max_lines_count=150, max_labels_count=75, max_boxes_count=75)
+
+// ════════════════════════════════════════════
+// CONSTANTS
+// ════════════════════════════════════════════
+
+const int MS_PER_HOUR = 60 * 60 * 1000
+const int MS_PER_DAY = 24 * MS_PER_HOUR
+const float LARGE_QUARTER_PIPS = 250.0
+const float SMALL_QUARTER_PIPS = 25.0
+const float RANGE_1000_PIPS = 1000.0
+
+// ════════════════════════════════════════════
+// INPUTS - QUARTER THEORY (Ilian Yotov)
+// ════════════════════════════════════════════
+
+show1000Range = input.bool(true, "Show 1000 PIP Ranges", group="📊 Quarter Theory (Yotov)")
+rangeColor = input.color(color.new(color.gray, 70), "1000 Range Color", inline="qt1", group="📊 Quarter Theory (Yotov)")
+
+showLargeQuarters = input.bool(true, "Show Large Quarters (250 PIP)", group="📊 Quarter Theory (Yotov)")
+lqLineColor = input.color(color.new(color.blue, 40), "LQ Color", inline="qt2", group="📊 Quarter Theory (Yotov)")
+lqLineWidth = input.int(2, "Width", minval=1, maxval=3, inline="qt2", group="📊 Quarter Theory (Yotov)")
+
+showSmallQuarters = input.bool(true, "Show Small Quarters (25 PIP)", group="📊 Quarter Theory (Yotov)")
+sqLineColor = input.color(color.new(color.orange, 50), "SQ Color", inline="qt3", group="📊 Quarter Theory (Yotov)")
+sqLineWidth = input.int(1, "Width", minval=1, maxval=2, inline="qt3", group="📊 Quarter Theory (Yotov)")
+
+showHesitationZones = input.bool(true, "Show Hesitation Zones", group="📊 Quarter Theory (Yotov)", tooltip="First 25 PIPs after entering new Large Quarter")
+hzColor = input.color(color.new(color.yellow, 85), "HZ Color", inline="qt4", group="📊 Quarter Theory (Yotov)")
+
+showHalfPoints = input.bool(true, "Show Half Points", group="📊 Quarter Theory (Yotov)", tooltip="Midpoint of each Large Quarter (125 PIPs)")
+halfPointColor = input.color(color.new(color.purple, 30), "Half Point Color", inline="qt5", group="📊 Quarter Theory (Yotov)")
+
+showOvershoot = input.bool(true, "Show Overshoot/Undershoot Alerts", group="📊 Quarter Theory (Yotov)", tooltip="Price within ±25 PIPs of LQ Point")
+overshootColor = input.color(color.new(color.red, 0), "Alert Color", inline="qt6", group="📊 Quarter Theory (Yotov)")
+
+showThreeDayRule = input.bool(true, "Show 3-Day Rule Progress", group="📊 Quarter Theory (Yotov)", tooltip="Track Large Quarter completion progress (must complete in 3 days)")
+threeDayColor = input.color(color.new(color.red, 60), "Progress Color", inline="qt7", group="📊 Quarter Theory (Yotov)")
+
+levelsToShow = input.int(3, "Levels to Show (Each Side)", minval=1, maxval=5, group="📊 Quarter Theory (Yotov)")
+proximityPips = input.int(150, "Proximity Range (PIPs)", minval=50, maxval=500, group="📊 Quarter Theory (Yotov)")
+
+assetType = input.string("Auto-Detect", "Asset Type", options=["Auto-Detect", "Forex Major", "Forex Minor", "Forex Exotic", "Indices (US)", "Indices (EU/Asia)", "Commodities (Metals)", "Commodities (Energy)", "Futures", "Crypto"], group="📊 Quarter Theory (Yotov)")
+
+// ════════════════════════════════════════════
+// INPUTS - GANN TIMING
+// ════════════════════════════════════════════
+
+show144DayCycle = input.bool(true, "Show 144-Day Markers", group="🔮 Gann Timing")
+gann144Color = input.color(#8b2be2, "144-Day Color", inline="gann1", group="🔮 Gann Timing")
+
+showTimePrice = input.bool(true, "Show Time=Price Balance", group="🔮 Gann Timing")
+timePriceColor = input.color(#ff6b35, "Time=Price Color", inline="gann2", group="🔮 Gann Timing")
+timePriceTolerance = input.float(0.15, "Tolerance", minval=0.05, maxval=0.50, step=0.05, inline="gann3", group="🔮 Gann Timing")
+
+showAnniversaries = input.bool(true, "Show Anniversaries", group="🔮 Gann Timing")
+annivColor = input.color(#00ff88, "Anniversary Color", inline="gann4", group="🔮 Gann Timing")
+
+showConfluenceAlerts = input.bool(true, "Show Confluence Alerts", group="🔮 Gann Timing")
+confluenceMinScore = input.int(4, "Min Score", minval=2, maxval=11, inline="gann5", group="🔮 Gann Timing")
+
+showInfoTable = input.bool(true, "Show Info Table", group="🔮 Gann Timing")
+pivotLookback = input.int(20, "Pivot Lookback", minval=5, maxval=50, group="🔮 Gann Timing")
+
+// ════════════════════════════════════════════
+// ASSET-CLASS CALIBRATION
+// ════════════════════════════════════════════
+
+detected_asset = assetType
+if assetType == "Auto-Detect"
+    ticker = syminfo.ticker
+    if str.contains(ticker, "EUR") or str.contains(ticker, "GBP") or str.contains(ticker, "USD") or str.contains(ticker, "AUD") or str.contains(ticker, "NZD") or str.contains(ticker, "CAD") or str.contains(ticker, "CHF")
+        if str.contains(ticker, "EUR") or str.contains(ticker, "GBP") or str.contains(ticker, "USD")
+            detected_asset := "Forex Major"
+        else if str.contains(ticker, "ZAR") or str.contains(ticker, "TRY") or str.contains(ticker, "MXN")
+            detected_asset := "Forex Exotic"
+        else
+            detected_asset := "Forex Minor"
+    else if str.contains(ticker, "SPX") or str.contains(ticker, "NAS") or str.contains(ticker, "DJI") or str.contains(ticker, "US") or str.contains(ticker, "NDX") or str.contains(ticker, "SPY") or str.contains(ticker, "QQQ")
+        detected_asset := "Indices (US)"
+    else if str.contains(ticker, "DAX") or str.contains(ticker, "FTSE") or str.contains(ticker, "CAC") or str.contains(ticker, "NIKKEI") or str.contains(ticker, "HSI")
+        detected_asset := "Indices (EU/Asia)"
+    else if str.contains(ticker, "GOLD") or str.contains(ticker, "XAU") or str.contains(ticker, "SILVER") or str.contains(ticker, "XAG") or str.contains(ticker, "COPPER")
+        detected_asset := "Commodities (Metals)"
+    else if str.contains(ticker, "OIL") or str.contains(ticker, "WTI") or str.contains(ticker, "BRENT") or str.contains(ticker, "GAS")
+        detected_asset := "Commodities (Energy)"
+    else if str.contains(ticker, "BTC") or str.contains(ticker, "ETH") or str.contains(ticker, "CRYPTO")
+        detected_asset := "Crypto"
+    else
+        detected_asset := "Futures"
+
+var float pip_size_mult = 10000.0
+var float pip_multiplier = 1.0
+
+if detected_asset == "Forex Major" or detected_asset == "Forex Minor" or detected_asset == "Forex Exotic"
+    pip_size_mult := 10000.0
+    pip_multiplier := 0.0001
+else if detected_asset == "Indices (US)"
+    pip_size_mult := 1.0
+    pip_multiplier := 1.0
+else if detected_asset == "Indices (EU/Asia)"
+    pip_size_mult := 1.0
+    pip_multiplier := 1.0
+else if detected_asset == "Commodities (Metals)"
+    pip_size_mult := 1.0
+    pip_multiplier := 1.0
+else if detected_asset == "Commodities (Energy)"
+    pip_size_mult := 1.0
+    pip_multiplier := 0.01
+else if detected_asset == "Futures"
+    pip_size_mult := 1.0
+    pip_multiplier := 1.0
+else if detected_asset == "Crypto"
+    pip_size_mult := 1.0
+    pip_multiplier := 1.0
+
+pip_size = syminfo.mintick * pip_size_mult
+
+// ════════════════════════════════════════════
+// ILIAN YOTOV QUARTER THEORY - CALCULATIONS
+// ════════════════════════════════════════════
+
+current_price = close
+
+// Calculate 1000 PIP Range boundaries (Major Whole Numbers)
+lq_price_value = LARGE_QUARTER_PIPS * pip_multiplier
+sq_price_value = SMALL_QUARTER_PIPS * pip_multiplier
+range_1000_value = RANGE_1000_PIPS * pip_multiplier
+
+// Find nearest Major Whole Number (1000 PIP Range boundaries)
+major_whole_below = math.floor(current_price / range_1000_value) * range_1000_value
+major_whole_above = math.ceil(current_price / range_1000_value) * range_1000_value
+
+// Find nearest Large Quarter Point (.00, .25, .50, .75 at 250 PIP intervals)
+nearest_lq_below = math.floor(current_price / lq_price_value) * lq_price_value
+nearest_lq_above = math.ceil(current_price / lq_price_value) * lq_price_value
+
+// Find nearest Small Quarter Point (25 PIP increments)
+nearest_sq_below = math.floor(current_price / sq_price_value) * sq_price_value
+nearest_sq_above = math.ceil(current_price / sq_price_value) * sq_price_value
+
+// Calculate Half Point of current Large Quarter
+current_lq_start = nearest_lq_below
+current_lq_end = nearest_lq_above
+half_point = current_lq_start + (lq_price_value / 2)
+
+// Distance to key levels
+distance_to_lq_above = nearest_lq_above - current_price
+distance_to_lq_below = current_price - nearest_lq_below
+distance_to_half = math.abs(current_price - half_point)
+
+// Overshoot/Undershoot detection (±25 PIPs from LQ Point)
+overshoot_threshold = sq_price_value
+in_overshoot_above = distance_to_lq_above <= overshoot_threshold
+in_undershoot_below = distance_to_lq_below >= (lq_price_value - overshoot_threshold)
+at_lq_point = in_overshoot_above or in_undershoot_below
+
+// Hesitation Zone detection (first 25 PIPs after LQ Point)
+in_hesitation_zone = distance_to_lq_below <= overshoot_threshold
+
+// Calculate progress through current Large Quarter (0-100%)
+lq_progress = (distance_to_lq_below / lq_price_value) * 100
+
+// Count Small Quarters completed in current Large Quarter
+small_quarters_completed = math.floor(distance_to_lq_below / sq_price_value)
+
+// ════════════════════════════════════════════
+// THREE-DAY RULE TRACKING
+// ════════════════════════════════════════════
+
+var int lq_entry_time = na
+var float lq_entry_price = na
+var int lq_days_elapsed = 0
+var float lq_target = na
+var bool lq_tracking = false
+
+// Detect Large Quarter Transition (entered new LQ)
+lq_transition = ta.crossover(current_price, nearest_lq_below) or ta.crossunder(current_price, nearest_lq_above)
+
+if lq_transition and not lq_tracking
+    lq_entry_time := time
+    lq_entry_price := current_price
+    lq_target := current_price > nearest_lq_below ? nearest_lq_above : nearest_lq_below
+    lq_tracking := true
+    lq_days_elapsed := 0
+
+if lq_tracking
+    days_elapsed = (time - lq_entry_time) / MS_PER_DAY
+    lq_days_elapsed := math.floor(days_elapsed)
+    
+    // Check if LQ completed
+    lq_completed = (lq_target > lq_entry_price and current_price >= (lq_target - overshoot_threshold)) or (lq_target < lq_entry_price and current_price <= (lq_target + overshoot_threshold))
+    
+    // Check if failed (reversed back)
+    lq_failed = (lq_target > lq_entry_price and current_price < lq_entry_price) or (lq_target < lq_entry_price and current_price > lq_entry_price)
+    
+    if lq_completed or lq_failed or lq_days_elapsed > 3
+        lq_tracking := false
+
+three_day_rule_warning = lq_tracking and lq_days_elapsed >= 3
+
+// ════════════════════════════════════════════
+// GANN TIMING - CALCULATIONS
+// ════════════════════════════════════════════
+
+var int last_major_high_time = na
+var int last_major_low_time = na
+var float last_major_high = na
+var float last_major_low = na
+var int session_start_time = na
+var float session_start_price = na
+
+pivotHigh = ta.pivothigh(high, pivotLookback, pivotLookback)
+pivotLow = ta.pivotlow(low, pivotLookback, pivotLookback)
+
+if not na(pivotHigh)
+    last_major_high := pivotHigh
+    last_major_high_time := time[pivotLookback]
+
+if not na(pivotLow)
+    last_major_low := pivotLow
+    last_major_low_time := time[pivotLookback]
+
+hour_est = hour(time, "America/New_York")
+if hour_est == 0 or hour_est == 8 or hour_est == 13
+    session_start_time := time
+    session_start_price := close
+
+days_since_high = not na(last_major_high_time) ? (time - last_major_high_time) / MS_PER_DAY : na
+days_since_low = not na(last_major_low_time) ? (time - last_major_low_time) / MS_PER_DAY : na
+
+pips_from_session = not na(session_start_price) ? math.abs(close - session_start_price) * pip_size_mult : na
+hours_from_session = not na(session_start_time) ? (time - session_start_time) / MS_PER_HOUR : na
+balance_ratio = (not na(pips_from_session) and pips_from_session > 0) ? hours_from_session / pips_from_session : na
+is_balanced = not na(balance_ratio) and math.abs(balance_ratio - 1) <= timePriceTolerance
+
+is_90day_anniv = (not na(days_since_high) and math.abs(days_since_high - 90) <= 2) or (not na(days_since_low) and math.abs(days_since_low - 90) <= 2)
+is_180day_anniv = (not na(days_since_high) and math.abs(days_since_high - 180) <= 2) or (not na(days_since_low) and math.abs(days_since_low - 180) <= 2)
+is_365day_anniv = (not na(days_since_high) and math.abs(days_since_high - 365) <= 2) or (not na(days_since_low) and math.abs(days_since_low - 365) <= 2)
+
+// ════════════════════════════════════════════
+// CONFLUENCE SCORING (Up to 11 Points)
+// ════════════════════════════════════════════
+
+confluence_score = 0
+var string confluence_text = ""
+
+in_144day_zone = (not na(days_since_high) and days_since_high >= 140 and days_since_high <= 148) or (not na(days_since_low) and days_since_low >= 140 and days_since_low <= 148)
+if in_144day_zone
+    confluence_score += 2
+    confluence_text := "144-Day + "
+
+if is_balanced
+    confluence_score += 2
+    confluence_text += "Time=Price + "
+
+if is_90day_anniv or is_180day_anniv or is_365day_anniv
+    confluence_score += 1
+    confluence_text += "Anniversary + "
+
+isWednesday = dayofweek(time, "America/New_York") == dayofweek.wednesday
+if isWednesday
+    confluence_score += 1
+    confluence_text += "Wednesday + "
+
+is_90day_q3 = month(time, "America/New_York") >= 7 and month(time, "America/New_York") <= 9
+if is_90day_q3
+    confluence_score += 1
+    confluence_text += "Q3 + "
+
+if at_lq_point
+    confluence_score += 2
+    confluence_text += "LQ Point + "
+
+if in_hesitation_zone
+    confluence_score += 1
+    confluence_text += "HZ + "
+
+at_half_point = distance_to_half <= (sq_price_value / 2)
+if at_half_point
+    confluence_score += 1
+    confluence_text += "Half Point + "
+
+if three_day_rule_warning
+    confluence_score += 2
+    confluence_text += "3-Day Warning"
+
+// ════════════════════════════════════════════
+// DRAWING - QUARTER THEORY LEVELS
+// ════════════════════════════════════════════
+
+if barstate.islast
+    proximity_price = proximityPips * pip_multiplier
+    
+    // Draw 1000 PIP Range boundaries (Major Whole Numbers)
+    if show1000Range
+        if major_whole_above - current_price <= proximity_price
+            line.new(bar_index, major_whole_above, bar_index + 30, major_whole_above, xloc=xloc.bar_index, color=rangeColor, width=3, style=line.style_solid, extend=extend.right)
+            label.new(bar_index + 30, major_whole_above, "1000 Range", style=label.style_label_left, color=rangeColor, textcolor=color.white, size=size.tiny)
+        if current_price - major_whole_below <= proximity_price
+            line.new(bar_index, major_whole_below, bar_index + 30, major_whole_below, xloc=xloc.bar_index, color=rangeColor, width=3, style=line.style_solid, extend=extend.right)
+            label.new(bar_index + 30, major_whole_below, "1000 Range", style=label.style_label_left, color=rangeColor, textcolor=color.white, size=size.tiny)
+    
+    // Draw Large Quarter Points (250 PIP levels)
+    if showLargeQuarters
+        for i = -levelsToShow to levelsToShow
+            lq_level = nearest_lq_below + (i * lq_price_value)
+            if math.abs(lq_level - current_price) <= proximity_price and lq_level != current_price
+                is_major = lq_level == major_whole_above or lq_level == major_whole_below
+                if not is_major
+                    line.new(bar_index, lq_level, bar_index + 25, lq_level, xloc=xloc.bar_index, color=lqLineColor, width=lqLineWidth, style=line.style_dashed, extend=extend.right)
+                    label.new(bar_index + 25, lq_level, "LQ " + str.tostring(lq_level, "#.####"), style=label.style_label_left, color=lqLineColor, textcolor=color.white, size=size.tiny)
+    
+    // Draw Small Quarter Points (25 PIP levels)
+    if showSmallQuarters
+        for i = -levelsToShow * 10 to levelsToShow * 10
+            sq_level = nearest_sq_below + (i * sq_price_value)
+            if math.abs(sq_level - current_price) <= (proximity_price / 2) and sq_level != current_price
+                is_lq = math.abs(sq_level - nearest_lq_below) < 0.0001 or math.abs(sq_level - nearest_lq_above) < 0.0001
+                if not is_lq
+                    line.new(bar_index, sq_level, bar_index + 15, sq_level, xloc=xloc.bar_index, color=sqLineColor, width=sqLineWidth, style=line.style_dotted, extend=extend.right)
+    
+    // Draw Half Point
+    if showHalfPoints and math.abs(half_point - current_price) <= proximity_price
+        line.new(bar_index, half_point, bar_index + 20, half_point, xloc=xloc.bar_index, color=halfPointColor, width=2, style=line.style_solid, extend=extend.right)
+        label.new(bar_index + 20, half_point, "Half Point", style=label.style_label_left, color=halfPointColor, textcolor=color.white, size=size.tiny)
+    
+    // Draw Hesitation Zone box
+    if showHesitationZones and in_hesitation_zone
+        hz_top = nearest_lq_below + sq_price_value
+        hz_bottom = nearest_lq_below
+        box.new(bar_index, hz_top, bar_index + 20, hz_bottom, xloc=xloc.bar_index, border_color=color.new(color.yellow, 50), border_width=1, bgcolor=hzColor, extend=extend.right)
+
+// ════════════════════════════════════════════
+// DRAWING - ALERTS AND SIGNALS
+// ════════════════════════════════════════════
+
+var bool prev_overshoot = false
+var bool prev_three_day_warning = false
+var bool prev_in_144day_zone = false
+var bool prev_is_balanced = false
+var bool prev_is_90day_anniv = false
+var bool prev_is_180day_anniv = false
+var bool prev_is_365day_anniv = false
+var int prev_confluence_score = 0
+
+// Overshoot/Undershoot alert
+if showOvershoot and at_lq_point and not prev_overshoot
+    alert_text = in_overshoot_above ? "🎯 OVERSHOOT" : "🎯 UNDERSHOOT"
+    label.new(bar_index, high, alert_text + " (LQ Point)", style=label.style_label_down, color=overshootColor, textcolor=color.white, size=size.normal)
+prev_overshoot := at_lq_point
+
+// Three-Day Rule warning
+if showThreeDayRule and three_day_rule_warning and not prev_three_day_warning
+    label.new(bar_index, high, "⚠️ 3-DAY RULE (" + str.tostring(lq_days_elapsed) + "d)", style=label.style_label_down, color=threeDayColor, textcolor=color.white, size=size.normal)
+prev_three_day_warning := three_day_rule_warning
+
+// Gann 144-Day
+if show144DayCycle and in_144day_zone and not prev_in_144day_zone
+    label.new(bar_index, high * 1.002, "🔮 144-Day", style=label.style_label_down, color=gann144Color, textcolor=color.white, size=size.small)
+prev_in_144day_zone := in_144day_zone
+
+// Time=Price
+if showTimePrice and is_balanced and not prev_is_balanced
+    label.new(bar_index, high * 1.001, "⚖️ Balanced", style=label.style_label_down, color=timePriceColor, textcolor=color.white, size=size.tiny)
+prev_is_balanced := is_balanced
+
+// Anniversaries
+if showAnniversaries
+    if is_90day_anniv and not prev_is_90day_anniv
+        label.new(bar_index, high * 1.0015, "📅 90-Day", style=label.style_label_down, color=annivColor, textcolor=color.black, size=size.tiny)
+    if is_180day_anniv and not prev_is_180day_anniv
+        label.new(bar_index, high * 1.0015, "📅 180-Day", style=label.style_label_down, color=annivColor, textcolor=color.black, size=size.tiny)
+    if is_365day_anniv and not prev_is_365day_anniv
+        label.new(bar_index, high * 1.0015, "📅 1-Year", style=label.style_label_down, color=annivColor, textcolor=color.black, size=size.small)
+prev_is_90day_anniv := is_90day_anniv
+prev_is_180day_anniv := is_180day_anniv
+prev_is_365day_anniv := is_365day_anniv
+
+// Confluence alert
+if showConfluenceAlerts and confluence_score >= confluenceMinScore and confluence_score > prev_confluence_score
+    label.new(bar_index, high * 1.003, "🔥 CONFLUENCE (" + str.tostring(confluence_score) + ")", style=label.style_label_down, color=color.new(color.red, 0), textcolor=color.white, size=size.large)
+prev_confluence_score := confluence_score
+
+// ════════════════════════════════════════════
+// INFO TABLE
+// ════════════════════════════════════════════
+
+if barstate.islast and showInfoTable
+    var table info_table = table.new(position.top_right, 2, 10, border_width=1)
+    
+    table.cell(info_table, 0, 0, "📊 Quarter Theory", bgcolor=color.new(color.blue, 70), text_color=color.white, text_size=size.small)
+    table.cell(info_table, 1, 0, "Status", bgcolor=color.new(color.blue, 70), text_color=color.white, text_size=size.small)
+    
+    table.cell(info_table, 0, 1, "Asset", bgcolor=color.new(color.gray, 85), text_size=size.tiny)
+    table.cell(info_table, 1, 1, detected_asset, bgcolor=color.new(color.blue, 80), text_size=size.tiny)
+    
+    table.cell(info_table, 0, 2, "Current LQ", bgcolor=color.new(color.gray, 85), text_size=size.tiny)
+    table.cell(info_table, 1, 2, str.tostring(nearest_lq_below, "#.####") + "→" + str.tostring(nearest_lq_above, "#.####"), bgcolor=color.new(color.blue, 80), text_size=size.tiny)
+    
+    table.cell(info_table, 0, 3, "LQ Progress", bgcolor=color.new(color.gray, 85), text_size=size.tiny)
+    progress_color = lq_progress < 33 ? color.new(color.red, 70) : lq_progress < 67 ? color.new(color.yellow, 70) : color.new(color.green, 70)
+    table.cell(info_table, 1, 3, str.tostring(lq_progress, "#.#") + "%", bgcolor=progress_color, text_size=size.tiny)
+    
+    table.cell(info_table, 0, 4, "SQ Completed", bgcolor=color.new(color.gray, 85), text_size=size.tiny)
+    table.cell(info_table, 1, 4, str.tostring(small_quarters_completed) + "/10", bgcolor=color.new(color.orange, 80), text_size=size.tiny)
+    
+    table.cell(info_table, 0, 5, "Position", bgcolor=color.new(color.gray, 85), text_size=size.tiny)
+    position_text = in_hesitation_zone ? "Hesitation Zone" : at_half_point ? "Half Point" : at_lq_point ? "LQ Point" : "In Quarter"
+    position_color = in_hesitation_zone ? color.new(color.yellow, 70) : at_half_point ? color.new(color.purple, 70) : at_lq_point ? color.new(color.red, 70) : color.new(color.gray, 85)
+    table.cell(info_table, 1, 5, position_text, bgcolor=position_color, text_size=size.tiny)
+    
+    table.cell(info_table, 0, 6, "3-Day Rule", bgcolor=color.new(color.gray, 85), text_size=size.tiny)
+    three_day_text = lq_tracking ? "Day " + str.tostring(lq_days_elapsed + 1) + "/3" : "Inactive"
+    three_day_color = lq_tracking ? (lq_days_elapsed >= 2 ? color.new(color.red, 60) : color.new(color.yellow, 70)) : color.new(color.gray, 85)
+    table.cell(info_table, 1, 6, three_day_text, bgcolor=three_day_color, text_size=size.tiny)
+    
+    day_status = not na(days_since_high) ? str.tostring(math.round(days_since_high)) + "/144" : "N/A"
+    day_color = in_144day_zone ? color.new(color.green, 70) : color.new(color.gray, 85)
+    table.cell(info_table, 0, 7, "144-Day", bgcolor=color.new(color.gray, 85), text_size=size.tiny)
+    table.cell(info_table, 1, 7, day_status, bgcolor=day_color, text_size=size.tiny)
+    
+    balance_status = is_balanced ? "✅ Balanced" : "Unbalanced"
+    balance_color = is_balanced ? color.new(color.green, 70) : color.new(color.gray, 85)
+    table.cell(info_table, 0, 8, "Time=Price", bgcolor=color.new(color.gray, 85), text_size=size.tiny)
+    table.cell(info_table, 1, 8, balance_status, bgcolor=balance_color, text_size=size.tiny)
+    
+    score_color = confluence_score >= confluenceMinScore ? color.new(color.green, 60) : color.new(color.gray, 85)
+    score_text = str.tostring(confluence_score) + "/11 pts"
+    table.cell(info_table, 0, 9, "Confluence", bgcolor=color.new(color.gray, 85), text_size=size.tiny)
+    table.cell(info_table, 1, 9, score_text, bgcolor=score_color, text_color=color.white, text_size=size.tiny)

@@ -50,9 +50,16 @@
                     <strong>💡 Pro Tip:</strong> Use these calculators BEFORE every trade to ensure proper risk management and eliminate costly calculation errors!
                 </div>
 
-                <!-- Calculator Grid -->
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 2rem; margin-top: 2rem;">
-                    
+                <div class="tabs-container">
+                    <div class="tabs">
+                        <button class="tab-button active" data-tab="risk">Risk Management</button>
+                        <button class="tab-button" data-tab="analysis">Market Analysis</button>
+                        <button class="tab-button" data-tab="gann">🔮 Gann Timing</button>
+                        <button class="tab-button" data-tab="quick">Quick Reference</button>
+                    </div>
+                </div>
+
+                <div id="risk" class="tab-content active">
                     <!-- Position Size Calculator -->
                     <div class="card" style="border: 2px solid var(--accent-green);">
                         <div class="card-title" style="color: var(--accent-green);">📊 Position Size Calculator</div>
@@ -340,6 +347,299 @@
                     </div>
                 </div>
 
+                <div id="analysis" class="tab-content">
+                    <!-- Pips Calculator -->
+                    <div class="card" style="border: 2px solid var(--accent-yellow);">
+                        <div class="card-title" style="color: var(--accent-yellow);">📏 Pip Calculator</div>
+                        <p style="color: var(--text-tertiary); font-size: 0.9rem; margin-bottom: 1rem;">Calculate pip distance between two prices</p>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                            <div>
+                                <label style="display: block; margin-bottom: 0.25rem; font-size: 0.9rem;">Price 1</label>
+                                <input type="number" id="pipPrice1" placeholder="1.08500" step="0.00001" style="width: 100%; padding: 0.5rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;">
+                            </div>
+                            
+                            <div>
+                                <label style="display: block; margin-bottom: 0.25rem; font-size: 0.9rem;">Price 2</label>
+                                <input type="number" id="pipPrice2" placeholder="1.08700" step="0.00001" style="width: 100%; padding: 0.5rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;">
+                            </div>
+                            
+                            <div>
+                                <label style="display: block; margin-bottom: 0.25rem; font-size: 0.9rem;">Pair Type</label>
+                                <select id="pipPairType" style="width: 100%; padding: 0.5rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;">
+                                    <option value="4">4-decimal (EUR/USD, GBP/USD, etc.)</option>
+                                    <option value="2">2-decimal (USD/JPY, etc.)</option>
+                                </select>
+                            </div>
+                            
+                            <button onclick="calculatePips()" style="padding: 0.75rem; background: var(--accent-yellow); color: var(--bg-primary); border: none; border-radius: 6px; cursor: pointer; font-weight: bold; margin-top: 0.5rem;">
+                                Calculate
+                            </button>
+                        </div>
+                        
+                        <div id="pipResult" style="margin-top: 1rem; padding: 1rem; background: rgba(255, 193, 7, 0.1); border-left: 4px solid var(--accent-yellow); border-radius: 4px; display: none;">
+                            <!-- Result will be displayed here -->
+                        </div>
+                    </div>
+
+                    <!-- ADR Calculator -->
+                    <div class="card" style="border: 2px solid #8b2be2;">
+                        <div class="card-title" style="color: #8b2be2;">📊 ADR Calculator</div>
+                        <p style="color: var(--text-tertiary); font-size: 0.9rem; margin-bottom: 1rem;">Calculate Average Daily Range</p>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                            <p style="font-size: 0.9rem; color: var(--text-secondary);">Enter high and low for the last 5 trading days:</p>
+                            
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+                                <div>
+                                    <label style="display: block; margin-bottom: 0.25rem; font-size: 0.85rem;">Day 1 High</label>
+                                    <input type="number" id="adrD1High" placeholder="1.0900" step="0.00001" style="width: 100%; padding: 0.4rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; font-size: 0.9rem;">
+                                </div>
+                                <div>
+                                    <label style="display: block; margin-bottom: 0.25rem; font-size: 0.85rem;">Day 1 Low</label>
+                                    <input type="number" id="adrD1Low" placeholder="1.0850" step="0.00001" style="width: 100%; padding: 0.4rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; font-size: 0.9rem;">
+                                </div>
+                            </div>
+                            
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+                                <div>
+                                    <label style="display: block; margin-bottom: 0.25rem; font-size: 0.85rem;">Day 2 High</label>
+                                    <input type="number" id="adrD2High" placeholder="1.0920" step="0.00001" style="width: 100%; padding: 0.4rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; font-size: 0.9rem;">
+                                </div>
+                                <div>
+                                    <label style="display: block; margin-bottom: 0.25rem; font-size: 0.85rem;">Day 2 Low</label>
+                                    <input type="number" id="adrD2Low" placeholder="1.0870" step="0.00001" style="width: 100%; padding: 0.4rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; font-size: 0.9rem;">
+                                </div>
+                            </div>
+                            
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+                                <div>
+                                    <label style="display: block; margin-bottom: 0.25rem; font-size: 0.85rem;">Day 3 High</label>
+                                    <input type="number" id="adrD3High" placeholder="1.0915" step="0.00001" style="width: 100%; padding: 0.4rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; font-size: 0.9rem;">
+                                </div>
+                                <div>
+                                    <label style="display: block; margin-bottom: 0.25rem; font-size: 0.85rem;">Day 3 Low</label>
+                                    <input type="number" id="adrD3Low" placeholder="1.0865" step="0.00001" style="width: 100%; padding: 0.4rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; font-size: 0.9rem;">
+                                </div>
+                            </div>
+                            
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+                                <div>
+                                    <label style="display: block; margin-bottom: 0.25rem; font-size: 0.85rem;">Day 4 High</label>
+                                    <input type="number" id="adrD4High" placeholder="1.0930" step="0.00001" style="width: 100%; padding: 0.4rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; font-size: 0.9rem;">
+                                </div>
+                                <div>
+                                    <label style="display: block; margin-bottom: 0.25rem; font-size: 0.85rem;">Day 4 Low</label>
+                                    <input type="number" id="adrD4Low" placeholder="1.0880" step="0.00001" style="width: 100%; padding: 0.4rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; font-size: 0.9rem;">
+                                </div>
+                            </div>
+                            
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+                                <div>
+                                    <label style="display: block; margin-bottom: 0.25rem; font-size: 0.85rem;">Day 5 High</label>
+                                    <input type="number" id="adrD5High" placeholder="1.0925" step="0.00001" style="width: 100%; padding: 0.4rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; font-size: 0.9rem;">
+                                </div>
+                                <div>
+                                    <label style="display: block; margin-bottom: 0.25rem; font-size: 0.85rem;">Day 5 Low</label>
+                                    <input type="number" id="adrD5Low" placeholder="1.0875" step="0.00001" style="width: 100%; padding: 0.4rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; font-size: 0.9rem;">
+                                </div>
+                            </div>
+                            
+                            <button onclick="calculateADR()" style="padding: 0.75rem; background: #8b2be2; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; margin-top: 0.5rem;">
+                                Calculate
+                            </button>
+                        </div>
+                        
+                        <div id="adrResult" style="margin-top: 1rem; padding: 1rem; background: rgba(138, 43, 226, 0.1); border-left: 4px solid #8b2be2; border-radius: 4px; display: none;">
+                            <!-- Result will be displayed here -->
+                        </div>
+                    </div>
+
+                    <!-- Quarter Point Calculator -->
+                    <div class="card" style="border: 2px solid #ff6b35;">
+                        <div class="card-title" style="color: #ff6b35;">🎯 Quarter Point Calculator</div>
+                        <p style="color: var(--text-tertiary); font-size: 0.9rem; margin-bottom: 1rem;">Calculate Quarter Points based on ADR and asset class</p>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                            <div>
+                                <label style="display: block; margin-bottom: 0.25rem; font-size: 0.9rem;">Currency Pair</label>
+                                <select id="qpPair" onchange="updateQuarterPointADR()" style="width: 100%; padding: 0.5rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;">
+                                    <option value="EURUSD">EUR/USD (Major)</option>
+                                    <option value="GBPUSD">GBP/USD (Major)</option>
+                                    <option value="USDJPY">USD/JPY (Major)</option>
+                                    <option value="AUDUSD">AUD/USD (Major)</option>
+                                    <option value="GBPJPY">GBP/JPY (Cross - High Volatility)</option>
+                                    <option value="EURJPY">EUR/JPY (Cross - High Volatility)</option>
+                                    <option value="EURGBP">EUR/GBP (Cross - Low Volatility)</option>
+                                    <option value="CUSTOM">Custom ADR</option>
+                                </select>
+                            </div>
+                            
+                            <div id="qpADRContainer">
+                                <label style="display: block; margin-bottom: 0.25rem; font-size: 0.9rem;">Average Daily Range (ADR in PIPs)</label>
+                                <input type="number" id="qpADR" placeholder="80" step="1" style="width: 100%; padding: 0.5rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;">
+                                <div style="font-size: 0.8rem; color: var(--text-tertiary); margin-top: 0.25rem;">💡 Typical: EUR/USD ~80, GBP/USD ~100, GBP/JPY ~150</div>
+                            </div>
+                            
+                            <div>
+                                <label style="display: block; margin-bottom: 0.25rem; font-size: 0.9rem;">Current Price (Optional)</label>
+                                <input type="number" id="qpCurrentPrice" placeholder="1.08500" step="0.00001" style="width: 100%; padding: 0.5rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;">
+                                <div style="font-size: 0.8rem; color: var(--text-tertiary); margin-top: 0.25rem;">Shows nearest quarter points from current price</div>
+                            </div>
+                            
+                            <button onclick="calculateQuarterPoints()" style="padding: 0.75rem; background: #ff6b35; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; margin-top: 0.5rem;">
+                                Calculate Quarter Points
+                            </button>
+                        </div>
+                        
+                        <div id="qpResult" style="margin-top: 1rem; padding: 1rem; background: rgba(255, 107, 53, 0.1); border-left: 4px solid #ff6b35; border-radius: 4px; display: none;">
+                            <!-- Result will be displayed here -->
+                        </div>
+                    </div>
+                </div>
+
+                <div id="gann" class="tab-content">
+                    <!-- 144-Day Cycle Calculator -->
+                    <div class="card" style="border: 2px solid #8b2be2;">
+                        <div class="card-title" style="color: #8b2be2;">🔮 144-Day Cycle Calculator</div>
+                        <p style="color: var(--text-tertiary); font-size: 0.9rem; margin-bottom: 1rem;">Calculate high-probability reversal zones from major swings (Gann Timing)</p>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                            <div>
+                                <label style="display: block; margin-bottom: 0.25rem; font-size: 0.9rem;">Major Swing Date</label>
+                                <input type="date" id="gann144SwingDate" style="width: 100%; padding: 0.5rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;">
+                                <div style="font-size: 0.8rem; color: var(--text-tertiary); margin-top: 0.25rem;">📅 Select the date of a major high or low</div>
+                            </div>
+                            
+                            <div>
+                                <label style="display: block; margin-bottom: 0.25rem; font-size: 0.9rem;">Swing Type</label>
+                                <select id="gann144SwingType" style="width: 100%; padding: 0.5rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;">
+                                    <option value="high">Major High</option>
+                                    <option value="low">Major Low</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label style="display: block; margin-bottom: 0.25rem; font-size: 0.9rem;">Price Level (Optional)</label>
+                                <input type="number" id="gann144Price" placeholder="1.08500" step="0.00001" style="width: 100%; padding: 0.5rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;">
+                                <div style="font-size: 0.8rem; color: var(--text-tertiary); margin-top: 0.25rem;">💡 Optional: For tracking purposes</div>
+                            </div>
+                            
+                            <button onclick="calculate144Cycle()" style="padding: 0.75rem; background: #8b2be2; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; margin-top: 0.5rem;">
+                                Calculate Reversal Dates
+                            </button>
+                            
+                            <button onclick="save144Swing()" style="padding: 0.5rem; background: rgba(138, 43, 226, 0.2); color: #8b2be2; border: 1px solid #8b2be2; border-radius: 6px; cursor: pointer; font-size: 0.9rem;">
+                                💾 Save This Swing
+                            </button>
+                        </div>
+                        
+                        <div id="gann144Result" style="margin-top: 1rem; padding: 1rem; background: rgba(138, 43, 226, 0.1); border-left: 4px solid #8b2be2; border-radius: 4px; display: none;">
+                            <!-- Result will be displayed here -->
+                        </div>
+                        
+                        <!-- Saved Swings -->
+                        <div id="saved144Swings" style="margin-top: 1rem; display: none;">
+                            <div style="font-size: 0.9rem; font-weight: bold; color: var(--text-secondary); margin-bottom: 0.5rem;">📊 Saved Swings:</div>
+                            <div id="saved144SwingsList" style="display: flex; flex-direction: column; gap: 0.5rem;">
+                                <!-- Saved swings will be displayed here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Time = Price Balance Calculator -->
+                    <div class="card" style="border: 2px solid #ff6b35;">
+                        <div class="card-title" style="color: #ff6b35;">⚖️ Time = Price Balance</div>
+                        <p style="color: var(--text-tertiary); font-size: 0.9rem; margin-bottom: 1rem;">Calculate when time equals price movement for reversal zones (Gann Timing)</p>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                            <div>
+                                <label style="display: block; margin-bottom: 0.25rem; font-size: 0.9rem;">PIPs Moved</label>
+                                <input type="number" id="tpPips" placeholder="50" step="0.1" style="width: 100%; padding: 0.5rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;">
+                                <div style="font-size: 0.8rem; color: var(--text-tertiary); margin-top: 0.25rem;">📏 Total PIPs since swing</div>
+                            </div>
+                            
+                            <div>
+                                <label style="display: block; margin-bottom: 0.25rem; font-size: 0.9rem;">Time Elapsed</label>
+                                <input type="number" id="tpTime" placeholder="10" step="0.1" style="width: 100%; padding: 0.5rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;">
+                            </div>
+                            
+                            <div>
+                                <label style="display: block; margin-bottom: 0.25rem; font-size: 0.9rem;">Timeframe</label>
+                                <select id="tpTimeframe" style="width: 100%; padding: 0.5rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;">
+                                    <option value="hours">Hours</option>
+                                    <option value="minutes">Minutes</option>
+                                    <option value="days">Days</option>
+                                </select>
+                            </div>
+                            
+                            <button onclick="calculateTimePrice()" style="padding: 0.75rem; background: #ff6b35; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; margin-top: 0.5rem;">
+                                Calculate Balance Point
+                            </button>
+                        </div>
+                        
+                        <div id="timePriceResult" style="margin-top: 1rem; padding: 1rem; background: rgba(255, 107, 53, 0.1); border-left: 4px solid #ff6b35; border-radius: 4px; display: none;">
+                            <!-- Result will be displayed here -->
+                        </div>
+                    </div>
+
+                    <!-- Anniversary Date Tracker -->
+                    <div class="card" style="border: 2px solid #00ff88;">
+                        <div class="card-title" style="color: #00ff88;">📅 Anniversary Date Tracker</div>
+                        <p style="color: var(--text-tertiary); font-size: 0.9rem; margin-bottom: 1rem;">Track major swing anniversaries for reversal predictions (Gann Timing)</p>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                            <div>
+                                <label style="display: block; margin-bottom: 0.25rem; font-size: 0.9rem;">Major Event Date</label>
+                                <input type="date" id="annivDate" style="width: 100%; padding: 0.5rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;">
+                                <div style="font-size: 0.8rem; color: var(--text-tertiary); margin-top: 0.25rem;">📅 Date of major high, low, or reversal</div>
+                            </div>
+                            
+                            <div>
+                                <label style="display: block; margin-bottom: 0.25rem; font-size: 0.9rem;">Event Type</label>
+                                <select id="annivType" style="width: 100%; padding: 0.5rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;">
+                                    <option value="high">Major High</option>
+                                    <option value="low">Major Low</option>
+                                    <option value="reversal">Trend Reversal</option>
+                                </select>
+                            </div>
+                            
+                            <button onclick="calculateAnniversaries()" style="padding: 0.75rem; background: #00ff88; color: #000; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; margin-top: 0.5rem;">
+                                Calculate Anniversaries
+                            </button>
+                            
+                            <button onclick="saveAnniversaryEvent()" style="padding: 0.5rem; background: rgba(0, 255, 136, 0.2); color: #00ff88; border: 1px solid #00ff88; border-radius: 6px; cursor: pointer; font-size: 0.9rem;">
+                                💾 Save This Event
+                            </button>
+                        </div>
+                        
+                        <div id="anniversaryResult" style="margin-top: 1rem; padding: 1rem; background: rgba(0, 255, 136, 0.1); border-left: 4px solid #00ff88; border-radius: 4px; display: none;">
+                            <!-- Result will be displayed here -->
+                        </div>
+                        
+                        <!-- Saved Anniversaries -->
+                        <div id="savedAnniversaries" style="margin-top: 1rem; display: none;">
+                            <div style="font-size: 0.9rem; font-weight: bold; color: var(--text-secondary); margin-bottom: 0.5rem;">📊 Saved Events:</div>
+                            <div id="savedAnnivList" style="display: flex; flex-direction: column; gap: 0.5rem;">
+                                <!-- Saved events will be displayed here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="quick" class="tab-content">
+                    <div class="card" style="border: none; text-align: center; padding: 2rem;">
+                        <h3>Quick Reference & Future Tools</h3>
+                        <p>Links to other app sections:</p>
+                        <ul style="text-align: left; max-width: 400px; margin: 0 auto;">
+                            <li><a href="live-session-guide.html">Live Session Guide</a> - Real-time confluence</li>
+                            <li><a href="checklist.html">Pre-Trade Checklist</a> - Gann checks included</li>
+                            <li><a href="advanced-timing.html">Advanced Timing</a> - Full Gann dashboard</li>
+                        </ul>
+                        <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-tertiary);">Future: More tools coming soon!</p>
+                    </div>
+                </div>
+
             </section>
 
             <!-- Footer -->
@@ -354,7 +654,51 @@
     <script src="../js/main.js"></script>
     <script src="../js/export-print.js"></script>
     <script src="../js/alerts.js"></script>
+    <script src="../js/gann-timing.js"></script>
     <script src="../js/calculators.js"></script>
+    <style>
+.tabs-container { margin: 1.5rem 0; }
+.tabs { display: flex; gap: 0.5rem; overflow-x: auto; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border-color); }
+.tab-button { padding: 0.75rem 1rem; border: none; background: var(--bg-tertiary); color: var(--text-primary); cursor: pointer; border-radius: 6px 6px 0 0; white-space: nowrap; flex-shrink: 0; }
+.tab-button.active { background: var(--accent-blue); color: white; }
+.tab-button:hover { background: rgba(var(--accent-blue-rgb), 0.1); }
+.tab-content { display: none; animation: fadeIn 0.3s; }
+.tab-content.active { display: block; }
+@media (max-width: 768px) { .tabs { gap: 0.25rem; } .tab-button { padding: 0.5rem 0.75rem; font-size: 0.9rem; } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+</style>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabContents = document.querySelectorAll('.tab-content');
+    
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const targetTab = button.dataset.tab;
+            
+            // Update buttons
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            
+            // Update contents
+            tabContents.forEach(content => content.classList.remove('active'));
+            document.getElementById(targetTab).classList.add('active');
+            
+            // Re-init calculators in active tab (for dynamic content)
+            if (targetTab === 'gann') {
+                if (document.getElementById('saved144Swings')) displaySaved144Swings();
+                if (document.getElementById('savedAnniversaries')) displaySavedAnniversaries();
+            }
+        });
+    });
+    
+    // Default to Gann tab if URL has ?tab=gann
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('tab') === 'gann') {
+        document.querySelector('[data-tab="gann"]').click();
+    }
+});
+</script>
 </body>
 </html>
 
