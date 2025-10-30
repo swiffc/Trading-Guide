@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: trading-guide
+  namespace: trading-guide
+  labels:
+    app: trading-guide
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: http
+    protocol: TCP
+    name: http
+  selector:
+    app: trading-guide
+  sessionAffinity: ClientIP
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 10800
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: trading-guide-headless
+  namespace: trading-guide
+  labels:
+    app: trading-guide
+spec:
+  type: ClusterIP
+  clusterIP: None
+  ports:
+  - port: 80
+    targetPort: http
+    protocol: TCP
+    name: http
+  selector:
+    app: trading-guide

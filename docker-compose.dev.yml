@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  # Development server with hot reload
+  dev-server:
+    image: nginx:1.25-alpine
+    container_name: trading-guide-dev
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/usr/share/nginx/html:ro
+      - ./docker/dev.conf:/etc/nginx/conf.d/default.conf:ro
+    environment:
+      - NODE_ENV=development
+    networks:
+      - dev-network
+    labels:
+      - "com.trading-guide.env=development"
+
+networks:
+  dev-network:
+    driver: bridge
+    name: trading-guide-dev-network

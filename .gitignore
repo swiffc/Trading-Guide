@@ -1,30 +1,88 @@
-# Vercel
-.vercel
-
-# Environment variables
-.env
-.env.local
-.env.*.local
+# Operating System
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*~
 
 # IDE
 .vscode/
 .idea/
 *.swp
 *.swo
-*~
+*.bak
 
-# OS
-.DS_Store
-Thumbs.db
-
-# Logs
-*.log
+# Dependencies
+node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Misc
-*.bak
+# Environment files
+.env
+.env.local
+.env.staging
+.env.production
+.env.*.local
+
+# Build outputs
+dist/
+build/
+*.min.js
+*.min.css
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Testing
+coverage/
+.nyc_output/
+*.test.js.snap
+
+# Temporary files
+tmp/
+temp/
 *.tmp
+*.temp
 
+# Terraform
+terraform/.terraform/
+terraform/*.tfstate
+terraform/*.tfstate.backup
+terraform/.terraform.lock.hcl
+terraform/terraform.tfvars
+terraform/*.tfplan
 
+# Kubernetes
+kubernetes/secrets/
+kubernetes/*.secret.yml
+
+# Docker
+.dockerignore
+
+# Monitoring
+monitoring/data/
+monitoring/*.db
+
+# Backup files
+*.backup
+*.bak
+*.old
+
+# Certificates
+*.pem
+*.key
+*.crt
+ssl/
+
+# Secrets
+secrets.yml
+credentials.json
