@@ -1,0 +1,29 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: trading-guide
+
+resources:
+  - namespace.yml
+  - deployment.yml
+  - service.yml
+  - ingress.yml
+  - hpa.yml
+  - configmap.yml
+
+commonLabels:
+  app: trading-guide
+  managed-by: kustomize
+
+images:
+  - name: ghcr.io/your-org/trading-guide
+    newTag: latest
+
+configMapGenerator:
+  - name: trading-guide-config
+    files:
+      - configs/app.conf
+
+replicas:
+  - name: trading-guide
+    count: 3
