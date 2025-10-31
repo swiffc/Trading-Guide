@@ -46,14 +46,19 @@
                     <p style="font-size: 1.1rem;">Log trades, track performance, identify patterns in wins/losses, and become a consistently profitable trader!</p>
                 </div>
 
-                <!-- Quick Stats Dashboard -->
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 2rem 0;">
-                    <div class="card" style="text-align: center; border: 2px solid var(--accent-green);">
-                        <div style="font-size: 2.5rem; color: var(--accent-green); margin-bottom: 0.5rem;" id="totalTrades">0</div>
-                        <div style="color: var(--text-tertiary);">Total Trades</div>
+                <!-- Dashboard Stats -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+                    <div style="background: linear-gradient(135deg, rgba(46, 125, 50, 0.1), rgba(76, 175, 80, 0.1)); padding: 1.5rem; border-radius: 8px; text-align: center; border: 2px solid var(--accent-green);">
+                        <div style="font-size: 2rem; color: var(--accent-green); margin-bottom: 0.5rem; font-weight: bold;" id="accountBalance">$150,000.00</div>
+                        <div style="color: var(--text-tertiary); font-weight: bold;">Account Balance</div>
+                        <div style="font-size: 0.85rem; color: var(--text-tertiary); margin-top: 0.25rem;">TopStep 150K</div>
                     </div>
                     <div class="card" style="text-align: center; border: 2px solid var(--accent-blue);">
-                        <div style="font-size: 2.5rem; color: var(--accent-blue); margin-bottom: 0.5rem;" id="winRate">0%</div>
+                        <div style="font-size: 2.5rem; color: var(--accent-blue); margin-bottom: 0.5rem;" id="totalTrades">0</div>
+                        <div style="color: var(--text-tertiary);">Total Trades</div>
+                    </div>
+                    <div class="card" style="text-align: center; border: 2px solid var(--accent-yellow);">
+                        <div style="font-size: 2.5rem; color: var(--accent-yellow); margin-bottom: 0.5rem;" id="winRate">0%</div>
                         <div style="color: var(--text-tertiary);">Win Rate</div>
                     </div>
                     <div class="card" style="text-align: center; border: 2px solid var(--accent-yellow);">
@@ -71,11 +76,23 @@
                     <button onclick="showAddTradeModal()" class="btn-primary" style="padding: 1rem 2rem; font-size: 1.1rem; background: var(--accent-green); color: var(--bg-primary); border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">
                         ➕ Log New Trade
                     </button>
+                    <button onclick="loadMyActualTrades()" class="btn-secondary" style="padding: 1rem 2rem; font-size: 1.1rem; background: #9b59b6; color: #fff; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">
+                        🔥 Load My Trades
+                    </button>
                     <button onclick="showPerformanceAnalysis()" class="btn-secondary" style="padding: 1rem 2rem; font-size: 1.1rem; background: var(--accent-blue); color: var(--bg-primary); border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">
                         📊 View Analytics
                     </button>
+                    <button onclick="generatePrintReport()" class="btn-secondary" style="padding: 1rem 2rem; font-size: 1.1rem; background: #e67e22; color: #fff; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">
+                        🖨️ Print Report
+                    </button>
                     <button onclick="exportToCSV()" class="btn-secondary" style="padding: 1rem 2rem; font-size: 1.1rem; background: var(--accent-yellow); color: var(--bg-primary); border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">
-                        📥 Export Data
+                        📥 Export CSV
+                    </button>
+                    <button onclick="exportToJSON()" class="btn-secondary" style="padding: 1rem 2rem; font-size: 1.1rem; background: #3498db; color: #fff; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">
+                        💾 Export JSON
+                    </button>
+                    <button onclick="importFromJSON()" class="btn-secondary" style="padding: 1rem 2rem; font-size: 1.1rem; background: #2ecc71; color: #fff; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">
+                        📂 Import JSON
                     </button>
                     <button onclick="clearAllData()" class="btn-secondary" style="padding: 1rem 2rem; font-size: 1.1rem; background: var(--accent-red); color: #fff; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">
                         🗑️ Clear All
@@ -87,6 +104,7 @@
                     <button class="tab-button active" data-tab="trades-list">📋 Trades List</button>
                     <button class="tab-button" data-tab="analytics">📊 Analytics</button>
                     <button class="tab-button" data-tab="calendar">📅 Calendar View</button>
+                    <button class="tab-button" data-tab="weekly-review">📝 Weekly Review</button>
                 </div>
 
                 <!-- Trades List Tab -->
@@ -228,10 +246,269 @@
                 <div id="calendar" class="tab-content">
                     <div class="pattern-card">
                         <div class="pattern-title">📅 Trading Calendar</div>
-                        <div id="tradingCalendar" style="margin-top: 1.5rem;">
-                            <div style="padding: 3rem; text-align: center; color: var(--text-tertiary);">
-                                Calendar view coming soon! Your trades will be displayed on a monthly calendar.
+                        
+                        <!-- Calendar Controls -->
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin: 1.5rem 0;">
+                            <button onclick="previousMonth()" style="padding: 0.5rem 1rem; background: var(--accent-blue); color: var(--bg-primary); border: none; border-radius: 6px; cursor: pointer; font-weight: bold;">
+                                ◀ Previous
+                            </button>
+                            <h3 id="calendarMonthYear" style="color: var(--accent-green); margin: 0;">Loading...</h3>
+                            <button onclick="nextMonth()" style="padding: 0.5rem 1rem; background: var(--accent-blue); color: var(--bg-primary); border: none; border-radius: 6px; cursor: pointer; font-weight: bold;">
+                                Next ▶
+                            </button>
+                        </div>
+
+                        <!-- Calendar Grid -->
+                        <div id="tradingCalendar" style="margin-top: 1rem;">
+                            <!-- Day headers -->
+                            <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 0.5rem; margin-bottom: 0.5rem;">
+                                <div style="text-align: center; padding: 0.5rem; font-weight: bold; color: var(--accent-blue);">Sun</div>
+                                <div style="text-align: center; padding: 0.5rem; font-weight: bold; color: var(--accent-blue);">Mon</div>
+                                <div style="text-align: center; padding: 0.5rem; font-weight: bold; color: var(--accent-blue);">Tue</div>
+                                <div style="text-align: center; padding: 0.5rem; font-weight: bold; color: var(--accent-blue);">Wed</div>
+                                <div style="text-align: center; padding: 0.5rem; font-weight: bold; color: var(--accent-blue);">Thu</div>
+                                <div style="text-align: center; padding: 0.5rem; font-weight: bold; color: var(--accent-blue);">Fri</div>
+                                <div style="text-align: center; padding: 0.5rem; font-weight: bold; color: var(--accent-blue);">Sat</div>
                             </div>
+                            
+                            <!-- Calendar days -->
+                            <div id="calendarDays" style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 0.5rem;">
+                                <!-- Days will be generated by JavaScript -->
+                            </div>
+                        </div>
+
+                        <!-- Calendar Legend -->
+                        <div style="display: flex; gap: 2rem; justify-content: center; margin-top: 2rem; padding: 1rem; background: var(--bg-tertiary); border-radius: 8px;">
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <div style="width: 20px; height: 20px; background: var(--accent-green); border-radius: 4px;"></div>
+                                <span>Profitable Day</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <div style="width: 20px; height: 20px; background: var(--accent-red); border-radius: 4px;"></div>
+                                <span>Loss Day</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <div style="width: 20px; height: 20px; background: var(--accent-yellow); border-radius: 4px;"></div>
+                                <span>Breakeven Day</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Weekly Review Tab -->
+                <div id="weekly-review" class="tab-content">
+                    <!-- Week Summary -->
+                    <div class="card" style="background: linear-gradient(135deg, rgba(138, 43, 226, 0.1), rgba(74, 158, 255, 0.1)); border: 2px solid var(--accent-blue);">
+                        <h3 style="color: var(--accent-blue); margin-bottom: 1rem;">📝 Week of <input type="text" id="weekTitle" placeholder="Oct 27-31, 2025" style="background: transparent; border: none; border-bottom: 2px solid var(--accent-blue); color: var(--text-primary); padding: 0.25rem; font-size: 1.2rem; font-weight: bold; width: 200px;"></h3>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1rem 0;">
+                            <div style="background: var(--bg-tertiary); padding: 1rem; border-radius: 8px;">
+                                <div style="font-size: 0.85rem; color: var(--text-secondary);">Total P/L</div>
+                                <div id="weekPL" style="font-size: 1.8rem; font-weight: bold; color: var(--accent-green);">+$0</div>
+                            </div>
+                            <div style="background: var(--bg-tertiary); padding: 1rem; border-radius: 8px;">
+                                <div style="font-size: 0.85rem; color: var(--text-secondary);">Trades This Week</div>
+                                <div id="weekTrades" style="font-size: 1.8rem; font-weight: bold;">0</div>
+                            </div>
+                            <div style="background: var(--bg-tertiary); padding: 1rem; border-radius: 8px;">
+                                <div style="font-size: 0.85rem; color: var(--text-secondary);">Win Rate</div>
+                                <div id="weekWinRate" style="font-size: 1.8rem; font-weight: bold; color: var(--accent-blue);">0%</div>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 1rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary); font-weight: bold;">💡 Biggest Win:</label>
+                            <textarea id="biggestWin" rows="2" placeholder="Describe your biggest win this week..." style="width: 100%; padding: 0.75rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 6px; resize: vertical;"></textarea>
+                        </div>
+
+                        <div style="margin-top: 1rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary); font-weight: bold;">📉 Biggest Loss & Lesson:</label>
+                            <textarea id="biggestLoss" rows="2" placeholder="Describe your biggest loss and what you learned..." style="width: 100%; padding: 0.75rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 6px; resize: vertical;"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Daily Breakdown -->
+                    <div class="card" style="margin-top: 1.5rem;">
+                        <h3 style="color: var(--accent-green); margin-bottom: 1.5rem;">📅 Daily Breakdown</h3>
+                        
+                        <!-- Monday -->
+                        <div style="background: var(--bg-tertiary); padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem; border-left: 4px solid var(--accent-blue);">
+                            <h4 style="color: var(--accent-blue); margin-bottom: 1rem;">Monday</h4>
+                            <div style="margin-bottom: 0.75rem;">
+                                <label style="display: block; margin-bottom: 0.3rem; font-size: 0.9rem; color: var(--text-secondary);">Plan:</label>
+                                <textarea id="monPlan" rows="2" placeholder="What's your plan?" style="width: 100%; padding: 0.5rem; background: var(--bg-secondary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;"></textarea>
+                            </div>
+                            <div style="margin-bottom: 0.75rem;">
+                                <label style="display: block; margin-bottom: 0.3rem; font-size: 0.9rem; color: var(--text-secondary);">Actual:</label>
+                                <textarea id="monActual" rows="2" placeholder="What happened?" style="width: 100%; padding: 0.5rem; background: var(--bg-secondary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;"></textarea>
+                            </div>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+                                <div>
+                                    <label style="display: block; margin-bottom: 0.3rem; font-size: 0.9rem; color: var(--text-secondary);">Emotion:</label>
+                                    <input type="text" id="monEmotion" placeholder="How did you feel?" style="width: 100%; padding: 0.5rem; background: var(--bg-secondary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;">
+                                </div>
+                                <div>
+                                    <label style="display: block; margin-bottom: 0.3rem; font-size: 0.9rem; color: var(--text-secondary);">Lesson:</label>
+                                    <input type="text" id="monLesson" placeholder="What did you learn?" style="width: 100%; padding: 0.5rem; background: var(--bg-secondary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tuesday through Friday (same structure) -->
+                        <div style="background: var(--bg-tertiary); padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem; border-left: 4px solid var(--accent-yellow);">
+                            <h4 style="color: var(--accent-yellow); margin-bottom: 1rem;">Tuesday</h4>
+                            <div style="margin-bottom: 0.75rem;">
+                                <label style="display: block; margin-bottom: 0.3rem; font-size: 0.9rem; color: var(--text-secondary);">Plan:</label>
+                                <textarea id="tuePlan" rows="2" placeholder="What's your plan?" style="width: 100%; padding: 0.5rem; background: var(--bg-secondary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;"></textarea>
+                            </div>
+                            <div style="margin-bottom: 0.75rem;">
+                                <label style="display: block; margin-bottom: 0.3rem; font-size: 0.9rem; color: var(--text-secondary);">Actual:</label>
+                                <textarea id="tueActual" rows="2" placeholder="What happened?" style="width: 100%; padding: 0.5rem; background: var(--bg-secondary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;"></textarea>
+                            </div>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+                                <div>
+                                    <label style="display: block; margin-bottom: 0.3rem; font-size: 0.9rem; color: var(--text-secondary);">Emotion:</label>
+                                    <input type="text" id="tueEmotion" placeholder="How did you feel?" style="width: 100%; padding: 0.5rem; background: var(--bg-secondary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;">
+                                </div>
+                                <div>
+                                    <label style="display: block; margin-bottom: 0.3rem; font-size: 0.9rem; color: var(--text-secondary);">Lesson:</label>
+                                    <input type="text" id="tueLesson" placeholder="What did you learn?" style="width: 100%; padding: 0.5rem; background: var(--bg-secondary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="background: var(--bg-tertiary); padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem; border-left: 4px solid var(--accent-green);">
+                            <h4 style="color: var(--accent-green); margin-bottom: 1rem;">Wednesday</h4>
+                            <div style="margin-bottom: 0.75rem;">
+                                <label style="display: block; margin-bottom: 0.3rem; font-size: 0.9rem; color: var(--text-secondary);">Plan:</label>
+                                <textarea id="wedPlan" rows="2" placeholder="What's your plan?" style="width: 100%; padding: 0.5rem; background: var(--bg-secondary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;"></textarea>
+                            </div>
+                            <div style="margin-bottom: 0.75rem;">
+                                <label style="display: block; margin-bottom: 0.3rem; font-size: 0.9rem; color: var(--text-secondary);">Actual:</label>
+                                <textarea id="wedActual" rows="2" placeholder="What happened?" style="width: 100%; padding: 0.5rem; background: var(--bg-secondary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;"></textarea>
+                            </div>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+                                <div>
+                                    <label style="display: block; margin-bottom: 0.3rem; font-size: 0.9rem; color: var(--text-secondary);">Emotion:</label>
+                                    <input type="text" id="wedEmotion" placeholder="How did you feel?" style="width: 100%; padding: 0.5rem; background: var(--bg-secondary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;">
+                                </div>
+                                <div>
+                                    <label style="display: block; margin-bottom: 0.3rem; font-size: 0.9rem; color: var(--text-secondary);">Lesson:</label>
+                                    <input type="text" id="wedLesson" placeholder="What did you learn?" style="width: 100%; padding: 0.5rem; background: var(--bg-secondary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="background: var(--bg-tertiary); padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem; border-left: 4px solid #ff9800;">
+                            <h4 style="color: #ff9800; margin-bottom: 1rem;">Thursday</h4>
+                            <div style="margin-bottom: 0.75rem;">
+                                <label style="display: block; margin-bottom: 0.3rem; font-size: 0.9rem; color: var(--text-secondary);">Plan:</label>
+                                <textarea id="thuPlan" rows="2" placeholder="What's your plan?" style="width: 100%; padding: 0.5rem; background: var(--bg-secondary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;"></textarea>
+                            </div>
+                            <div style="margin-bottom: 0.75rem;">
+                                <label style="display: block; margin-bottom: 0.3rem; font-size: 0.9rem; color: var(--text-secondary);">Actual:</label>
+                                <textarea id="thuActual" rows="2" placeholder="What happened?" style="width: 100%; padding: 0.5rem; background: var(--bg-secondary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;"></textarea>
+                            </div>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+                                <div>
+                                    <label style="display: block; margin-bottom: 0.3rem; font-size: 0.9rem; color: var(--text-secondary);">Emotion:</label>
+                                    <input type="text" id="thuEmotion" placeholder="How did you feel?" style="width: 100%; padding: 0.5rem; background: var(--bg-secondary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;">
+                                </div>
+                                <div>
+                                    <label style="display: block; margin-bottom: 0.3rem; font-size: 0.9rem; color: var(--text-secondary);">Lesson:</label>
+                                    <input type="text" id="thuLesson" placeholder="What did you learn?" style="width: 100%; padding: 0.5rem; background: var(--bg-secondary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="background: var(--bg-tertiary); padding: 1.5rem; border-radius: 8px; border-left: 4px solid #9c27b0;">
+                            <h4 style="color: #9c27b0; margin-bottom: 1rem;">Friday</h4>
+                            <div style="margin-bottom: 0.75rem;">
+                                <label style="display: block; margin-bottom: 0.3rem; font-size: 0.9rem; color: var(--text-secondary);">Plan:</label>
+                                <textarea id="friPlan" rows="2" placeholder="What's your plan?" style="width: 100%; padding: 0.5rem; background: var(--bg-secondary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;"></textarea>
+                            </div>
+                            <div style="margin-bottom: 0.75rem;">
+                                <label style="display: block; margin-bottom: 0.3rem; font-size: 0.9rem; color: var(--text-secondary);">Actual:</label>
+                                <textarea id="friActual" rows="2" placeholder="What happened?" style="width: 100%; padding: 0.5rem; background: var(--bg-secondary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;"></textarea>
+                            </div>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+                                <div>
+                                    <label style="display: block; margin-bottom: 0.3rem; font-size: 0.9rem; color: var(--text-secondary);">Emotion:</label>
+                                    <input type="text" id="friEmotion" placeholder="How did you feel?" style="width: 100%; padding: 0.5rem; background: var(--bg-secondary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;">
+                                </div>
+                                <div>
+                                    <label style="display: block; margin-bottom: 0.3rem; font-size: 0.9rem; color: var(--text-secondary);">Lesson:</label>
+                                    <input type="text" id="friLesson" placeholder="What did you learn?" style="width: 100%; padding: 0.5rem; background: var(--bg-secondary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Psychology Check -->
+                    <div class="card" style="margin-top: 1.5rem; border: 2px solid var(--accent-yellow);">
+                        <h3 style="color: var(--accent-yellow); margin-bottom: 1.5rem;">🧠 Psychology Check</h3>
+                        
+                        <div style="margin-bottom: 1rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary); font-weight: bold;">🚨 Anxiety Triggers:</label>
+                            <textarea id="anxietyTriggers" rows="3" placeholder="What triggered anxiety this week?" style="width: 100%; padding: 0.75rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 6px; resize: vertical;"></textarea>
+                        </div>
+
+                        <div style="margin-bottom: 1rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary); font-weight: bold;">⏳ Patience Wins:</label>
+                            <textarea id="patienceWins" rows="3" placeholder="When did patience pay off?" style="width: 100%; padding: 0.75rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 6px; resize: vertical;"></textarea>
+                        </div>
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                            <div>
+                                <label style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary); font-weight: bold;">💪 One Strength:</label>
+                                <textarea id="strength" rows="2" placeholder="What's your edge?" style="width: 100%; padding: 0.75rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 6px; resize: vertical;"></textarea>
+                            </div>
+                            <div>
+                                <label style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary); font-weight: bold;">⚠️ One Weakness:</label>
+                                <textarea id="weakness" rows="2" placeholder="What needs improvement?" style="width: 100%; padding: 0.75rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 6px; resize: vertical;"></textarea>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary); font-weight: bold;">🙏 Gratitude:</label>
+                            <textarea id="psychGratitude" rows="2" placeholder="What are you grateful for?" style="width: 100%; padding: 0.75rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 6px; resize: vertical;"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Forward Plan -->
+                    <div class="card" style="margin-top: 1.5rem; background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(74, 158, 255, 0.1)); border: 2px solid var(--accent-green);">
+                        <h3 style="color: var(--accent-green); margin-bottom: 1.5rem;">🎯 Forward Plan (Next Week)</h3>
+                        
+                        <div style="margin-bottom: 1rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary); font-weight: bold;">🛡️ Risk Adjustment:</label>
+                            <textarea id="riskAdjust" rows="2" placeholder="How will you manage risk next week?" style="width: 100%; padding: 0.75rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 6px; resize: vertical;"></textarea>
+                        </div>
+
+                        <div style="margin-bottom: 1rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary); font-weight: bold;">🎯 Setup Focus:</label>
+                            <textarea id="setupFocus" rows="2" placeholder="Which setups will you focus on?" style="width: 100%; padding: 0.75rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 6px; resize: vertical;"></textarea>
+                        </div>
+
+                        <div style="margin-bottom: 1rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary); font-weight: bold;">🧘 Psychology Anchor:</label>
+                            <textarea id="psychAnchor" rows="2" placeholder="What's your mental anchor/mantra?" style="width: 100%; padding: 0.75rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 6px; resize: vertical;"></textarea>
+                        </div>
+
+                        <div>
+                            <label style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary); font-weight: bold;">🏆 Goal:</label>
+                            <textarea id="goal" rows="2" placeholder="What's your goal for next week?" style="width: 100%; padding: 0.75rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 6px; resize: vertical;"></textarea>
+                        </div>
+
+                        <div style="margin-top: 1.5rem; display: flex; gap: 1rem; justify-content: flex-end; flex-wrap: wrap;">
+                            <button onclick="loadCurrentWeekFromJournal()" style="padding: 0.75rem 1.5rem; background: var(--accent-blue); color: var(--bg-primary); border: none; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 1rem;">
+                                📈 Load from Journal
+                            </button>
+                            <button onclick="loadExampleWeeklyReview()" style="padding: 0.75rem 1.5rem; background: #9b59b6; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 1rem;">
+                                📊 Load Example Week
+                            </button>
+                            <button onclick="saveWeeklyReview()" style="padding: 0.75rem 1.5rem; background: var(--accent-green); color: var(--bg-primary); border: none; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 1rem;">
+                                💾 Save Weekly Review
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -246,12 +523,20 @@
         </main>
     </div>
 
+    <!-- Trade Details Modal -->
+    <div id="tradeDetailsModal" style="display: none; position: fixed; z-index: 1001; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); overflow: auto; backdrop-filter: blur(5px);">
+        <div style="background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%); margin: 3% auto; padding: 0; border-radius: 16px; max-width: 700px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); border: 1px solid rgba(0, 255, 136, 0.2);">
+            <div id="tradeDetailsContent"></div>
+        </div>
+    </div>
+
     <!-- Add Trade Modal -->
-    <div id="addTradeModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10000; overflow-y: auto;">
-        <div style="max-width: 800px; margin: 2rem auto; background: var(--bg-secondary); border-radius: 12px; padding: 2rem; position: relative;">
-            <button onclick="closeAddTradeModal()" style="position: absolute; top: 1rem; right: 1rem; background: var(--accent-red); color: #fff; border: none; border-radius: 50%; width: 40px; height: 40px; font-size: 1.5rem; cursor: pointer; line-height: 1;">
-                ×
-            </button>
+    <div id="addTradeModal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); overflow: auto;">
+        <div style="background: var(--bg-secondary); margin: 5% auto; padding: 2rem; border-radius: 12px; max-width: 600px; box-shadow: 0 8px 32px rgba(0,0,0,0.3);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <h2 style="margin: 0; color: var(--accent-green);">📝 Log New Trade</h2>
+                <button onclick="closeAddTradeModal()" style="background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-secondary);">✖</button>
+            </div>
 
             <h2 style="color: var(--accent-green); margin-bottom: 1.5rem;">➕ Log New Trade</h2>
 
@@ -367,7 +652,7 @@
         </div>
     </div>
 
-    <script src="../js/navigation.js"></script>
+    <script src="../js/zoom-sync.js"></script>`n    <script src="../js/zoom-controls.js"></script>`n    <script src="../js/navigation.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/export-print.js"></script>
     <script src="../js/alerts.js"></script>

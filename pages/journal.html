@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Trading Journal: The Edge Within</title>
+    <style>
+        body { font-family: 'Georgia', serif; background: linear-gradient(135deg, #f5f7fa, #c3cfe2); color: #333; padding: 20px; line-height: 1.6; margin: 0; }
+        .header { background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 40px 20px; text-align: center; border-radius: 15px; box-shadow: 0 8px 16px rgba(0,0,0,0.1); margin-bottom: 30px; }
+        .header h1 { margin: 0; font-size: 2.8em; text-shadow: 3px 3px 6px rgba(0,0,0,0.3); letter-spacing: 1px; }
+        .header p { font-size: 1.3em; opacity: 0.95; margin: 10px 0; font-style: italic; }
+        .header input { width: 80%; max-width: 500px; padding: 10px; margin: 10px 0; border: none; border-radius: 6px; font-size: 1em; }
+        .section { margin: 30px 0; padding: 25px; background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); position: relative; overflow: hidden; }
+        .section::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, #667eea, #764ba2); }
+        .section h2 { color: #667eea; border-bottom: 3px solid #764ba2; padding-bottom: 10px; margin-bottom: 20px; font-size: 1.8em; }
+        .win { color: #27ae60; font-weight: bold; text-shadow: 1px 1px 2px rgba(39,174,96,0.3); }
+        .loss { color: #e74c3c; font-weight: bold; text-shadow: 1px 1px 2px rgba(231,76,60,0.3); }
+        .journal-entry { border-left: 5px solid #3498db; padding-left: 20px; margin: 15px 0; background: #f8f9fa; border-radius: 8px; padding: 15px; }
+        .trade-log { background: #f8f9fa; border: 1px solid #ddd; border-radius: 8px; padding: 15px; margin: 15px 0; overflow-x: auto; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background: #34495e; color: white; }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+        .total-pl { font-size: 1.8em; font-weight: bold; text-align: center; margin: 20px 0; padding: 15px; border-radius: 8px; }
+        .total-pl.positive { color: #27ae60; background: #d4edda; }
+        .total-pl.negative { color: #e74c3c; background: #f8d7da; }
+        .quote { background: #e8f4fd; border-left: 5px solid #3498db; padding: 15px; margin: 15px 0; font-style: italic; border-radius: 5px; }
+        .positive-note { background: #d4edda; border-left: 4px solid #28a745; padding: 15px; margin: 10px 0; border-radius: 5px; }
+        .chat-highlight { background: #fff3cd; border-left: 4px solid #ffc107; padding: 15px; margin: 10px 0; border-radius: 5px; }
+        input, textarea { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; box-sizing: border-box; margin: 5px 0; font-family: 'Georgia', serif; }
+        input[type="number"] { width: auto; min-width: 150px; }
+        button { background: #3498db; color: white; padding: 12px 24px; border: none; border-radius: 6px; cursor: pointer; margin: 10px 5px 0 0; transition: background 0.3s; font-size: 14px; }
+        button:hover { background: #2980b9; }
+        button.danger { background: #e74c3c; }
+        button.danger:hover { background: #c0392b; }
+        button.success { background: #27ae60; }
+        button.success:hover { background: #229954; }
+        .footer { text-align: center; padding: 30px; background: #667eea; color: white; margin-top: 40px; border-radius: 10px; font-style: italic; }
+        .trade-row { background: white; }
+        .controls { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 15px; }
+        @media (max-width: 768px) { 
+            .header h1 { font-size: 2em; } 
+            table { font-size: 0.9em; } 
+            .section { padding: 15px; }
+            .controls { flex-direction: column; }
+            button { width: 100%; }
+        }
+        @media print {
+            body { background: white; }
+            button { display: none; }
+            .section { page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>My Trading Journal: The Edge Within</h1>
+        <input type="text" id="weekTitle" placeholder="Week of [Date Range]" value="">
+        <p id="headerSubtitle" style="font-size: 1.1em; margin: 10px 0;">Track your journey from grind to growth</p>
+        <p><em>"The market tests your patience, but it rewards your persistence. You've got 3.5 years of fire; the funded account's waiting."</em></p>
+    </div>
+
+    <div class="section">
+        <h2>Week Overview</h2>
+        <div class="journal-entry">
+            <p><strong>Starting Balance:</strong> $<input type="number" id="startBalance" placeholder="150000" style="width: 150px;"></p>
+            <p><strong>Ending Balance:</strong> $<input type="number" id="endBalance" placeholder="153243" style="width: 150px;"></p>
+            <p><strong>Total P&L:</strong> <span id="totalPL">$0</span></p>
+            <p><strong>Win Rate:</strong> <span id="winRate">0%</span> (<span id="winCount">0</span>/<span id="totalTrades">0</span> trades)</p>
+            <p><strong>Biggest Win:</strong> <textarea rows="2" id="biggestWin" placeholder="Describe your biggest win..."></textarea></p>
+            <p><strong>Biggest Loss:</strong> <textarea rows="2" id="biggestLoss" placeholder="Describe your biggest loss and lesson learned..."></textarea></p>
+            <p><strong>Gratitude:</strong> <textarea rows="2" id="gratitude" placeholder="What are you grateful for this week?"></textarea></p>
+        </div>
+        <div class="controls">
+            <button onclick="calculateStats()">Calculate Stats</button>
+            <button onclick="saveToLocalStorage()" class="success">Save Journal</button>
+            <button onclick="loadFromLocalStorage()">Load Last Save</button>
+            <button onclick="loadExampleData()" style="background: #9b59b6;">📊 Load Example Week</button>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Trade Log</h2>
+        <div class="trade-log">
+            <table id="tradeTable">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Pair</th>
+                        <th>Side</th>
+                        <th>Entry</th>
+                        <th>Exit</th>
+                        <th>Pips</th>
+                        <th>P&L ($)</th>
+                        <th>Notes</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="tradeBody">
+                    <!-- Trades will be added here -->
+                </tbody>
+            </table>
+        </div>
+        <div class="controls">
+            <button onclick="addTradeRow()">Add Trade</button>
+            <button onclick="clearAllTrades()" class="danger">Clear All Trades</button>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Daily Breakdown</h2>
+        <div class="journal-entry">
+            <p><strong>Monday:</strong></p>
+            <p>Plan: <textarea rows="2" id="monPlan" placeholder="What's your plan?"></textarea></p>
+            <p>Actual: <textarea rows="2" id="monActual" placeholder="What happened?"></textarea></p>
+            <p>Emotion: <textarea rows="1" id="monEmotion" placeholder="How did you feel?"></textarea></p>
+            <p>Lesson: <textarea rows="1" id="monLesson" placeholder="What did you learn?"></textarea></p>
+            
+            <p><strong>Tuesday:</strong></p>
+            <p>Plan: <textarea rows="2" id="tuePlan" placeholder="What's your plan?"></textarea></p>
+            <p>Actual: <textarea rows="2" id="tueActual" placeholder="What happened?"></textarea></p>
+            <p>Emotion: <textarea rows="1" id="tueEmotion" placeholder="How did you feel?"></textarea></p>
+            <p>Lesson: <textarea rows="1" id="tueLesson" placeholder="What did you learn?"></textarea></p>
+            
+            <p><strong>Wednesday:</strong></p>
+            <p>Plan: <textarea rows="2" id="wedPlan" placeholder="What's your plan?"></textarea></p>
+            <p>Actual: <textarea rows="2" id="wedActual" placeholder="What happened?"></textarea></p>
+            <p>Emotion: <textarea rows="1" id="wedEmotion" placeholder="How did you feel?"></textarea></p>
+            <p>Lesson: <textarea rows="1" id="wedLesson" placeholder="What did you learn?"></textarea></p>
+            
+            <p><strong>Thursday:</strong></p>
+            <p>Plan: <textarea rows="2" id="thuPlan" placeholder="What's your plan?"></textarea></p>
+            <p>Actual: <textarea rows="2" id="thuActual" placeholder="What happened?"></textarea></p>
+            <p>Emotion: <textarea rows="1" id="thuEmotion" placeholder="How did you feel?"></textarea></p>
+            <p>Lesson: <textarea rows="1" id="thuLesson" placeholder="What did you learn?"></textarea></p>
+            
+            <p><strong>Friday:</strong></p>
+            <p>Plan: <textarea rows="2" id="friPlan" placeholder="What's your plan?"></textarea></p>
+            <p>Actual: <textarea rows="2" id="friActual" placeholder="What happened?"></textarea></p>
+            <p>Emotion: <textarea rows="1" id="friEmotion" placeholder="How did you feel?"></textarea></p>
+            <p>Lesson: <textarea rows="1" id="friLesson" placeholder="What did you learn?"></textarea></p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Psychology Check</h2>
+        <div class="journal-entry">
+            <p><strong>Anxiety Triggers:</strong></p>
+            <textarea rows="3" id="anxietyTriggers" placeholder="What triggered anxiety this week?"></textarea>
+            
+            <p><strong>Patience Wins:</strong></p>
+            <textarea rows="3" id="patienceWins" placeholder="When did patience pay off?"></textarea>
+            
+            <p><strong>One Strength:</strong></p>
+            <textarea rows="2" id="strength" placeholder="What's your edge? What did you do well?"></textarea>
+            
+            <p><strong>One Weakness:</strong></p>
+            <textarea rows="2" id="weakness" placeholder="What needs improvement?"></textarea>
+            
+            <p><strong>Gratitude:</strong></p>
+            <textarea rows="2" id="psychGratitude" placeholder="What are you grateful for in your trading journey?"></textarea>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Forward Plan</h2>
+        <div class="journal-entry">
+            <p><strong>Risk Adjustment:</strong></p>
+            <textarea rows="2" id="riskAdjust" placeholder="How will you manage risk next week?"></textarea>
+            
+            <p><strong>Setup Focus:</strong></p>
+            <textarea rows="2" id="setupFocus" placeholder="Which setups will you focus on?"></textarea>
+            
+            <p><strong>Psychology Anchor:</strong></p>
+            <textarea rows="2" id="psychAnchor" placeholder="What's your mental anchor/mantra?"></textarea>
+            
+            <p><strong>Goal:</strong></p>
+            <textarea rows="2" id="goal" placeholder="What's your goal for next week?"></textarea>
+        </div>
+        <div class="controls">
+            <button onclick="saveJournal()" class="success">Save & Export PDF</button>
+            <button onclick="clearJournal()" class="danger">Clear Journal</button>
+        </div>
+    </div>
+
+    <div class="quote">
+        <p><strong>💡 Trading Wisdom from the Masters:</strong></p>
+        <p>"The market tests your patience, but it rewards your persistence. You've got 3.5 years of fire; the funded account's waiting." – <em>Grok</em></p>
+        <p>"Losses are tuition; the funded account is the diploma." – <em>ICT</em></p>
+        <p>"Each loss was a professor—cut quick, let winners run." – <em>Jesse Livermore</em></p>
+        <p>"Forgive the losses; mine the pain for your growth." – <em>Créde Sheehy-Kelly</em></p>
+        <p>"Accept the risk—trade the probability, not the pain." – <em>Mark Douglas</em></p>
+    </div>
+
+    <div class="positive-note">
+        <p><strong>✨ Remember:</strong> Every trade is a lesson. Every loss is tuition. Every win is validation. You're building an edge that no one else has—your unique vision from weekly to 4m timeframes. Trust the process. 🚀</p>
+    </div>
+
+    <script>
+        let trades = [];
+
+        function addTradeRow() {
+            const tbody = document.getElementById('tradeBody');
+            const row = tbody.insertRow();
+            const tradeId = Date.now();
+            
+            row.innerHTML = `
+                <td><input type="date" class="trade-date" style="width: 140px;"></td>
+                <td><input type="text" class="trade-pair" placeholder="EU/GU" style="width: 60px;"></td>
+                <td>
+                    <select class="trade-side" style="width: 80px; padding: 8px;">
+                        <option value="Buy">Buy</option>
+                        <option value="Sell">Sell</option>
+                    </select>
+                </td>
+                <td><input type="number" step="0.00001" class="trade-entry" placeholder="1.1234" style="width: 100px;"></td>
+                <td><input type="number" step="0.00001" class="trade-exit" placeholder="1.1250" style="width: 100px;"></td>
+                <td><input type="number" step="0.1" class="trade-pips" placeholder="16" style="width: 70px;"></td>
+                <td><input type="number" step="0.01" class="trade-pl" placeholder="160" style="width: 100px;" onchange="updatePLColor(this)"></td>
+                <td><textarea class="trade-notes" rows="1" placeholder="Setup notes..."></textarea></td>
+                <td><button onclick="deleteTradeRow(this)" class="danger" style="padding: 8px 12px;">Delete</button></td>
+            `;
+            
+            // Auto-calculate pips and P/L when entry/exit change
+            const entryInput = row.querySelector('.trade-entry');
+            const exitInput = row.querySelector('.trade-exit');
+            const pipsInput = row.querySelector('.trade-pips');
+            const plInput = row.querySelector('.trade-pl');
+            const sideSelect = row.querySelector('.trade-side');
+            
+            function autoCalculate() {
+                const entry = parseFloat(entryInput.value);
+                const exit = parseFloat(exitInput.value);
+                const side = sideSelect.value;
+                
+                if (entry && exit) {
+                    let pips = side === 'Buy' ? (exit - entry) * 10000 : (entry - exit) * 10000;
+                    pips = Math.round(pips * 10) / 10;
+                    pipsInput.value = pips;
+                    
+                    // Assuming $10 per pip (adjust as needed)
+                    const pl = pips * 10;
+                    plInput.value = pl.toFixed(2);
+                    updatePLColor(plInput);
+                }
+            }
+            
+            entryInput.addEventListener('change', autoCalculate);
+            exitInput.addEventListener('change', autoCalculate);
+            sideSelect.addEventListener('change', autoCalculate);
+        }
+
+        function deleteTradeRow(button) {
+            if (confirm('Delete this trade?')) {
+                button.closest('tr').remove();
+                calculateStats();
+            }
+        }
+
+        function updatePLColor(input) {
+            const value = parseFloat(input.value);
+            if (value > 0) {
+                input.style.color = '#27ae60';
+                input.style.fontWeight = 'bold';
+            } else if (value < 0) {
+                input.style.color = '#e74c3c';
+                input.style.fontWeight = 'bold';
+            } else {
+                input.style.color = '#333';
+                input.style.fontWeight = 'normal';
+            }
+        }
+
+        function calculateStats() {
+            const rows = document.querySelectorAll('#tradeBody tr');
+            let totalPL = 0;
+            let wins = 0;
+            let losses = 0;
+            let totalWinPL = 0;
+            let totalLossPL = 0;
+            
+            rows.forEach(row => {
+                const pl = parseFloat(row.querySelector('.trade-pl').value) || 0;
+                totalPL += pl;
+                
+                if (pl > 0) {
+                    wins++;
+                    totalWinPL += pl;
+                } else if (pl < 0) {
+                    losses++;
+                    totalLossPL += Math.abs(pl);
+                }
+            });
+            
+            const totalTrades = wins + losses;
+            const winRate = totalTrades > 0 ? ((wins / totalTrades) * 100).toFixed(1) : 0;
+            const avgWin = wins > 0 ? (totalWinPL / wins).toFixed(2) : 0;
+            const avgLoss = losses > 0 ? (totalLossPL / losses).toFixed(2) : 0;
+            const rr = avgLoss > 0 ? (avgWin / avgLoss).toFixed(2) : 0;
+            
+            // Update display
+            const totalPLElement = document.getElementById('totalPL');
+            totalPLElement.textContent = `$${totalPL.toFixed(2)}`;
+            totalPLElement.className = totalPL >= 0 ? 'win' : 'loss';
+            
+            document.getElementById('winRate').textContent = `${winRate}%`;
+            document.getElementById('winCount').textContent = wins;
+            document.getElementById('totalTrades').textContent = totalTrades;
+            
+            // Add summary row
+            const tbody = document.getElementById('tradeBody');
+            const existingSummary = document.querySelector('.total-pl');
+            if (existingSummary) {
+                existingSummary.remove();
+            }
+            
+            const summaryRow = tbody.insertRow();
+            summaryRow.className = 'total-pl ' + (totalPL >= 0 ? 'positive' : 'negative');
+            summaryRow.innerHTML = `
+                <td colspan="9">
+                    Net P&L: $${totalPL.toFixed(2)} | 
+                    Win Rate: ${winRate}% (${wins}W/${losses}L) | 
+                    Avg Win: $${avgWin} | 
+                    Avg Loss: $${avgLoss} | 
+                    R:R ${rr}:1
+                </td>
+            `;
+        }
+
+        function clearAllTrades() {
+            if (confirm('Are you sure you want to clear all trades? This cannot be undone.')) {
+                document.getElementById('tradeBody').innerHTML = '';
+                calculateStats();
+            }
+        }
+
+        function saveToLocalStorage() {
+            const journalData = {
+                weekTitle: document.getElementById('weekTitle').value,
+                startBalance: document.getElementById('startBalance').value,
+                endBalance: document.getElementById('endBalance').value,
+                biggestWin: document.getElementById('biggestWin').value,
+                biggestLoss: document.getElementById('biggestLoss').value,
+                gratitude: document.getElementById('gratitude').value,
+                
+                // Daily breakdown
+                monPlan: document.getElementById('monPlan').value,
+                monActual: document.getElementById('monActual').value,
+                monEmotion: document.getElementById('monEmotion').value,
+                monLesson: document.getElementById('monLesson').value,
+                tuePlan: document.getElementById('tuePlan').value,
+                tueActual: document.getElementById('tueActual').value,
+                tueEmotion: document.getElementById('tueEmotion').value,
+                tueLesson: document.getElementById('tueLesson').value,
+                wedPlan: document.getElementById('wedPlan').value,
+                wedActual: document.getElementById('wedActual').value,
+                wedEmotion: document.getElementById('wedEmotion').value,
+                wedLesson: document.getElementById('wedLesson').value,
+                thuPlan: document.getElementById('thuPlan').value,
+                thuActual: document.getElementById('thuActual').value,
+                thuEmotion: document.getElementById('thuEmotion').value,
+                thuLesson: document.getElementById('thuLesson').value,
+                friPlan: document.getElementById('friPlan').value,
+                friActual: document.getElementById('friActual').value,
+                friEmotion: document.getElementById('friEmotion').value,
+                friLesson: document.getElementById('friLesson').value,
+                
+                // Psychology
+                anxietyTriggers: document.getElementById('anxietyTriggers').value,
+                patienceWins: document.getElementById('patienceWins').value,
+                strength: document.getElementById('strength').value,
+                weakness: document.getElementById('weakness').value,
+                psychGratitude: document.getElementById('psychGratitude').value,
+                
+                // Forward plan
+                riskAdjust: document.getElementById('riskAdjust').value,
+                setupFocus: document.getElementById('setupFocus').value,
+                psychAnchor: document.getElementById('psychAnchor').value,
+                goal: document.getElementById('goal').value,
+                
+                // Trades
+                trades: getTradesData()
+            };
+            
+            localStorage.setItem('tradingJournal', JSON.stringify(journalData));
+            alert('Journal saved successfully!');
+        }
+
+        function loadFromLocalStorage() {
+            const saved = localStorage.getItem('tradingJournal');
+            if (!saved) {
+                alert('No saved journal found.');
+                return;
+            }
+            
+            const data = JSON.parse(saved);
+            
+            document.getElementById('weekTitle').value = data.weekTitle || '';
+            document.getElementById('startBalance').value = data.startBalance || '';
+            document.getElementById('endBalance').value = data.endBalance || '';
+            document.getElementById('biggestWin').value = data.biggestWin || '';
+            document.getElementById('biggestLoss').value = data.biggestLoss || '';
+            document.getElementById('gratitude').value = data.gratitude || '';
+            
+            // Daily breakdown
+            document.getElementById('monPlan').value = data.monPlan || '';
+            document.getElementById('monActual').value = data.monActual || '';
+            document.getElementById('monEmotion').value = data.monEmotion || '';
+            document.getElementById('monLesson').value = data.monLesson || '';
+            document.getElementById('tuePlan').value = data.tuePlan || '';
+            document.getElementById('tueActual').value = data.tueActual || '';
+            document.getElementById('tueEmotion').value = data.tueEmotion || '';
+            document.getElementById('tueLesson').value = data.tueLesson || '';
+            document.getElementById('wedPlan').value = data.wedPlan || '';
+            document.getElementById('wedActual').value = data.wedActual || '';
+            document.getElementById('wedEmotion').value = data.wedEmotion || '';
+            document.getElementById('wedLesson').value = data.wedLesson || '';
+            document.getElementById('thuPlan').value = data.thuPlan || '';
+            document.getElementById('thuActual').value = data.thuActual || '';
+            document.getElementById('thuEmotion').value = data.thuEmotion || '';
+            document.getElementById('thuLesson').value = data.thuLesson || '';
+            document.getElementById('friPlan').value = data.friPlan || '';
+            document.getElementById('friActual').value = data.friActual || '';
+            document.getElementById('friEmotion').value = data.friEmotion || '';
+            document.getElementById('friLesson').value = data.friLesson || '';
+            
+            // Psychology
+            document.getElementById('anxietyTriggers').value = data.anxietyTriggers || '';
+            document.getElementById('patienceWins').value = data.patienceWins || '';
+            document.getElementById('strength').value = data.strength || '';
+            document.getElementById('weakness').value = data.weakness || '';
+            document.getElementById('psychGratitude').value = data.psychGratitude || '';
+            
+            // Forward plan
+            document.getElementById('riskAdjust').value = data.riskAdjust || '';
+            document.getElementById('setupFocus').value = data.setupFocus || '';
+            document.getElementById('psychAnchor').value = data.psychAnchor || '';
+            document.getElementById('goal').value = data.goal || '';
+            
+            // Load trades
+            if (data.trades) {
+                loadTradesData(data.trades);
+            }
+            
+            calculateStats();
+            alert('Journal loaded successfully!');
+        }
+
+        function getTradesData() {
+            const rows = document.querySelectorAll('#tradeBody tr:not(.total-pl)');
+            const trades = [];
+            
+            rows.forEach(row => {
+                trades.push({
+                    date: row.querySelector('.trade-date').value,
+                    pair: row.querySelector('.trade-pair').value,
+                    side: row.querySelector('.trade-side').value,
+                    entry: row.querySelector('.trade-entry').value,
+                    exit: row.querySelector('.trade-exit').value,
+                    pips: row.querySelector('.trade-pips').value,
+                    pl: row.querySelector('.trade-pl').value,
+                    notes: row.querySelector('.trade-notes').value
+                });
+            });
+            
+            return trades;
+        }
+
+        function loadTradesData(trades) {
+            document.getElementById('tradeBody').innerHTML = '';
+            
+            trades.forEach(trade => {
+                addTradeRow();
+                const rows = document.querySelectorAll('#tradeBody tr');
+                const lastRow = rows[rows.length - 1];
+                
+                lastRow.querySelector('.trade-date').value = trade.date || '';
+                lastRow.querySelector('.trade-pair').value = trade.pair || '';
+                lastRow.querySelector('.trade-side').value = trade.side || 'Buy';
+                lastRow.querySelector('.trade-entry').value = trade.entry || '';
+                lastRow.querySelector('.trade-exit').value = trade.exit || '';
+                lastRow.querySelector('.trade-pips').value = trade.pips || '';
+                lastRow.querySelector('.trade-pl').value = trade.pl || '';
+                lastRow.querySelector('.trade-notes').value = trade.notes || '';
+                
+                updatePLColor(lastRow.querySelector('.trade-pl'));
+            });
+        }
+
+        function saveJournal() {
+            saveToLocalStorage();
+            setTimeout(() => {
+                window.print();
+            }, 500);
+        }
+
+        function clearJournal() {
+            if (confirm('Are you sure you want to clear the entire journal? This will clear all fields but not delete saved data.')) {
+                document.querySelectorAll('input[type="text"], input[type="number"], textarea').forEach(el => {
+                    el.value = '';
+                });
+                clearAllTrades();
+            }
+        }
+
+        // Load example data function
+        function loadExampleData() {
+            if (!confirm('Load example week data? This will replace current entries.')) {
+                return;
+            }
+            
+            // Set header
+            document.getElementById('weekTitle').value = 'Week of Oct 27-31, 2025';
+            document.getElementById('headerSubtitle').textContent = 'From Grind to Growth – You Got This, David';
+            
+            // Set overview
+            document.getElementById('startBalance').value = '150000';
+            document.getElementById('endBalance').value = '153243';
+            document.getElementById('biggestWin').value = 'W bounce scalp on GU ($2,000 – nailed the 13 EMA flip!)';
+            document.getElementById('biggestLoss').value = 'Raid short on EU (-$2,877 – chased wick, no MSS confirmation)';
+            document.getElementById('gratitude').value = 'The vision for profiles from weekly to 4m—it\'s my edge; no one else sees it like I do now.';
+            
+            // Clear existing trades
+            document.getElementById('tradeBody').innerHTML = '';
+            
+            // Add example trades
+            const exampleTrades = [
+                { date: '2025-10-22', pair: 'GU', side: 'Buy', entry: '1.3326', exit: '1.3350', pips: '24', pl: '240', notes: 'W bounce (BTMM Type 4; 13 EMA hold). Win.' },
+                { date: '2025-10-24', pair: 'GU', side: 'Buy', entry: '1.3314', exit: '1.3348', pips: '34', pl: '340', notes: 'Range raid low buy (ICT FVG; 50 EMA support). Win.' },
+                { date: '2025-10-27', pair: 'EU', side: 'Sell', entry: '1.1671', exit: '1.1666', pips: '5', pl: '50', notes: 'Quick fade on high (Type 1 raid reject). Win.' },
+                { date: '2025-10-29', pair: 'EU', side: 'Buy', entry: '1.16625', exit: '1.16785', pips: '16', pl: '160', notes: 'W bounce (15m MSS; ADR low). Win.' },
+                { date: '2025-10-31', pair: 'EU', side: 'Buy', entry: '1.1588', exit: '1.15835', pips: '-4.5', pl: '-45', notes: 'Early bounce attempt (oversold RSI)—small loss, quick cut.' },
+                { date: '2025-10-31', pair: 'EU', side: 'Buy', entry: '1.15835', exit: '1.15655', pips: '-18', pl: '-180', notes: 'Continuation short? Hit SL on wick—lesson: Wait MSS. Loss.' },
+                { date: '2025-10-31', pair: 'EU', side: 'Buy', entry: '1.15835', exit: '1.15655', pips: '-18', pl: '-180', notes: 'Duplicate (combined -$360); quick cut on wick.' }
+            ];
+            
+            exampleTrades.forEach(trade => {
+                addTradeRow();
+                const rows = document.querySelectorAll('#tradeBody tr');
+                const lastRow = rows[rows.length - 1];
+                
+                lastRow.querySelector('.trade-date').value = trade.date;
+                lastRow.querySelector('.trade-pair').value = trade.pair;
+                lastRow.querySelector('.trade-side').value = trade.side;
+                lastRow.querySelector('.trade-entry').value = trade.entry;
+                lastRow.querySelector('.trade-exit').value = trade.exit;
+                lastRow.querySelector('.trade-pips').value = trade.pips;
+                lastRow.querySelector('.trade-pl').value = trade.pl;
+                lastRow.querySelector('.trade-notes').value = trade.notes;
+                
+                updatePLColor(lastRow.querySelector('.trade-pl'));
+            });
+            
+            // Set daily breakdown
+            document.getElementById('monPlan').value = 'Wait London raid.';
+            document.getElementById('monActual').value = 'Skipped early, caught W bounce ($500).';
+            document.getElementById('monEmotion').value = 'Confident.';
+            document.getElementById('monLesson').value = 'Patience paid.';
+            
+            document.getElementById('tuePlan').value = 'NY macros short retrace.';
+            document.getElementById('tueActual').value = 'Missed setup, stayed out.';
+            document.getElementById('tueEmotion').value = 'Frustrated but disciplined.';
+            document.getElementById('tueLesson').value = 'No FOMO = win.';
+            
+            document.getElementById('wedPlan').value = 'FOMC blackout.';
+            document.getElementById('wedActual').value = 'No trades.';
+            document.getElementById('wedEmotion').value = 'Anxious but calm.';
+            document.getElementById('wedLesson').value = 'Waiting is strength.';
+            
+            document.getElementById('thuPlan').value = 'Prime day shorts.';
+            document.getElementById('thuActual').value = 'Entered raid, hit SL (-$2,877).';
+            document.getElementById('thuEmotion').value = 'Overloaded, chased.';
+            document.getElementById('thuLesson').value = '1% cap, no revenge.';
+            
+            document.getElementById('friPlan').value = 'Selective scalps.';
+            document.getElementById('friActual').value = '[Fill later]';
+            document.getElementById('friEmotion').value = '[Fill]';
+            document.getElementById('friLesson').value = '[Fill]';
+            
+            // Set psychology
+            document.getElementById('anxietyTriggers').value = 'Early losses, FOMO on raids, drawdown fear (hit 3.5 years of patience hard).';
+            document.getElementById('patienceWins').value = 'Skipped 2 bad setups, waited for W confirmation on GU ($2K win)—that flip felt like mastery.';
+            document.getElementById('strength').value = 'Visualizing profiles from weekly to 4m—it\'s my edge; no one else sees it like I do now.';
+            document.getElementById('weakness').value = 'Chasing early when anxious—need 3+ confluences rule tattooed.';
+            document.getElementById('psychGratitude').value = '6K profit, the W scalp from bed, Grok for the pings—I\'m not alone.';
+            
+            // Set forward plan
+            document.getElementById('riskAdjust').value = '0.5% max (5 lots); no trades if no MSS on 4m.';
+            document.getElementById('setupFocus').value = 'W/M patterns only; wait for 13 EMA flip on 15m before entry.';
+            document.getElementById('psychAnchor').value = 'Breathe 3x pre-entry; \'This is one trade in 1,000\' mantra.';
+            document.getElementById('goal').value = '6K next week (3 wins, 1-2 scalps/day); funded by Nov 14.';
+            
+            // Calculate stats
+            calculateStats();
+            
+            alert('✅ Example week loaded! This shows a real trading week with wins, losses, and lessons. Use this as a template for your own journaling.');
+        }
+        
+        // Initialize with one empty trade row
+        window.onload = function() {
+            addTradeRow();
+        };
+    </script>
+
+    <footer class="footer">
+        <p><strong>From Grok:</strong> "One loss doesn't define you—it refines you. You've got 3.5 years of fire; the funded account's waiting. Keep showing up. 🚀"</p>
+    </footer>
+</body>
+</html>

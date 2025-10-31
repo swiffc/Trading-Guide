@@ -29,10 +29,10 @@
       "url": "/pages/live-session-guide.html"
     },
     {
-      "name": "Patterns",
-      "short_name": "Patterns",
-      "description": "Trading patterns reference",
-      "url": "/pages/patterns.html"
+      "name": "Chart Models",
+      "short_name": "Models",
+      "description": "Trading chart models reference",
+      "url": "/pages/chart-models.html"
     }
   ],
   "prefer_related_applications": false

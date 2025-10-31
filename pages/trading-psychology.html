@@ -3,1182 +3,462 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trading Psychology - Wisdom from the Masters</title>
+    <title>Trading Psychology - Trading Guide</title>
     <link rel="stylesheet" href="../styles.css">
-    <style>
-        .psychology-hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 60px 20px;
-            text-align: center;
-            border-radius: 20px;
-            margin: 20px 0;
-            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.4);
-        }
-
-        .psychology-hero h1 {
-            font-size: 3em;
-            margin: 0 0 20px 0;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .psychology-hero p {
-            font-size: 1.3em;
-            opacity: 0.95;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .masters-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            margin: 40px 0;
-        }
-
-        .master-card {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            color: white;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .master-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-        }
-
-        .master-card.livermore {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-
-        .master-card.gann {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-        }
-
-        .master-card.ict {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-        }
-
-        .master-card.douglas {
-            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-        }
-
-        .master-avatar {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4em;
-            margin: 0 auto 20px;
-            border: 5px solid rgba(255,255,255,0.3);
-        }
-
-        .master-card h2 {
-            margin: 0 0 10px 0;
-            font-size: 1.8em;
-        }
-
-        .master-card .subtitle {
-            font-size: 0.9em;
-            opacity: 0.9;
-            font-style: italic;
-        }
-
-        .wisdom-section {
-            margin: 50px 0;
-        }
-
-        .wisdom-card {
-            background: white;
-            border-radius: 15px;
-            padding: 40px;
-            margin: 30px 0;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-            border-left: 8px solid #667eea;
-            transition: all 0.3s ease;
-        }
-
-        .wisdom-card:hover {
-            transform: translateX(5px);
-            box-shadow: 0 15px 50px rgba(0,0,0,0.15);
-        }
-
-        .wisdom-card.livermore-wisdom {
-            border-left-color: #667eea;
-        }
-
-        .wisdom-card.gann-wisdom {
-            border-left-color: #f5576c;
-        }
-
-        .wisdom-card.ict-wisdom {
-            border-left-color: #00f2fe;
-        }
-
-        .wisdom-card.douglas-wisdom {
-            border-left-color: #38f9d7;
-        }
-
-        .wisdom-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 25px;
-            padding-bottom: 20px;
-            border-bottom: 2px solid #f0f0f0;
-        }
-
-        .wisdom-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2em;
-            margin-right: 20px;
-            flex-shrink: 0;
-        }
-
-        .wisdom-header h3 {
-            margin: 0;
-            color: #333;
-            font-size: 1.5em;
-        }
-
-        .wisdom-header .source {
-            color: #666;
-            font-size: 0.9em;
-            font-style: italic;
-        }
-
-        .quote-block {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            border-left: 5px solid #667eea;
-            padding: 25px;
-            margin: 20px 0;
-            border-radius: 10px;
-            font-size: 1.2em;
-            font-style: italic;
-            color: #333;
-            line-height: 1.8;
-            position: relative;
-        }
-
-        .quote-block::before {
-            content: '"';
-            font-size: 4em;
-            position: absolute;
-            top: -10px;
-            left: 15px;
-            opacity: 0.2;
-            color: #667eea;
-        }
-
-        .quote-block::after {
-            content: '"';
-            font-size: 4em;
-            position: absolute;
-            bottom: -30px;
-            right: 15px;
-            opacity: 0.2;
-            color: #667eea;
-        }
-
-        .principle {
-            background: #fff3cd;
-            border-left: 5px solid #ffc107;
-            padding: 20px;
-            margin: 15px 0;
-            border-radius: 8px;
-        }
-
-        .principle h4 {
-            margin: 0 0 10px 0;
-            color: #856404;
-            font-size: 1.2em;
-        }
-
-        .principle p {
-            margin: 5px 0;
-            color: #856404;
-            line-height: 1.6;
-        }
-
-        .application {
-            background: #d4edda;
-            border-left: 5px solid #28a745;
-            padding: 20px;
-            margin: 15px 0;
-            border-radius: 8px;
-        }
-
-        .application h4 {
-            margin: 0 0 10px 0;
-            color: #155724;
-            font-size: 1.1em;
-        }
-
-        .application ul {
-            margin: 10px 0;
-            padding-left: 20px;
-        }
-
-        .application li {
-            margin: 8px 0;
-            color: #155724;
-            line-height: 1.6;
-        }
-
-        .mental-framework {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 40px;
-            border-radius: 15px;
-            margin: 40px 0;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
-        }
-
-        .mental-framework h3 {
-            margin-top: 0;
-            font-size: 2em;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-        }
-
-        .framework-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .framework-item {
-            background: rgba(255,255,255,0.15);
-            padding: 25px;
-            border-radius: 10px;
-            backdrop-filter: blur(10px);
-        }
-
-        .framework-item h4 {
-            margin: 0 0 15px 0;
-            font-size: 1.3em;
-        }
-
-        .framework-item ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .framework-item li {
-            margin: 8px 0;
-            padding-left: 25px;
-            position: relative;
-        }
-
-        .framework-item li::before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            font-weight: bold;
-            color: #43e97b;
-        }
-
-        .daily-practice {
-            background: white;
-            border-radius: 15px;
-            padding: 40px;
-            margin: 40px 0;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-        }
-
-        .daily-practice h3 {
-            color: #667eea;
-            font-size: 2em;
-            margin-top: 0;
-        }
-
-        .practice-checklist {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin: 30px 0;
-        }
-
-        .checklist-card {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            padding: 25px;
-            border-radius: 10px;
-            border-top: 5px solid #667eea;
-        }
-
-        .checklist-card h4 {
-            margin: 0 0 15px 0;
-            color: #333;
-            font-size: 1.3em;
-        }
-
-        .checklist-item {
-            display: flex;
-            align-items: flex-start;
-            margin: 12px 0;
-        }
-
-        .checklist-item input[type="checkbox"] {
-            width: 20px;
-            height: 20px;
-            margin-right: 12px;
-            margin-top: 2px;
-            cursor: pointer;
-            flex-shrink: 0;
-        }
-
-        .checklist-item label {
-            cursor: pointer;
-            line-height: 1.5;
-            color: #333;
-        }
-
-        .warning-box {
-            background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
-            border-left: 5px solid #dc3545;
-            padding: 25px;
-            margin: 25px 0;
-            border-radius: 10px;
-        }
-
-        .warning-box h4 {
-            margin: 0 0 15px 0;
-            color: #721c24;
-            font-size: 1.3em;
-        }
-
-        .warning-box ul {
-            margin: 10px 0;
-            padding-left: 20px;
-        }
-
-        .warning-box li {
-            margin: 8px 0;
-            color: #721c24;
-            line-height: 1.6;
-        }
-
-        .tabs-psychology {
-            display: flex;
-            border-bottom: 3px solid #667eea;
-            margin: 40px 0 20px 0;
-            flex-wrap: wrap;
-            gap: 5px;
-        }
-
-        .tab-psychology {
-            padding: 15px 25px;
-            cursor: pointer;
-            background: #f8f9fa;
-            border: none;
-            border-bottom: 4px solid transparent;
-            transition: all 0.3s ease;
-            font-size: 1em;
-            font-weight: 600;
-            border-radius: 8px 8px 0 0;
-        }
-
-        .tab-psychology:hover {
-            background: #e9ecef;
-        }
-
-        .tab-psychology.active {
-            background: white;
-            border-bottom: 4px solid #667eea;
-            color: #667eea;
-        }
-
-        .tab-content-psychology {
-            display: none;
-            animation: fadeIn 0.4s ease;
-        }
-
-        .tab-content-psychology.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .success-story {
-            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
-            border-left: 5px solid #28a745;
-            padding: 25px;
-            margin: 25px 0;
-            border-radius: 10px;
-        }
-
-        .success-story h4 {
-            margin: 0 0 15px 0;
-            color: #155724;
-            font-size: 1.3em;
-        }
-
-        @media (max-width: 768px) {
-            .psychology-hero h1 {
-                font-size: 2em;
-            }
-
-            .psychology-hero p {
-                font-size: 1.1em;
-            }
-
-            .wisdom-card {
-                padding: 25px;
-            }
-
-            .quote-block {
-                font-size: 1.1em;
-                padding: 20px;
-            }
-
-            .tabs-psychology {
-                overflow-x: auto;
-            }
-
-            .tab-psychology {
-                padding: 12px 18px;
-                font-size: 0.9em;
-            }
-        }
-    </style>
 </head>
 <body>
-    <div class="app-container">
-        <aside class="sidebar" id="sidebar">
-            <!-- Navigation will be loaded here -->
-        </aside>
+    <div class="header">
+        <div class="header-content">
+            <div>
+                <h1>Quarterly Theory & BTMM Trading Guide</h1>
+                <div class="header-subtitle">Trading Psychology - Master Your Mind</div>
+            </div>
+            <div class="current-time">
+                <div class="time-display" id="currentTime">--:--:-- EST</div>
+                <div class="session-indicator" id="sessionIndicator">Loading...</div>
+            </div>
+        </div>
+    </div>
 
-        <main class="main-content">
-            <div style="max-width: 1200px; margin: 0 auto; padding: 20px;">
+    <div class="main-container">
+        <nav class="sidebar" id="sidebar">
+            <div class="nav-header">
+                <a href="../index.html" style="text-decoration: none; color: inherit;">
+                    <h2>📚 Trading Guide</h2>
+                </a>
+            </div>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search guide..." />
+            </div>
+            <div class="nav-links" id="navLinks">
+                <!-- Navigation will be loaded by navigation.js -->
+            </div>
+        </nav>
+
+        <main class="content" id="mainContent">
+            <section class="section">
+                <h2>🧠 Trading Psychology - Master Your Mind, Master the Market</h2>
                 
-                <!-- Hero Section -->
-                <div class="psychology-hero">
-                    <h1>🧠 Trading Psychology</h1>
-                    <p>
-                        Wisdom from the Greatest Traders in History<br>
-                        <em>Master Your Mind, Master the Markets</em>
+                <div class="hero-card" style="background: linear-gradient(135deg, rgba(138, 43, 226, 0.1), rgba(74, 158, 255, 0.1));">
+                    <h3 style="margin-top: 0;">The Greatest Battle is Within</h3>
+                    <p style="font-size: 1.1rem; line-height: 1.8;">
+                        <strong>"The market is a device for transferring money from the impatient to the patient."</strong> — Warren Buffett
+                    </p>
+                    <p style="font-size: 1.05rem; line-height: 1.8; margin-top: 1rem;">
+                        Technical skills get you to the door. <strong>Mental discipline</strong> gets you through it.
+                        This page contains timeless wisdom from the greatest traders in history.
                     </p>
                 </div>
 
-                <!-- Masters Grid -->
-                <div class="masters-grid">
-                    <div class="master-card livermore">
-                        <div class="master-avatar">📈</div>
-                        <h2>Jesse Livermore</h2>
-                        <p class="subtitle">"The Boy Plunger"</p>
-                        <p>Made $100M in 1929<br>Master of Tape Reading</p>
-                    </div>
-
-                    <div class="master-card gann">
-                        <div class="master-avatar">🔮</div>
-                        <h2>W.D. Gann</h2>
-                        <p class="subtitle">"The Master of Time & Price"</p>
-                        <p>85% Win Rate<br>$50M+ Career Profits</p>
-                    </div>
-
-                    <div class="master-card ict">
-                        <div class="master-avatar">🎯</div>
-                        <h2>ICT (Michael Huddleston)</h2>
-                        <p class="subtitle">"The Inner Circle Trader"</p>
-                        <p>Smart Money Concepts<br>Institutional Thinking</p>
-                    </div>
-
-                    <div class="master-card douglas">
-                        <div class="master-avatar">💡</div>
-                        <h2>Mark Douglas</h2>
-                        <p class="subtitle">"The Psychology Expert"</p>
-                        <p>Author: Trading in the Zone<br>Mental Framework Master</p>
-                    </div>
-                </div>
-
-                <!-- Tabs -->
-                <div class="tabs-psychology">
-                    <button class="tab-psychology active" onclick="switchPsychTab(event, 'livermore')">
-                        📈 Jesse Livermore
-                    </button>
-                    <button class="tab-psychology" onclick="switchPsychTab(event, 'gann')">
-                        🔮 W.D. Gann
-                    </button>
-                    <button class="tab-psychology" onclick="switchPsychTab(event, 'ict')">
-                        🎯 ICT
-                    </button>
-                    <button class="tab-psychology" onclick="switchPsychTab(event, 'douglas')">
-                        💡 Mark Douglas
-                    </button>
-                    <button class="tab-psychology" onclick="switchPsychTab(event, 'framework')">
-                        🧠 Mental Framework
-                    </button>
-                </div>
-
-                <!-- Jesse Livermore Section -->
-                <div id="livermore" class="tab-content-psychology active">
-                    <div class="wisdom-card livermore-wisdom">
-                        <div class="wisdom-header">
-                            <div class="wisdom-avatar" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">📈</div>
+                <h3 style="margin-top: 3rem;">🏆 Learn from the Masters</h3>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+                    <!-- Jesse Livermore -->
+                    <div class="card" style="border-left: 4px solid var(--accent-blue);">
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                            <div style="font-size: 2.5rem;">📈</div>
                             <div>
-                                <h3>Jesse Livermore</h3>
-                                <p class="source">"Reminiscences of a Stock Operator" (1923)</p>
+                                <h4 style="margin: 0; color: var(--accent-blue);">Jesse Livermore</h4>
+                                <p style="margin: 0; font-size: 0.85rem; color: rgba(255,255,255,0.6);">The Boy Plunger</p>
                             </div>
                         </div>
-
-                        <div class="quote-block">
-                            It never was my thinking that made the big money for me. It always was my sitting. Got that? My sitting tight!
-                        </div>
-
-                        <div class="principle">
-                            <h4>💎 The Power of Patience</h4>
-                            <p>Livermore understood that profits come from <strong>holding positions</strong>, not constantly trading. The hardest thing for a trader is to do nothing and wait for the right moment.</p>
-                        </div>
-
-                        <div class="application">
-                            <h4>✅ How to Apply This:</h4>
-                            <ul>
-                                <li><strong>Once you enter a trade:</strong> Let it develop, don't micromanage</li>
-                                <li><strong>Set your targets:</strong> Then step away from the screen</li>
-                                <li><strong>Avoid overtrading:</strong> Quality over quantity</li>
-                                <li><strong>Trust your analysis:</strong> If confluence is high, be patient</li>
-                                <li><strong>Let winners run:</strong> Don't exit too early out of fear</li>
-                            </ul>
+                        <div style="font-size: 0.95rem; line-height: 1.7; opacity: 0.9;">
+                            <p><strong>"The big money is made in the sitting, not the trading."</strong></p>
+                            <p style="margin-top: 0.5rem;">"I know from experience that nobody can give me a tip or a series of tips that will make more money for me than my own judgment."</p>
                         </div>
                     </div>
 
-                    <div class="wisdom-card livermore-wisdom">
-                        <div class="quote-block">
-                            The game of speculation is the most uniformly fascinating game in the world. But it is not a game for the stupid, the mentally lazy, the person of inferior emotional balance, or the get-rich-quick adventurer. They will die poor.
-                        </div>
-
-                        <div class="principle">
-                            <h4>🎓 Trading is a Profession</h4>
-                            <p>Livermore treated trading as a serious business requiring <strong>intelligence, discipline, and emotional control</strong>. It's not gambling—it's calculated risk-taking based on probability.</p>
-                        </div>
-
-                        <div class="application">
-                            <h4>✅ Professional Trader Mindset:</h4>
-                            <ul>
-                                <li><strong>Study daily:</strong> Markets evolve, so must you</li>
-                                <li><strong>Keep a journal:</strong> Document every trade and lesson</li>
-                                <li><strong>Control emotions:</strong> Fear and greed destroy accounts</li>
-                                <li><strong>Have a plan:</strong> Never enter a trade without one</li>
-                                <li><strong>Risk management:</strong> Always know your max loss before entry</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="wisdom-card livermore-wisdom">
-                        <div class="quote-block">
-                            There is only one side to the stock market; and it is not the bull side or the bear side, but the right side.
-                        </div>
-
-                        <div class="principle">
-                            <h4>🎯 Follow the Market, Not Your Bias</h4>
-                            <p>Livermore never married a direction. He went <strong>long or short</strong> based on what the market was doing, not what he wanted it to do.</p>
-                        </div>
-
-                        <div class="application">
-                            <h4>✅ Trade What You See:</h4>
-                            <ul>
-                                <li><strong>No bias:</strong> Don't force longs in a downtrend</li>
-                                <li><strong>Follow confluence:</strong> If signals say SHORT, go short</li>
-                                <li><strong>Adapt quickly:</strong> If wrong, exit immediately</li>
-                                <li><strong>Market is always right:</strong> Your opinion doesn't matter</li>
-                                <li><strong>Be flexible:</strong> Change your mind when evidence changes</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="wisdom-card livermore-wisdom">
-                        <div class="quote-block">
-                            Losing money is the least of my troubles. A loss never bothers me after I take it. I forget it overnight. But being wrong—not taking the loss—that is what does damage to the pocketbook and to the soul.
-                        </div>
-
-                        <div class="principle">
-                            <h4>🛑 Cut Losses Quickly</h4>
-                            <p>Livermore's greatest skill was <strong>accepting losses immediately</strong>. The ego wants to be right, but the account wants to survive.</p>
-                        </div>
-
-                        <div class="warning-box">
-                            <h4>⚠️ The Deadly Sins of Trading:</h4>
-                            <ul>
-                                <li><strong>Moving stops further away</strong> instead of taking the loss</li>
-                                <li><strong>Averaging down</strong> on losing positions</li>
-                                <li><strong>Hope and prayer</strong> instead of action</li>
-                                <li><strong>Revenge trading</strong> to "get back" at the market</li>
-                                <li><strong>Refusing to admit</strong> you were wrong</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="success-story">
-                        <h4>📖 Livermore's Greatest Trade:</h4>
-                        <p><strong>October 1929 - The Great Crash</strong></p>
-                        <p>While everyone was bullish, Livermore saw distribution patterns. He went <strong>massively short</strong> right before the crash. Result: <strong>$100 million profit</strong> (equivalent to $1.5 billion today).</p>
-                        <p><em>Lesson: Be willing to stand alone when your analysis is strong.</em></p>
-                    </div>
-                </div>
-
-                <!-- W.D. Gann Section -->
-                <div id="gann" class="tab-content-psychology">
-                    <div class="wisdom-card gann-wisdom">
-                        <div class="wisdom-header">
-                            <div class="wisdom-avatar" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">🔮</div>
+                    <!-- W.D. Gann -->
+                    <div class="card" style="border-left: 4px solid var(--accent-green);">
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                            <div style="font-size: 2.5rem;">⏰</div>
                             <div>
-                                <h3>W.D. Gann</h3>
-                                <p class="source">"How to Make Profits Trading in Commodities" (1951)</p>
+                                <h4 style="margin: 0; color: var(--accent-green);">W.D. Gann</h4>
+                                <p style="margin: 0; font-size: 0.85rem; color: rgba(255,255,255,0.6);">Master of Time & Price</p>
                             </div>
                         </div>
-
-                        <div class="quote-block">
-                            Time is the most important factor in determining market movements. By studying past records of the averages or individual stocks you will be able to prove for yourself that history does repeat and that by knowing the past you can tell the future.
-                        </div>
-
-                        <div class="principle">
-                            <h4>⏰ Time = Price</h4>
-                            <p>Gann believed that <strong>time cycles</strong> were just as important as price levels. Markets move in predictable time intervals based on natural laws.</p>
-                        </div>
-
-                        <div class="application">
-                            <h4>✅ How to Use Time Cycles:</h4>
-                            <ul>
-                                <li><strong>Track major swing dates:</strong> Highs and lows repeat at intervals</li>
-                                <li><strong>90-day cycles:</strong> Quarterly turning points</li>
-                                <li><strong>144-day cycles:</strong> Major reversal zones (±4 days)</li>
-                                <li><strong>Anniversary dates:</strong> Market memory at 1-year intervals</li>
-                                <li><strong>Balance point:</strong> When time elapsed = PIPs moved</li>
-                            </ul>
+                        <div style="font-size: 0.95rem; line-height: 1.7; opacity: 0.9;">
+                            <p><strong>"Time is more important than price. When time is up, price will reverse."</strong></p>
+                            <p style="margin-top: 0.5rem;">"The greatest secret of all is discipline."</p>
                         </div>
                     </div>
 
-                    <div class="wisdom-card gann-wisdom">
-                        <div class="quote-block">
-                            The man who is right six out of ten times will make a fortune. Markets are never wrong—opinions often are.
-                        </div>
-
-                        <div class="principle">
-                            <h4>🎯 60% is Enough</h4>
-                            <p>Gann understood that <strong>you don't need to be right all the time</strong>. With proper risk management, a 60% win rate with 2:1 R/R ratio = massive profits.</p>
-                        </div>
-
-                        <div class="application">
-                            <h4>✅ The Math of Success:</h4>
-                            <ul>
-                                <li><strong>60% win rate + 2:1 R/R =</strong> Consistently profitable</li>
-                                <li><strong>100 trades:</strong> 60 wins × $200 = $12,000</li>
-                                <li><strong>40 losses × $100 = -$4,000</strong></li>
-                                <li><strong>Net profit: $8,000</strong> (even with 40% losses!)</li>
-                                <li><strong>Accept losses:</strong> They're part of the business</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="wisdom-card gann-wisdom">
-                        <div class="quote-block">
-                            To be a successful trader, you must have definite rules and follow them. The first and most important rule: Never overtrade.
-                        </div>
-
-                        <div class="principle">
-                            <h4>📏 Discipline Over Emotions</h4>
-                            <p>Gann operated with <strong>strict rules</strong> and never deviated. His 85% win rate came from patience and selectivity.</p>
-                        </div>
-
-                        <div class="warning-box">
-                            <h4>⚠️ Gann's Rules for Self-Discipline:</h4>
-                            <ul>
-                                <li><strong>Never overtrade:</strong> Wait for perfect setups</li>
-                                <li><strong>Always use stops:</strong> Protect capital at all costs</li>
-                                <li><strong>Risk 10% or less:</strong> Per trade (Gann era = 10%, modern = 1-2%)</li>
-                                <li><strong>Follow the trend:</strong> Don't fight the major direction</li>
-                                <li><strong>Get out when in doubt:</strong> Better safe than sorry</li>
-                                <li><strong>Don't trade too often:</strong> Quality over quantity</li>
-                                <li><strong>Keep a reserve:</strong> Never use all your capital</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="success-story">
-                        <h4>📖 Gann's Perfect Trade:</h4>
-                        <p><strong>Cotton - September 1908</strong></p>
-                        <p>Using his time and price calculations, Gann predicted cotton would hit <strong>9.82 cents</strong> on a specific date. It hit <strong>9.84 cents</strong> within hours of his prediction. He made the equivalent of <strong>millions</strong> on this single trade.</p>
-                        <p><em>Lesson: Precision comes from study, preparation, and following natural cycles.</em></p>
-                    </div>
-                </div>
-
-                <!-- ICT Section -->
-                <div id="ict" class="tab-content-psychology">
-                    <div class="wisdom-card ict-wisdom">
-                        <div class="wisdom-header">
-                            <div class="wisdom-avatar" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">🎯</div>
+                    <!-- ICT (Michael Huddleston) -->
+                    <div class="card" style="border-left: 4px solid var(--accent-yellow);">
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                            <div style="font-size: 2.5rem;">🔥</div>
                             <div>
-                                <h3>ICT (Michael Huddleston)</h3>
-                                <p class="source">Inner Circle Trader - Smart Money Concepts</p>
+                                <h4 style="margin: 0; color: var(--accent-yellow);">ICT (Michael Huddleston)</h4>
+                                <p style="margin: 0; font-size: 0.85rem; color: rgba(255,255,255,0.6);">Inner Circle Trader</p>
                             </div>
                         </div>
-
-                        <div class="quote-block">
-                            The market is designed to transfer wealth from the impatient to the patient. Institutions move in slow, deliberate ways. Retail rushes in. That's how they lose.
-                        </div>
-
-                        <div class="principle">
-                            <h4>🏦 Think Like an Institution</h4>
-                            <p>ICT teaches traders to think like <strong>banks and hedge funds</strong>, not like retail gamblers. Smart money moves in cycles, retail reacts emotionally.</p>
-                        </div>
-
-                        <div class="application">
-                            <h4>✅ Institutional Thinking:</h4>
-                            <ul>
-                                <li><strong>Don't chase:</strong> Wait for liquidity grabs and reversals</li>
-                                <li><strong>Look for stop hunts:</strong> Institutions need your stops before reversing</li>
-                                <li><strong>Trade session highs/lows:</strong> Asian → London → NY manipulation</li>
-                                <li><strong>Wait for retracements:</strong> Let them come to you</li>
-                                <li><strong>Optimal Trade Entry (OTE):</strong> 62-79% Fibonacci retracement</li>
-                            </ul>
+                        <div style="font-size: 0.95rem; line-height: 1.7; opacity: 0.9;">
+                            <p><strong>"Trade like a sniper, not a machine gunner."</strong></p>
+                            <p style="margin-top: 0.5rem;">"Master of precision and market structure. Wait for the perfect setup."</p>
                         </div>
                     </div>
 
-                    <div class="wisdom-card ict-wisdom">
-                        <div class="quote-block">
-                            You don't need to trade every day. You don't need to catch every move. You need to catch the moves that your model defines. That's it.
-                        </div>
-
-                        <div class="principle">
-                            <h4>🎯 Trade Your Model Only</h4>
-                            <p>ICT emphasizes having a <strong>specific trading model</strong> and ONLY trading when your setup appears. Don't force trades because you're bored.</p>
-                        </div>
-
-                        <div class="application">
-                            <h4>✅ Your Trading Model (Quarter Theory):</h4>
-                            <ul>
-                                <li><strong>Large Quarter Transitions:</strong> Your primary setup</li>
-                                <li><strong>High Confluence (5+ points):</strong> Your premium setups</li>
-                                <li><strong>Half Point bounces:</strong> Secondary setups</li>
-                                <li><strong>Everything else:</strong> Skip it!</li>
-                                <li><strong>Patience pays:</strong> Wait for YOUR setup, ignore the rest</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="wisdom-card ict-wisdom">
-                        <div class="quote-block">
-                            The losing trader thinks: "I need to make money today." The winning trader thinks: "I need to trade correctly today. Money follows correct execution."
-                        </div>
-
-                        <div class="principle">
-                            <h4>✅ Process Over Outcome</h4>
-                            <p>ICT teaches that if you focus on <strong>executing your plan perfectly</strong>, profits are inevitable. Focus on being right technically, not on P&L.</p>
-                        </div>
-
-                        <div class="warning-box">
-                            <h4>⚠️ Wrong Focus vs. Right Focus:</h4>
-                            <ul>
-                                <li><strong>WRONG:</strong> "I need $500 today" → Overtrading, forced entries</li>
-                                <li><strong>RIGHT:</strong> "I will only take my A+ setups" → Quality trades</li>
-                                <li><strong>WRONG:</strong> Watching P&L tick-by-tick → Anxiety, early exits</li>
-                                <li><strong>RIGHT:</strong> Following your plan → Peace of mind</li>
-                                <li><strong>WRONG:</strong> Trading to pay bills → Desperation</li>
-                                <li><strong>RIGHT:</strong> Trading as a business → Long-term thinking</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="wisdom-card ict-wisdom">
-                        <div class="quote-block">
-                            Before you put your money in the market, you need to know: Where is your stop? Where is your target? And what's your risk/reward? If you can't answer these in 3 seconds, don't take the trade.
-                        </div>
-
-                        <div class="principle">
-                            <h4>📋 Have a Complete Plan</h4>
-                            <p>ICT demands <strong>pre-trade planning</strong>. No trade should be taken without knowing entry, stop, target, and R/R.</p>
-                        </div>
-
-                        <div class="application">
-                            <h4>✅ Pre-Trade Checklist (ICT Style):</h4>
-                            <ul>
-                                <li><strong>Entry:</strong> Exact price level (e.g., 1.0755)</li>
-                                <li><strong>Stop:</strong> Exact price level (e.g., 1.0710)</li>
-                                <li><strong>Risk:</strong> PIP amount (e.g., 45 PIPs)</li>
-                                <li><strong>Target 1:</strong> Half Point (e.g., 1.0875)</li>
-                                <li><strong>Target 2:</strong> LQ Point (e.g., 1.1000)</li>
-                                <li><strong>R/R:</strong> Minimum 2:1, ideally 3:1+</li>
-                                <li><strong>Position Size:</strong> Based on 1-2% risk</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="success-story">
-                        <h4>📖 ICT's Signature Setup:</h4>
-                        <p><strong>The Judas Swing</strong></p>
-                        <p>Price makes a <strong>false breakout</strong> during Asian session, trapping retail traders. Then London open brings the <strong>reversal</strong>, hunting stops and running back the other direction. ICT teaches to <strong>wait for the trap</strong>, then trade the institutional move.</p>
-                        <p><em>Lesson: Let amateurs get trapped, then join the smart money.</em></p>
-                    </div>
-                </div>
-
-                <!-- Mark Douglas Section -->
-                <div id="douglas" class="tab-content-psychology">
-                    <div class="wisdom-card douglas-wisdom">
-                        <div class="wisdom-header">
-                            <div class="wisdom-avatar" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">💡</div>
+                    <!-- Mark Douglas -->
+                    <div class="card" style="border-left: 4px solid var(--accent-red);">
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                            <div style="font-size: 2.5rem;">🧠</div>
                             <div>
-                                <h3>Mark Douglas</h3>
-                                <p class="source">"Trading in the Zone" (2000)</p>
+                                <h4 style="margin: 0; color: var(--accent-red);">Mark Douglas</h4>
+                                <p style="margin: 0; font-size: 0.85rem; color: rgba(255,255,255,0.6);">Trading in the Zone</p>
                             </div>
                         </div>
-
-                        <div class="quote-block">
-                            Anything can happen. Every moment in the market is unique. You don't need to know what's going to happen next in order to make money.
+                        <div style="font-size: 0.95rem; line-height: 1.7; opacity: 0.9;">
+                            <p><strong>"Anything can happen. Every moment is unique."</strong></p>
+                            <p style="margin-top: 0.5rem;">"The master of probabilistic thinking and emotional discipline."</p>
                         </div>
-
-                        <div class="principle">
-                            <h4>🎲 Embrace Uncertainty</h4>
-                            <p>Douglas teaches that trying to <strong>predict the future</strong> is futile. Instead, think in <strong>probabilities</strong> over a series of trades.</p>
-                        </div>
-
-                        <div class="application">
-                            <h4>✅ Probabilistic Thinking:</h4>
-                            <ul>
-                                <li><strong>This trade:</strong> Could win or lose (don't know)</li>
-                                <li><strong>Next 100 trades:</strong> Will be profitable (if following system)</li>
-                                <li><strong>Accept randomness:</strong> Each trade is independent</li>
-                                <li><strong>Stop predicting:</strong> Start executing</li>
-                                <li><strong>Trust the edge:</strong> Your system has positive expectancy</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="wisdom-card douglas-wisdom">
-                        <div class="quote-block">
-                            The consistency you seek is in your mind, not in the markets. You will never be able to exercise control over the market. The only thing you can control is yourself.
-                        </div>
-
-                        <div class="principle">
-                            <h4>🧘 Internal Locus of Control</h4>
-                            <p>Douglas emphasizes that <strong>you can't control outcomes</strong>, only your behavior. Consistency comes from disciplined execution, not from controlling markets.</p>
-                        </div>
-
-                        <div class="application">
-                            <h4>✅ What You CAN Control:</h4>
-                            <ul>
-                                <li><strong>Whether you follow your plan</strong> → 100% your choice</li>
-                                <li><strong>Whether you take the trade</strong> → Your decision</li>
-                                <li><strong>Position size and risk</strong> → Your discipline</li>
-                                <li><strong>When you exit</strong> → Your rules</li>
-                                <li><strong>Your emotional state</strong> → Your mindfulness</li>
-                            </ul>
-                            <h4>❌ What You CAN'T Control:</h4>
-                            <ul>
-                                <li><strong>Whether this specific trade wins</strong> → Random</li>
-                                <li><strong>How far price moves</strong> → Market decides</li>
-                                <li><strong>When the move happens</strong> → Market timing</li>
-                                <li><strong>News events</strong> → External</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="wisdom-card douglas-wisdom">
-                        <div class="quote-block">
-                            The best traders have developed attitudes that prevent their fears from being triggered. This means they're not afraid of being wrong, losing money, missing out, or leaving money on the table.
-                        </div>
-
-                        <div class="principle">
-                            <h4>😌 Eliminate Fear</h4>
-                            <p>Douglas identifies the <strong>4 trading fears</strong> that destroy most traders. Master traders have eliminated these fears through mindset training.</p>
-                        </div>
-
-                        <div class="warning-box">
-                            <h4>⚠️ The 4 Deadly Fears:</h4>
-                            <ul>
-                                <li><strong>Fear of being wrong:</strong> Causes you to hold losers (ego protection)</li>
-                                <li><strong>Fear of losing money:</strong> Prevents you from taking valid trades</li>
-                                <li><strong>Fear of missing out (FOMO):</strong> Causes chasing and overtrading</li>
-                                <li><strong>Fear of leaving money on the table:</strong> Prevents taking profits at targets</li>
-                            </ul>
-                        </div>
-
-                        <div class="application">
-                            <h4>✅ How to Eliminate Each Fear:</h4>
-                            <ul>
-                                <li><strong>Being wrong:</strong> Accept that 40% of trades will lose (part of the game)</li>
-                                <li><strong>Losing money:</strong> Risk only 1-2% per trade (can't hurt you)</li>
-                                <li><strong>FOMO:</strong> Trust that more setups will come (always do)</li>
-                                <li><strong>Leaving money:</strong> Take profits at targets (another setup will come)</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="wisdom-card douglas-wisdom">
-                        <div class="quote-block">
-                            It's the attitude that the next trade is simply another execution of an edge with a probable outcome, and it may or may not work. But I know that over time, if I keep executing my edge, I'm going to be profitable.
-                        </div>
-
-                        <div class="principle">
-                            <h4>🔄 Think in Series</h4>
-                            <p>Douglas teaches the <strong>"next trade"</strong> mindset. Don't focus on this one trade. Focus on the next 100 trades.</p>
-                        </div>
-
-                        <div class="application">
-                            <h4>✅ Series Thinking Exercise:</h4>
-                            <ul>
-                                <li><strong>Trade 1:</strong> Loss (-$100) → "That's 1 of 100, moving on"</li>
-                                <li><strong>Trade 2:</strong> Win (+$250) → "That's 2 of 100, staying consistent"</li>
-                                <li><strong>Trade 3:</strong> Loss (-$100) → "That's 3 of 100, no emotion"</li>
-                                <li><strong>Trade 4:</strong> Win (+$300) → "That's 4 of 100, following the plan"</li>
-                                <li><strong>After 100 trades:</strong> Total = +$8,000 (even with losses!)</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="success-story">
-                        <h4>📖 Douglas's Trading Psychology Breakthrough:</h4>
-                        <p><strong>The "$1 Million Loss" Story</strong></p>
-                        <p>Douglas worked with a trader who <strong>lost $1 million</strong> because he couldn't take losses. After psychological training, the same trader became <strong>consistently profitable</strong> by accepting that losses are just part of the statistical edge.</p>
-                        <p><em>Lesson: Your mindset determines your results more than your strategy.</em></p>
                     </div>
                 </div>
 
-                <!-- Mental Framework Section -->
-                <div id="framework" class="tab-content-psychology">
-                    <div class="mental-framework">
-                        <h3>🧠 Complete Mental Framework</h3>
-                        <p style="font-size: 1.1em; opacity: 0.95;">
-                            Combining wisdom from all four masters into a practical daily system
-                        </p>
+                <h3 style="margin-top: 3rem;">💎 The 10 Core Principles of Trading Psychology</h3>
 
-                        <div class="framework-grid">
-                            <div class="framework-item">
-                                <h4>🎯 Pre-Market Mindset</h4>
-                                <ul>
-                                    <li>I don't need to trade today</li>
-                                    <li>I only trade my A+ setups</li>
-                                    <li>Losses are part of the game</li>
-                                    <li>I focus on execution, not P&L</li>
-                                    <li>The market owes me nothing</li>
-                                </ul>
-                            </div>
-
-                            <div class="framework-item">
-                                <h4>📊 During the Trade</h4>
-                                <ul>
-                                    <li>My stop is my maximum loss</li>
-                                    <li>I won't move my stop further</li>
-                                    <li>I trust my targets</li>
-                                    <li>I don't watch tick-by-tick</li>
-                                    <li>I sit tight and let it develop</li>
-                                </ul>
-                            </div>
-
-                            <div class="framework-item">
-                                <h4>✅ After the Trade</h4>
-                                <ul>
-                                    <li>Win or loss doesn't matter</li>
-                                    <li>Did I follow my rules?</li>
-                                    <li>What can I learn?</li>
-                                    <li>Journal the experience</li>
-                                    <li>Move on to the next trade</li>
-                                </ul>
-                            </div>
-
-                            <div class="framework-item">
-                                <h4>🛡️ Risk Management</h4>
-                                <ul>
-                                    <li>Never risk more than 2%</li>
-                                    <li>Calculate position size first</li>
-                                    <li>Accept the loss before entry</li>
-                                    <li>Cut losses immediately</li>
-                                    <li>Let winners run to targets</li>
-                                </ul>
+                <div style="display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 1.5rem;">
+                    <!-- Principle 1 -->
+                    <div class="pattern-card" style="border-left: 4px solid var(--accent-blue);">
+                        <div class="pattern-title" style="color: var(--accent-blue);">1. Patience is Profit</div>
+                        <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 1rem; margin-top: 1rem;">
+                            <div style="font-size: 2.5rem; text-align: center;">⏳</div>
+                            <div>
+                                <p style="line-height: 1.7;"><strong>Wisdom:</strong> "The big money is made in the sitting, not the trading." — Jesse Livermore</p>
+                                <p style="line-height: 1.7; margin-top: 0.5rem;"><strong>Application:</strong> Wait for Weekly Q3 + Daily Q3 + Level III alignment. Don't force trades on Level II days.</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="daily-practice">
-                        <h3>📋 Daily Mental Practice Checklist</h3>
-                        <p>Use this checklist every trading day to maintain the right mindset</p>
-
-                        <div class="practice-checklist">
-                            <div class="checklist-card">
-                                <h4>☀️ Morning Routine</h4>
-                                <div class="checklist-item">
-                                    <input type="checkbox" id="morning1">
-                                    <label for="morning1">Review yesterday's trades without judgment</label>
-                                </div>
-                                <div class="checklist-item">
-                                    <input type="checkbox" id="morning2">
-                                    <label for="morning2">Write down: "I trade probabilities over series"</label>
-                                </div>
-                                <div class="checklist-item">
-                                    <input type="checkbox" id="morning3">
-                                    <label for="morning3">Check Info Table for confluence opportunities</label>
-                                </div>
-                                <div class="checklist-item">
-                                    <input type="checkbox" id="morning4">
-                                    <label for="morning4">Set alerts for LQ Points, don't watch screen</label>
-                                </div>
-                                <div class="checklist-item">
-                                    <input type="checkbox" id="morning5">
-                                    <label for="morning5">Accept: "I may take 0 trades today"</label>
-                                </div>
-                            </div>
-
-                            <div class="checklist-card">
-                                <h4>📊 Pre-Trade</h4>
-                                <div class="checklist-item">
-                                    <input type="checkbox" id="pretrade1">
-                                    <label for="pretrade1">Confluence ≥4 points? (If no, skip trade)</label>
-                                </div>
-                                <div class="checklist-item">
-                                    <input type="checkbox" id="pretrade2">
-                                    <label for="pretrade2">Entry, stop, and targets written down?</label>
-                                </div>
-                                <div class="checklist-item">
-                                    <input type="checkbox" id="pretrade3">
-                                    <label for="pretrade3">Position size calculated (max 2% risk)?</label>
-                                </div>
-                                <div class="checklist-item">
-                                    <input type="checkbox" id="pretrade4">
-                                    <label for="pretrade4">Am I emotionally neutral? (Not revenge/FOMO)</label>
-                                </div>
-                                <div class="checklist-item">
-                                    <input type="checkbox" id="pretrade5">
-                                    <label for="pretrade5">Can I accept this loss if it happens?</label>
-                                </div>
-                            </div>
-
-                            <div class="checklist-card">
-                                <h4>🎯 During Trade</h4>
-                                <div class="checklist-item">
-                                    <input type="checkbox" id="during1">
-                                    <label for="during1">Stop away from the screen after entry</label>
-                                </div>
-                                <div class="checklist-item">
-                                    <input type="checkbox" id="during2">
-                                    <label for="during2">Check once per hour max (or on alerts)</label>
-                                </div>
-                                <div class="checklist-item">
-                                    <input type="checkbox" id="during3">
-                                    <label for="during3">Don't touch stop loss (ever!)</label>
-                                </div>
-                                <div class="checklist-item">
-                                    <input type="checkbox" id="during4">
-                                    <label for="during4">Trust your targets, don't exit early</label>
-                                </div>
-                                <div class="checklist-item">
-                                    <input type="checkbox" id="during5">
-                                    <label for="during5">Follow Three-Day Rule progression</label>
-                                </div>
-                            </div>
-
-                            <div class="checklist-card">
-                                <h4>🌙 Evening Review</h4>
-                                <div class="checklist-item">
-                                    <input type="checkbox" id="evening1">
-                                    <label for="evening1">Journal: Did I follow my rules? (Y/N)</label>
-                                </div>
-                                <div class="checklist-item">
-                                    <input type="checkbox" id="evening2">
-                                    <label for="evening2">Screenshot trades (win or lose)</label>
-                                </div>
-                                <div class="checklist-item">
-                                    <input type="checkbox" id="evening3">
-                                    <label for="evening3">What did I learn today?</label>
-                                </div>
-                                <div class="checklist-item">
-                                    <input type="checkbox" id="evening4">
-                                    <label for="evening4">Forgive myself for mistakes</label>
-                                </div>
-                                <div class="checklist-item">
-                                    <input type="checkbox" id="evening5">
-                                    <label for="evening5">Prepare for tomorrow with clean slate</label>
-                                </div>
+                    <!-- Principle 2 -->
+                    <div class="pattern-card" style="border-left: 4px solid var(--accent-green);">
+                        <div class="pattern-title" style="color: var(--accent-green);">2. Discipline Over Emotion</div>
+                        <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 1rem; margin-top: 1rem;">
+                            <div style="font-size: 2.5rem; text-align: center;">⚔️</div>
+                            <div>
+                                <p style="line-height: 1.7;"><strong>Wisdom:</strong> "The greatest secret of all is discipline." — W.D. Gann</p>
+                                <p style="line-height: 1.7; margin-top: 0.5rem;"><strong>Application:</strong> Follow your checklist every time. No exceptions. No revenge trades. No FOMO.</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="warning-box">
-                        <h4>⚠️ When to STOP Trading (Circuit Breakers):</h4>
-                        <ul>
-                            <li><strong>Lost 3% in one day:</strong> Stop immediately, review tomorrow</li>
-                            <li><strong>Lost 6% in one week:</strong> Stop for the week, analyze what went wrong</li>
-                            <li><strong>3 losses in a row:</strong> Take a break, walk away, clear your head</li>
-                            <li><strong>Feeling angry/frustrated:</strong> Close platform, come back calm</li>
-                            <li><strong>Revenge trading thoughts:</strong> STOP! You're about to blow your account</li>
-                            <li><strong>Breaking your rules:</strong> If you catch yourself cheating, stop trading</li>
+                    <!-- Principle 3 -->
+                    <div class="pattern-card" style="border-left: 4px solid var(--accent-yellow);">
+                        <div class="pattern-title" style="color: var(--accent-yellow);">3. Accept Uncertainty</div>
+                        <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 1rem; margin-top: 1rem;">
+                            <div style="font-size: 2.5rem; text-align: center;">🎲</div>
+                            <div>
+                                <p style="line-height: 1.7;"><strong>Wisdom:</strong> "Anything can happen. Every moment is unique." — Mark Douglas</p>
+                                <p style="line-height: 1.7; margin-top: 0.5rem;"><strong>Application:</strong> Think in probabilities, not certainties. A 70% win rate means 3 out of 10 lose. That's normal.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Principle 4 -->
+                    <div class="pattern-card" style="border-left: 4px solid var(--accent-red);">
+                        <div class="pattern-title" style="color: var(--accent-red);">4. Quality Over Quantity</div>
+                        <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 1rem; margin-top: 1rem;">
+                            <div style="font-size: 2.5rem; text-align: center;">🎯</div>
+                            <div>
+                                <p style="line-height: 1.7;"><strong>Wisdom:</strong> "Trade like a sniper, not a machine gunner." — ICT</p>
+                                <p style="line-height: 1.7; margin-top: 0.5rem;"><strong>Application:</strong> 5 perfect trades per week > 50 mediocre trades. Wait for A+ setups only.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Principle 5 -->
+                    <div class="pattern-card" style="border-left: 4px solid var(--accent-blue);">
+                        <div class="pattern-title" style="color: var(--accent-blue);">5. Trust Your Judgment</div>
+                        <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 1rem; margin-top: 1rem;">
+                            <div style="font-size: 2.5rem; text-align: center;">🧭</div>
+                            <div>
+                                <p style="line-height: 1.7;"><strong>Wisdom:</strong> "Nobody can give me tips that will make more money than my own judgment." — Jesse Livermore</p>
+                                <p style="line-height: 1.7; margin-top: 0.5rem;"><strong>Application:</strong> Follow your system. Don't chase Twitter signals or Discord calls. You know your plan best.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Principle 6 -->
+                    <div class="pattern-card" style="border-left: 4px solid var(--accent-green);">
+                        <div class="pattern-title" style="color: var(--accent-green);">6. Time is Your Edge</div>
+                        <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 1rem; margin-top: 1rem;">
+                            <div style="font-size: 2.5rem; text-align: center;">⚡</div>
+                            <div>
+                                <p style="line-height: 1.7;"><strong>Wisdom:</strong> "When time is up, price will reverse." — W.D. Gann</p>
+                                <p style="line-height: 1.7; margin-top: 0.5rem;"><strong>Application:</strong> Use Quarterly Theory timing. Time tells you when to trade. Ignore price alone.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Principle 7 -->
+                    <div class="pattern-card" style="border-left: 4px solid var(--accent-yellow);">
+                        <div class="pattern-title" style="color: var(--accent-yellow);">7. Losses Are Part of the Process</div>
+                        <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 1rem; margin-top: 1rem;">
+                            <div style="font-size: 2.5rem; text-align: center;">💪</div>
+                            <div>
+                                <p style="line-height: 1.7;"><strong>Wisdom:</strong> "You need to learn to lose before you can learn to win." — Mark Douglas</p>
+                                <p style="line-height: 1.7; margin-top: 0.5rem;"><strong>Application:</strong> Accept losses without emotion. 1-2% risk per trade. Your winners will cover your losers.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Principle 8 -->
+                    <div class="pattern-card" style="border-left: 4px solid var(--accent-red);">
+                        <div class="pattern-title" style="color: var(--accent-red);">8. Master One Setup First</div>
+                        <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 1rem; margin-top: 1rem;">
+                            <div style="font-size: 2.5rem; text-align: center;">🎓</div>
+                            <div>
+                                <p style="line-height: 1.7;"><strong>Wisdom:</strong> "Pick ONE setup, master it, double an account. Then move on." — Steve Mauro (BTMM)</p>
+                                <p style="line-height: 1.7; margin-top: 0.5rem;"><strong>Application:</strong> Start with Q3 M/W setups. Trade them for 6 months. Then expand.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Principle 9 -->
+                    <div class="pattern-card" style="border-left: 4px solid var(--accent-blue);">
+                        <div class="pattern-title" style="color: var(--accent-blue);">9. Detach from Outcomes</div>
+                        <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 1rem; margin-top: 1rem;">
+                            <div style="font-size: 2.5rem; text-align: center;">🧘</div>
+                            <div>
+                                <p style="line-height: 1.7;"><strong>Wisdom:</strong> "Focus on the process, not the profits." — Mark Douglas</p>
+                                <p style="line-height: 1.7; margin-top: 0.5rem;"><strong>Application:</strong> Each trade is 1 of 1000. Win or lose, follow your plan. Profits compound over time.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Principle 10 -->
+                    <div class="pattern-card" style="border-left: 4px solid var(--accent-green);">
+                        <div class="pattern-title" style="color: var(--accent-green);">10. Confidence Comes from Preparation</div>
+                        <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 1rem; margin-top: 1rem;">
+                            <div style="font-size: 2.5rem; text-align: center;">🛡️</div>
+                            <div>
+                                <p style="line-height: 1.7;"><strong>Wisdom:</strong> "Confidence is knowing what to do when the plan fails." — Jesse Livermore</p>
+                                <p style="line-height: 1.7; margin-top: 0.5rem;"><strong>Application:</strong> Pre-plan every scenario: If SL hit? If TP1 hit? If news spikes? Know your exit before entry.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 3rem;">🧠 Your Mental Framework</h3>
+
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 1.5rem;">
+                    <!-- Pre-Market -->
+                    <div class="card" style="border-left: 4px solid var(--accent-blue);">
+                        <div style="text-align: center; font-size: 2.5rem; margin-bottom: 0.5rem;">📋</div>
+                        <h4 style="margin: 0; color: var(--accent-blue); text-align: center;">Pre-Market Mindset</h4>
+                        <p style="font-size: 0.85rem; text-align: center; margin-bottom: 1rem; opacity: 0.7;">Before the session</p>
+                        <ul style="padding-left: 1.5rem; line-height: 1.7; font-size: 0.95rem;">
+                            <li>Review yesterday's trades</li>
+                            <li>Check economic calendar</li>
+                            <li>Identify today's Q phase</li>
+                            <li>Set daily risk limit (2-4%)</li>
+                            <li>Plan A+ setups only</li>
+                            <li>Meditation: 5 minutes</li>
                         </ul>
                     </div>
 
-                    <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 40px; border-radius: 15px; margin: 40px 0; text-align: center;">
-                        <h3 style="font-size: 2em; margin-top: 0;">🏆 The Master Trader's Creed</h3>
-                        <div style="font-size: 1.2em; line-height: 2; max-width: 800px; margin: 30px auto;">
-                            <p><strong>I trade probabilities, not certainties.</strong></p>
-                            <p><strong>I risk only what I can afford to lose.</strong></p>
-                            <p><strong>I follow my rules without exception.</strong></p>
-                            <p><strong>I accept losses as part of the game.</strong></p>
-                            <p><strong>I think in series, not single trades.</strong></p>
-                            <p><strong>I am patient, disciplined, and consistent.</strong></p>
-                            <p><strong>I control myself, not the market.</strong></p>
-                            <p><strong>I am a professional trader.</strong></p>
-                        </div>
-                        <p style="font-size: 1.4em; margin-top: 30px; font-style: italic;">
-                            "The market rewards patience, punishes emotion, and respects discipline."
+                    <!-- During Trade -->
+                    <div class="card" style="border-left: 4px solid var(--accent-green);">
+                        <div style="text-align: center; font-size: 2.5rem; margin-bottom: 0.5rem;">🎯</div>
+                        <h4 style="margin: 0; color: var(--accent-green); text-align: center;">During-Trade Mindset</h4>
+                        <p style="font-size: 0.85rem; text-align: center; margin-bottom: 1rem; opacity: 0.7;">When positions are open</p>
+                        <ul style="padding-left: 1.5rem; line-height: 1.7; font-size: 0.95rem;">
+                            <li>Trust your stop loss</li>
+                            <li>Don't move SL wider</li>
+                            <li>Scale out at TP1/TP2/TP3</li>
+                            <li>Let winners run</li>
+                            <li>No emotional reactions</li>
+                            <li>Breathe: Stay present</li>
+                        </ul>
+                    </div>
+
+                    <!-- After Trade -->
+                    <div class="card" style="border-left: 4px solid var(--accent-yellow);">
+                        <div style="text-align: center; font-size: 2.5rem; margin-bottom: 0.5rem;">📊</div>
+                        <h4 style="margin: 0; color: var(--accent-yellow); text-align: center;">After-Trade Mindset</h4>
+                        <p style="font-size: 0.85rem; text-align: center; margin-bottom: 1rem; opacity: 0.7;">When session closes</p>
+                        <ul style="padding-left: 1.5rem; line-height: 1.7; font-size: 0.95rem;">
+                            <li>Journal every trade</li>
+                            <li>Win or lose: What learned?</li>
+                            <li>Did I follow my plan?</li>
+                            <li>No revenge trading</li>
+                            <li>Review confluence score</li>
+                            <li>Rest: Tomorrow is new</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 3rem;">🚨 Circuit Breakers - When to STOP Trading</h3>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem;">
+                    <div class="alert alert-danger">
+                        <div style="font-size: 2.5rem; text-align: center; margin-bottom: 0.5rem;">🛑</div>
+                        <h4 style="margin: 0; color: var(--accent-red); text-align: center;">Daily Stop Rules</h4>
+                        <ul style="padding-left: 1.5rem; line-height: 1.7; margin-top: 1rem;">
+                            <li><strong>2 losses in a row:</strong> Stop for the day</li>
+                            <li><strong>3% account loss:</strong> Stop for the day</li>
+                            <li><strong>Emotional state:</strong> Angry, fearful, or euphoric? Stop.</li>
+                            <li><strong>No A+ setups:</strong> Don't force trades. Walk away.</li>
+                        </ul>
+                    </div>
+
+                    <div class="alert alert-warning">
+                        <div style="font-size: 2.5rem; text-align: center; margin-bottom: 0.5rem;">⏸️</div>
+                        <h4 style="margin: 0; color: var(--accent-yellow); text-align: center;">Weekly/Monthly Stop Rules</h4>
+                        <ul style="padding-left: 1.5rem; line-height: 1.7; margin-top: 1rem;">
+                            <li><strong>Down 3 weeks straight:</strong> Take 1 week off. Review system.</li>
+                            <li><strong>10% monthly loss:</strong> Stop trading for 2 weeks. Reassess.</li>
+                            <li><strong>Overconfidence:</strong> 3+ wins? Stay humble. Stick to plan.</li>
+                            <li><strong>Life stress:</strong> Personal issues? No trading until resolved.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 3rem;">💪 Daily Practice Checklist</h3>
+
+                <div class="pattern-card" style="background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(74, 158, 255, 0.1));">
+                    <div class="pattern-title" style="color: var(--accent-green);">Build Unshakable Mental Discipline</div>
+                    
+                    <div style="margin-top: 1.5rem;">
+                        <table>
+                            <tr>
+                                <th>Time</th>
+                                <th>Practice</th>
+                                <th>Why It Matters</th>
+                            </tr>
+                            <tr>
+                                <td><strong>Morning (6-7 AM)</strong></td>
+                                <td>5-min meditation, review plan, set intentions</td>
+                                <td>Calm mind = Better decisions</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Pre-Market (4:30 PM)</strong></td>
+                                <td>Check calendar, identify Q phase, mark levels</td>
+                                <td>Preparation = Confidence</td>
+                            </tr>
+                            <tr style="background: rgba(0, 255, 136, 0.08);">
+                                <td><strong>During Session</strong></td>
+                                <td>Follow checklist, breathe, trust system</td>
+                                <td>Process > Outcome</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Post-Market (6 PM)</strong></td>
+                                <td>Journal trades, review mistakes, celebrate wins</td>
+                                <td>Growth comes from reflection</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Evening (9 PM)</strong></td>
+                                <td>5-min visualization: See yourself winning</td>
+                                <td>Mental rehearsal builds belief</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Weekly (Sunday)</strong></td>
+                                <td>Review week: What worked? What didn't?</td>
+                                <td>Continuous improvement</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 3rem;">🔥 Trader's Affirmations</h3>
+
+                <div class="alert alert-success">
+                    <div style="text-align: center; font-size: 2.5rem; margin-bottom: 1rem;">💎</div>
+                    <h4 style="text-align: center; color: var(--accent-green); margin-bottom: 1.5rem;">Read These Daily</h4>
+                    
+                    <div style="font-size: 1.05rem; line-height: 2; text-align: center;">
+                        <p>✅ <strong>I am patient.</strong> I wait for A+ setups only.</p>
+                        <p>✅ <strong>I am disciplined.</strong> I follow my plan every time.</p>
+                        <p>✅ <strong>I am confident.</strong> My system has an edge.</p>
+                        <p>✅ <strong>I accept losses.</strong> They are part of the process.</p>
+                        <p>✅ <strong>I think in probabilities.</strong> Each trade is 1 of 1000.</p>
+                        <p>✅ <strong>I detach from outcomes.</strong> I control the process, not the result.</p>
+                        <p>✅ <strong>I am a market maker trader.</strong> I trade with the smart money.</p>
+                        <p>✅ <strong>I master time.</strong> I wait for Q3 confluence.</p>
+                        <p>✅ <strong>I let winners run.</strong> Small losses, big wins.</p>
+                        <p>✅ <strong>I am improving daily.</strong> I journal, reflect, and grow.</p>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 3rem;">🎓 The Path to Mastery</h3>
+
+                <div class="pattern-card">
+                    <div class="pattern-title">Trading is 80% Psychology, 20% Strategy</div>
+                    
+                    <p style="font-size: 1.05rem; line-height: 1.8; margin-top: 1.5rem;">
+                        You can have the best system in the world. But if you can't control your emotions, 
+                        follow your plan, and accept losses, <strong>you will fail</strong>.
+                    </p>
+
+                    <p style="font-size: 1.05rem; line-height: 1.8; margin-top: 1rem;">
+                        The good news? <strong>Psychology is trainable.</strong> Just like you practice chart reading, 
+                        you must practice mental discipline.
+                    </p>
+
+                    <div class="alert alert-info" style="margin-top: 1.5rem;">
+                        <h4 style="margin-bottom: 0.5rem;">📍 Your Psychology Action Plan</h4>
+                        <ol style="padding-left: 1.5rem; line-height: 1.8; margin-top: 0.5rem;">
+                            <li><strong>Read this page weekly</strong> - Internalize the principles</li>
+                            <li><strong>Use the Daily Practice Checklist</strong> - Build habits</li>
+                            <li><strong>Journal every trade</strong> - Emotions, decisions, results</li>
+                            <li><strong>Implement Circuit Breakers</strong> - Protect your capital and mind</li>
+                            <li><strong>Practice affirmations</strong> - Rewire your beliefs</li>
+                            <li><strong>Study the masters</strong> - Read their books repeatedly</li>
+                        </ol>
+                    </div>
+
+                    <div class="alert alert-success" style="margin-top: 1.5rem;">
+                        <p style="font-size: 1.1rem; text-align: center; line-height: 1.8;">
+                            <strong>"The goal of a successful trader is to make the best trades. Money is secondary." — Alexander Elder</strong>
+                        </p>
+                        <p style="margin-top: 1rem; text-align: center;">
+                            Master your mind. Master your emotions. <strong>Master the market.</strong>
                         </p>
                     </div>
                 </div>
 
+                <h3 style="margin-top: 3rem;">📚 Recommended Reading</h3>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 1.5rem;">
+                    <div class="card">
+                        <h4 style="color: var(--accent-blue);">📖 Trading in the Zone</h4>
+                        <p style="font-size: 0.9rem; opacity: 0.9;">by Mark Douglas</p>
+                        <p style="font-size: 0.85rem; margin-top: 0.5rem;">The bible of trading psychology. Master probabilistic thinking.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h4 style="color: var(--accent-green);">📖 Reminiscences of a Stock Operator</h4>
+                        <p style="font-size: 0.9rem; opacity: 0.9;">by Edwin Lefèvre</p>
+                        <p style="font-size: 0.85rem; margin-top: 0.5rem;">The timeless story of Jesse Livermore. Read it 3 times.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h4 style="color: var(--accent-yellow);">📖 The Disciplined Trader</h4>
+                        <p style="font-size: 0.9rem; opacity: 0.9;">by Mark Douglas</p>
+                        <p style="font-size: 0.85rem; margin-top: 0.5rem;">How to develop mental discipline and consistency.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h4 style="color: var(--accent-red);">📖 Way of the Turtle</h4>
+                        <p style="font-size: 0.9rem; opacity: 0.9;">by Curtis Faith</p>
+                        <p style="font-size: 0.85rem; margin-top: 0.5rem;">System trading, risk management, and mental fortitude.</p>
+                    </div>
+                </div>
+            </section>
+
+            <div class="footer">
+                <p><strong>Mind Over Market.</strong> Discipline → Consistency → Mastery.</p>
+                <p style="margin-top: 1rem; color: var(--accent-blue);">The greatest trader you will ever compete with is yourself.</p>
             </div>
         </main>
     </div>
 
+    <script src="../js/zoom-sync.js"></script>
+    <script src="../js/zoom-controls.js"></script>
+    <script src="../js/navigation.js"></script>
     <script src="../js/main.js"></script>
-    <script>
-        // Tab switching
-        function switchPsychTab(event, tabId) {
-            // Hide all tabs
-            const tabs = document.querySelectorAll('.tab-content-psychology');
-            tabs.forEach(tab => tab.classList.remove('active'));
-
-            // Remove active from all buttons
-            const buttons = document.querySelectorAll('.tab-psychology');
-            buttons.forEach(btn => btn.classList.remove('active'));
-
-            // Show selected tab
-            document.getElementById(tabId).classList.add('active');
-            event.currentTarget.classList.add('active');
-
-            // Scroll to top smoothly
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // Save checkbox states to localStorage
-        document.addEventListener('DOMContentLoaded', function() {
-            // Load saved checkbox states
-            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-            checkboxes.forEach(checkbox => {
-                const saved = localStorage.getItem('psych_' + checkbox.id);
-                if (saved === 'true') {
-                    checkbox.checked = true;
-                }
-
-                // Save on change
-                checkbox.addEventListener('change', function() {
-                    localStorage.setItem('psych_' + checkbox.id, checkbox.checked);
-                });
-            });
-        });
-    </script>
+    <script src="../js/export-print.js"></script>
+    <script src="../js/alerts.js"></script>
 </body>
 </html>
+
 

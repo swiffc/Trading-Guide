@@ -94,7 +94,7 @@
                         <!-- Cards will be populated by JavaScript -->
                     </div>
 
-                    <table style="margin-top: 1.5rem;">
+                    <table style="margin-top: 1.5rem;" id="sessionScheduleTable">
                         <tr>
                             <th>Time (EST)</th>
                             <th>Session</th>
@@ -102,40 +102,40 @@
                             <th>BTMM Phase</th>
                             <th>Action</th>
                         </tr>
-                        <tr style="background: rgba(74, 158, 255, 0.05);">
+                        <tr style="background: rgba(74, 158, 255, 0.05);" data-time-marker="true">
                             <td><strong>5:00 PM</strong></td>
                             <td colspan="4" style="text-align: center;"><strong>DAILY TRUE OPEN</strong> - Reset point for new 24-hour cycle</td>
                         </tr>
-                        <tr>
+                        <tr data-session="asian" data-start="1140" data-end="120">
                             <td>7:00 PM - 2:00 AM</td>
                             <td>ASIAN</td>
                             <td>Daily Q1</td>
                             <td>Accumulation</td>
                             <td>OBSERVE - Mark range high/low</td>
                         </tr>
-                        <tr style="background: rgba(255, 215, 0, 0.05);">
+                        <tr style="background: rgba(255, 215, 0, 0.05);" data-time-marker="true">
                             <td><strong>1:30 AM</strong></td>
                             <td colspan="4" style="text-align: center;"><strong>LONDON TRUE OPEN</strong> - Q2 begins</td>
                         </tr>
-                        <tr>
+                        <tr data-session="london" data-start="120" data-end="660">
                             <td>2:00 AM - 11:00 AM</td>
                             <td>LONDON</td>
                             <td>Daily Q2</td>
                             <td>Manipulation</td>
                             <td>WATCH - Identify stop hunt & PF</td>
                         </tr>
-                        <tr style="background: rgba(0, 255, 136, 0.05);">
+                        <tr style="background: rgba(0, 255, 136, 0.05);" data-time-marker="true">
                             <td><strong>7:30 AM</strong></td>
                             <td colspan="4" style="text-align: center;"><strong>NY TRUE OPEN</strong> - Q3 begins</td>
                         </tr>
-                        <tr style="background: rgba(0, 255, 136, 0.08); border: 2px solid var(--accent-green);">
+                        <tr data-session="ny-prime" data-start="540" data-end="630" style="background: rgba(0, 255, 136, 0.08); border: 2px solid var(--accent-green);">
                             <td><strong>9:00 AM - 10:30 AM</strong></td>
                             <td><strong>NY BEST WINDOW ⭐</strong></td>
                             <td><strong>Q3 Distribution</strong></td>
                             <td><strong>Level III</strong></td>
                             <td><strong>TRADE HERE!</strong></td>
                         </tr>
-                        <tr>
+                        <tr data-session="ny-pm" data-start="660" data-end="1020">
                             <td>11:00 AM - 5:00 PM</td>
                             <td>NY PM</td>
                             <td>Daily Q4</td>
@@ -144,13 +144,13 @@
                         </tr>
                     </table>
 
-                    <div class="pattern-card" style="margin-top: 2rem;">
+                    <div class="pattern-card" style="margin-top: 2rem;" id="sessionFlowCard">
                         <h4>📊 Session Interaction & Flow:</h4>
-                        <ol style="padding-left: 1.5rem; line-height: 1.8;">
-                            <li><strong>Asian establishes range</strong> (7 PM - 2 AM) → Mark Asian High/Low</li>
-                            <li><strong>London sweeps Asian range</strong> (2 AM - 9:30 AM) → Stop hunt creates PF</li>
-                            <li><strong>NY reverses London move</strong> (9:30 AM - 12 PM) → True distribution</li>
-                            <li><strong>PM consolidates or extends</strong> (12 PM - 5 PM) → Prepare for next day</li>
+                        <ol style="padding-left: 1.5rem; line-height: 1.8;" id="sessionFlowList">
+                            <li data-flow="asian" data-start="1140" data-end="120"><strong>Asian establishes range</strong> (7 PM - 2 AM) → Mark Asian High/Low</li>
+                            <li data-flow="london" data-start="120" data-end="570"><strong>London sweeps Asian range</strong> (2 AM - 9:30 AM) → Stop hunt creates PF</li>
+                            <li data-flow="ny" data-start="570" data-end="720"><strong>NY reverses London move</strong> (9:30 AM - 12 PM) → True distribution</li>
+                            <li data-flow="pm" data-start="720" data-end="1020"><strong>PM consolidates or extends</strong> (12 PM - 5 PM) → Prepare for next day</li>
                         </ol>
                     </div>
 
@@ -159,38 +159,12 @@
                     </div>
 
                     <!-- Live Trading Considerations -->
-                    <div style="background: linear-gradient(135deg, rgba(74, 158, 255, 0.15), rgba(138, 43, 226, 0.15)); padding: 2rem; border-radius: 12px; margin-top: 2rem; border: 2px solid var(--accent-blue);">
+                    <div id="liveConsiderationsOverview" style="background: linear-gradient(135deg, rgba(74, 158, 255, 0.15), rgba(138, 43, 226, 0.15)); padding: 2rem; border-radius: 12px; margin-top: 2rem; border: 2px solid var(--accent-blue);">
                         <h4 style="color: var(--accent-blue); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
                             📊 Live Trading Considerations
                         </h4>
                         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
-                            <div style="background: var(--card-bg); padding: 1.25rem; border-radius: 8px; border-left: 4px solid var(--accent-green);">
-                                <div style="font-weight: bold; color: var(--accent-green); margin-bottom: 0.5rem;">✅ What to Monitor</div>
-                                <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.95rem; line-height: 1.6;">
-                                    <li>Which session is currently active?</li>
-                                    <li>Time until next session opens</li>
-                                    <li>Are we in a key time window?</li>
-                                    <li>Session volume levels</li>
-                                </ul>
-                            </div>
-                            <div style="background: var(--card-bg); padding: 1.25rem; border-radius: 8px; border-left: 4px solid var(--accent-yellow);">
-                                <div style="font-weight: bold; color: var(--accent-yellow); margin-bottom: 0.5rem;">⏰ Timing is Key</div>
-                                <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.95rem; line-height: 1.6;">
-                                    <li>Best entries: 9:00-10:30 AM EST</li>
-                                    <li>Brinks Times: 9:45 AM, 3:45 AM</li>
-                                    <li>Avoid: Hour before True Opens</li>
-                                    <li>Session overlap = volatility</li>
-                                </ul>
-                            </div>
-                            <div style="background: var(--card-bg); padding: 1.25rem; border-radius: 8px; border-left: 4px solid var(--accent-red);">
-                                <div style="font-weight: bold; color: var(--accent-red); margin-bottom: 0.5rem;">⚠️ Risk Management</div>
-                                <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.95rem; line-height: 1.6;">
-                                    <li>Max 1-2% risk per trade</li>
-                                    <li>No more than 3 positions open</li>
-                                    <li>Tighter stops during low volume</li>
-                                    <li>Scale out at targets (TP1, TP2, TP3)</li>
-                                </ul>
-                            </div>
+                            <!-- Content will be dynamically populated -->
                         </div>
                     </div>
                 </div>
@@ -1230,6 +1204,7 @@
         </main>
     </div>
 
+    <script src="../js/zoom-sync.js"></script>`n    <script src="../js/zoom-controls.js"></script>
     <script src="../js/error-handler.js"></script>
     <script src="../js/navigation.js"></script>
     <script src="../js/main.js"></script>
@@ -1575,53 +1550,76 @@
                 }
             }
             
+            // Get explanations for current cycles
+            let dailyExplanation = '';
+            let ninetyMinExplanation = '';
+            let microExplanation = '';
+            
+            // Daily Cycle Explanations
+            if (sessionName === 'Asian Session') {
+                dailyExplanation = '<strong>Accumulation Phase:</strong> Market makers are positioning. Price consolidates in a tight range. Mark Asian High/Low - these levels will be swept by London.';
+            } else if (sessionName === 'London Session') {
+                dailyExplanation = '<strong>Manipulation Phase:</strong> Stop hunts occur! London sweeps Asian range to grab liquidity. Watch for Peak Formation (PF) - the extreme high or low that NY will reverse.';
+            } else if (sessionName === 'NY Session') {
+                dailyExplanation = '<strong>Distribution Phase:</strong> The REAL move happens! NY reverses London direction 70%+ of the time. This is your prime trading window - highest probability setups.';
+            } else {
+                dailyExplanation = '<strong>Reversal/Continuation:</strong> Daily cycle completes. Trail stops on AM trades. Avoid new entries unless pristine Level 3 setup. Prepare for next day.';
+            }
+            
+            // 90-Min Cycle Explanations
+            if (quarter90 === 'Q1') {
+                ninetyMinExplanation = '<strong>Accumulation (Q1):</strong> Setup phase within the session. Price consolidates before the next move. Watch for range formation and mark key levels.';
+            } else if (quarter90 === 'Q2') {
+                ninetyMinExplanation = '<strong>Manipulation (Q2):</strong> Stop hunt window! Price sweeps liquidity. If in NY session 9-10:30 AM, this is PRIME TIME for entries at 9:45 AM Brinks Time.';
+            } else if (quarter90 === 'Q3') {
+                ninetyMinExplanation = '<strong>Distribution (Q3):</strong> The real move executes! Highest probability for trend continuation. If in NY session, this is the sweet spot for maximum edge.';
+            } else {
+                ninetyMinExplanation = '<strong>Reversal (Q4):</strong> Cycle completes. Price may reverse or consolidate. Trail stops, take profits, prepare for next 90-min cycle.';
+            }
+            
+            // Micro Cycle Explanations
+            if (microQuarter.includes('Accumulation')) {
+                microExplanation = '<strong>Micro Accumulation:</strong> 22.5-minute setup phase. Price consolidates within the 90-min cycle. Wait for manipulation phase before entering.';
+            } else if (microQuarter.includes('Manipulation')) {
+                microExplanation = '<strong>Micro Manipulation:</strong> Precision entry window! If in NY 9:22-9:45 AM, this includes 9:30 NYSE Open and 9:45 Brinks Time - ENTER HERE on sweep rejection!';
+            } else if (microQuarter.includes('Distribution')) {
+                microExplanation = '<strong>Micro Distribution:</strong> The move happens NOW! If you entered at manipulation, watch for TP1. This 22.5-min window has maximum momentum.';
+            } else {
+                microExplanation = '<strong>Micro Reversal:</strong> Quarter completes. Trail stops to breakeven. Prepare for next micro quarter or take profits if targets hit.';
+            }
+            
             container.innerHTML = `
-                <!-- Daily Cycle Card -->
-                <div style="background: linear-gradient(135deg, ${sessionColor}, rgba(0, 0, 0, 0.05)); padding: 1rem; border-radius: 8px; border: 2px solid ${sessionBorder};">
-                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
-                        <div style="font-size: 0.75rem; color: var(--text-secondary); font-weight: bold;">🌍 DAILY CYCLE</div>
-                        <div style="font-size: 0.7rem; padding: 0.15rem 0.4rem; background: ${sessionColor}; border-radius: 4px; color: ${sessionBorder}; font-weight: bold;">Q${sessionName === 'Asian Session' ? '1' : sessionName === 'London Session' ? '2' : sessionName === 'NY Session' ? '3' : '4'}</div>
+                <!-- Daily Cycle Explanation -->
+                <div style="background: linear-gradient(135deg, ${sessionColor}, rgba(0, 0, 0, 0.05)); padding: 1.25rem; border-radius: 8px; border: 2px solid ${sessionBorder};">
+                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
+                        <div style="font-size: 0.85rem; color: var(--text-secondary); font-weight: bold;">🌍 DAILY CYCLE</div>
+                        <div style="font-size: 0.75rem; padding: 0.2rem 0.5rem; background: ${sessionColor}; border-radius: 4px; color: ${sessionBorder}; font-weight: bold;">Q${sessionName === 'Asian Session' ? '1' : sessionName === 'London Session' ? '2' : sessionName === 'NY Session' ? '3' : '4'}</div>
+                        <div style="margin-left: auto; font-size: 0.8rem; color: ${sessionBorder}; font-weight: bold;">${formatTime(dailyTimeLeft)} left</div>
                     </div>
-                    <div style="font-weight: bold; color: ${sessionBorder}; font-size: 1rem; margin-bottom: 0.5rem;">${sessionName}</div>
-                    <div style="background: rgba(255, 255, 255, 0.1); height: 6px; border-radius: 3px; overflow: hidden; margin-bottom: 0.5rem;">
-                        <div style="background: ${sessionBorder}; height: 100%; width: ${dailyProgress}%; transition: width 0.5s;"></div>
-                    </div>
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                        <div style="font-size: 0.7rem; color: var(--text-secondary);">${Math.round(dailyProgress)}% done</div>
-                        <div style="font-size: 0.75rem; color: ${sessionBorder}; font-weight: bold;">${formatTime(dailyTimeLeft)}</div>
-                    </div>
+                    <div style="font-weight: bold; color: ${sessionBorder}; font-size: 1.1rem; margin-bottom: 0.5rem;">${sessionName}</div>
+                    <div style="font-size: 0.9rem; line-height: 1.6; color: var(--text-primary);">${dailyExplanation}</div>
                 </div>
                 
-                <!-- 90-Min Cycle Card -->
-                <div style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 215, 0, 0.05)); padding: 1rem; border-radius: 8px; border: 2px solid var(--accent-yellow);">
-                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
-                        <div style="font-size: 0.75rem; color: var(--text-secondary); font-weight: bold;">⏱️ 90-MIN CYCLE</div>
-                        <div style="font-size: 0.7rem; padding: 0.15rem 0.4rem; background: rgba(255, 215, 0, 0.25); border-radius: 4px; color: var(--accent-yellow); font-weight: bold;">${quarter90}</div>
+                <!-- 90-Min Cycle Explanation -->
+                <div style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 215, 0, 0.05)); padding: 1.25rem; border-radius: 8px; border: 2px solid var(--accent-yellow);">
+                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
+                        <div style="font-size: 0.85rem; color: var(--text-secondary); font-weight: bold;">⏱️ 90-MIN CYCLE</div>
+                        <div style="font-size: 0.75rem; padding: 0.2rem 0.5rem; background: rgba(255, 215, 0, 0.25); border-radius: 4px; color: var(--accent-yellow); font-weight: bold;">${quarter90}</div>
+                        <div style="margin-left: auto; font-size: 0.8rem; color: var(--accent-yellow); font-weight: bold;">${formatTime(ninetyMinTimeLeft)} left</div>
                     </div>
-                    <div style="font-weight: bold; color: var(--accent-yellow); font-size: 1rem; margin-bottom: 0.5rem;">Cycle ${cycleNumber + 1}</div>
-                    <div style="background: rgba(255, 255, 255, 0.1); height: 6px; border-radius: 3px; overflow: hidden; margin-bottom: 0.5rem;">
-                        <div style="background: var(--accent-yellow); height: 100%; width: ${ninetyMinProgress}%; transition: width 0.5s;"></div>
-                    </div>
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                        <div style="font-size: 0.7rem; color: var(--text-secondary);">${Math.round(ninetyMinProgress)}% done</div>
-                        <div style="font-size: 0.75rem; color: var(--accent-yellow); font-weight: bold;">${formatTime(ninetyMinTimeLeft)}</div>
-                    </div>
+                    <div style="font-weight: bold; color: var(--accent-yellow); font-size: 1.1rem; margin-bottom: 0.5rem;">Cycle ${cycleNumber + 1} - ${quarter90}</div>
+                    <div style="font-size: 0.9rem; line-height: 1.6; color: var(--text-primary);">${ninetyMinExplanation}</div>
                 </div>
                 
-                <!-- Micro Cycle Card -->
-                <div style="background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 255, 136, 0.05)); padding: 1rem; border-radius: 8px; border: 2px solid var(--accent-green);">
-                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
-                        <div style="font-size: 0.75rem; color: var(--text-secondary); font-weight: bold;">⚡ MICRO (22.5min)</div>
-                        <div style="font-size: 0.7rem; padding: 0.15rem 0.4rem; background: rgba(0, 255, 136, 0.25); border-radius: 4px; color: var(--accent-green); font-weight: bold;">${quarter90}</div>
+                <!-- Micro Cycle Explanation -->
+                <div style="background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 255, 136, 0.05)); padding: 1.25rem; border-radius: 8px; border: 2px solid var(--accent-green);">
+                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
+                        <div style="font-size: 0.85rem; color: var(--text-secondary); font-weight: bold;">⚡ MICRO (22.5min)</div>
+                        <div style="font-size: 0.75rem; padding: 0.2rem 0.5rem; background: rgba(0, 255, 136, 0.25); border-radius: 4px; color: var(--accent-green); font-weight: bold;">${quarter90}</div>
+                        <div style="margin-left: auto; font-size: 0.8rem; color: var(--accent-green); font-weight: bold;">${formatTime(microTimeLeft)} left</div>
                     </div>
-                    <div style="font-weight: bold; color: var(--accent-green); font-size: 1rem; margin-bottom: 0.5rem;">${microQuarter}</div>
-                    <div style="background: rgba(255, 255, 255, 0.1); height: 6px; border-radius: 3px; overflow: hidden; margin-bottom: 0.5rem;">
-                        <div style="background: var(--accent-green); height: 100%; width: ${microProgress}%; transition: width 0.5s;"></div>
-                    </div>
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                        <div style="font-size: 0.7rem; color: var(--text-secondary);">${Math.round(microProgress)}% done</div>
-                        <div style="font-size: 0.75rem; color: var(--accent-green); font-weight: bold;">${formatTime(microTimeLeft)}</div>
-                    </div>
+                    <div style="font-weight: bold; color: var(--accent-green); font-size: 1.1rem; margin-bottom: 0.5rem;">${microQuarter}</div>
+                    <div style="font-size: 0.9rem; line-height: 1.6; color: var(--text-primary);">${microExplanation}</div>
                 </div>
             `;
         }
@@ -1629,6 +1627,341 @@
         // Initialize and update every second
         updateLiveCycleOverview();
         setInterval(updateLiveCycleOverview, 1000);
+        
+        // HIGHLIGHT CURRENT SESSION IN TABLE
+        function highlightCurrentSession() {
+            const now = new Date();
+            const estTimeString = now.toLocaleString('en-US', { 
+                timeZone: 'America/New_York',
+                hour12: false,
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+            
+            const [hours, minutes] = estTimeString.split(':').map(Number);
+            const totalMinutes = hours * 60 + minutes;
+            
+            // Remove all existing highlights
+            const allRows = document.querySelectorAll('#sessionScheduleTable tr[data-session]');
+            allRows.forEach(row => {
+                row.style.background = '';
+                row.style.border = '';
+                row.style.boxShadow = '';
+                row.style.position = '';
+                // Remove LIVE indicator if exists
+                const liveIndicator = row.querySelector('.live-indicator');
+                if (liveIndicator) {
+                    liveIndicator.remove();
+                }
+            });
+            
+            // Find and highlight current session
+            allRows.forEach(row => {
+                const start = parseInt(row.getAttribute('data-start'));
+                const end = parseInt(row.getAttribute('data-end'));
+                
+                let isActive = false;
+                
+                // Handle sessions that cross midnight
+                if (start > end) {
+                    isActive = totalMinutes >= start || totalMinutes < end;
+                } else {
+                    isActive = totalMinutes >= start && totalMinutes < end;
+                }
+                
+                if (isActive) {
+                    const session = row.getAttribute('data-session');
+                    let bgColor = '';
+                    let borderColor = '';
+                    
+                    if (session === 'asian') {
+                        bgColor = 'rgba(74, 158, 255, 0.2)';
+                        borderColor = 'var(--accent-blue)';
+                    } else if (session === 'london') {
+                        bgColor = 'rgba(255, 215, 0, 0.2)';
+                        borderColor = 'var(--accent-yellow)';
+                    } else if (session === 'ny-prime') {
+                        bgColor = 'rgba(0, 255, 136, 0.25)';
+                        borderColor = 'var(--accent-green)';
+                    } else if (session === 'ny-pm') {
+                        bgColor = 'rgba(255, 152, 0, 0.2)';
+                        borderColor = 'var(--accent-red)';
+                    }
+                    
+                    row.style.background = bgColor;
+                    row.style.border = `3px solid ${borderColor}`;
+                    row.style.boxShadow = `0 0 20px ${bgColor}`;
+                    row.style.position = 'relative';
+                    
+                    // Add LIVE indicator
+                    const firstCell = row.querySelector('td:first-child');
+                    if (firstCell && !firstCell.querySelector('.live-indicator')) {
+                        const liveIndicator = document.createElement('span');
+                        liveIndicator.className = 'live-indicator';
+                        liveIndicator.innerHTML = ' <span style="display: inline-block; width: 10px; height: 10px; background: #ff0000; border-radius: 50%; animation: pulse 2s infinite; margin-left: 8px;"></span> <strong style="color: #ff0000;">LIVE NOW</strong>';
+                        firstCell.appendChild(liveIndicator);
+                    }
+                }
+            });
+        }
+        
+        // Update every second
+        highlightCurrentSession();
+        setInterval(highlightCurrentSession, 1000);
+        
+        // HIGHLIGHT CURRENT SESSION FLOW STEP
+        function highlightSessionFlow() {
+            const now = new Date();
+            const estTimeString = now.toLocaleString('en-US', { 
+                timeZone: 'America/New_York',
+                hour12: false,
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+            
+            const [hours, minutes] = estTimeString.split(':').map(Number);
+            const totalMinutes = hours * 60 + minutes;
+            
+            // Remove all existing highlights
+            const allFlowItems = document.querySelectorAll('#sessionFlowList li[data-flow]');
+            allFlowItems.forEach(item => {
+                item.style.background = '';
+                item.style.border = '';
+                item.style.padding = '';
+                item.style.borderRadius = '';
+                item.style.marginBottom = '';
+                item.style.boxShadow = '';
+                // Remove timing info if exists
+                const timingInfo = item.querySelector('.flow-timing-info');
+                if (timingInfo) {
+                    timingInfo.remove();
+                }
+            });
+            
+            // Find and highlight current flow step
+            allFlowItems.forEach(item => {
+                const start = parseInt(item.getAttribute('data-start'));
+                const end = parseInt(item.getAttribute('data-end'));
+                
+                let isActive = false;
+                
+                // Handle sessions that cross midnight
+                if (start > end) {
+                    isActive = totalMinutes >= start || totalMinutes < end;
+                } else {
+                    isActive = totalMinutes >= start && totalMinutes < end;
+                }
+                
+                if (isActive) {
+                    const flow = item.getAttribute('data-flow');
+                    let bgColor = '';
+                    let borderColor = '';
+                    
+                    if (flow === 'asian') {
+                        bgColor = 'rgba(74, 158, 255, 0.15)';
+                        borderColor = 'var(--accent-blue)';
+                    } else if (flow === 'london') {
+                        bgColor = 'rgba(255, 215, 0, 0.15)';
+                        borderColor = 'var(--accent-yellow)';
+                    } else if (flow === 'ny') {
+                        bgColor = 'rgba(0, 255, 136, 0.15)';
+                        borderColor = 'var(--accent-green)';
+                    } else if (flow === 'pm') {
+                        bgColor = 'rgba(255, 152, 0, 0.15)';
+                        borderColor = 'var(--accent-red)';
+                    }
+                    
+                    item.style.background = bgColor;
+                    item.style.borderLeft = `5px solid ${borderColor}`;
+                    item.style.padding = '15px';
+                    item.style.borderRadius = '8px';
+                    item.style.marginBottom = '10px';
+                    item.style.boxShadow = `0 0 15px ${bgColor}`;
+                    
+                    // Calculate time remaining
+                    let timeRemaining = 0;
+                    if (start > end) {
+                        // Crosses midnight
+                        if (totalMinutes >= start) {
+                            timeRemaining = (24 * 60 - totalMinutes) + end;
+                        } else {
+                            timeRemaining = end - totalMinutes;
+                        }
+                    } else {
+                        timeRemaining = end - totalMinutes;
+                    }
+                    
+                    const hoursLeft = Math.floor(timeRemaining / 60);
+                    const minutesLeft = Math.floor(timeRemaining % 60);
+                    
+                    let timeLeftText = '';
+                    if (hoursLeft > 0) {
+                        timeLeftText = `${hoursLeft}h ${minutesLeft}m remaining`;
+                    } else {
+                        timeLeftText = `${minutesLeft}m remaining`;
+                    }
+                    
+                    // Calculate progress percentage
+                    let sessionDuration = 0;
+                    if (start > end) {
+                        sessionDuration = (24 * 60 - start) + end;
+                    } else {
+                        sessionDuration = end - start;
+                    }
+                    
+                    let elapsed = 0;
+                    if (start > end) {
+                        if (totalMinutes >= start) {
+                            elapsed = totalMinutes - start;
+                        } else {
+                            elapsed = (24 * 60 - start) + totalMinutes;
+                        }
+                    } else {
+                        elapsed = totalMinutes - start;
+                    }
+                    
+                    const progressPercent = Math.min(Math.round((elapsed / sessionDuration) * 100), 100);
+                    
+                    // Add timing info
+                    const timingInfo = document.createElement('div');
+                    timingInfo.className = 'flow-timing-info';
+                    timingInfo.innerHTML = `
+                        <div style="margin-top: 10px; padding-top: 10px; border-top: 1px solid ${borderColor};">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                                <span style="font-size: 0.85rem; color: var(--text-secondary);">
+                                    <strong style="color: #ff0000;">🔴 ACTIVE NOW</strong> - ${progressPercent}% complete
+                                </span>
+                                <span style="font-size: 0.85rem; font-weight: bold; color: ${borderColor};">
+                                    ${timeLeftText}
+                                </span>
+                            </div>
+                            <div style="background: rgba(255, 255, 255, 0.2); height: 8px; border-radius: 4px; overflow: hidden;">
+                                <div style="background: ${borderColor}; height: 100%; width: ${progressPercent}%; transition: width 1s;"></div>
+                            </div>
+                        </div>
+                    `;
+                    item.appendChild(timingInfo);
+                }
+            });
+        }
+        
+        // Update every second
+        highlightSessionFlow();
+        setInterval(highlightSessionFlow, 1000);
+        
+        // UPDATE LIVE TRADING CONSIDERATIONS
+        function updateLiveConsiderations() {
+            const container = document.querySelector('#liveConsiderationsOverview > div');
+            if (!container) return;
+            
+            const now = new Date();
+            const estTimeString = now.toLocaleString('en-US', { 
+                timeZone: 'America/New_York',
+                hour12: false,
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+            
+            const [hours, minutes] = estTimeString.split(':').map(Number);
+            const totalMinutes = hours * 60 + minutes;
+            
+            // Determine current session and next session
+            let currentSession = '';
+            let nextSession = '';
+            let timeToNext = 0;
+            let isKeyWindow = false;
+            let keyWindowText = '';
+            
+            if (totalMinutes >= 19 * 60 || totalMinutes < 2 * 60) {
+                currentSession = 'Asian Session (Q1 Accumulation)';
+                nextSession = 'London Session';
+                if (totalMinutes >= 19 * 60) {
+                    timeToNext = (24 * 60 - totalMinutes) + (2 * 60);
+                } else {
+                    timeToNext = (2 * 60) - totalMinutes;
+                }
+            } else if (totalMinutes >= 2 * 60 && totalMinutes < 9 * 60) {
+                currentSession = 'London Session (Q2 Manipulation)';
+                nextSession = 'NY Session';
+                timeToNext = (9 * 60) - totalMinutes;
+                if (totalMinutes >= 3 * 60 && totalMinutes < 4.5 * 60) {
+                    isKeyWindow = true;
+                    keyWindowText = '🔥 IN PF WINDOW (3:00-4:30 AM)';
+                }
+            } else if (totalMinutes >= 9 * 60 && totalMinutes < 12 * 60) {
+                currentSession = 'NY Session (Q3 Distribution)';
+                nextSession = 'PM Session';
+                timeToNext = (12 * 60) - totalMinutes;
+                if (totalMinutes >= 9 * 60 && totalMinutes < 10.5 * 60) {
+                    isKeyWindow = true;
+                    keyWindowText = '🔥 IN BEST WINDOW (9:00-10:30 AM) - PRIME TIME!';
+                }
+            } else {
+                currentSession = 'PM Session (Q4 Reversal)';
+                nextSession = 'Asian Session (Tomorrow)';
+                timeToNext = (19 * 60) - totalMinutes;
+            }
+            
+            const hoursToNext = Math.floor(timeToNext / 60);
+            const minutesToNext = Math.floor(timeToNext % 60);
+            let timeToNextText = hoursToNext > 0 ? `${hoursToNext}h ${minutesToNext}m` : `${minutesToNext}m`;
+            
+            // Check if near Brinks Times
+            let brinksSoon = '';
+            const timeUntil945 = (9 * 60 + 45) - totalMinutes;
+            const timeUntil345 = (3 * 60 + 45) - totalMinutes;
+            
+            if (timeUntil945 > 0 && timeUntil945 <= 30) {
+                brinksSoon = `⚡ 9:45 AM Brinks Time in ${timeUntil945}m`;
+            } else if (timeUntil345 > 0 && timeUntil345 <= 30) {
+                brinksSoon = `⚡ 3:45 AM Brinks Time in ${timeUntil345}m`;
+            }
+            
+            // Check if near True Opens
+            let trueOpenSoon = '';
+            const timeUntilLondonOpen = (1.5 * 60) - totalMinutes;
+            const timeUntilNYOpen = (7.5 * 60) - totalMinutes;
+            
+            if (timeUntilLondonOpen > 0 && timeUntilLondonOpen <= 60) {
+                trueOpenSoon = '⚠️ AVOID: Less than 1 hour until London True Open (1:30 AM)';
+            } else if (timeUntilNYOpen > 0 && timeUntilNYOpen <= 60) {
+                trueOpenSoon = '⚠️ AVOID: Less than 1 hour until NY True Open (7:30 AM)';
+            }
+            
+            container.innerHTML = `
+                <div style="background: var(--card-bg); padding: 1.25rem; border-radius: 8px; border-left: 4px solid var(--accent-green);">
+                    <div style="font-weight: bold; color: var(--accent-green); margin-bottom: 0.5rem;">✅ What to Monitor</div>
+                    <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.95rem; line-height: 1.6;">
+                        <li><strong style="color: var(--accent-green);">🔴 Currently Active:</strong> ${currentSession}</li>
+                        <li><strong>⏰ Next Session:</strong> ${nextSession} in ${timeToNextText}</li>
+                        <li>${isKeyWindow ? `<strong style="color: var(--accent-green);">${keyWindowText}</strong>` : 'Not in key time window'}</li>
+                        <li><strong>Current Time:</strong> ${estTimeString} EST</li>
+                    </ul>
+                </div>
+                <div style="background: var(--card-bg); padding: 1.25rem; border-radius: 8px; border-left: 4px solid var(--accent-yellow);">
+                    <div style="font-weight: bold; color: var(--accent-yellow); margin-bottom: 0.5rem;">⏰ Timing is Key</div>
+                    <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.95rem; line-height: 1.6;">
+                        <li><strong>Best entries:</strong> 9:00-10:30 AM EST</li>
+                        <li>${brinksSoon ? `<strong style="color: var(--accent-yellow);">${brinksSoon}</strong>` : 'Brinks Times: 9:45 AM, 3:45 AM'}</li>
+                        <li>${trueOpenSoon ? `<strong style="color: var(--accent-red);">${trueOpenSoon}</strong>` : 'Avoid: Hour before True Opens'}</li>
+                        <li>Session overlap = volatility</li>
+                    </ul>
+                </div>
+                <div style="background: var(--card-bg); padding: 1.25rem; border-radius: 8px; border-left: 4px solid var(--accent-red);">
+                    <div style="font-weight: bold; color: var(--accent-red); margin-bottom: 0.5rem;">⚠️ Risk Management</div>
+                    <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.95rem; line-height: 1.6;">
+                        <li>Max 1-2% risk per trade</li>
+                        <li>No more than 3 positions open</li>
+                        <li>${currentSession.includes('Asian') || currentSession.includes('PM') ? '<strong style="color: var(--accent-red);">Tighter stops - Low volume session</strong>' : 'Tighter stops during low volume'}</li>
+                        <li>Scale out at targets (TP1, TP2, TP3)</li>
+                    </ul>
+                </div>
+            `;
+        }
+        
+        // Update every second
+        updateLiveConsiderations();
+        setInterval(updateLiveConsiderations, 1000);
     </script>
     <script src="../js/keyboard-shortcuts.js"></script>
     <script src="../js/alerts.js"></script>

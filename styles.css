@@ -1042,3 +1042,215 @@ a {
     }
 }
 
+/* ============================================
+   NAVIGATION v3.0 - OPTIMIZED STYLES
+   ============================================ */
+
+/* Breadcrumb */
+.nav-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    background: var(--bg-tertiary);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.nav-bread-link {
+    color: var(--accent-blue);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.nav-bread-link:hover {
+    color: var(--accent-green);
+}
+
+.nav-bread-sep {
+    color: var(--text-tertiary);
+}
+
+.nav-bread-current {
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* Back Button - New Style */
+.nav-back {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-bottom: 1rem;
+}
+
+.nav-back:hover {
+    background: var(--accent-blue);
+    color: white;
+    border-color: var(--accent-blue);
+    transform: translateX(-3px);
+}
+
+/* Navigation Sections Container */
+.nav-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Individual Section */
+.nav-section {
+    background: var(--bg-tertiary);
+    border-radius: 10px;
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    transition: all 0.2s ease;
+}
+
+.nav-tools {
+    background: linear-gradient(135deg, rgba(74, 158, 255, 0.08), rgba(0, 255, 136, 0.08));
+    border-color: rgba(74, 158, 255, 0.2);
+}
+
+/* Section Header */
+.nav-section-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.nav-section-icon {
+    font-size: 1.2rem;
+}
+
+.nav-section-title {
+    color: var(--accent-yellow);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Navigation List */
+.nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.nav-item {
+    margin: 0;
+}
+
+/* Navigation Link */
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.65rem 0.85rem;
+    border-radius: 6px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: all 0.15s ease;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    background: var(--bg-primary);
+    color: var(--accent-blue);
+    transform: translateX(3px);
+}
+
+.nav-link.nav-item-active,
+.nav-link[aria-current="page"] {
+    background: var(--accent-blue);
+    color: white !important;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(74, 158, 255, 0.3);
+}
+
+.nav-icon {
+    font-size: 1.1rem;
+    width: 20px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.nav-text {
+    flex: 1;
+}
+
+/* Skip Link for Accessibility */
+.nav-skip {
+    position: absolute;
+    top: -1000px;
+    left: 0;
+    background: var(--accent-blue);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    border-radius: 0 0 8px 0;
+    z-index: 10000;
+    font-weight: 600;
+}
+
+.nav-skip:focus {
+    top: 0;
+}
+
+/* Mobile Toggle Button */
+.nav-mobile-toggle {
+    display: none;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 10001;
+    width: 50px;
+    height: 50px;
+    background: var(--accent-blue);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s ease;
+}
+
+.nav-mobile-toggle:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.nav-mobile-toggle:active {
+    transform: scale(0.95);
+}
+
+/* Mobile Responsive */
+@media (max-width: 968px) {
+    .nav-mobile-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .sidebar.nav-mobile-open {
+        left: 0;
+    }
+}
+

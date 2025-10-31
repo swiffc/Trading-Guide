@@ -1,0 +1,335 @@
+/* Intraday Bias Page - Custom Styles */
+
+/* Push Grid */
+.push-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.push-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 1.5rem;
+    border-top: 5px solid var(--accent-blue);
+    transition: all 0.3s ease;
+}
+
+.push-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+.push-card.push1 {
+    border-top-color: var(--accent-yellow);
+}
+
+.push-card.push2 {
+    border-top-color: var(--accent-green);
+}
+
+.push-card.push3 {
+    border-top-color: var(--accent-blue);
+}
+
+.push-number {
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
+    color: white;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5em;
+    font-weight: bold;
+    margin: 0 auto 1.5rem;
+    box-shadow: 0 8px 20px rgba(74, 158, 255, 0.4);
+}
+
+.push1 .push-number {
+    background: linear-gradient(135deg, var(--accent-yellow), #ffed4e);
+    color: #1a2032;
+}
+
+.push2 .push-number {
+    background: linear-gradient(135deg, var(--accent-green), #00cc6a);
+}
+
+.push3 .push-number {
+    background: linear-gradient(135deg, var(--accent-blue), #00f2fe);
+}
+
+.push-card h3 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+/* Dealer Insight Section */
+.dealer-insight {
+    background: linear-gradient(135deg, rgba(138, 43, 226, 0.15), rgba(255, 74, 74, 0.15));
+    border: 2px solid var(--accent-blue);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+}
+
+.dealer-insight h3 {
+    color: var(--accent-blue);
+    margin-top: 0;
+}
+
+/* Range Phase Box */
+.range-phase {
+    background: rgba(255, 193, 7, 0.1);
+    border-left: 4px solid var(--accent-yellow);
+    padding: 1.25rem;
+    margin: 1rem 0;
+    border-radius: 8px;
+}
+
+.range-phase h4 {
+    margin-top: 0;
+    color: var(--accent-yellow);
+}
+
+/* ADR Marker */
+.adr-marker {
+    background: rgba(0, 255, 136, 0.15);
+    border: 2px dashed var(--accent-green);
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.3em;
+    color: var(--accent-green);
+}
+
+/* Stop Hunt Alert */
+.stop-hunt {
+    background: rgba(255, 74, 74, 0.1);
+    border-left: 4px solid var(--accent-red);
+    padding: 1.25rem;
+    margin: 1rem 0;
+    border-radius: 8px;
+}
+
+.stop-hunt strong {
+    color: var(--accent-red);
+}
+
+/* Timing Box */
+.timing-box {
+    background: rgba(74, 158, 255, 0.1);
+    border: 2px solid var(--accent-blue);
+    padding: 1.25rem;
+    margin: 1rem 0;
+    border-radius: 10px;
+}
+
+.timing-box h4 {
+    color: var(--accent-blue);
+    margin-top: 0;
+}
+
+/* Level Indicator Badge */
+.level-indicator {
+    display: inline-block;
+    background: var(--accent-green);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: bold;
+    margin: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0, 255, 136, 0.3);
+}
+
+/* Warning Banner */
+.warning-banner {
+    background: linear-gradient(135deg, var(--accent-red), #ff6b6b);
+    color: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin: 1.5rem 0;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2em;
+    box-shadow: 0 8px 20px rgba(255, 74, 74, 0.3);
+}
+
+/* Psychology Note */
+.psychology-note {
+    background: rgba(138, 43, 226, 0.1);
+    border-left: 4px solid #8a2be2;
+    padding: 1.25rem;
+    margin: 1rem 0;
+    border-radius: 8px;
+    font-style: italic;
+}
+
+/* Pattern Flow */
+.pattern-flow {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.flow-step {
+    background: var(--card-bg);
+    border: 3px solid var(--accent-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    min-width: 150px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.flow-step strong {
+    display: block;
+    font-size: 1.5em;
+    margin-bottom: 0.5rem;
+}
+
+.flow-arrow {
+    font-size: 2.5em;
+    color: var(--accent-blue);
+    font-weight: bold;
+}
+
+/* Level System Grid */
+.level-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.level-card {
+    background: var(--bg-tertiary);
+    padding: 1.5rem;
+    border-radius: 10px;
+}
+
+.level-card.level1 {
+    border-left: 5px solid var(--accent-yellow);
+}
+
+.level-card.level2 {
+    border-left: 5px solid var(--accent-green);
+}
+
+.level-card.level3 {
+    border-left: 5px solid var(--accent-blue);
+}
+
+.level-card h4 {
+    margin-top: 0;
+}
+
+/* Trading Rules Grid */
+.rules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.rules-do {
+    background: rgba(0, 255, 136, 0.1);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border-left: 5px solid var(--accent-green);
+}
+
+.rules-do h4 {
+    color: var(--accent-green);
+    margin-top: 0;
+}
+
+.rules-dont {
+    background: rgba(255, 74, 74, 0.1);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border-left: 5px solid var(--accent-red);
+}
+
+.rules-dont h4 {
+    color: var(--accent-red);
+    margin-top: 0;
+}
+
+/* Integration Table */
+.integration-table {
+    width: 100%;
+    margin: 1.5rem 0;
+    border-collapse: collapse;
+}
+
+.integration-table th {
+    background: var(--bg-tertiary);
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.integration-table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.integration-table tr.highlight {
+    background: rgba(0, 255, 136, 0.1);
+}
+
+/* Dealer vs Human Grid */
+.vs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 1.5rem 0;
+}
+
+.vs-card {
+    background: var(--bg-tertiary);
+    padding: 1.5rem;
+    border-radius: 10px;
+}
+
+.vs-card h4 {
+    margin-top: 0;
+    color: var(--accent-blue);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .push-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .pattern-flow {
+        flex-direction: column;
+    }
+    
+    .flow-arrow {
+        transform: rotate(90deg);
+        margin: 1rem 0;
+    }
+    
+    .level-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .vs-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .rules-grid {
+        grid-template-columns: 1fr;
+    }
+}
+

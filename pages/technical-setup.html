@@ -48,6 +48,19 @@
                     <strong>🎯 Core Principle:</strong> EMAs show market direction. TDI shows momentum. Together they identify Level I, II, and III phases.
                 </div>
 
+                <!-- Tab Navigation -->
+                <div class="tabs" style="margin-top: 2rem;">
+                    <button class="tab-button active" onclick="openTab(event, 'tab-emas')">📊 EMAs</button>
+                    <button class="tab-button" onclick="openTab(event, 'tab-tdi')">📈 TDI</button>
+                    <button class="tab-button" onclick="openTab(event, 'tab-sessions')">⏰ Sessions</button>
+                    <button class="tab-button" onclick="openTab(event, 'tab-pivots')">📍 Pivots & ADR</button>
+                    <button class="tab-button" onclick="openTab(event, 'tab-levels')">🎯 Key Levels</button>
+                    <button class="tab-button" onclick="openTab(event, 'tab-checklist')">✅ Checklist</button>
+                </div>
+
+                <!-- Tab 1: EMAs -->
+                <div id="tab-emas" class="tab-content active">
+
                 <h3>📊 1. EXPONENTIAL MOVING AVERAGES (EMAs)</h3>
 
                 <div class="pattern-card" style="border-left: 4px solid #4a9eff;">
@@ -164,6 +177,12 @@
                     </div>
                 </div>
 
+                </div>
+                <!-- End Tab 1: EMAs -->
+
+                <!-- Tab 2: TDI -->
+                <div id="tab-tdi" class="tab-content">
+
                 <h3 style="margin-top: 3rem;">📈 2. TDI (TRADERS DYNAMIC INDEX)</h3>
 
                 <div class="pattern-card" style="border-left: 4px solid #00ff88;">
@@ -263,6 +282,12 @@
                     </div>
                 </div>
 
+                </div>
+                <!-- End Tab 2: TDI -->
+
+                <!-- Tab 3: Sessions -->
+                <div id="tab-sessions" class="tab-content">
+
                 <h3 style="margin-top: 3rem;">⏰ 3. SESSION TIMING INTEGRATION</h3>
 
                 <div class="alert alert-success">
@@ -343,6 +368,12 @@
                         <p>Notice how BTMM's "London Session" = Quarterly Q2 (Manipulation) and "NY Session Q3" = Quarterly Q3 (Distribution). <strong>They're the SAME thing, just different names!</strong></p>
                     </div>
                 </div>
+
+                </div>
+                <!-- End Tab 3: Sessions -->
+
+                <!-- Tab 4: Pivots & ADR -->
+                <div id="tab-pivots" class="tab-content">
 
                 <h3 style="margin-top: 3rem;">📍 4. PIVOT POINTS</h3>
 
@@ -470,6 +501,12 @@
                         </ul>
                     </div>
                 </div>
+
+                </div>
+                <!-- End Tab 4: Pivots & ADR -->
+
+                <!-- Tab 5: Key Levels -->
+                <div id="tab-levels" class="tab-content">
 
                 <h3 style="margin-top: 3rem;">📍 5. KEY LEVEL TRACKING</h3>
 
@@ -700,6 +737,12 @@
                         <p style="margin-top: 0.5rem;">Visit the <strong><a href="patterns.html" style="color: var(--accent-blue); text-decoration: underline;">Patterns Page</a></strong> to explore all setups organized by type with detailed entry rules, parameters, and examples.</p>
                     </div>
                 </div>
+
+                </div>
+                <!-- End Tab 5: Key Levels -->
+
+                <!-- Tab 6: Checklist -->
+                <div id="tab-checklist" class="tab-content">
 
                 <h3 style="margin-top: 3rem;">✅ COMPLETE SETUP CHECKLIST</h3>
 
@@ -937,6 +980,10 @@
                         <li><a href="btmm-cycle.html" style="color: var(--accent-blue);">BTMM Cycle</a> - See how EMA crosses signal Level changes</li>
                     </ul>
                 </div>
+
+                </div>
+                <!-- End Tab 6: Checklist -->
+
             </section>
 
             <div class="footer">
@@ -946,7 +993,31 @@
         </main>
     </div>
 
-    <script src="../js/navigation.js"></script>
+    <script>
+        // Tab switching functionality
+        function openTab(evt, tabName) {
+            // Hide all tab content
+            var tabContent = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabContent.length; i++) {
+                tabContent[i].classList.remove("active");
+            }
+            
+            // Remove active class from all tab buttons
+            var tabButtons = document.getElementsByClassName("tab-button");
+            for (var i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove("active");
+            }
+            
+            // Show the selected tab and mark button as active
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+            
+            // Scroll to top of content
+            document.getElementById("mainContent").scrollTop = 0;
+        }
+    </script>
+
+    <script src="../js/zoom-sync.js"></script>`n    <script src="../js/zoom-controls.js"></script>`n    <script src="../js/navigation.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/export-print.js"></script>
     <script src="../js/alerts.js"></script>

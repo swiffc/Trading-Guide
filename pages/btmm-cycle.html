@@ -37,7 +37,7 @@
 
         <main class="content" id="mainContent">
             <section class="section">
-                <h2>🔄 BTMM 3-Day Cycle</h2>
+                <h2>🔄 BTMM Strategy</h2>
                 
                 <div class="hero-card">
                     <h4>Beat The Market Makers</h4>
@@ -47,6 +47,18 @@
                 <div class="alert alert-success">
                     <strong>🎯 Core Principle:</strong> Market makers manipulate price to accumulate maximum volume at favorable prices, then distribute opposite to retail positions.
                 </div>
+
+                <!-- Tab Navigation -->
+                <div class="tabs" style="margin-top: 2rem;">
+                    <button class="tab-button active" onclick="openTab(event, 'tab-3day-cycle')">3-Day Cycle</button>
+                    <button class="tab-button" onclick="openTab(event, 'tab-level-counting')">Level Counting</button>
+                    <button class="tab-button" onclick="openTab(event, 'tab-technical-levels')">Technical Levels</button>
+                    <button class="tab-button" onclick="openTab(event, 'tab-trading-setups')">Trading Setups</button>
+                    <button class="tab-button" onclick="openTab(event, 'tab-advanced')">Advanced Topics</button>
+                </div>
+
+                <!-- Tab 1: 3-Day Cycle -->
+                <div id="tab-3day-cycle" class="tab-content active">
 
                 <h3>🧠 Market Maker Objectives</h3>
 
@@ -232,9 +244,218 @@
                     </div>
                 </div>
 
-                <h3 style="margin-top: 3rem;">🎯 DAY 2 & DAY 3 SPECIFIC SETUPS</h3>
+                </div>
+                <!-- End Tab 1: 3-Day Cycle -->
 
-                <div class="pattern-card" style="border-left: 4px solid var(--accent-yellow);">
+                <!-- Tab 2: Level Counting -->
+                <div id="tab-level-counting" class="tab-content">
+
+                <h3 style="margin-top: 1rem;">🎯 BTMM LEVEL COUNTING STRATEGY</h3>
+
+                <div class="hero-card" style="background: linear-gradient(135deg, rgba(74, 158, 255, 0.15), rgba(255, 215, 0, 0.1)); border: 3px solid var(--accent-blue);">
+                    <h4>Market Maker Level Counting: The Complete Guide</h4>
+                    <p>Master the art of counting Market Maker levels to identify exactly where you are in the manipulation cycle. This methodology provides a step-by-step approach to tracking the market maker's predictable three-level movement pattern.</p>
+                </div>
+
+                <div class="alert alert-success" style="margin-top: 1.5rem;">
+                    <strong>🔑 Core Concept:</strong> The market moves in predictable three-level cycles (Level 1, Level 2, Level 3) designed to trap retail traders. Each cycle starts with an anchor point (M or W formation) and concludes with the opposite formation after three distinct pushes.
+                </div>
+
+                <h4 style="margin-top: 2rem; color: var(--accent-blue);">🔄 The Two Major BTMM Cycles</h4>
+
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-top: 1.5rem;">
+                    <!-- BULLISH CYCLE: WVM -->
+                    <div class="pattern-card" style="border: 3px solid var(--accent-green); background: rgba(0, 255, 136, 0.05);">
+                        <div class="pattern-title" style="color: var(--accent-green);">📈 WVM (Bullish Cycle)</div>
+                        
+                        <h5 style="margin-top: 1rem; color: var(--accent-yellow);">Pattern Structure:</h5>
+                        <div style="background: var(--bg-tertiary); padding: 1rem; border-radius: 6px; font-family: monospace; line-height: 2; margin-top: 0.5rem;">
+                            <span style="color: var(--accent-red);">      M   </span> ← PFH (Peak Formation High) - END<br>
+                            <span style="color: var(--accent-green);">     / \  </span> ← V3 (Final aggressive push)<br>
+                            <span style="color: var(--accent-green);">    ↑   ↑ </span> ← V2 (Mild movement)<br>
+                            <span style="color: var(--accent-green);">   /     \</span> ← V1 (Aggressive push)<br>
+                            <span style="color: var(--accent-green);">  W       </span> ← PFL (Peak Formation Low) - START
+                        </div>
+
+                        <h5 style="margin-top: 1rem; color: var(--accent-blue);">Cycle Breakdown:</h5>
+                        <ul style="padding-left: 1.5rem; line-height: 1.8; font-size: 0.9rem;">
+                            <li><strong style="color: var(--accent-green);">W (Anchor):</strong> Peak Formation Low (PFL) - END of bearish trend, START of bullish cycle</li>
+                            <li><strong style="color: var(--accent-green);">V1:</strong> First aggressive upward push</li>
+                            <li><strong style="color: var(--accent-yellow);">V2:</strong> Second mild/consolidative push</li>
+                            <li><strong style="color: var(--accent-green);">V3:</strong> Third aggressive push (trap phase)</li>
+                            <li><strong style="color: var(--accent-red);">M (End):</strong> Peak Formation High (PFH) - cycle complete</li>
+                        </ul>
+
+                        <div class="alert alert-success" style="margin-top: 1rem; font-size: 0.85rem;">
+                            <strong>🎯 Trade:</strong> After V3 completes and M forms = SHORT for next MAW cycle!
+                        </div>
+                    </div>
+
+                    <!-- BEARISH CYCLE: MAW -->
+                    <div class="pattern-card" style="border: 3px solid var(--accent-red); background: rgba(255, 74, 74, 0.05);">
+                        <div class="pattern-title" style="color: var(--accent-red);">📉 MAW (Bearish Cycle)</div>
+                        
+                        <h5 style="margin-top: 1rem; color: var(--accent-yellow);">Pattern Structure:</h5>
+                        <div style="background: var(--bg-tertiary); padding: 1rem; border-radius: 6px; font-family: monospace; line-height: 2; margin-top: 0.5rem;">
+                            <span style="color: var(--accent-red);">  M       </span> ← PFH (Peak Formation High) - START<br>
+                            <span style="color: var(--accent-red);">   \     /</span> ← A1 (Aggressive push)<br>
+                            <span style="color: var(--accent-red);">    ↓   ↓ </span> ← A2 (Mild movement)<br>
+                            <span style="color: var(--accent-red);">     \ /  </span> ← A3 (Final aggressive push)<br>
+                            <span style="color: var(--accent-green);">      W   </span> ← PFL (Peak Formation Low) - END
+                        </div>
+
+                        <h5 style="margin-top: 1rem; color: var(--accent-blue);">Cycle Breakdown:</h5>
+                        <ul style="padding-left: 1.5rem; line-height: 1.8; font-size: 0.9rem;">
+                            <li><strong style="color: var(--accent-red);">M (Anchor):</strong> Peak Formation High (PFH) - END of bullish trend, START of bearish cycle</li>
+                            <li><strong style="color: var(--accent-red);">A1:</strong> First aggressive downward push</li>
+                            <li><strong style="color: var(--accent-yellow);">A2:</strong> Second mild/consolidative push</li>
+                            <li><strong style="color: var(--accent-red);">A3:</strong> Third aggressive push (trap phase)</li>
+                            <li><strong style="color: var(--accent-green);">W (End):</strong> Peak Formation Low (PFL) - cycle complete</li>
+                        </ul>
+
+                        <div class="alert alert-success" style="margin-top: 1rem; font-size: 0.85rem;">
+                            <strong>🎯 Trade:</strong> After A3 completes and W forms = LONG for next WVM cycle!
+                        </div>
+                    </div>
+                </div>
+
+                <h4 style="margin-top: 3rem; color: var(--accent-blue);">📍 Step 1: Identifying Anchor Points</h4>
+
+                <div class="pattern-card">
+                    <div class="alert alert-warning">
+                        <strong>🔍 Critical First Step:</strong> Look back 3 to 5 days to identify the most recent anchor point (M or W formation). This determines your trading bias!
+                    </div>
+
+                    <h5 style="margin-top: 1.5rem; color: var(--accent-yellow);">What is an Anchor Point?</h5>
+                    <div class="card">
+                        <p><strong>Definition:</strong> An anchor point marks the END of the previous trend and the BEGINNING of a new market maker cycle.</p>
+                        <p style="margin-top: 0.5rem;"><strong>Two Types:</strong></p>
+                        <ul style="padding-left: 1.5rem; line-height: 1.8; margin-top: 0.5rem;">
+                            <li><strong style="color: var(--accent-green);">W Formation (PFL):</strong> Marks the low/bottom - START of bullish cycle (WVM)</li>
+                            <li><strong style="color: var(--accent-red);">M Formation (PFH):</strong> Marks the high/top - START of bearish cycle (MAW)</li>
+                        </ul>
+                    </div>
+
+                    <h5 style="margin-top: 1.5rem; color: var(--accent-blue);">How to Find the Anchor Point:</h5>
+                    <div class="card">
+                        <ol style="padding-left: 1.5rem; line-height: 1.8;">
+                            <li><strong>Use 15-minute chart</strong> for identifying specific M and W formations</li>
+                            <li><strong>Look back 3-5 days</strong> from current price action</li>
+                            <li><strong>Identify most recent clear M or W pattern</strong></li>
+                            <li><strong>Confirm on 1-hour chart</strong> for directional bias validation</li>
+                            <li><strong>Mark the anchor point</strong> on your chart with a horizontal line</li>
+                        </ol>
+                    </div>
+
+                    <div class="alert alert-info" style="margin-top: 1rem;">
+                        <strong>💡 Pro Tip:</strong> The anchor point is your reference for counting the three levels. If you see a W (low), expect three V pushes upward. If you see an M (high), expect three A pushes downward.
+                    </div>
+                </div>
+
+                <h4 style="margin-top: 3rem; color: var(--accent-blue);">📊 Step 2: The Three-Level Characteristics Table</h4>
+
+                <div class="card" style="overflow-x: auto;">
+                    <table>
+                        <tr>
+                            <th style="width: 12%;">Level</th>
+                            <th style="width: 25%;">Characteristic</th>
+                            <th style="width: 15%;">Aggressiveness</th>
+                            <th style="width: 33%;">Purpose</th>
+                            <th style="width: 15%;">Action</th>
+                        </tr>
+                        <tr style="background: rgba(0, 255, 136, 0.05);">
+                            <td><strong style="color: var(--accent-green);">Level 1</strong></td>
+                            <td>Aggressive push away from anchor point</td>
+                            <td><span style="color: var(--accent-red);">HIGH</span></td>
+                            <td>MM initiates trend, runs from short-sale holders, books profit</td>
+                            <td><span class="badge badge-info">Can Trade</span></td>
+                        </tr>
+                        <tr style="background: rgba(255, 193, 7, 0.05);">
+                            <td><strong style="color: var(--accent-yellow);">Level 2</strong></td>
+                            <td>Mild movement, often consolidative</td>
+                            <td><span style="color: var(--accent-yellow);">LOW</span></td>
+                            <td>Market-driven, MM absent, watches retail reaction</td>
+                            <td><span class="badge badge-danger">AVOID</span></td>
+                        </tr>
+                        <tr style="background: rgba(0, 255, 136, 0.1);">
+                            <td><strong style="color: var(--accent-green);">Level 3</strong></td>
+                            <td>Aggressive final push with inducements/fake moves</td>
+                            <td><span style="color: var(--accent-red);">HIGH</span></td>
+                            <td>Traps final retail batch, creates panic, major reversal setup</td>
+                            <td><span class="badge badge-success">TRADE! 🔥</span></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <h4 style="margin-top: 3rem; color: var(--accent-blue);">🎓 Step 3: Execution & Safety Principles</h4>
+
+                <div class="pattern-card">
+                    <h5 style="color: var(--accent-yellow);">📊 Timeframe Strategy:</h5>
+                    <div class="card">
+                        <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                            <li><strong style="color: var(--accent-blue);">15-Minute Chart:</strong> Identify specific M and W formations, count levels</li>
+                            <li><strong style="color: var(--accent-blue);">1-Hour Chart:</strong> Confirm directional bias and overall trend</li>
+                            <li><strong style="color: var(--accent-green);">Multi-Timeframe Alignment:</strong> Both must agree before entering</li>
+                        </ul>
+                    </div>
+
+                    <h5 style="margin-top: 1.5rem; color: var(--accent-yellow);">🛡️ Safety Trades:</h5>
+                    <div class="alert alert-success">
+                        <p><strong>The safest entry points are at Peak Formation High (PFH) or Peak Formation Low (PFL)</strong> where the dealer reverses the market after completing all three levels!</p>
+                        <ul style="padding-left: 1.5rem; margin-top: 0.5rem; line-height: 1.8;">
+                            <li><strong>After WVM cycle:</strong> Enter SHORT at PFH (M formation)</li>
+                            <li><strong>After MAW cycle:</strong> Enter LONG at PFL (W formation)</li>
+                            <li><strong>Why Safe:</strong> All three levels complete, dealer ready to reverse</li>
+                            <li><strong>Confirmation:</strong> Level 3 aggression followed by opposite formation</li>
+                        </ul>
+                    </div>
+
+                    <h5 style="margin-top: 1.5rem; color: var(--accent-yellow);">🧠 Market Psychology:</h5>
+                    <div class="card">
+                        <p><strong>The Trap Design:</strong> Price movement exploits fear and greed, especially at Level 3.</p>
+                        <p style="margin-top: 0.5rem;"><strong>Retail Mistakes:</strong></p>
+                        <ul style="padding-left: 1.5rem; line-height: 1.8; margin-top: 0.5rem;">
+                            <li>Chase Level 1 momentum → Trapped in Level 2 chop</li>
+                            <li>Trade Level 2 consolidation → Death by 1000 cuts</li>
+                            <li>Miss Level 3 reversal → Best opportunities gone</li>
+                            <li>Panic at reversals → Exit winners too early</li>
+                        </ul>
+                        <p style="margin-top: 1rem;"><strong style="color: var(--accent-green);">Your Edge:</strong> Count levels systematically, enter at institutional turning points!</p>
+                    </div>
+                </div>
+
+                <div class="alert alert-info" style="margin-top: 2rem;">
+                    <h5 style="margin-bottom: 0.5rem;">📺 Video Source</h5>
+                    <p><strong>BTMM Strategy: How to Count Market Maker Levels (Step-by-Step Guide)</strong></p>
+                    <p style="margin-top: 0.5rem;">Channel: Emmett Capital | <a href="http://www.youtube.com/watch?v=rI_mtI9QTtg" target="_blank" rel="noopener" style="color: var(--accent-blue);">Watch on YouTube</a></p>
+                </div>
+
+                </div>
+                <!-- End Tab 2: Level Counting -->
+
+                <!-- Tab 3: Technical Levels -->
+                <div id="tab-technical-levels" class="tab-content">
+
+                <div class="hero-card" style="background: linear-gradient(135deg, rgba(74, 158, 255, 0.1), rgba(255, 215, 0, 0.05));">
+                    <h4>Technical Framework: Level I, II, III</h4>
+                    <p>The technical framework explains how the 3-Day Cycle manifests through specific EMA crosses and market structure. This integrates time-based patterns with technical indicators.</p>
+                </div>
+
+                <div class="alert alert-info" style="margin-top: 1.5rem;">
+                    <strong>🔗 Integration Point:</strong> Day 1-2-3 is the TIME framework. Level I-II-III is the TECHNICAL framework. They work together!
+                </div>
+
+                <!-- Note: Level I, II, III detailed sections, integration tables, and PF Rules continue below in this tab -->
+
+                </div>
+                <!-- End Tab 3: Technical Levels -->
+
+                <!-- Tab 4: Trading Setups -->
+                <div id="tab-trading-setups" class="tab-content">
+
+                <h3>🎯 DAY 2 & DAY 3 SPECIFIC SETUPS</h3>
+
+                <div class="pattern-card" style="border-left: 4px solid var(--accent-yellow); margin-top: 1.5rem;">
                     <div class="pattern-title">Day 2 Setups: Level A1 Sell or Level V1 Buy</div>
                     
                     <div class="alert alert-info">
@@ -604,7 +825,7 @@
                     </div>
                 </div>
 
-                <h3 style="margin-top: 3rem;">📊 Visual: Levels Within Days Within Quarters</h3>
+                <h3 style="margin-top: 2rem;">📊 Visual: Levels Within Days Within Quarters</h3>
 
                 <div class="card" style="background: var(--bg-primary); padding: 2rem;">
                     <div style="text-align: center; margin-bottom: 1rem;">
@@ -722,6 +943,12 @@
                         <p><strong>Stop:</strong> Below PF Low + 20-50 pips</p>
                     </div>
                 </div>
+
+                </div>
+                <!-- End Tab 4: Trading Setups -->
+
+                <!-- Tab 5: Advanced Topics -->
+                <div id="tab-advanced" class="tab-content">
 
                 <h3 style="margin-top: 3rem;">📊 Weekly PSR (Psychological Support/Resistance)</h3>
 
@@ -1226,7 +1453,10 @@
                     </p>
                 </div>
 
-                <div class="alert alert-info" style="margin-top: 1.5rem;">
+                </div>
+                <!-- End Tab 5: Advanced Topics -->
+
+                <div class="alert alert-info" style="margin-top: 2rem;">
                     <h4 style="margin-bottom: 0.5rem;">📚 Continue Learning</h4>
                     <ul style="padding-left: 1.5rem; margin-top: 0.5rem;">
                         <li><a href="weekly-schedule.html" style="color: var(--accent-blue);">Weekly Schedule</a> - How BTMM aligns with daily quarters</li>
@@ -1243,6 +1473,32 @@
         </main>
     </div>
 
+    <script>
+        // Tab switching functionality
+        function openTab(evt, tabName) {
+            // Hide all tab content
+            var tabContent = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabContent.length; i++) {
+                tabContent[i].classList.remove("active");
+            }
+            
+            // Remove active class from all tab buttons
+            var tabButtons = document.getElementsByClassName("tab-button");
+            for (var i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove("active");
+            }
+            
+            // Show the selected tab and mark button as active
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+            
+            // Scroll to top of content
+            document.getElementById("mainContent").scrollTop = 0;
+        }
+    </script>
+
+    <script src="../js/zoom-sync.js"></script>
+    <script src="../js/zoom-controls.js"></script>
     <script src="../js/navigation.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/export-print.js"></script>

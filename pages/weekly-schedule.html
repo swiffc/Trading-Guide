@@ -5,60 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weekly Schedule - Trading Guide</title>
     <link rel="stylesheet" href="../styles.css">
-    <style>
-        /* Tab styling */
-        .tabs {
-            display: flex;
-            gap: 10px;
-            margin: 2rem 0;
-            flex-wrap: wrap;
-            border-bottom: 2px solid #667eea;
-        }
-
-        .tab-button {
-            padding: 12px 20px;
-            border: none;
-            background: #f8f9fa;
-            cursor: pointer;
-            border-radius: 8px 8px 0 0;
-            font-size: 1em;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            border-bottom: 3px solid transparent;
-        }
-
-        .tab-button:hover {
-            background: #e9ecef;
-        }
-
-        .tab-button.active {
-            background: white;
-            border-bottom: 3px solid #667eea;
-            color: #667eea;
-            font-weight: 600;
-        }
-
-        /* Tab content - CRITICAL: Hide inactive tabs */
-        .tab-content {
-            display: none !important;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .tab-content.active {
-            display: block !important;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    </style>
 </head>
 <body>
     <div class="header">
@@ -75,7 +21,7 @@
     </div>
 
     <div class="main-container">
-                <nav class="sidebar" id="sidebar">
+        <nav class="sidebar" id="sidebar">
             <div class="nav-header">
                 <a href="../index.html" style="text-decoration: none; color: inherit;">
                     <h2>📚 Trading Guide</h2>
@@ -107,611 +53,424 @@
                 </div>
 
                 <!-- TABBED NAVIGATION -->
-                <div class="tabs" style="margin: 2rem 0;">
-                    <button class="tab-button" data-tab="overview">📊 Overview</button>
-                    <button class="tab-button" data-tab="monday">Mon (Day 1)</button>
-                    <button class="tab-button" data-tab="tuesday">Tue (Day 2)</button>
-                    <button class="tab-button active" data-tab="wednesday">Wed (Day 3) ⭐</button>
-                    <button class="tab-button" data-tab="thursday">Thu (Day 4)</button>
-                    <button class="tab-button" data-tab="friday">Fri (Close)</button>
+                <div class="week-tabs">
+                    <button class="week-tab-btn" onclick="showWeekTab('overview')">📊 Overview</button>
+                    <button class="week-tab-btn" onclick="showWeekTab('monday')">Mon (Day 1)</button>
+                    <button class="week-tab-btn" onclick="showWeekTab('tuesday')">Tue (Day 2)</button>
+                    <button class="week-tab-btn week-active" onclick="showWeekTab('wednesday')">Wed (Day 3) ⭐</button>
+                    <button class="week-tab-btn" onclick="showWeekTab('thursday')">Thu (Day 4)</button>
+                    <button class="week-tab-btn" onclick="showWeekTab('friday')">Fri (Close)</button>
                 </div>
 
                 <!-- TAB CONTENT: OVERVIEW -->
-                <div id="overview" class="tab-content">
-                <h3>📊 Weekly Overview</h3>
-                <table>
-                    <tr>
-                        <th>Day</th>
-                        <th>Weekly Quarter</th>
-                        <th>BTMM Cycle</th>
-                        <th>Strategy</th>
-                        <th>Trade Aggressiveness</th>
-                    </tr>
-                    <tr>
-                        <td><strong>Monday</strong></td>
-                        <td>Q1 - Accumulation</td>
-                        <td>Day 1 - PF Setup</td>
-                        <td>Mark PF High/Low - Observe</td>
-                        <td><span class="badge badge-warning">TRADE LIGHT</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Tuesday</strong></td>
-                        <td>Q2 - Manipulation</td>
-                        <td>Day 2 - Accumulation</td>
-                        <td>True Week Open - Watch Setup</td>
-                        <td><span class="badge badge-info">WATCH & PREPARE</span></td>
-                    </tr>
-                    <tr style="background: linear-gradient(90deg, rgba(0, 255, 136, 0.05), rgba(0, 255, 136, 0.15));">
-                        <td><strong>Wednesday</strong></td>
-                        <td>Q3 - Distribution</td>
-                        <td>Day 3 - Distribution</td>
-                        <td>Best Trading Day</td>
-                        <td><span class="badge badge-success">TRADE AGGRESSIVELY 🔥</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Thursday</strong></td>
-                        <td>Q4 - Reversal/Continuation</td>
-                        <td>Continuation/Reset</td>
-                        <td>Trade pullbacks in trend</td>
-                        <td><span class="badge badge-info">TRADE MODERATELY</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Friday</strong></td>
-                        <td>Special Function</td>
-                        <td>Balance/Reversal</td>
-                        <td>Take profits, Close positions</td>
-                        <td><span class="badge badge-danger">AVOID NEW TRADES</span></td>
-                    </tr>
-                </table>
-
-                <!-- FRACTAL: Weekly + Daily Cycle Alignment -->
-                <div style="margin-top: 3rem; padding: 2rem; background: linear-gradient(135deg, rgba(0, 255, 136, 0.15), rgba(74, 158, 255, 0.15)); border-radius: 12px; border: 2px solid var(--accent-green);">
-                    <h3 style="color: var(--accent-green); margin-bottom: 1rem;">🔄 Fractal Integration: Weekly + Daily Cycle Alignment</h3>
-                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
-                        Each day of the week aligns with daily sessions. This shows you the BEST trading windows when multiple timeframes are in Q3:
-                    </p>
-                    
-                    <table style="width: 100%;">
-                        <tr style="background: rgba(0, 255, 136, 0.1);">
+                <div id="overview" class="week-tab-content">
+                    <h3>📊 Weekly Overview</h3>
+                    <table>
+                        <tr>
                             <th>Day</th>
                             <th>Weekly Quarter</th>
-                            <th>Best Daily Session</th>
-                            <th>Specific Time Window</th>
-                            <th>Alignment</th>
-                            <th>Probability</th>
+                            <th>BTMM Cycle</th>
+                            <th>Strategy</th>
+                            <th>Trade Aggressiveness</th>
                         </tr>
                         <tr>
                             <td><strong>Monday</strong></td>
-                            <td>Weekly Q1</td>
-                            <td>NY Session (Daily Q3)</td>
-                            <td>10:30 AM-12 PM</td>
-                            <td><span style="background: rgba(74, 158, 255, 0.2); padding: 0.25rem 0.5rem; border-radius: 4px;">Weekly Q1 + Daily Q3 + Session Q3</span></td>
-                            <td>Medium-High</td>
-                        </tr>
-                        <tr style="background: rgba(255, 255, 255, 0.02);">
-                            <td><strong>Tuesday</strong></td>
-                            <td>Weekly Q2</td>
-                            <td>NY Session (Daily Q3)</td>
-                            <td>10:30 AM-12 PM</td>
-                            <td><span style="background: rgba(255, 215, 0, 0.2); padding: 0.25rem 0.5rem; border-radius: 4px;">Weekly Q2 + Daily Q3 + Session Q3</span></td>
-                            <td>High</td>
-                        </tr>
-                        <tr style="background: rgba(0, 255, 136, 0.12); border: 3px solid var(--accent-green); box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);">
-                            <td><strong>WEDNESDAY</strong></td>
-                            <td><strong>Weekly Q3</strong></td>
-                            <td><strong>NY Session (Daily Q3)</strong></td>
-                            <td><strong>10:30 AM-12 PM</strong></td>
-                            <td><span style="background: rgba(0, 255, 136, 0.4); padding: 0.4rem 0.7rem; border-radius: 4px; font-weight: bold; font-size: 1.05rem;">Weekly Q3 + Daily Q3 + Session Q3 ⭐⭐⭐</span></td>
-                            <td><strong style="color: var(--accent-green); font-size: 1.1rem;">MAXIMUM!</strong></td>
-                        </tr>
-                        <tr style="background: rgba(255, 255, 255, 0.02);">
-                            <td><strong>Thursday</strong></td>
-                            <td>Weekly Q4</td>
-                            <td>NY Session (Daily Q3)</td>
-                            <td>10:30 AM-12 PM</td>
-                            <td><span style="background: rgba(255, 87, 34, 0.2); padding: 0.25rem 0.5rem; border-radius: 4px;">Weekly Q4 + Daily Q3 + Session Q3</span></td>
-                            <td>High</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Friday</strong></td>
-                            <td>Week End</td>
-                            <td>NY Session (AM Only)</td>
-                            <td>9:00-11:00 AM</td>
-                            <td><span style="background: rgba(255, 215, 0, 0.2); padding: 0.25rem 0.5rem; border-radius: 4px;">Week End + Daily Q3</span></td>
-                            <td>Medium (Close before PM)</td>
-                        </tr>
-                    </table>
-                    
-                    <div class="alert alert-success" style="margin-top: 1.5rem; background: rgba(0, 255, 136, 0.15); border: 2px solid var(--accent-green);">
-                        <h4 style="color: var(--accent-green); margin-bottom: 0.5rem;">🔥 THE HOLY GRAIL: Wednesday 10:30 AM-12 PM</h4>
-                        <p style="margin: 0; line-height: 1.9; font-size: 1.05rem;">
-                            <strong>3 timeframes aligned in Q3 (Distribution):</strong><br>
-                            • Weekly Q3 (Wednesday)<br>
-                            • Daily Q3 (NY Session)<br>
-                            • Session Q3 (10:30 AM-12 PM)<br><br>
-                            <strong>When all three are in Q3 = Real institutional distribution happens!</strong><br>
-                            This is NOT manipulation - this is the ACTUAL MOVE.<br><br>
-                            <strong>Win Rate:</strong> 70-80% when setup is proper (PF marked, EMAs aligned, volume confirms).<br><br>
-                            <strong>Action:</strong> If you only take ONE trade per week, make it Wednesday 10:30 AM-12 PM!
-                        </p>
-                    </div>
-                    
-                    <div style="margin-top: 1rem; padding: 1rem; background: rgba(255, 215, 0, 0.1); border-radius: 8px; border-left: 4px solid var(--accent-yellow);">
-                        <strong style="color: var(--accent-yellow);">⚡ Secondary Windows by Day:</strong><br>
-                        <span style="color: var(--text-secondary);">
-                            • <strong>Monday:</strong> NY 10:30 AM-12 PM (Medium-High) - Weekly Q1 limits but still Daily Q3 + Session Q3<br>
-                            • <strong>Tuesday:</strong> NY 10:30 AM-12 PM (High) - Weekly Q2 + Daily Q3 + Session Q3<br>
-                            • <strong>Wednesday:</strong> <span style="color: var(--accent-green);">NY 9:45-10:07 AM (HIGH) - Includes Brinks Time micro Q3!</span><br>
-                            • <strong>Thursday:</strong> NY 10:30 AM-12 PM (High) - Weekly Q4 but still Daily Q3 + Session Q3<br>
-                            • <strong>Friday:</strong> NY 9:00-11:00 AM only (Medium) - Close all before PM
-                        </span>
-                    </div>
-                    
-                    <div style="margin-top: 1rem; padding: 1rem; background: rgba(74, 158, 255, 0.1); border-radius: 8px; border-left: 4px solid var(--accent-blue);">
-                        <strong style="color: var(--accent-blue);">💡 Why This Matters:</strong><br>
-                        <span style="color: var(--text-secondary);">
-                            <strong>Daily Cycle runs 24 hours</strong> (7 PM-7 PM), dividing into 4 sessions (Asian Q1, London Q2, NY Q3, PM Q4).<br>
-                            <strong>Weekly Cycle runs Mon-Fri</strong>, dividing into days (Mon Q1, Tue Q2, Wed Q3, Thu Q4).<br><br>
-                            When <strong>Wednesday (Weekly Q3)</strong> aligns with <strong>NY Session 10:30-12 PM (Daily Q3 + Session Q3)</strong> = Triple alignment!<br><br>
-                            <em>This is why Wednesday is non-negotiable - it's the fractal sweet spot!</em>
-                        </span>
-                    </div>
-                </div>
-
-                </div><!-- End Overview Tab -->
-
-                <!-- TAB: MONDAY -->
-                <div id="monday" class="tab-content">
-                <h3>🌅 Monday - Q1 Accumulation (BTMM Day 1)</h3>
-                
-                <div class="alert alert-warning">
-                    <strong>BTMM Day 1:</strong> PF Formation | Weekly Q1 | DO NOT TRADE - Observe only!
-                </div>
-
-                <div class="pattern-card" style="border-left: 4px solid #4a9eff;">
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1rem;">
-                        <div>
-                            <h4 style="color: var(--accent-blue);">Characteristics:</h4>
-                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
-                                <li>Market sets the range for the week</li>
-                                <li>Choppy, ranging price action</li>
-                                <li>Peak Formation (PF) often established</li>
-                                <li>Volume builds slowly</li>
-                                <li>Retail traders establish positions</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4 style="color: var(--accent-yellow);">Strategy:</h4>
-                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
-                                <li><strong>PRIMARY:</strong> Mark PF High/Low on charts</li>
-                                <li><strong>OBSERVE:</strong> Which direction is being pushed?</li>
-                                <li><strong>IDENTIFY:</strong> Weekly PSR zone (first 8 H1 candles)</li>
-                                <li><strong>TRADE LIGHT:</strong> Only crystal clear setups</li>
-                                <li><strong>JOURNAL:</strong> Note potential PF for reversal</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="alert alert-warning" style="margin-top: 1rem;">
-                        <strong>⚠️ Monday Warning:</strong> Most traders lose on Mondays. Sit out or trade minimal size. Your job is to OBSERVE, not profit.
-                    </div>
-
-                <h4 style="margin-top: 1.5rem; color: var(--accent-blue);">📊 Asian Box Setup (Monday)</h4>
-                <p>Mark Asian High/Low during Monday Asian session (7 PM-2 AM). This becomes your reference "box" for the week.</p>
-                <div style="background: rgba(74, 158, 255, 0.1); padding: 1rem; border-radius: 8px; margin-top: 0.5rem;">
-                    <strong>📝 To Mark:</strong><br>
-                    • Asian High: _______ (resistance)<br>
-                    • Asian Low: _______ (support)<br>
-                    • Box Size: _______ pips<br>
-                    • Level Count: <strong>LEVEL 1</strong> (first touch)
-                </div>
-                </div><!-- End Monday Tab -->
-
-                <!-- TAB: TUESDAY -->
-                <div id="tuesday" class="tab-content">
-                <h3>🌤️ Tuesday - Q2 Manipulation (BTMM Day 2)</h3>
-                
-                <div class="alert alert-warning">
-                    <strong>BTMM Day 2:</strong> Accumulation Continues | Weekly Q2 | STILL Don't Trade!
-                </div>
-
-                <div class="pattern-card" style="border-left: 4px solid #ffd700;">
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1rem;">
-                        <div>
-                            <h4 style="color: var(--accent-blue);">Characteristics:</h4>
-                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
-                                <li><strong>True Week Open</strong> at Tuesday 12:00am</li>
-                                <li>Continuation of Monday's move</li>
-                                <li>More volume trapped on wrong side</li>
-                                <li>Often extends Monday's PF</li>
-                                <li>Market makers accumulating against retail</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4 style="color: var(--accent-yellow);">Strategy:</h4>
-                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
-                                <li><strong>MARK:</strong> True Week Open (Tuesday midnight)</li>
-                                <li><strong>WATCH:</strong> Does price extend Monday's move?</li>
-                                <li><strong>CONFIRM:</strong> PF High or PF Low solidifying?</li>
-                                <li><strong>PREPARE:</strong> Setup alerts for Wednesday</li>
-                                <li><strong>POSITION:</strong> Small positions if clear setup</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="alert alert-info" style="margin-top: 1rem;">
-                        <strong>💡 Tuesday Tip:</strong> If Monday made high and Tuesday extends it = PF High confirmed. Expect Wednesday reversal down. Vice versa for lows.
-                    </div>
-                    
-                    <div class="alert alert-warning" style="margin-top: 1rem; background: rgba(255, 193, 7, 0.1); border: 2px solid var(--accent-yellow);">
-                        <h4 style="color: var(--accent-yellow); margin-bottom: 0.5rem;">📚 BTMM Pattern Identification:</h4>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 0.5rem;">
-                            <div>
-                                <strong style="color: var(--accent-red);">📉 M-A1-A2-W (Bearish):</strong>
-                                <p style="margin: 0.5rem 0; font-size: 0.9rem;">Monday/Tuesday push HIGH → This is <strong>A1/A2 accumulation</strong> phase → Wednesday reversal DOWN expected</p>
-                            </div>
-                            <div>
-                                <strong style="color: var(--accent-green);">📈 W-V1-V2-M (Bullish):</strong>
-                                <p style="margin: 0.5rem 0; font-size: 0.9rem;">Monday/Tuesday push LOW → This is <strong>V1/V2 accumulation</strong> phase → Wednesday reversal UP expected</p>
-                            </div>
-                        </div>
-                        <p style="margin-top: 0.5rem; font-style: italic; color: var(--text-tertiary);">
-                            ⚠️ Tuesday = Accumulation phase. DO NOT TRADE aggressively! Let market makers build positions. Wednesday is when you trade the reversal!
-                        </p>
-                    </div>
-
-                <h4 style="margin-top: 1.5rem; color: var(--accent-yellow);">📊 Asian Box Stacking (Tuesday)</h4>
-                <p>Is price staying within Monday's box? If YES = Box stacking (consolidation). Track level count.</p>
-                <div style="background: rgba(255, 215, 0, 0.1); padding: 1rem; border-radius: 8px; margin-top: 0.5rem;">
-                    <strong>📝 Check:</strong><br>
-                    • Still in Monday's box? YES / NO<br>
-                    • If touching same level: <strong>LEVEL 2</strong> (second touch)<br>
-                    • Box breaking? Note direction (up/down)<br>
-                    • Prepare for Wednesday breakout
-                </div>
-                
-                <div style="background: rgba(255, 215, 0, 0.15); padding: 1.5rem; border-radius: 10px; margin-top: 1.5rem; border-left: 5px solid #ffd700;">
-                    <h4 style="color: #ffd700; margin-top: 0;">📊 Tuesday Bellwether Pattern (3-Day Cycle):</h4>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1rem;">
-                        <div style="background: rgba(0, 255, 136, 0.1); padding: 1rem; border-radius: 8px; border-left: 3px solid #00ff88;">
-                            <strong style="color: #00ff88;">📈 UPTREND: V2 Phase</strong>
-                            <p style="margin: 0.5rem 0; font-size: 0.95rem;">If Monday made <strong>W (low)</strong> → Tuesday is <strong>V2</strong> (second leg up)</p>
-                            <ul style="padding-left: 1.2rem; margin: 0.5rem 0; font-size: 0.9rem;">
-                                <li>Continuation from Monday's V1</li>
-                                <li>Building toward Wednesday <strong>M peak</strong></li>
-                                <li>Smart Money accumulating longs</li>
-                            </ul>
-                        </div>
-                        <div style="background: rgba(255, 74, 74, 0.1); padding: 1rem; border-radius: 8px; border-left: 3px solid #ff4a4a;">
-                            <strong style="color: #ff4a4a;">📉 DOWNTREND: A1 Phase</strong>
-                            <p style="margin: 0.5rem 0; font-size: 0.95rem;">If Monday made <strong>M (high)</strong> → Tuesday is <strong>A1</strong> (first decline)</p>
-                            <ul style="padding-left: 1.2rem; margin: 0.5rem 0; font-size: 0.9rem;">
-                                <li>First leg down from Monday peak</li>
-                                <li>Building toward Wednesday <strong>W low</strong></li>
-                                <li>Smart Money accumulating shorts</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="alert alert-warning" style="margin-top: 1rem;">
-                        <strong>⚠️ Tuesday = Manipulation Phase:</strong> Weekly Q2 | Still accumulation | DON'T chase the move! Wait for Wednesday reversal to enter.
-                    </div>
-                </div>
-                </div><!-- End Tuesday Tab -->
-
-                <!-- TAB: WEDNESDAY (MOST IMPORTANT) -->
-                <div id="wednesday" class="tab-content active">
-                <h3>☀️ Wednesday - Q3 Distribution (BTMM Day 3) 🔥🔥🔥</h3>
-                
-                <div class="alert alert-success" style="background: rgba(0, 255, 136, 0.15); border: 3px solid var(--accent-green);">
-                    <strong>🔥 BTMM Day 3: DISTRIBUTION!</strong> Weekly Q3 | THIS IS THE DAY - TRADE AGGRESSIVELY!
-                </div>
-
-                <div class="pattern-card" style="border-left: 4px solid #00ff88; background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 255, 136, 0.05));">
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1rem;">
-                        <div>
-                            <h4 style="color: var(--accent-blue);">Characteristics:</h4>
-                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
-                                <li><strong>BEST DAY</strong> of the week to trade</li>
-                                <li>Real move begins against Monday/Tuesday</li>
-                                <li>BTMM Day 3 = Distribution phase</li>
-                                <li>Clearest trends and setups</li>
-                                <li>Extended ranges (100-200+ pips)</li>
-                                <li>Retail stops triggered = liquidity</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4 style="color: var(--accent-yellow);">Strategy:</h4>
-                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
-                                <li><strong>TRADE:</strong> Against Monday/Tuesday PF</li>
-                                <li><strong>ENTER:</strong> NY Session Q3 (9:00-10:30 AM EST) 🔥</li>
-                                <li><strong>SIZE UP:</strong> Use full position size</li>
-                                <li><strong>TARGETS:</strong> Go for TP2 and TP3</li>
-                                <li><strong>HOLD:</strong> Let winners run into Thursday</li>
-                                <li><strong>CONFIRMATION:</strong> Look for 50/800 or 200/800 EMA cross = Level III!</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="alert alert-success" style="margin-top: 1rem;">
-                        <strong>🎯 Wednesday Power Move:</strong> This is YOUR DAY! Weekly Q3 + BTMM Day 3 + Level III + Daily Q3 alignment = Maximum edge. Trade with confidence!
-                    </div>
-                    <div class="card" style="margin-top: 1rem; border: 2px solid var(--accent-green); background: rgba(0, 255, 136, 0.05);">
-                        <h4 style="color: var(--accent-green);">⏰ Wednesday Timing Formula:</h4>
-                        <p style="margin-top: 0.5rem;"><strong>7:30 AM EST:</strong> NY True Open - Watch for final stop hunt</p>
-                        <p style="margin-top: 0.5rem;"><strong>9:00-10:30 AM EST:</strong> 🔥 PRIMARY ENTRY WINDOW 🔥</p>
-                        <p style="margin-top: 0.5rem;">This is when Weekly Q3, BTMM Day 3, BTMM Level III, and Daily Q3 ALL align!</p>
-                    </div>
-
-                <h4 style="margin-top: 1.5rem; color: var(--accent-green);">📊 Asian Box Breakout + Level 3 (Wednesday)</h4>
-                <p><strong>THIS IS IT!</strong> Box breaks direction = Trade direction. Level 3 = Highest probability!</p>
-                <div style="background: rgba(0, 255, 136, 0.15); padding: 1rem; border-radius: 8px; margin-top: 0.5rem; border: 2px solid var(--accent-green);">
-                    <strong>🎯 ACTION:</strong><br>
-                    • Box broke UP? → Trade LONG<br>
-                    • Box broke DOWN? → Trade SHORT<br>
-                    • <strong>LEVEL 3</strong> (third touch) = MAXIMUM PROBABILITY!<br>
-                    • Enter: 10:30 AM-12 PM (Session Q3)<br>
-                    • Alternative: 9:45-10:07 AM (Micro Q3)
-                </div>
-                
-                <div style="background: rgba(0, 255, 136, 0.2); padding: 1.5rem; border-radius: 10px; margin-top: 1.5rem; border-left: 5px solid #00ff88;">
-                    <h4 style="color: #00ff88; margin-top: 0;">📊 Wednesday Bellwether Pattern (3-Day Cycle) 🔥🔥🔥:</h4>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1rem;">
-                        <div style="background: rgba(0, 255, 136, 0.2); padding: 1rem; border-radius: 8px; border: 2px solid #00ff88;">
-                            <strong style="color: #00ff88;">📈 UPTREND: M Peak (Distribution)</strong>
-                            <p style="margin: 0.5rem 0; font-size: 0.95rem;">Monday (W) → Tuesday (V1/V2) → <strong>Wednesday (M)</strong></p>
-                            <ul style="padding-left: 1.2rem; margin: 0.5rem 0; font-size: 0.9rem;">
-                                <li><strong>M = Distribution HIGH</strong></li>
-                                <li>This is where you SELL/SHORT</li>
-                                <li>Reaches <strong>PFH (Previous Friday High)</strong></li>
-                                <li>Reversal down expected Thursday</li>
-                            </ul>
-                        </div>
-                        <div style="background: rgba(0, 255, 136, 0.2); padding: 1rem; border-radius: 8px; border: 2px solid #00ff88;">
-                            <strong style="color: #00ff88;">📉 DOWNTREND: A2 or W Low (Target)</strong>
-                            <p style="margin: 0.5rem 0; font-size: 0.95rem;">Monday (M) → Tuesday (A1) → <strong>Wednesday (A2/W)</strong></p>
-                            <ul style="padding-left: 1.2rem; margin: 0.5rem 0; font-size: 0.9rem;">
-                                <li><strong>A2/W = Target LOW</strong></li>
-                                <li>This is where you BUY/LONG</li>
-                                <li>Reaches <strong>PFL (Previous Friday Low)</strong></li>
-                                <li>Reversal up expected Thursday</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="alert alert-success" style="margin-top: 1rem; background: rgba(0, 255, 136, 0.25); border: 3px solid #00ff88;">
-                        <strong>🔥 Wednesday = DISTRIBUTION PHASE:</strong> Weekly Q3 | BTMM Day 3 | This is the REVERSAL day! Trade AGAINST Monday/Tuesday move with FULL CONFIDENCE! 
-                    </div>
-                </div>
-                </div><!-- End Wednesday Tab -->
-
-                <!-- TAB: THURSDAY -->
-                <div id="thursday" class="tab-content">
-                <h3>🌆 Thursday - Q4 Reversal/Continuation (BTMM Day 4)</h3>
-                
-                <div class="alert alert-info">
-                    <strong>BTMM Day 4+:</strong> Continuation/Reset | Weekly Q4 | Trail stops on Wednesday trades
-                </div>
-
-                <div class="pattern-card" style="border-left: 4px solid #ff4a4a;">
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1rem;">
-                        <div>
-                            <h4 style="color: var(--accent-blue);">Characteristics:</h4>
-                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
-                                <li>Market decides direction for next week</li>
-                                <li>Either continues Wednesday move</li>
-                                <li>Or reverses to reset for Friday</li>
-                                <li>Pullbacks in established trends</li>
-                                <li>Often consolidates gains</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4 style="color: var(--accent-yellow);">Strategy:</h4>
-                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
-                                <li><strong>MANAGE:</strong> Wednesday positions</li>
-                                <li><strong>TRADE:</strong> Pullbacks in trend direction</li>
-                                <li><strong>SCALE OUT:</strong> Take partial profits</li>
-                                <li><strong>TRAIL:</strong> Move stops to protect gains</li>
-                                <li><strong>PREPARE:</strong> For Friday close</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="alert alert-info" style="margin-top: 1rem;">
-                        <strong>💡 Thursday Strategy:</strong> If Wednesday distributed up, look for pullback longs on Thursday. Vice versa for downtrends.
-                    </div>
-                </div>
-                </div><!-- End Thursday Tab -->
-
-                <!-- TAB CONTENT: FRIDAY -->
-                <div id="friday" class="tab-content">
-                <h3>🌙 Friday - End of Cycle (Range / Reset)</h3>
-                
-                <div class="alert alert-danger">
-                    <strong>⛔ FRIDAY WARNING:</strong> Weekly Q4 Complete | End of Cycle | AVOID NEW TRADES!
-                </div>
-
-                <div class="pattern-card" style="border-left: 4px solid #a0aab7;">
-                    <div class="pattern-title">🌙 Friday - Special Function</div>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1rem;">
-                        <div>
-                            <h4 style="color: var(--accent-blue);">Characteristics:</h4>
-                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
-                                <li><strong>NOT</strong> part of standard weekly quarters</li>
-                                <li>Market makers "balance the books"</li>
-                                <li>Often returns toward weekly open</li>
-                                <li>Lower volume, erratic movement</li>
-                                <li>Profit-taking dominates</li>
-                                <li>Sets up for next week</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4 style="color: var(--accent-yellow);">Strategy:</h4>
-                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
-                                <li><strong>CLOSE:</strong> Most or all positions</li>
-                                <li><strong>TAKE PROFITS:</strong> Lock in the week's gains</li>
-                                <li><strong>AVOID:</strong> New trades (95% of the time)</li>
-                                <li><strong>REVIEW:</strong> Week's performance</li>
-                                <li><strong>PLAN:</strong> For next week's cycle</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="alert alert-danger" style="margin-top: 1rem;">
-                        <strong>⛔ Friday Warning:</strong> Friday is UNPREDICTABLE. Protect your profits! Only trade if setup is absolutely crystal clear. When in doubt, sit out.
-                    </div>
-                    
-                    <div style="background: rgba(160, 170, 183, 0.1); padding: 1.5rem; border-radius: 10px; margin-top: 1.5rem; border-left: 5px solid #a0aab7;">
-                        <h4 style="color: #a0aab7; margin-top: 0;">📊 Friday Bellwether Pattern:</h4>
-                        <p><strong>ACCUMULATION Phase (End of Cycle)</strong></p>
-                        <ul style="padding-left: 1.5rem; line-height: 1.8;">
-                            <li>After Wednesday (M peak or W low) and Thursday continuation, Friday typically <strong>ranges</strong></li>
-                            <li>Market is <strong>balancing</strong> for next week's cycle</li>
-                            <li>Often returns toward <strong>Weekly Open</strong> (Sunday 5pm)</li>
-                            <li>This is <strong>accumulation</strong> for the NEXT week's move</li>
-                            <li><strong>Smart Money</strong> is positioning for Monday's stop hunt</li>
-                        </ul>
-                        <div class="alert alert-success" style="margin-top: 1rem;">
-                            <strong>🎯 Friday Action:</strong> Close trades, take profits, and observe where price closes. This tells you what Smart Money is setting up for next week!
-                        </div>
-                    </div>
-                </div>
-                </div><!-- End Friday Tab -->
-
-                <!-- TAB CONTENT: CHECKLIST (Overview continuation) -->
-                <div id="checklist" class="tab-content">
-                <h3 style="margin-top: 3rem;">🔄 Weekly Cycle + BTMM Integration</h3>
-                
-                <div class="card">
-                    <div class="card-title">How They Work Together</div>
-                    <table style="margin-top: 1rem;">
-                        <tr>
-                            <th>Day</th>
-                            <th>Quarterly Theory</th>
-                            <th>BTMM</th>
-                            <th>Combined Action</th>
-                        </tr>
-                        <tr>
-                            <td><strong>Monday</strong></td>
-                            <td>Weekly Q1 Accumulation</td>
+                            <td>Q1 - Accumulation</td>
                             <td>Day 1 - PF Setup</td>
-                            <td>Observe & Mark PF</td>
+                            <td>Mark PF High/Low - Observe</td>
+                            <td><span class="badge badge-warning">TRADE LIGHT</span></td>
                         </tr>
                         <tr>
                             <td><strong>Tuesday</strong></td>
-                            <td>Weekly Q2 Manipulation</td>
-                            <td>Day 2 - Continued Trap</td>
-                            <td>Confirm PF, Prepare Entry</td>
+                            <td>Q2 - Manipulation</td>
+                            <td>Day 2 - Accumulation</td>
+                            <td>True Week Open - Watch Setup</td>
+                            <td><span class="badge badge-info">WATCH & PREPARE</span></td>
                         </tr>
-                        <tr style="background: rgba(0, 255, 136, 0.08);">
+                        <tr style="background: linear-gradient(90deg, rgba(0, 255, 136, 0.05), rgba(0, 255, 136, 0.15));">
                             <td><strong>Wednesday</strong></td>
-                            <td>Weekly Q3 Distribution</td>
-                            <td>Day 3 - Reversal</td>
-                            <td><strong>TRADE AGAINST PF</strong></td>
+                            <td>Q3 - Distribution</td>
+                            <td>Day 3 - Distribution</td>
+                            <td>Best Trading Day</td>
+                            <td><span class="badge badge-success">TRADE AGGRESSIVELY 🔥</span></td>
                         </tr>
                         <tr>
                             <td><strong>Thursday</strong></td>
-                            <td>Weekly Q4 Continuation</td>
-                            <td>Trend Continuation</td>
-                            <td>Manage & Scale Out</td>
+                            <td>Q4 - Reversal/Continuation</td>
+                            <td>Continuation/Reset</td>
+                            <td>Trade pullbacks in trend</td>
+                            <td><span class="badge badge-info">TRADE MODERATELY</span></td>
                         </tr>
                         <tr>
                             <td><strong>Friday</strong></td>
                             <td>Special Function</td>
-                            <td>Balance/Reset</td>
-                            <td>Close & Review</td>
+                            <td>Balance/Reversal</td>
+                            <td>Take profits, Close positions</td>
+                            <td><span class="badge badge-danger">AVOID NEW TRADES</span></td>
                         </tr>
                     </table>
+
+                    <!-- FRACTAL: Weekly + Daily Cycle Alignment -->
+                    <div style="margin-top: 3rem; padding: 2rem; background: linear-gradient(135deg, rgba(0, 255, 136, 0.15), rgba(74, 158, 255, 0.15)); border-radius: 12px; border: 2px solid var(--accent-green);">
+                        <h3 style="color: var(--accent-green); margin-bottom: 1rem;">🔄 Fractal Integration: Weekly + Daily Cycle Alignment</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                            Each day of the week aligns with daily sessions. This shows you the BEST trading windows when multiple timeframes are in Q3:
+                        </p>
+                        
+                        <table style="width: 100%;">
+                            <tr style="background: rgba(0, 255, 136, 0.1);">
+                                <th>Day</th>
+                                <th>Weekly Quarter</th>
+                                <th>Best Daily Session</th>
+                                <th>Specific Time Window</th>
+                                <th>Alignment</th>
+                                <th>Probability</th>
+                            </tr>
+                            <tr>
+                                <td><strong>Monday</strong></td>
+                                <td>Weekly Q1</td>
+                                <td>NY Session (Daily Q3)</td>
+                                <td>10:30 AM-12 PM</td>
+                                <td><span style="background: rgba(74, 158, 255, 0.2); padding: 0.25rem 0.5rem; border-radius: 4px;">Weekly Q1 + Daily Q3 + Session Q3</span></td>
+                                <td>Medium-High</td>
+                            </tr>
+                            <tr style="background: rgba(255, 255, 255, 0.02);">
+                                <td><strong>Tuesday</strong></td>
+                                <td>Weekly Q2</td>
+                                <td>NY Session (Daily Q3)</td>
+                                <td>10:30 AM-12 PM</td>
+                                <td><span style="background: rgba(255, 215, 0, 0.2); padding: 0.25rem 0.5rem; border-radius: 4px;">Weekly Q2 + Daily Q3 + Session Q3</span></td>
+                                <td>High</td>
+                            </tr>
+                            <tr style="background: rgba(0, 255, 136, 0.12); border: 3px solid var(--accent-green); box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);">
+                                <td><strong>WEDNESDAY</strong></td>
+                                <td><strong>Weekly Q3</strong></td>
+                                <td><strong>NY Session (Daily Q3)</strong></td>
+                                <td><strong>10:30 AM-12 PM</strong></td>
+                                <td><span style="background: rgba(0, 255, 136, 0.4); padding: 0.4rem 0.7rem; border-radius: 4px; font-weight: bold; font-size: 1.05rem;">Weekly Q3 + Daily Q3 + Session Q3 ⭐⭐⭐</span></td>
+                                <td><strong style="color: var(--accent-green); font-size: 1.1rem;">MAXIMUM!</strong></td>
+                            </tr>
+                            <tr style="background: rgba(255, 255, 255, 0.02);">
+                                <td><strong>Thursday</strong></td>
+                                <td>Weekly Q4</td>
+                                <td>NY Session (Daily Q3)</td>
+                                <td>10:30 AM-12 PM</td>
+                                <td><span style="background: rgba(255, 87, 34, 0.2); padding: 0.25rem 0.5rem; border-radius: 4px;">Weekly Q4 + Daily Q3 + Session Q3</span></td>
+                                <td>High</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Friday</strong></td>
+                                <td>Week End</td>
+                                <td>NY Session (AM Only)</td>
+                                <td>9:00-11:00 AM</td>
+                                <td><span style="background: rgba(255, 215, 0, 0.2); padding: 0.25rem 0.5rem; border-radius: 4px;">Week End + Daily Q3</span></td>
+                                <td>Medium (Close before PM)</td>
+                            </tr>
+                        </table>
+                        
+                        <div class="alert alert-success" style="margin-top: 1.5rem; background: rgba(0, 255, 136, 0.15); border: 2px solid var(--accent-green);">
+                            <h4 style="color: var(--accent-green); margin-bottom: 0.5rem;">🔥 THE HOLY GRAIL: Wednesday 10:30 AM-12 PM</h4>
+                            <p style="margin: 0; line-height: 1.9; font-size: 1.05rem;">
+                                <strong>3 timeframes aligned in Q3 (Distribution):</strong><br>
+                                • Weekly Q3 (Wednesday)<br>
+                                • Daily Q3 (NY Session)<br>
+                                • Session Q3 (10:30 AM-12 PM)<br><br>
+                                <strong>When all three are in Q3 = Real institutional distribution happens!</strong><br>
+                                This is NOT manipulation - this is the ACTUAL MOVE.<br><br>
+                                <strong>Win Rate:</strong> 70-80% when setup is proper (PF marked, EMAs aligned, volume confirms).<br><br>
+                                <strong>Action:</strong> If you only take ONE trade per week, make it Wednesday 10:30 AM-12 PM!
+                            </p>
+                        </div>
+                    </div>
                 </div>
 
-                <h3>📈 Weekly Trading Plan Template</h3>
-                
-                <div class="pattern-card">
-                    <div class="pattern-title">Your Weekly Routine</div>
+                <!-- TAB CONTENT: MONDAY -->
+                <div id="monday" class="week-tab-content">
+                    <h3>🌅 Monday - Q1 Accumulation (BTMM Day 1)</h3>
                     
-                    <h4 style="margin-top: 1rem;">Sunday Evening Prep:</h4>
-                    <ul class="checklist">
-                        <li><input type="checkbox"> Review previous week's trades</li>
-                        <li><input type="checkbox"> Calculate weekly win rate and RR</li>
-                        <li><input type="checkbox"> Mark major weekly levels on charts</li>
-                        <li><input type="checkbox"> Check economic calendar for news</li>
-                        <li><input type="checkbox"> Set mindset for patient Monday observation</li>
-                    </ul>
-
-                    <h4 style="margin-top: 1.5rem;">Monday:</h4>
-                    <ul class="checklist">
-                        <li><input type="checkbox"> Mark PF High and Low as they form</li>
-                        <li><input type="checkbox"> Identify Weekly PSR zone (first 8 H1 candles)</li>
-                        <li><input type="checkbox"> Note which direction is being pushed</li>
-                        <li><input type="checkbox"> Trade LIGHT or not at all</li>
-                        <li><input type="checkbox"> Journal potential reversal zones</li>
-                    </ul>
-
-                    <h4 style="margin-top: 1.5rem;">Tuesday:</h4>
-                    <ul class="checklist">
-                        <li><input type="checkbox"> Mark True Week Open (Tuesday 12:00am)</li>
-                        <li><input type="checkbox"> Confirm if Monday PF is holding</li>
-                        <li><input type="checkbox"> Watch for extension of Monday's move</li>
-                        <li><input type="checkbox"> Set alerts for Wednesday NY session</li>
-                        <li><input type="checkbox"> Small position if clear setup appears</li>
-                    </ul>
-
-                    <h4 style="margin-top: 1.5rem;">Wednesday:</h4>
-                    <ul class="checklist">
-                        <li><input type="checkbox"> Wake up early - this is YOUR day!</li>
-                        <li><input type="checkbox"> Enter trades against Mon/Tue PF</li>
-                        <li><input type="checkbox"> Use full position size (1-2% risk)</li>
-                        <li><input type="checkbox"> Target TP2 and TP3</li>
-                        <li><input type="checkbox"> Let winners run - don't exit early!</li>
-                    </ul>
-
-                    <h4 style="margin-top: 1.5rem;">Thursday:</h4>
-                    <ul class="checklist">
-                        <li><input type="checkbox"> Manage Wednesday positions</li>
-                        <li><input type="checkbox"> Take partial profits (TP1, TP2)</li>
-                        <li><input type="checkbox"> Trail stops on remaining position</li>
-                        <li><input type="checkbox"> Look for pullback entries in trend</li>
-                        <li><input type="checkbox"> Prepare for Friday close</li>
-                    </ul>
-
-                    <h4 style="margin-top: 1.5rem;">Friday:</h4>
-                    <ul class="checklist">
-                        <li><input type="checkbox"> Close or heavily reduce positions</li>
-                        <li><input type="checkbox"> Take profits - lock in the week</li>
-                        <li><input type="checkbox"> Avoid new trades (unless crystal clear)</li>
-                        <li><input type="checkbox"> Journal the full week</li>
-                        <li><input type="checkbox"> Celebrate wins, learn from losses</li>
-                    </ul>
-                </div>
-
-                <h3>🎯 Key Takeaways</h3>
-                
-                <div class="quarters-grid" style="margin-top: 1.5rem;">
-                    <div class="quarter-card q1">
-                        <div class="quarter-title">Monday = Patience</div>
-                        <div class="quarter-desc">Your job is to OBSERVE, not trade. Mark the PF and wait.</div>
+                    <div class="alert alert-warning">
+                        <strong>BTMM Day 1:</strong> PF Formation | Weekly Q1 | DO NOT TRADE - Observe only!
                     </div>
-                    <div class="quarter-card q2">
-                        <div class="quarter-title">Tuesday = Preparation</div>
-                        <div class="quarter-desc">Confirm the setup. Get ready for Wednesday's opportunity.</div>
-                    </div>
-                    <div class="quarter-card q3">
-                        <div class="quarter-title">Wednesday = Execution</div>
-                        <div class="quarter-desc">This is YOUR day! Trade with confidence and size.</div>
-                    </div>
-                    <div class="quarter-card q4">
-                        <div class="quarter-title">Thurs/Fri = Management</div>
-                        <div class="quarter-desc">Protect profits, scale out, prepare for next week.</div>
+
+                    <div class="pattern-card" style="border-left: 4px solid #4a9eff;">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1rem;">
+                            <div>
+                                <h4 style="color: var(--accent-blue);">Characteristics:</h4>
+                                <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                    <li>Market sets the range for the week</li>
+                                    <li>Choppy, ranging price action</li>
+                                    <li>Peak Formation (PF) often established</li>
+                                    <li>Volume builds slowly</li>
+                                    <li>Retail traders establish positions</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 style="color: var(--accent-yellow);">Strategy:</h4>
+                                <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                    <li><strong>PRIMARY:</strong> Mark PF High/Low on charts</li>
+                                    <li><strong>OBSERVE:</strong> Which direction is being pushed?</li>
+                                    <li><strong>IDENTIFY:</strong> Weekly PSR zone (first 8 H1 candles)</li>
+                                    <li><strong>TRADE LIGHT:</strong> Only crystal clear setups</li>
+                                    <li><strong>JOURNAL:</strong> Note potential PF for reversal</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="alert alert-warning" style="margin-top: 1rem;">
+                            <strong>⚠️ Monday Warning:</strong> Most traders lose on Mondays. Sit out or trade minimal size. Your job is to OBSERVE, not profit.
+                        </div>
+
+                        <h4 style="margin-top: 1.5rem; color: var(--accent-blue);">📊 Asian Box Setup (Monday)</h4>
+                        <p>Mark Asian High/Low during Monday Asian session (7 PM-2 AM). This becomes your reference "box" for the week.</p>
+                        <div style="background: rgba(74, 158, 255, 0.1); padding: 1rem; border-radius: 8px; margin-top: 0.5rem;">
+                            <strong>📝 To Mark:</strong><br>
+                            • Asian High: _______ (resistance)<br>
+                            • Asian Low: _______ (support)<br>
+                            • Box Size: _______ pips<br>
+                            • Level Count: <strong>LEVEL 1</strong> (first touch)
+                        </div>
                     </div>
                 </div>
 
-                <div class="alert alert-success" style="margin-top: 2rem;">
-                    <h4 style="margin-bottom: 0.5rem;">🌟 The Weekly Edge</h4>
-                    <p>Most traders treat every day the same. You know better. By aligning with the weekly cycle and BTMM pattern, you have a massive edge. Trade when the odds are in your favor (Wednesday), sit out when they're not (Monday, Friday).</p>
+                <!-- TAB CONTENT: TUESDAY -->
+                <div id="tuesday" class="week-tab-content">
+                    <h3>🌤️ Tuesday - Q2 Manipulation (BTMM Day 2)</h3>
+                    
+                    <div class="alert alert-warning">
+                        <strong>BTMM Day 2:</strong> Accumulation Continues | Weekly Q2 | STILL Don't Trade!
+                    </div>
+
+                    <div class="pattern-card" style="border-left: 4px solid #ffd700;">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1rem;">
+                            <div>
+                                <h4 style="color: var(--accent-blue);">Characteristics:</h4>
+                                <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                    <li><strong>True Week Open</strong> at Tuesday 12:00am</li>
+                                    <li>Continuation of Monday's move</li>
+                                    <li>More volume trapped on wrong side</li>
+                                    <li>Often extends Monday's PF</li>
+                                    <li>Market makers accumulating against retail</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 style="color: var(--accent-yellow);">Strategy:</h4>
+                                <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                    <li><strong>MARK:</strong> True Week Open (Tuesday midnight)</li>
+                                    <li><strong>WATCH:</strong> Does price extend Monday's move?</li>
+                                    <li><strong>CONFIRM:</strong> PF High or PF Low solidifying?</li>
+                                    <li><strong>PREPARE:</strong> Setup alerts for Wednesday</li>
+                                    <li><strong>POSITION:</strong> Small positions if clear setup</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="alert alert-info" style="margin-top: 1rem;">
+                            <strong>💡 Tuesday Tip:</strong> If Monday made high and Tuesday extends it = PF High confirmed. Expect Wednesday reversal down. Vice versa for lows.
+                        </div>
+                        
+                        <div class="alert alert-warning" style="margin-top: 1rem; background: rgba(255, 193, 7, 0.1); border: 2px solid var(--accent-yellow);">
+                            <h4 style="color: var(--accent-yellow); margin-bottom: 0.5rem;">📚 BTMM Pattern Identification:</h4>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 0.5rem;">
+                                <div>
+                                    <strong style="color: var(--accent-red);">📉 M-A1-A2-W (Bearish):</strong>
+                                    <p style="margin: 0.5rem 0; font-size: 0.9rem;">Monday/Tuesday push HIGH → This is <strong>A1/A2 accumulation</strong> phase → Wednesday reversal DOWN expected</p>
+                                </div>
+                                <div>
+                                    <strong style="color: var(--accent-green);">📈 W-V1-V2-M (Bullish):</strong>
+                                    <p style="margin: 0.5rem 0; font-size: 0.9rem;">Monday/Tuesday push LOW → This is <strong>V1/V2 accumulation</strong> phase → Wednesday reversal UP expected</p>
+                                </div>
+                            </div>
+                            <p style="margin-top: 0.5rem; font-style: italic; color: var(--text-tertiary);">
+                                ⚠️ Tuesday = Accumulation phase. DO NOT TRADE aggressively! Let market makers build positions. Wednesday is when you trade the reversal!
+                            </p>
+                        </div>
+
+                        <h4 style="margin-top: 1.5rem; color: var(--accent-yellow);">📊 Asian Box Stacking (Tuesday)</h4>
+                        <p>Is price staying within Monday's box? If YES = Box stacking (consolidation). Track level count.</p>
+                        <div style="background: rgba(255, 215, 0, 0.1); padding: 1rem; border-radius: 8px; margin-top: 0.5rem;">
+                            <strong>📝 Check:</strong><br>
+                            • Still in Monday's box? YES / NO<br>
+                            • If touching same level: <strong>LEVEL 2</strong> (second touch)<br>
+                            • Box breaking? Note direction (up/down)<br>
+                            • Prepare for Wednesday breakout
+                        </div>
+                    </div>
                 </div>
 
-                <div class="alert alert-info" style="margin-top: 1.5rem;">
-                    <h4 style="margin-bottom: 0.5rem;">📚 Continue Learning</h4>
-                    <ul style="padding-left: 1.5rem; margin-top: 0.5rem;">
-                        <li><a href="daily-sessions.html" style="color: var(--accent-blue);">Daily Sessions</a> - Understand each day's structure</li>
-                        <li><a href="btmm-cycle.html" style="color: var(--accent-blue);">BTMM 3-Day Cycle</a> - Deep dive into Day 1-2-3</li>
-                        <li><a href="entry-rules.html" style="color: var(--accent-blue);">Entry Rules</a> - How to enter on Wednesday</li>
-                    </ul>
+                <!-- TAB CONTENT: WEDNESDAY (DEFAULT ACTIVE) -->
+                <div id="wednesday" class="week-tab-content week-show">
+                    <h3>☀️ Wednesday - Q3 Distribution (BTMM Day 3) 🔥🔥🔥</h3>
+                    
+                    <div class="alert alert-success" style="background: rgba(0, 255, 136, 0.15); border: 3px solid var(--accent-green);">
+                        <strong>🔥 BTMM Day 3: DISTRIBUTION!</strong> Weekly Q3 | THIS IS THE DAY - TRADE AGGRESSIVELY!
+                    </div>
+
+                    <div class="pattern-card" style="border-left: 4px solid #00ff88; background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 255, 136, 0.05));">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1rem;">
+                            <div>
+                                <h4 style="color: var(--accent-blue);">Characteristics:</h4>
+                                <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                    <li><strong>BEST DAY</strong> of the week to trade</li>
+                                    <li>Real move begins against Monday/Tuesday</li>
+                                    <li>BTMM Day 3 = Distribution phase</li>
+                                    <li>Clearest trends and setups</li>
+                                    <li>Extended ranges (100-200+ pips)</li>
+                                    <li>Retail stops triggered = liquidity</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 style="color: var(--accent-yellow);">Strategy:</h4>
+                                <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                    <li><strong>TRADE:</strong> Against Monday/Tuesday PF</li>
+                                    <li><strong>ENTER:</strong> NY Session Q3 (9:00-10:30 AM EST) 🔥</li>
+                                    <li><strong>SIZE UP:</strong> Use full position size</li>
+                                    <li><strong>TARGETS:</strong> Go for TP2 and TP3</li>
+                                    <li><strong>HOLD:</strong> Let winners run into Thursday</li>
+                                    <li><strong>CONFIRMATION:</strong> Look for 50/800 or 200/800 EMA cross = Level III!</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="alert alert-success" style="margin-top: 1rem;">
+                            <strong>🎯 Wednesday Power Move:</strong> This is YOUR DAY! Weekly Q3 + BTMM Day 3 + Level III + Daily Q3 alignment = Maximum edge. Trade with confidence!
+                        </div>
+                        <div class="card" style="margin-top: 1rem; border: 2px solid var(--accent-green); background: rgba(0, 255, 136, 0.05);">
+                            <h4 style="color: var(--accent-green);">⏰ Wednesday Timing Formula:</h4>
+                            <p style="margin-top: 0.5rem;"><strong>7:30 AM EST:</strong> NY True Open - Watch for final stop hunt</p>
+                            <p style="margin-top: 0.5rem;"><strong>9:00-10:30 AM EST:</strong> 🔥 PRIMARY ENTRY WINDOW 🔥</p>
+                            <p style="margin-top: 0.5rem;">This is when Weekly Q3, BTMM Day 3, BTMM Level III, and Daily Q3 ALL align!</p>
+                        </div>
+
+                        <h4 style="margin-top: 1.5rem; color: var(--accent-green);">📊 Asian Box Breakout + Level 3 (Wednesday)</h4>
+                        <p><strong>THIS IS IT!</strong> Box breaks direction = Trade direction. Level 3 = Highest probability!</p>
+                        <div style="background: rgba(0, 255, 136, 0.15); padding: 1rem; border-radius: 8px; margin-top: 0.5rem; border: 2px solid var(--accent-green);">
+                            <strong>🎯 ACTION:</strong><br>
+                            • Box broke UP? → Trade LONG<br>
+                            • Box broke DOWN? → Trade SHORT<br>
+                            • <strong>LEVEL 3</strong> (third touch) = MAXIMUM PROBABILITY!<br>
+                            • Enter: 10:30 AM-12 PM (Session Q3)<br>
+                            • Alternative: 9:45-10:07 AM (Micro Q3)
+                        </div>
+                        
+                        <div style="background: rgba(0, 255, 136, 0.2); padding: 1.5rem; border-radius: 10px; margin-top: 1.5rem; border-left: 5px solid #00ff88;">
+                            <h4 style="color: #00ff88; margin-top: 0;">📊 Wednesday Bellwether Pattern (3-Day Cycle) 🔥🔥🔥:</h4>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1rem;">
+                                <div style="background: rgba(0, 255, 136, 0.2); padding: 1rem; border-radius: 8px; border: 2px solid #00ff88;">
+                                    <strong style="color: #00ff88;">📈 UPTREND: M Peak (Distribution)</strong>
+                                    <p style="margin: 0.5rem 0; font-size: 0.95rem;">Monday (W) → Tuesday (V1/V2) → <strong>Wednesday (M)</strong></p>
+                                    <ul style="padding-left: 1.2rem; margin: 0.5rem 0; font-size: 0.9rem;">
+                                        <li><strong>M = Distribution HIGH</strong></li>
+                                        <li>This is where you SELL/SHORT</li>
+                                        <li>Reaches <strong>PFH (Previous Friday High)</strong></li>
+                                        <li>Reversal down expected Thursday</li>
+                                    </ul>
+                                </div>
+                                <div style="background: rgba(0, 255, 136, 0.2); padding: 1rem; border-radius: 8px; border: 2px solid #00ff88;">
+                                    <strong style="color: #00ff88;">📉 DOWNTREND: A2 or W Low (Target)</strong>
+                                    <p style="margin: 0.5rem 0; font-size: 0.95rem;">Monday (M) → Tuesday (A1) → <strong>Wednesday (A2/W)</strong></p>
+                                    <ul style="padding-left: 1.2rem; margin: 0.5rem 0; font-size: 0.9rem;">
+                                        <li><strong>A2/W = Target LOW</strong></li>
+                                        <li>This is where you BUY/LONG</li>
+                                        <li>Reaches <strong>PFL (Previous Friday Low)</strong></li>
+                                        <li>Reversal up expected Thursday</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="alert alert-success" style="margin-top: 1rem; background: rgba(0, 255, 136, 0.25); border: 3px solid #00ff88;">
+                                <strong>🔥 Wednesday = DISTRIBUTION PHASE:</strong> Weekly Q3 | BTMM Day 3 | This is the REVERSAL day! Trade AGAINST Monday/Tuesday move with FULL CONFIDENCE! 
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                </div><!-- End Checklist Tab -->
+
+                <!-- TAB CONTENT: THURSDAY -->
+                <div id="thursday" class="week-tab-content">
+                    <h3>🌆 Thursday - Q4 Reversal/Continuation (BTMM Day 4)</h3>
+                    
+                    <div class="alert alert-info">
+                        <strong>BTMM Day 4+:</strong> Continuation/Reset | Weekly Q4 | Trail stops on Wednesday trades
+                    </div>
+
+                    <div class="pattern-card" style="border-left: 4px solid #ff4a4a;">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1rem;">
+                            <div>
+                                <h4 style="color: var(--accent-blue);">Characteristics:</h4>
+                                <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                    <li>Market decides direction for next week</li>
+                                    <li>Either continues Wednesday move</li>
+                                    <li>Or reverses to reset for Friday</li>
+                                    <li>Pullbacks in established trends</li>
+                                    <li>Often consolidates gains</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 style="color: var(--accent-yellow);">Strategy:</h4>
+                                <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                    <li><strong>MANAGE:</strong> Wednesday positions</li>
+                                    <li><strong>TRADE:</strong> Pullbacks in trend direction</li>
+                                    <li><strong>SCALE OUT:</strong> Take partial profits</li>
+                                    <li><strong>TRAIL:</strong> Move stops to protect gains</li>
+                                    <li><strong>PREPARE:</strong> For Friday close</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="alert alert-info" style="margin-top: 1rem;">
+                            <strong>💡 Thursday Strategy:</strong> If Wednesday distributed up, look for pullback longs on Thursday. Vice versa for downtrends.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB CONTENT: FRIDAY -->
+                <div id="friday" class="week-tab-content">
+                    <h3>🌙 Friday - End of Cycle (Range / Reset)</h3>
+                    
+                    <div class="alert alert-danger">
+                        <strong>⛔ FRIDAY WARNING:</strong> Weekly Q4 Complete | End of Cycle | AVOID NEW TRADES!
+                    </div>
+
+                    <div class="pattern-card" style="border-left: 4px solid #a0aab7;">
+                        <div class="pattern-title">🌙 Friday - Special Function</div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1rem;">
+                            <div>
+                                <h4 style="color: var(--accent-blue);">Characteristics:</h4>
+                                <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                    <li><strong>NOT</strong> part of standard weekly quarters</li>
+                                    <li>Market makers "balance the books"</li>
+                                    <li>Often returns toward weekly open</li>
+                                    <li>Lower volume, erratic movement</li>
+                                    <li>Profit-taking dominates</li>
+                                    <li>Sets up for next week</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 style="color: var(--accent-yellow);">Strategy:</h4>
+                                <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                    <li><strong>CLOSE:</strong> Most or all positions</li>
+                                    <li><strong>TAKE PROFITS:</strong> Lock in the week's gains</li>
+                                    <li><strong>AVOID:</strong> New trades (95% of the time)</li>
+                                    <li><strong>REVIEW:</strong> Week's performance</li>
+                                    <li><strong>PLAN:</strong> For next week's cycle</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="alert alert-danger" style="margin-top: 1rem;">
+                            <strong>⛔ Friday Warning:</strong> Friday is UNPREDICTABLE. Protect your profits! Only trade if setup is absolutely crystal clear. When in doubt, sit out.
+                        </div>
+                        
+                        <div style="background: rgba(160, 170, 183, 0.1); padding: 1.5rem; border-radius: 10px; margin-top: 1.5rem; border-left: 5px solid #a0aab7;">
+                            <h4 style="color: #a0aab7; margin-top: 0;">📊 Friday Bellwether Pattern:</h4>
+                            <p><strong>ACCUMULATION Phase (End of Cycle)</strong></p>
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li>After Wednesday (M peak or W low) and Thursday continuation, Friday typically <strong>ranges</strong></li>
+                                <li>Market is <strong>balancing</strong> for next week's cycle</li>
+                                <li>Often returns toward <strong>Weekly Open</strong> (Sunday 5pm)</li>
+                                <li>This is <strong>accumulation</strong> for the NEXT week's move</li>
+                                <li><strong>Smart Money</strong> is positioning for Monday's stop hunt</li>
+                            </ul>
+                            <div class="alert alert-success" style="margin-top: 1rem;">
+                                <strong>🎯 Friday Action:</strong> Close trades, take profits, and observe where price closes. This tells you what Smart Money is setting up for next week!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </section>
 
             <div class="footer">
@@ -721,57 +480,98 @@
         </main>
     </div>
 
+    <script src="../js/zoom-sync.js"></script>`n    <script src="../js/zoom-controls.js"></script>
     <script src="../js/navigation.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/export-print.js"></script>
     <script src="../js/alerts.js"></script>
+    
     <script>
-        // Tab functionality
-        document.querySelectorAll('.tab-button').forEach(button => {
-            button.addEventListener('click', () => {
-                const tab = button.dataset.tab;
-                console.log('Tab clicked:', tab);
-                
-                // Remove active from all buttons and content
-                document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
-                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-                
-                // Add active to clicked button and content
-                button.classList.add('active');
-                const targetTab = document.getElementById(tab);
-                if (targetTab) {
-                    targetTab.classList.add('active');
-                    console.log('Activated tab:', tab);
-                } else {
-                    console.error('Tab not found:', tab);
-                }
-            });
-        });
-
-        // LIVE: Highlight current day of week
-        function highlightCurrentDay() {
-            const now = new Date();
-            // Get day of week in EST
-            const estDateString = now.toLocaleDateString('en-US', { timeZone: 'America/New_York', weekday: 'long' });
-            const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-            const day = dayNames.indexOf(estDateString); // 0=Sun, 1=Mon, 2=Tue, 3=Wed, 4=Thu, 5=Fri
-            const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
-            const currentDay = days[day];
+        // Simple tab switching function
+        function showWeekTab(tabName) {
+            console.log('Switching to tab:', tabName);
             
-            const currentTab = document.querySelector(`[data-tab="${currentDay}"]`);
-            if (currentTab && !currentTab.textContent.includes('🔴')) {
-                currentTab.style.background = 'linear-gradient(135deg, rgba(255, 0, 0, 0.2), rgba(255, 87, 34, 0.2))';
-                currentTab.style.border = '2px solid #ff0000';
-                currentTab.style.fontWeight = 'bold';
-                const liveDot = document.createElement('span');
-                liveDot.textContent = ' 🔴';
-                liveDot.style.animation = 'pulse 2s infinite';
-                currentTab.appendChild(liveDot);
+            // Hide all tab content
+            const allContent = document.querySelectorAll('.week-tab-content');
+            allContent.forEach(content => {
+                content.classList.remove('week-show');
+            });
+            
+            // Remove active from all buttons
+            const allButtons = document.querySelectorAll('.week-tab-btn');
+            allButtons.forEach(btn => {
+                btn.classList.remove('week-active');
+            });
+            
+            // Show selected tab
+            const selectedTab = document.getElementById(tabName);
+            if (selectedTab) {
+                selectedTab.classList.add('week-show');
+                console.log('✅ Showed tab:', tabName);
+            } else {
+                console.error('❌ Tab not found:', tabName);
+            }
+            
+            // Activate clicked button
+            event.target.classList.add('week-active');
+        }
+    </script>
+
+    <!-- TAB STYLES - LOADED LAST -->
+    <style>
+        .week-tabs {
+            display: flex;
+            gap: 10px;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+            border-bottom: 2px solid #667eea;
+        }
+
+        .week-tab-btn {
+            padding: 12px 20px;
+            border: none;
+            background: #f8f9fa;
+            cursor: pointer;
+            border-radius: 8px 8px 0 0;
+            font-size: 1em;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        .week-tab-btn:hover {
+            background: #e9ecef;
+        }
+
+        .week-tab-btn.week-active {
+            background: white;
+            border-bottom: 3px solid #667eea;
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        /* Hide all tab content by default */
+        .week-tab-content {
+            display: none;
+        }
+
+        /* Show only active tab */
+        .week-tab-content.week-show {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
-        highlightCurrentDay();
-        setInterval(highlightCurrentDay, 60000);
-    </script>
+    </style>
 </body>
 </html>
 

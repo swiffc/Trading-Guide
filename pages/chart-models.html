@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Patterns & Setups - Trading Guide</title>
+    <title>Chart Models - Trading Guide</title>
     <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
@@ -11,7 +11,7 @@
         <div class="header-content">
             <div>
                 <h1>Quarterly Theory & BTMM Trading Guide</h1>
-                <div class="header-subtitle">Common Patterns & Setups</div>
+                <div class="header-subtitle">Chart Models & Trading Setups</div>
             </div>
             <div class="current-time">
                 <div class="time-display" id="currentTime">--:--:-- EST</div>
@@ -48,29 +48,51 @@
                     <strong>💡 Remember:</strong> Patterns work because market makers manipulate in predictable ways. They NEED to trap retail before distributing. Learn these patterns = Learn their playbook.
                 </div>
 
-                <h3 style="margin-top: 2rem;">Choose a Pattern to Study:</h3>
-                
-                <div class="alert alert-warning" style="margin-bottom: 1.5rem; background: rgba(255, 193, 7, 0.15); border: 2px solid var(--accent-yellow);">
-                    <h4 style="color: var(--accent-yellow); margin-bottom: 0.5rem;">🎯 NEW: Type 1-4 Trade Setups Now Have Dedicated Tabs!</h4>
-                    <p style="margin: 0;">For easy access, Type 1, 2, 3, and 4 setups now have their own tabs below. These are the comprehensive BTMM trade setups from Steve Mauro!</p>
+                <!-- MAIN CATEGORY TABS -->
+                <div class="tabs" style="margin-top: 2rem; gap: 1rem; justify-content: center;">
+                    <button class="tab-button active" data-tab="patterns-section" style="font-size: 1.1rem; padding: 1rem 2rem; background: linear-gradient(135deg, var(--accent-blue), #3a7bd5); border: none; color: white; font-weight: bold;">
+                        📊 CHART PATTERNS
+                    </button>
+                    <button class="tab-button" data-tab="setups-section" style="font-size: 1.1rem; padding: 1rem 2rem; background: linear-gradient(135deg, var(--accent-green), #00b894); border: none; color: white; font-weight: bold;">
+                        🎯 TRADING SETUPS
+                    </button>
                 </div>
 
-                <div class="tabs" style="flex-wrap: wrap; gap: 0.5rem;">
-                    <button class="tab-button active" data-tab="m-pattern">🔴 M-Top (Bearish)</button>
-                    <button class="tab-button" data-tab="w-pattern">🟢 W-Bottom (Bullish)</button>
-                    <button class="tab-button" data-tab="type1-setup">📈 TYPE 1: Safety Trade</button>
-                    <button class="tab-button" data-tab="type2-setup">🔄 TYPE 2: Asian 00 Bounce</button>
-                    <button class="tab-button" data-tab="type3-setup">⚖️ TYPE 3: Asian 50 Bounce</button>
-                    <button class="tab-button" data-tab="type4-setup">💥 TYPE 4: Breakout Continuation</button>
-                    <button class="tab-button" data-tab="london-ny">⚡ London → NY</button>
-                    <button class="tab-button" data-tab="batman">🦇 Half Batman</button>
-                    <button class="tab-button" data-tab="shark">🦈 Shark Fin</button>
-                    <button class="tab-button" data-tab="three-day">📅 3-Day Cycle</button>
-                    <button class="tab-button" data-tab="asia-leg">🌅 2nd Leg Asia</button>
-                    <button class="tab-button" data-tab="ema-bounce">📈 EMA Bounce Setups</button>
-                    <button class="tab-button" data-tab="ar-setups">📏 AR Level Setups</button>
-                    <button class="tab-button" data-tab="advanced-cycle">⚡ Advanced Cycle</button>
-                    <button class="tab-button" data-tab="summary">📊 Summary</button>
+                <!-- PATTERNS SECTION -->
+                <div id="patterns-section" class="tab-content active" style="margin-top: 2rem;">
+                    <div class="alert alert-info" style="margin-bottom: 1.5rem;">
+                        <h4 style="color: var(--accent-blue); margin-bottom: 0.5rem;">📊 Chart Patterns - Reversal Models</h4>
+                        <p style="margin: 0;">These are the core reversal patterns that signal institutional manipulation. Master these to identify when dealers are trapping retail traders.</p>
+                    </div>
+
+                    <div class="tabs" style="flex-wrap: wrap; gap: 0.5rem;">
+                        <button class="tab-button active" data-tab="m-pattern">🔴 M-Top (Bearish)</button>
+                        <button class="tab-button" data-tab="w-pattern">🟢 W-Bottom (Bullish)</button>
+                        <button class="tab-button" data-tab="batman">🦇 Half Batman</button>
+                        <button class="tab-button" data-tab="shark">🦈 Shark Fin</button>
+                        <button class="tab-button" data-tab="three-day">📅 3-Day Cycle</button>
+                        <button class="tab-button" data-tab="summary">📊 Summary</button>
+                    </div>
+                </div>
+
+                <!-- SETUPS SECTION -->
+                <div id="setups-section" class="tab-content" style="margin-top: 2rem;">
+                    <div class="alert alert-warning" style="margin-bottom: 1.5rem; background: rgba(255, 193, 7, 0.15); border: 2px solid var(--accent-yellow);">
+                        <h4 style="color: var(--accent-yellow); margin-bottom: 0.5rem;">🎯 Trading Setups - Complete Execution Strategies</h4>
+                        <p style="margin: 0;">These are complete trade setups with specific entry, stop loss, and profit target rules. TYPE 1-4 are Steve Mauro's official BTMM setups.</p>
+                    </div>
+
+                    <div class="tabs" style="flex-wrap: wrap; gap: 0.5rem;">
+                        <button class="tab-button active" data-tab="type1-setup">📈 TYPE 1: Safety Trade</button>
+                        <button class="tab-button" data-tab="type2-setup">🔄 TYPE 2: Asian 00 Bounce</button>
+                        <button class="tab-button" data-tab="type3-setup">⚖️ TYPE 3: Asian 50 Bounce</button>
+                        <button class="tab-button" data-tab="type4-setup">💥 TYPE 4: Breakout Continuation</button>
+                        <button class="tab-button" data-tab="london-ny">⚡ London → NY</button>
+                        <button class="tab-button" data-tab="asia-leg">🌅 2nd Leg Asia</button>
+                        <button class="tab-button" data-tab="ema-bounce">📈 EMA Bounce Setups</button>
+                        <button class="tab-button" data-tab="ar-setups">📏 AR Level Setups</button>
+                        <button class="tab-button" data-tab="advanced-cycle">⚡ Advanced Cycle</button>
+                    </div>
                 </div>
 
                 <!-- M-TOP PATTERN TAB -->
@@ -1011,6 +1033,179 @@
                             <p style="margin-top: 1rem;"><strong>All require:</strong> Pattern AT Asian boundary + Apex rejection + EMA/session timing confluence</p>
                             <p style="margin-top: 0.5rem; font-style: italic;">📖 For complete detailed breakdown, see M-Top and W-Bottom tabs!</p>
                         </div>
+
+                        <!-- LONDON OPEN EXAMPLES GALLERY -->
+                        <div style="margin-top: 3rem; padding: 2rem; background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 215, 0, 0.05)); border-radius: 15px; border: 2px solid var(--accent-yellow);">
+                            <div style="text-align: center; margin-bottom: 2rem;">
+                                <h2 style="color: var(--accent-yellow); margin-bottom: 0.5rem;">📸 Type 2 London Open - Live Chart Examples</h2>
+                                <p style="font-size: 1.1em; color: #666;">18 Real Setups Demonstrating Asian Range → London Break → M/W Formation</p>
+                            </div>
+
+                            <div class="alert alert-success" style="margin-bottom: 2rem;">
+                                <strong>🎯 What Makes These "Type 2":</strong> Price breaks Asian range at London open (2-4 AM EST), creates wide swings to hunt stops, then forms M or W pattern at the extreme for reversal entry. Classic dealer manipulation!
+                            </div>
+
+                            <!-- Visual Chart Grid -->
+                            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem;">
+                                
+                                <!-- Example Cards with Visual Indicators -->
+                                <a href="https://www.tradingview.com/x/uNsg5muX/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+                                    <div class="card" style="border-left: 5px solid var(--accent-yellow); padding: 1.5rem; background: white; transition: all 0.3s; position: relative; overflow: hidden;" onmouseover="this.style.transform='translateY(-8px) scale(1.02)'; this.style.boxShadow='0 15px 40px rgba(255,215,0,0.3)'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow=''">
+                                        <div style="position: absolute; top: 10px; right: 10px; background: var(--accent-yellow); color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8em; font-weight: bold;">CLASSIC</div>
+                                        <div style="font-size: 2.5em; margin-bottom: 0.5rem;">📈</div>
+                                        <strong style="color: var(--accent-blue); font-size: 1.2em; display: block; margin-bottom: 0.5rem;">GBP/USD - London Open M-Top</strong>
+                                        <p style="margin: 0.5rem 0; color: #666; line-height: 1.6;">Asian range break → Wide swing up → M-pattern forms → Short entry at neckline</p>
+                                        <div style="display: flex; gap: 0.5rem; margin-top: 1rem; flex-wrap: wrap;">
+                                            <span style="background: rgba(255,215,0,0.2); padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.85em;">🕐 2:30 AM EST</span>
+                                            <span style="background: rgba(255,74,74,0.2); padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.85em;">📉 Bearish</span>
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <a href="https://www.tradingview.com/x/JnMQjZej/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+                                    <div class="card" style="border-left: 5px solid var(--accent-green); padding: 1.5rem; background: white; transition: all 0.3s;" onmouseover="this.style.transform='translateY(-8px) scale(1.02)'; this.style.boxShadow='0 15px 40px rgba(0,255,136,0.3)'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow=''">
+                                        <div style="position: absolute; top: 10px; right: 10px; background: var(--accent-green); color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8em; font-weight: bold;">PERFECT</div>
+                                        <div style="font-size: 2.5em; margin-bottom: 0.5rem;">📉</div>
+                                        <strong style="color: var(--accent-blue); font-size: 1.2em; display: block; margin-bottom: 0.5rem;">EUR/USD - W-Bottom Reversal</strong>
+                                        <p style="margin: 0.5rem 0; color: #666; line-height: 1.6;">Asian low break → Dealer widens range → W-pattern emerges → Long entry</p>
+                                        <div style="display: flex; gap: 0.5rem; margin-top: 1rem; flex-wrap: wrap;">
+                                            <span style="background: rgba(255,215,0,0.2); padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.85em;">🕐 3:00 AM EST</span>
+                                            <span style="background: rgba(0,255,136,0.2); padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.85em;">📈 Bullish</span>
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <a href="https://www.tradingview.com/x/yZMNpC3F/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+                                    <div class="card" style="border-left: 5px solid var(--accent-red); padding: 1.5rem; background: white; transition: all 0.3s;" onmouseover="this.style.transform='translateY(-8px) scale(1.02)'; this.style.boxShadow='0 15px 40px rgba(255,74,74,0.3)'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow=''">
+                                        <div style="position: absolute; top: 10px; right: 10px; background: var(--accent-red); color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8em; font-weight: bold;">HIGH VOL</div>
+                                        <div style="font-size: 2.5em; margin-bottom: 0.5rem;">💥</div>
+                                        <strong style="color: var(--accent-blue); font-size: 1.2em; display: block; margin-bottom: 0.5rem;">GBP/JPY - Stop Hunt Trap</strong>
+                                        <p style="margin: 0.5rem 0; color: #666; line-height: 1.6;">Aggressive range expansion → Traps late entries → Sharp reversal with M-top</p>
+                                        <div style="display: flex; gap: 0.5rem; margin-top: 1rem; flex-wrap: wrap;">
+                                            <span style="background: rgba(255,215,0,0.2); padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.85em;">🕐 2:15 AM EST</span>
+                                            <span style="background: rgba(255,74,74,0.2); padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.85em;">📉 Bearish</span>
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <!-- Compact Grid for Remaining Examples -->
+                                <div style="grid-column: 1 / -1; margin-top: 1rem;">
+                                    <h4 style="color: var(--accent-blue); margin-bottom: 1rem; text-align: center;">📊 15 More Examples - Click to Study</h4>
+                                    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1rem;">
+                                        
+                                        <a href="https://www.tradingview.com/x/XJTZJmsV/" target="_blank" class="card" style="text-decoration: none; padding: 1rem; text-align: center; transition: all 0.2s;" onmouseover="this.style.background='rgba(255,215,0,0.1)'" onmouseout="this.style.background=''">
+                                            <div style="font-size: 1.5em;">📈</div>
+                                            <strong style="color: var(--accent-blue); font-size: 0.95em;">EUR/GBP</strong>
+                                            <p style="font-size: 0.85em; color: #666; margin: 0.25rem 0;">M-Pattern</p>
+                                        </a>
+
+                                        <a href="https://www.tradingview.com/x/ZjLI9fRh/" target="_blank" class="card" style="text-decoration: none; padding: 1rem; text-align: center; transition: all 0.2s;" onmouseover="this.style.background='rgba(255,215,0,0.1)'" onmouseout="this.style.background=''">
+                                            <div style="font-size: 1.5em;">📉</div>
+                                            <strong style="color: var(--accent-blue); font-size: 0.95em;">GBP/CHF</strong>
+                                            <p style="font-size: 0.85em; color: #666; margin: 0.25rem 0;">Push 1 Setup</p>
+                                        </a>
+
+                                        <a href="https://www.tradingview.com/x/z6yz8Ods/" target="_blank" class="card" style="text-decoration: none; padding: 1rem; text-align: center; transition: all 0.2s;" onmouseover="this.style.background='rgba(255,215,0,0.1)'" onmouseout="this.style.background=''">
+                                            <div style="font-size: 1.5em;">📊</div>
+                                            <strong style="color: var(--accent-blue); font-size: 0.95em;">USD/JPY</strong>
+                                            <p style="font-size: 0.85em; color: #666; margin: 0.25rem 0;">Range Break</p>
+                                        </a>
+
+                                        <a href="https://www.tradingview.com/x/f8UT4MDw/" target="_blank" class="card" style="text-decoration: none; padding: 1rem; text-align: center; transition: all 0.2s;" onmouseover="this.style.background='rgba(255,215,0,0.1)'" onmouseout="this.style.background=''">
+                                            <div style="font-size: 1.5em;">⚡</div>
+                                            <strong style="color: var(--accent-blue); font-size: 0.95em;">EUR/CHF</strong>
+                                            <p style="font-size: 0.85em; color: #666; margin: 0.25rem 0;">Stop Hunt</p>
+                                        </a>
+
+                                        <a href="https://www.tradingview.com/x/lCbdGoWk/" target="_blank" class="card" style="text-decoration: none; padding: 1rem; text-align: center; transition: all 0.2s;" onmouseover="this.style.background='rgba(255,215,0,0.1)'" onmouseout="this.style.background=''">
+                                            <div style="font-size: 1.5em;">💨</div>
+                                            <strong style="color: var(--accent-blue); font-size: 0.95em;">GBP/AUD</strong>
+                                            <p style="font-size: 0.85em; color: #666; margin: 0.25rem 0;">Wide Swing</p>
+                                        </a>
+
+                                        <a href="https://www.tradingview.com/x/pSXNncCM/" target="_blank" class="card" style="text-decoration: none; padding: 1rem; text-align: center; transition: all 0.2s;" onmouseover="this.style.background='rgba(255,215,0,0.1)'" onmouseout="this.style.background=''">
+                                            <div style="font-size: 1.5em;">🎯</div>
+                                            <strong style="color: var(--accent-blue); font-size: 0.95em;">EUR/JPY</strong>
+                                            <p style="font-size: 0.85em; color: #666; margin: 0.25rem 0;">1/3 ADR</p>
+                                        </a>
+
+                                        <a href="https://www.tradingview.com/x/NYEWc05e/" target="_blank" class="card" style="text-decoration: none; padding: 1rem; text-align: center; transition: all 0.2s;" onmouseover="this.style.background='rgba(255,215,0,0.1)'" onmouseout="this.style.background=''">
+                                            <div style="font-size: 1.5em;">✨</div>
+                                            <strong style="color: var(--accent-blue); font-size: 0.95em;">EUR/USD</strong>
+                                            <p style="font-size: 0.85em; color: #666; margin: 0.25rem 0;">Perfect</p>
+                                        </a>
+
+                                        <a href="https://www.tradingview.com/x/Si6FujVy/" target="_blank" class="card" style="text-decoration: none; padding: 1rem; text-align: center; transition: all 0.2s;" onmouseover="this.style.background='rgba(255,215,0,0.1)'" onmouseout="this.style.background=''">
+                                            <div style="font-size: 1.5em;">🔄</div>
+                                            <strong style="color: var(--accent-blue); font-size: 0.95em;">GBP/NZD</strong>
+                                            <p style="font-size: 0.85em; color: #666; margin: 0.25rem 0;">W-Bottom</p>
+                                        </a>
+
+                                        <a href="https://www.tradingview.com/x/SESHwolG/" target="_blank" class="card" style="text-decoration: none; padding: 1rem; text-align: center; transition: all 0.2s;" onmouseover="this.style.background='rgba(255,215,0,0.1)'" onmouseout="this.style.background=''">
+                                            <div style="font-size: 1.5em;">📌</div>
+                                            <strong style="color: var(--accent-blue); font-size: 0.95em;">EUR/AUD</strong>
+                                            <p style="font-size: 0.85em; color: #666; margin: 0.25rem 0;">W-Pattern</p>
+                                        </a>
+
+                                        <a href="https://www.tradingview.com/x/8jYvMfks/" target="_blank" class="card" style="text-decoration: none; padding: 1rem; text-align: center; transition: all 0.2s;" onmouseover="this.style.background='rgba(255,215,0,0.1)'" onmouseout="this.style.background=''">
+                                            <div style="font-size: 1.5em;">🌊</div>
+                                            <strong style="color: var(--accent-blue); font-size: 0.95em;">AUD/USD</strong>
+                                            <p style="font-size: 0.85em; color: #666; margin: 0.25rem 0;">Continuation</p>
+                                        </a>
+
+                                        <a href="https://www.tradingview.com/x/azXpoCK1/" target="_blank" class="card" style="text-decoration: none; padding: 1rem; text-align: center; transition: all 0.2s;" onmouseover="this.style.background='rgba(255,215,0,0.1)'" onmouseout="this.style.background=''">
+                                            <div style="font-size: 1.5em;">🔥</div>
+                                            <strong style="color: var(--accent-blue); font-size: 0.95em;">GBP/CAD</strong>
+                                            <p style="font-size: 0.85em; color: #666; margin: 0.25rem 0;">High Vol</p>
+                                        </a>
+
+                                        <a href="https://www.tradingview.com/x/poeNt5rz/" target="_blank" class="card" style="text-decoration: none; padding: 1rem; text-align: center; transition: all 0.2s;" onmouseover="this.style.background='rgba(255,215,0,0.1)'" onmouseout="this.style.background=''">
+                                            <div style="font-size: 1.5em;">🎣</div>
+                                            <strong style="color: var(--accent-blue); font-size: 0.95em;">EUR/NZD</strong>
+                                            <p style="font-size: 0.85em; color: #666; margin: 0.25rem 0;">Trap</p>
+                                        </a>
+
+                                        <a href="https://www.tradingview.com/x/guSWATqS/" target="_blank" class="card" style="text-decoration: none; padding: 1rem; text-align: center; transition: all 0.2s;" onmouseover="this.style.background='rgba(255,215,0,0.1)'" onmouseout="this.style.background=''">
+                                            <div style="font-size: 1.5em;">⚖️</div>
+                                            <strong style="color: var(--accent-blue); font-size: 0.95em;">NZD/USD</strong>
+                                            <p style="font-size: 0.85em; color: #666; margin: 0.25rem 0;">Double Top</p>
+                                        </a>
+
+                                        <a href="https://www.tradingview.com/x/Smnn8sUQ/" target="_blank" class="card" style="text-decoration: none; padding: 1rem; text-align: center; transition: all 0.2s;" onmouseover="this.style.background='rgba(255,215,0,0.1)'" onmouseout="this.style.background=''">
+                                            <div style="font-size: 1.5em;">🎪</div>
+                                            <strong style="color: var(--accent-blue); font-size: 0.95em;">CAD/JPY</strong>
+                                            <p style="font-size: 0.85em; color: #666; margin: 0.25rem 0;">Clean</p>
+                                        </a>
+
+                                        <a href="https://www.tradingview.com/x/99FpCC09/" target="_blank" class="card" style="text-decoration: none; padding: 1rem; text-align: center; transition: all 0.2s;" onmouseover="this.style.background='rgba(255,215,0,0.1)'" onmouseout="this.style.background=''">
+                                            <div style="font-size: 1.5em;">⭐</div>
+                                            <strong style="color: var(--accent-blue); font-size: 0.95em;">CHF/JPY</strong>
+                                            <p style="font-size: 0.85em; color: #666; margin: 0.25rem 0;">Perfect</p>
+                                        </a>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="alert alert-warning" style="margin-top: 2rem;">
+                                <h4 style="margin-bottom: 0.5rem;">📖 How to Study These Examples:</h4>
+                                <ol style="padding-left: 1.5rem; line-height: 1.8; margin-top: 0.5rem;">
+                                    <li>Open 3-4 charts at once in separate tabs</li>
+                                    <li>Identify the Asian range (tight consolidation before London)</li>
+                                    <li>Mark when London opens (2-4 AM EST) and range breaks</li>
+                                    <li>Watch how price creates wide swings (dealer manipulation)</li>
+                                    <li>Find the M or W pattern at the swing extreme</li>
+                                    <li>Entry point = neckline break of M/W pattern</li>
+                                </ol>
+                            </div>
+
+                            <div style="text-align: center; margin-top: 1.5rem; padding: 1.5rem; background: rgba(255,255,255,0.8); border-radius: 10px;">
+                                <p style="font-size: 1.1em; margin-bottom: 1rem;"><strong>💡 Pattern Structure:</strong></p>
+                                <div style="font-family: monospace; font-size: 1.1em; line-height: 2; color: var(--accent-blue);">
+                                    Asia Range (tight) → London Open (2AM) → Break + Wide Swing → M/W Forms → Entry
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -1157,6 +1352,91 @@
                             <p>Higher timeframe confluence for major trend continuation!</p>
                         </div>
 
+                        <h3 style="color: #ff6b6b; margin-top: 2rem;">Type 4d: 1H 50-50 Bounce ⏰ (Quarter Point Rejection)</h3>
+                        <div class="card" style="border: 2px solid #ff6b6b; background: linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(255, 107, 107, 0.05));">
+                            <div class="alert alert-warning" style="margin-bottom: 1rem;">
+                                <strong>🎯 KEY CONCEPT:</strong> Price rejects from .50 quarter point level on 1-HOUR chart after breakout. This is a HIGH-PROBABILITY continuation setup when aligned with quarter theory!
+                            </div>
+                            
+                            <h4 style="color: var(--accent-blue);">📝 Rules:</h4>
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li><strong>Timeframe:</strong> View on 1-HOUR chart (this is critical!)</li>
+                                <li><strong>Level:</strong> Price must be at a .50 quarter point (e.g., 1.0750, 1.0850, 1.3050)</li>
+                                <li><strong>Rejection:</strong> Strong rejection candle (wick rejection or engulfing pattern)</li>
+                                <li><strong>Trend Alignment:</strong> Must be WITH the trend direction (continuation, not reversal)</li>
+                                <li><strong>Session Timing:</strong> Best during London or NY session active hours</li>
+                            </ul>
+                            
+                            <h4 style="color: var(--accent-green); margin-top: 1rem;">📍 Optimal Location:</h4>
+                            <ul style="padding-left: 1.5rem;">
+                                <li>After a breakout from consolidation or Asian range</li>
+                                <li>At .50 quarter point levels (mid-way between .00 levels)</li>
+                                <li>During London Q2 or NY Q3 (manipulation or distribution quarters)</li>
+                                <li>When higher timeframe (4H/Daily) confirms trend direction</li>
+                            </ul>
+                            
+                            <h4 style="color: var(--accent-blue); margin-top: 1rem;">📐 Visual Example - Bullish 1H 50-50 Bounce:</h4>
+                            <div style="background: var(--bg-secondary); padding: 1.5rem; border-radius: 8px; margin-top: 0.5rem; font-family: monospace;">
+<strong>1.0900</strong> ─────────────────── .00 Level (Target)
+              ↑ CONTINUATION
+              │ (Enter here)
+<strong>1.0850</strong> ─────── 🔥 ─────────── .50 Level (REJECTION!) ← 1H candle closes strong above
+              │ ↙ Wick rejection
+              ↑ Retracement after breakout
+<strong>1.0800</strong> ─────────────────── .00 Level (Breakout from here)
+                            </div>
+                            
+                            <h4 style="color: var(--accent-yellow); margin-top: 1rem;">🎯 Entry Setup:</h4>
+                            <div style="background: rgba(255, 193, 7, 0.1); padding: 1rem; border-radius: 8px; border-left: 4px solid var(--accent-yellow);">
+                                <p><strong>BUY Example (Bullish Continuation):</strong></p>
+                                <ul style="padding-left: 1.5rem; margin-top: 0.5rem;">
+                                    <li><strong>Entry:</strong> At close of 1H rejection candle at .50 level (e.g., 1.0850)</li>
+                                    <li><strong>Stop Loss:</strong> 15-20 pips below .50 level (e.g., 1.0830)</li>
+                                    <li><strong>Target 1:</strong> Next .00 level (e.g., 1.0900 = 50 pips = 2.5:1)</li>
+                                    <li><strong>Target 2:</strong> Large Quarter completion (e.g., 1.1000 = 150 pips)</li>
+                                </ul>
+                                
+                                <p style="margin-top: 1rem;"><strong>SELL Example (Bearish Continuation):</strong></p>
+                                <ul style="padding-left: 1.5rem; margin-top: 0.5rem;">
+                                    <li><strong>Entry:</strong> At close of 1H rejection candle at .50 level (e.g., 1.0850)</li>
+                                    <li><strong>Stop Loss:</strong> 15-20 pips above .50 level (e.g., 1.0870)</li>
+                                    <li><strong>Target 1:</strong> Previous .00 level (e.g., 1.0800 = 50 pips = 2.5:1)</li>
+                                    <li><strong>Target 2:</strong> Large Quarter completion (e.g., 1.0750 = 100 pips)</li>
+                                </ul>
+                            </div>
+                            
+                            <h4 style="color: #ff6b6b; margin-top: 1rem;">🔥 Why This Works:</h4>
+                            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li><strong>Quarter Theory:</strong> .50 levels act as hesitation zones - price pauses here naturally</li>
+                                <li><strong>Institutional Behavior:</strong> Dealers use .50 levels to rebalance positions</li>
+                                <li><strong>Confluence:</strong> When EMA, session timing, and quarter point align = HIGH PROBABILITY</li>
+                                <li><strong>Risk/Reward:</strong> Tight stops at .50, big targets at .00 = Excellent R:R</li>
+                                <li><strong>1H Timeframe:</strong> Filters out noise, shows true institutional intent</li>
+                            </ul>
+                            
+                            <h4 style="color: var(--accent-yellow); margin-top: 1rem;">⚠️ Critical Rules:</h4>
+                            <ol style="padding-left: 1.5rem; line-height: 1.8;">
+                                <li><strong>MUST be 1-HOUR chart:</strong> Lower timeframes = false signals, higher = miss entries</li>
+                                <li><strong>MUST be .50 level:</strong> Don't force this setup at random prices</li>
+                                <li><strong>MUST be continuation:</strong> Don't trade against the trend - this is TYPE 4!</li>
+                                <li><strong>Wait for candle close:</strong> Don't enter on the wick - wait for 1H close</li>
+                                <li><strong>Check higher timeframe:</strong> 4H/Daily must confirm trend direction</li>
+                            </ol>
+                            
+                            <div class="alert alert-success" style="margin-top: 1rem;">
+                                <h4 style="margin-bottom: 0.5rem;">💡 Pro Tip:</h4>
+                                <p><strong>Best Confluence Stack for 1H 50-50 Bounce:</strong></p>
+                                <ul style="padding-left: 1.5rem; margin-top: 0.5rem;">
+                                    <li>✅ Price at .50 quarter point (1H chart)</li>
+                                    <li>✅ 50 EMA aligned at .50 level</li>
+                                    <li>✅ London Q2 or NY Q3 timing</li>
+                                    <li>✅ Strong rejection candle (long wick or engulfing)</li>
+                                    <li>✅ 4H/Daily trend confirmation</li>
+                                </ul>
+                                <p style="margin-top: 0.5rem; font-weight: bold;">When all 5 align = 80-85% win rate! 🔥</p>
+                            </div>
+                        </div>
+
                         <div class="alert alert-info" style="margin-top: 2rem;">
                             <h4 style="margin-bottom: 0.5rem;">🌟 Key Features:</h4>
                             <ul style="padding-left: 1.5rem; margin-top: 0.5rem; line-height: 1.8;">
@@ -1174,8 +1454,10 @@
                                 <li><strong>Type 4a:</strong> 50 EMA continuation (retracement to 50 EMA after breakout)</li>
                                 <li><strong>Type 4b:</strong> Breakout pullback (retest of breakout level = confirmation)</li>
                                 <li><strong>Type 4c:</strong> 200 EMA continuation (higher timeframe trend continuation)</li>
+                                <li><strong>Type 4d:</strong> 1H 50-50 Bounce (rejection from .50 quarter point on 1H chart) ⏰</li>
                             </ul>
                             <p style="margin-top: 1rem;"><strong>All require:</strong> Strong breakout + Retracement to key level + Rejection candlestick + Continuation in breakout direction</p>
+                            <p style="margin-top: 0.5rem;"><strong>Type 4d specifically:</strong> MUST be on 1-HOUR chart at .50 quarter point level!</p>
                             <p style="margin-top: 0.5rem; font-style: italic;">📖 For complete detailed breakdown, see M-Top and W-Bottom tabs!</p>
                         </div>
 
@@ -3053,9 +3335,82 @@
         </main>
     </div>
 
+    <script src="../js/zoom-sync.js"></script>
+    <script src="../js/zoom-controls.js"></script>
     <script src="../js/navigation.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/export-print.js"></script>
     <script src="../js/alerts.js"></script>
+    
+    <script>
+    // Enhanced nested tab system for Chart Models page
+    document.addEventListener('DOMContentLoaded', function() {
+        const mainTabs = document.querySelectorAll('[data-tab="patterns-section"], [data-tab="setups-section"]');
+        const subTabs = document.querySelectorAll('.tab-button:not([data-tab="patterns-section"]):not([data-tab="setups-section"])');
+        const allContent = document.querySelectorAll('.tab-content');
+        
+        // Main section tabs (PATTERNS vs SETUPS)
+        mainTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                const targetId = this.getAttribute('data-tab');
+                
+                // Remove active from all main tabs
+                mainTabs.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Show/hide sections
+                document.getElementById('patterns-section').style.display = 
+                    targetId === 'patterns-section' ? 'block' : 'none';
+                document.getElementById('setups-section').style.display = 
+                    targetId === 'setups-section' ? 'block' : 'none';
+                
+                // Activate first sub-tab in the section
+                if (targetId === 'patterns-section') {
+                    const firstPatternTab = document.querySelector('#patterns-section .tab-button');
+                    if (firstPatternTab) firstPatternTab.click();
+                } else {
+                    const firstSetupTab = document.querySelector('#setups-section .tab-button');
+                    if (firstSetupTab) firstSetupTab.click();
+                }
+            });
+        });
+        
+        // Sub-tabs (individual patterns/setups)
+        subTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                const targetId = this.getAttribute('data-tab');
+                const parentSection = this.closest('#patterns-section, #setups-section');
+                if (!parentSection) return;
+                
+                // Remove active from all sub-tabs in this section
+                parentSection.querySelectorAll('.tab-button').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Hide all content divs (except section containers)
+                allContent.forEach(content => {
+                    if (content.id !== 'patterns-section' && content.id !== 'setups-section') {
+                        content.classList.remove('active');
+                        content.style.display = 'none';
+                    }
+                });
+                
+                // Show target content
+                const targetContent = document.getElementById(targetId);
+                if (targetContent) {
+                    targetContent.classList.add('active');
+                    targetContent.style.display = 'block';
+                }
+            });
+        });
+        
+        // Initialize: Show patterns section by default
+        document.getElementById('patterns-section').style.display = 'block';
+        document.getElementById('setups-section').style.display = 'none';
+        const firstPatternTab = document.querySelector('#patterns-section .tab-button');
+        if (firstPatternTab) firstPatternTab.click();
+        
+        console.log('✅ Chart Models nested tabs initialized');
+    });
+    </script>
 </body>
 </html>

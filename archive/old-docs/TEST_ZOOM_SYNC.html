@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zoom Sync Test - Trading Guide</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0e1a;
+            color: #e0e6ed;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #4a9eff;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .test-section {
+            background: #1a2032;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 2px solid #2a3344;
+        }
+
+        .test-result {
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            font-weight: bold;
+        }
+
+        .success {
+            background: rgba(0, 255, 136, 0.2);
+            border-left: 4px solid #00ff88;
+            color: #00ff88;
+        }
+
+        .error {
+            background: rgba(255, 74, 74, 0.2);
+            border-left: 4px solid #ff4a4a;
+            color: #ff4a4a;
+        }
+
+        .info {
+            background: rgba(74, 158, 255, 0.2);
+            border-left: 4px solid #4a9eff;
+            color: #4a9eff;
+        }
+
+        button {
+            background: #4a9eff;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 0.5rem;
+            transition: all 0.2s ease;
+        }
+
+        button:hover {
+            background: #00ff88;
+            transform: scale(1.05);
+        }
+
+        .zoom-control {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+
+        .zoom-display {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #00ff88;
+            padding: 1rem 2rem;
+            background: rgba(0, 255, 136, 0.1);
+            border-radius: 10px;
+        }
+
+        .page-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .page-link {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-decoration: none;
+            text-align: center;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            border: 2px solid transparent;
+        }
+
+        .page-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+            border-color: #00ff88;
+        }
+
+        .instructions {
+            background: rgba(255, 215, 0, 0.1);
+            border-left: 4px solid #ffd700;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .instructions h3 {
+            color: #ffd700;
+            margin-top: 0;
+        }
+
+        .instructions ol {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .instructions li {
+            margin: 0.5rem 0;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔍 Zoom Synchronization Test</h1>
+
+    <div class="instructions">
+        <h3>📋 How to Test:</h3>
+        <ol>
+            <li><strong>First:</strong> Press <kbd>Ctrl + Shift + R</kbd> to hard refresh this page</li>
+            <li><strong>Set Zoom:</strong> Use the buttons below to change zoom to 150%</li>
+            <li><strong>Navigate:</strong> Click any page link below</li>
+            <li><strong>Check:</strong> The zoom should stay at 150% on the new page!</li>
+            <li><strong>Return:</strong> Come back to this test page - zoom should still be 150%</li>
+        </ol>
+    </div>
+
+    <!-- Current Status -->
+    <div class="test-section">
+        <h2>📊 Current Status</h2>
+        <div id="statusResults"></div>
+        <div class="zoom-display" id="currentZoom">Loading...</div>
+    </div>
+
+    <!-- Zoom Controls -->
+    <div class="test-section">
+        <h2>🎮 Zoom Controls</h2>
+        <p style="text-align: center; margin-bottom: 1rem;">Use these buttons to test zoom changes:</p>
+        <div class="zoom-control">
+            <button onclick="setZoom(0.5)">50%</button>
+            <button onclick="setZoom(0.75)">75%</button>
+            <button onclick="setZoom(1.0)">100%</button>
+            <button onclick="setZoom(1.25)">125%</button>
+            <button onclick="setZoom(1.5)">150%</button>
+            <button onclick="setZoom(1.75)">175%</button>
+            <button onclick="setZoom(2.0)">200%</button>
+        </div>
+        <p style="text-align: center; color: #a0aab7; margin-top: 1rem;">
+            Or use: <kbd>Ctrl + Plus</kbd> to zoom in | <kbd>Ctrl + Minus</kbd> to zoom out | <kbd>Ctrl + 0</kbd> to reset
+        </p>
+    </div>
+
+    <!-- Test All Pages -->
+    <div class="test-section">
+        <h2>🔗 Test Navigation (Click to Visit)</h2>
+        <p style="text-align: center; margin-bottom: 1rem;">
+            After setting zoom above, click these pages to verify zoom persists:
+        </p>
+        <div class="page-links">
+            <a href="index.html" class="page-link">🏠 Home</a>
+            <a href="pages/trading-psychology.html" class="page-link">💭 Trading Psychology</a>
+            <a href="pages/weekly-schedule.html" class="page-link">📊 Weekly Schedule</a>
+            <a href="pages/daily-sessions.html" class="page-link">🌍 Daily Sessions</a>
+            <a href="pages/calculators.html" class="page-link">🧮 Calculators</a>
+            <a href="pages/live-session-guide.html" class="page-link">📡 Live Trading</a>
+            <a href="pages/patterns.html" class="page-link">📐 Patterns</a>
+            <a href="pages/quick-reference.html" class="page-link">⚡ Quick Reference</a>
+        </div>
+    </div>
+
+    <!-- Diagnostics -->
+    <div class="test-section">
+        <h2>🔧 Diagnostics</h2>
+        <div id="diagnostics"></div>
+        <button onclick="runDiagnostics()" style="display: block; margin: 1rem auto;">Run Full Diagnostics</button>
+    </div>
+
+    <script src="js/zoom-sync.js"></script>
+    <script>
+        function updateStatus() {
+            const zoom = parseFloat(localStorage.getItem('tradingGuideZoom')) || 1.0;
+            const zoomPercent = Math.round(zoom * 100);
+            
+            document.getElementById('currentZoom').textContent = zoomPercent + '%';
+            
+            let statusHtml = '';
+            
+            // Check if zoom-sync.js is loaded
+            if (typeof localStorage !== 'undefined') {
+                statusHtml += '<div class="test-result success">✅ localStorage is available</div>';
+            } else {
+                statusHtml += '<div class="test-result error">❌ localStorage not available</div>';
+            }
+            
+            // Check if zoom is stored
+            const storedZoom = localStorage.getItem('tradingGuideZoom');
+            if (storedZoom) {
+                statusHtml += '<div class="test-result success">✅ Zoom is stored: ' + storedZoom + ' (' + Math.round(storedZoom * 100) + '%)</div>';
+            } else {
+                statusHtml += '<div class="test-result info">ℹ️ No zoom stored yet (using default 100%)</div>';
+            }
+            
+            // Check body zoom
+            const bodyZoom = parseFloat(getComputedStyle(document.body).zoom) || 1.0;
+            if (Math.abs(bodyZoom - zoom) < 0.01) {
+                statusHtml += '<div class="test-result success">✅ Body zoom matches stored zoom</div>';
+            } else {
+                statusHtml += '<div class="test-result error">❌ Body zoom (' + bodyZoom + ') does not match stored (' + zoom + ')</div>';
+            }
+            
+            document.getElementById('statusResults').innerHTML = statusHtml;
+        }
+
+        function setZoom(level) {
+            localStorage.setItem('tradingGuideZoom', level.toString());
+            document.body.style.zoom = level;
+            updateStatus();
+            
+            // Show confirmation
+            const zoomPercent = Math.round(level * 100);
+            alert('✅ Zoom set to ' + zoomPercent + '%!\n\nNow click any page link below to test if zoom persists.');
+        }
+
+        function runDiagnostics() {
+            let diagnosticsHtml = '<h3>Diagnostic Results:</h3>';
+            
+            // Test 1: localStorage
+            try {
+                localStorage.setItem('test', '1');
+                localStorage.removeItem('test');
+                diagnosticsHtml += '<div class="test-result success">✅ localStorage read/write: WORKING</div>';
+            } catch (e) {
+                diagnosticsHtml += '<div class="test-result error">❌ localStorage: BLOCKED - ' + e.message + '</div>';
+            }
+            
+            // Test 2: zoom-sync.js presence
+            const scripts = document.getElementsByTagName('script');
+            let zoomSyncFound = false;
+            for (let script of scripts) {
+                if (script.src.includes('zoom-sync.js')) {
+                    zoomSyncFound = true;
+                    break;
+                }
+            }
+            if (zoomSyncFound) {
+                diagnosticsHtml += '<div class="test-result success">✅ zoom-sync.js: LOADED</div>';
+            } else {
+                diagnosticsHtml += '<div class="test-result error">❌ zoom-sync.js: NOT FOUND</div>';
+            }
+            
+            // Test 3: Current zoom
+            const currentZoom = parseFloat(getComputedStyle(document.body).zoom) || 1.0;
+            diagnosticsHtml += '<div class="test-result info">ℹ️ Current body zoom: ' + currentZoom + ' (' + Math.round(currentZoom * 100) + '%)</div>';
+            
+            // Test 4: Stored zoom
+            const storedZoom = localStorage.getItem('tradingGuideZoom');
+            if (storedZoom) {
+                diagnosticsHtml += '<div class="test-result info">ℹ️ Stored zoom: ' + storedZoom + ' (' + Math.round(storedZoom * 100) + '%)</div>';
+            } else {
+                diagnosticsHtml += '<div class="test-result info">ℹ️ No zoom stored (will use default 100%)</div>';
+            }
+            
+            // Test 5: Service Worker
+            if ('serviceWorker' in navigator) {
+                diagnosticsHtml += '<div class="test-result success">✅ Service Worker API: AVAILABLE</div>';
+            } else {
+                diagnosticsHtml += '<div class="test-result info">ℹ️ Service Worker API: NOT AVAILABLE (optional)</div>';
+            }
+            
+            // Test 6: Browser info
+            diagnosticsHtml += '<div class="test-result info">ℹ️ Browser: ' + navigator.userAgent + '</div>';
+            
+            document.getElementById('diagnostics').innerHTML = diagnosticsHtml;
+        }
+
+        // Update status on load
+        updateStatus();
+        setInterval(updateStatus, 1000);
+
+        // Log to console
+        console.log('%c🔍 Zoom Sync Test Page Loaded', 'color: #00ff88; font-size: 16px; font-weight: bold');
+        console.log('Current zoom:', parseFloat(localStorage.getItem('tradingGuideZoom')) || 1.0);
+    </script>
+</body>
+</html>
+

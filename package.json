@@ -1,0 +1,52 @@
+{
+  "name": "trading-guide-app",
+  "version": "1.0.0",
+  "description": "Complete trading education app combining Quarterly Theory and Steve Mauro's BTMM methodology",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext .js,.html",
+    "lint:fix": "eslint . --ext .js,.html --fix",
+    "format": "prettier --write \"**/*.{js,html,css,md}\"",
+    "format:check": "prettier --check \"**/*.{js,html,css,md}\"",
+    "clean": "rimraf dist",
+    "deploy": "npm run build && vercel --prod"
+  },
+  "keywords": [
+    "trading",
+    "forex",
+    "quarterly-theory",
+    "btmm",
+    "market-maker",
+    "trading-journal",
+    "technical-analysis",
+    "pwa"
+  ],
+  "author": "David Cornealius",
+  "license": "MIT",
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "eslint": "^9.0.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-html": "^8.0.0",
+    "prettier": "^3.2.0",
+    "rimraf": "^5.0.5",
+    "vite": "^5.1.0",
+    "vite-plugin-pwa": "^0.19.0"
+  },
+  "dependencies": {},
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/trading-guide.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/trading-guide/issues"
+  },
+  "homepage": "https://github.com/yourusername/trading-guide#readme"
+}

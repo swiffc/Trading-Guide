@@ -1,0 +1,274 @@
+/* Trade Execution Page - Custom Styles */
+
+/* Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.stat-card {
+    text-align: center;
+}
+
+.stat-card.border-blue {
+    border-left: 4px solid var(--accent-blue);
+}
+
+.stat-card.border-green {
+    border-left: 4px solid var(--accent-green);
+}
+
+.stat-card.border-yellow {
+    border-left: 4px solid var(--accent-yellow);
+}
+
+.stat-card.border-red {
+    border-left: 4px solid var(--accent-red);
+}
+
+.stat-number {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.stat-number.color-blue {
+    color: var(--accent-blue);
+}
+
+.stat-number.color-green {
+    color: var(--accent-green);
+}
+
+.stat-number.color-yellow {
+    color: var(--accent-yellow);
+}
+
+.stat-number.color-red {
+    color: var(--accent-red);
+}
+
+/* Strategy Cards */
+.strategy-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    border-left: 4px solid var(--accent-blue);
+}
+
+.strategy-card p {
+    margin: 0.5rem 0;
+}
+
+/* Step by Step Section */
+.step-by-step {
+    margin: 2rem 0;
+}
+
+.step {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin: 1.5rem 0;
+    padding: 1.5rem;
+    background: var(--bg-tertiary);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.step:hover {
+    background: var(--bg-secondary);
+    transform: translateX(5px);
+}
+
+.step-number {
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
+    color: white;
+    min-width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.5em;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(74, 158, 255, 0.3);
+}
+
+.step-content h4 {
+    color: var(--accent-blue);
+    margin: 0 0 0.75rem 0;
+    font-size: 1.1em;
+}
+
+.step-content p {
+    margin: 0.5rem 0;
+    line-height: 1.7;
+}
+
+.step-content ul {
+    margin: 0.75rem 0;
+    padding-left: 1.5rem;
+}
+
+.step-content li {
+    margin: 0.5rem 0;
+    line-height: 1.6;
+}
+
+/* Checklist */
+.checklist {
+    background: rgba(255, 193, 7, 0.1);
+    border-left: 4px solid var(--accent-yellow);
+    padding: 1.25rem;
+    margin: 1rem 0;
+    border-radius: 8px;
+}
+
+.checklist h4 {
+    margin-top: 0;
+    color: var(--accent-yellow);
+}
+
+.checklist-item {
+    display: flex;
+    align-items: center;
+    margin: 0.75rem 0;
+    gap: 0.75rem;
+}
+
+.checklist-item input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: var(--accent-yellow);
+}
+
+.checklist-item label {
+    cursor: pointer;
+    line-height: 1.6;
+}
+
+/* Example Box */
+.example-box {
+    background: rgba(0, 255, 136, 0.1);
+    border-left: 4px solid var(--accent-green);
+    padding: 1.25rem;
+    margin: 1rem 0;
+    border-radius: 8px;
+}
+
+.example-box h4 {
+    margin-top: 0;
+    color: var(--accent-green);
+}
+
+/* Warning Box */
+.warning-box {
+    background: rgba(255, 74, 74, 0.1);
+    border-left: 4px solid var(--accent-red);
+    padding: 1.25rem;
+    margin: 1rem 0;
+    border-radius: 8px;
+}
+
+.warning-box h4 {
+    margin-top: 0;
+    color: var(--accent-red);
+}
+
+/* Info Box */
+.info-box {
+    background: rgba(74, 158, 255, 0.1);
+    border-left: 4px solid var(--accent-blue);
+    padding: 1.25rem;
+    margin: 1rem 0;
+    border-radius: 8px;
+}
+
+.info-box h4 {
+    margin-top: 0;
+    color: var(--accent-blue);
+}
+
+/* Calculation Box */
+.calculation-box {
+    background: var(--bg-tertiary);
+    border: 2px dashed var(--border-color);
+    padding: 1.25rem;
+    margin: 1rem 0;
+    border-radius: 8px;
+    font-family: 'Courier New', monospace;
+}
+
+.calculation-box .formula {
+    font-size: 1.1em;
+    color: var(--accent-blue);
+    font-weight: bold;
+    margin: 0.75rem 0;
+}
+
+/* Highlight Classes */
+.highlight-success {
+    color: var(--accent-green);
+    font-weight: bold;
+}
+
+.highlight-danger {
+    color: var(--accent-red);
+    font-weight: bold;
+}
+
+.highlight-warning {
+    color: var(--accent-yellow);
+    font-weight: bold;
+}
+
+.highlight-info {
+    color: var(--accent-blue);
+    font-weight: bold;
+}
+
+/* Risk Management Section */
+.risk-card {
+    background: linear-gradient(135deg, rgba(255, 74, 74, 0.1), rgba(255, 193, 7, 0.1));
+    border: 2px solid var(--accent-red);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+}
+
+.risk-card h3 {
+    color: var(--accent-red);
+    margin-top: 0;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .step {
+        flex-direction: column;
+    }
+    
+    .step-number {
+        margin-bottom: 1rem;
+    }
+    
+    .stat-number {
+        font-size: 2em;
+    }
+}
+
+@media (max-width: 480px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
